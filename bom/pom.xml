@@ -55,7 +55,7 @@
       <repository>
         <id>oss.sonatype.org/jboss-snapshots</id>
         <name>JBoss (Nexus) Snapshots Repository</name>
-        <url>http://oss.sonatype.org/content/repositories/jboss-snapshots/</url>
+        <url>http://oss.sonatype.org/content/repositories/jboss-snapshots</url>
         <releases>
           <enabled>false</enabled>
         </releases>
@@ -167,18 +167,20 @@
             <groupId>org.jboss.ejb3</groupId>
             <artifactId>jboss-ejb3-api</artifactId>
             <version>${ejb.api.version}</version>
-            <exclusion>
-               <artifactId>jboss-jaxrpc</artifactId>
-               <groupId>jbossws</groupId>
-            </exclusion>
-            <exclusion>
-               <artifactId>jboss-transaction-api</artifactId>
-               <groupId>org.jboss.javaee</groupId>
-            </exclusion>
-            <exclusion>
-               <artifactId>jboss-jaxrpc</artifactId>
-               <groupId>jboss.jbossws</groupId>
-            </exclusion>
+            <exclusions>
+               <exclusion>
+                  <artifactId>jboss-jaxrpc</artifactId>
+                  <groupId>jbossws</groupId>
+               </exclusion>
+               <exclusion>
+                  <artifactId>jboss-transaction-api</artifactId>
+                  <groupId>org.jboss.javaee</groupId>
+               </exclusion>
+               <exclusion>
+                  <artifactId>jboss-jaxrpc</artifactId>
+                  <groupId>jboss.jbossws</groupId>
+               </exclusion>
+            </exclusions>
          </dependency>
          
          <!-- TODO replace with javax.interceptor:interceptor-api:3.1 once the JCP/Sun publish this -->
