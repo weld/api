@@ -6,7 +6,7 @@
    <packaging>pom</packaging>
    <version>1.0-SNAPSHOT</version>
 
-   <name>Weld & CDI APIs Build Aggregator</name>
+   <name>Weld and CDI APIs Build Aggregator</name>
    
    <!-- Minimal project metadata, for more see parent/pom.xml -->
    <description>The build aggregator for Weld and the CDI APIs, which takes care of calling the modules which make up Weld and CDI APIs</description>
@@ -42,12 +42,12 @@
 
    <distributionManagement>
       <repository>
-         <id>jboss-releases</id>
+         <id>oss.sonatype.org/jboss-releases</id>
          <name>Sonatype Nexus Maven Repository</name>
          <url>http://oss.sonatype.org/service/local/staging/deploy/maven2</url>
       </repository>
       <snapshotRepository>
-         <id>jboss-snapshots</id>
+         <id>oss.sonatype.org/jboss-snapshots</id>
          <name>Sonatype Nexus Snapshot Repository</name>
          <url>http://oss.sonatype.org/content/repositories/jboss-snapshots</url>
       </snapshotRepository>
@@ -56,22 +56,50 @@
    <modules>
       <module>bom</module>
       <module>parent</module>
-      <module>cdi-api</module>
-      <module>spi</module>
-      <module>weld-api</module>
+      <module>cdi</module>
+      <module>weld</module>
+      <module>weld-spi</module>
    </modules>
 
    <!-- Minimal build configuration -->
    <build>
-      <pluginManagement>
-         <plugins>
-            <plugin>
-               <groupId>org.apache.maven.plugins</groupId>
-               <artifactId>maven-release-plugin</artifactId>
-               <version>2.0-beta-9</version>
-            </plugin>
-         </plugins>
-      </pluginManagement>
+      <plugins>
+         <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-release-plugin</artifactId>
+            <version>2.0-beta-9</version>
+            <configuration>
+               <goals>deploy</goals>
+               <arguments>-Prelease</arguments>
+               <autoVersionSubmodules>true</autoVersionSubmodules>
+               <tagBase>https://svn.jboss.org/repos/weld/api/tags</tagBase>
+            </configuration>
+         </plugin>
+      </plugins>
    </build>
-
+   
+   <!-- The release profile -->
+   <profiles>
+      <profile>
+         <id>release</id>
+         <build>
+            <plugins>
+               <plugin>
+                 <groupId>org.apache.maven.plugins</groupId>
+                 <artifactId>maven-gpg-plugin</artifactId>
+                 <version>1.0.0-alpha-4</version>
+                 <executions>
+                   <execution>
+                     <id>sign-artifacts</id>
+                     <phase>verify</phase>
+                     <goals>
+                       <goal>sign</goal>
+                     </goals>
+                   </execution>
+                 </executions>
+               </plugin>
+            </plugins>
+         </build>
+      </profile>
+   </profiles>
 </project>

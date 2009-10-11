@@ -1,12 +1,17 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
    <modelVersion>4.0.0</modelVersion>
+   <parent>
+      <groupId>org.jboss.weld</groupId>
+      <artifactId>weld-api-bom</artifactId>
+      <version>1.0-SNAPSHOT</version>
+      <relativePath>../bom</relativePath>
+   </parent>
    <groupId>org.jboss.weld</groupId>
    <artifactId>weld-api-parent</artifactId>
    <packaging>pom</packaging>
-   <version>1.0-SNAPSHOT</version>
 
-   <name>Weld & CDI APIs Parent</name>
+   <name>Weld and CDI APIs Parent</name>
    
 
    <!-- Full project metadata -->
@@ -65,15 +70,20 @@
       </developer>
    </developers>
 
-   <!-- Import the BOM -->
-   <dependencies>
-      <dependency>
-         <groupId>org.jboss.weld</groupId>
-         <artifactId>weld-api-bom</artifactId>
-         <version>${project.version}</version>
-         <scope>import</scope>
-      </dependency>
-   </dependencies>
+   <!-- Configure non-API dependencies (e.g. testing)-->
+   <dependencyManagement>
+      <dependencies>
+      
+         <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>5.9</version>
+            <classifier>jdk15</classifier>
+         </dependency>
+      
+      </dependencies>
+   </dependencyManagement>
+   
 
    <!-- Configure the build -->
    <build>
@@ -94,14 +104,6 @@
          <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-enforcer-plugin</artifactId>
-         </plugin>
-         <plugin>
-           <groupId>org.apache.maven.plugins</groupId>
-           <artifactId>maven-release-plugin</artifactId>
-           <configuration>
-             <tagBase>https://svn.jboss.org/repos/weld/api/tags</tagBase>
-             <autoVersionSubmodules>true</autoVersionSubmodules>
-           </configuration>
          </plugin>
       </plugins>
       <defaultGoal>package</defaultGoal>
@@ -164,6 +166,11 @@
                <artifactId>maven-javadoc-plugin</artifactId>
                <version>2.4</version>
             </plugin>   
+            <plugin>
+               <groupId>org.apache.maven.plugins</groupId>
+               <artifactId>maven-gpg-plugin</artifactId>
+               <version>1.0-alpha-4</version>
+            </plugin>
             <plugin>
                <groupId>org.apache.maven.plugins</groupId>
                <artifactId>maven-enforcer-plugin</artifactId>
@@ -284,6 +291,32 @@
          </plugins>
       </pluginManagement>
    </build>
+   
+   <!-- The release profile -->
+   <profiles>
+      <profile>
+         <id>release</id>
+         <build>
+            <pluginManagement>
+               <plugins>
+                  <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-gpg-plugin</artifactId>
+                    <executions>
+                      <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                          <goal>sign</goal>
+                        </goals>
+                      </execution>
+                    </executions>
+                  </plugin>
+               </plugins>
+            </pluginManagement>
+         </build>
+      </profile>
+   </profiles>
 
    <!-- Configure the SCM connection -->
    <scm>

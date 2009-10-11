@@ -6,7 +6,7 @@
    <packaging>pom</packaging>
    <version>1.0-SNAPSHOT</version>
 
-   <name>Weld & CDI APIs BOM</name>
+   <name>Weld and CDI APIs BOM</name>
    
    <!-- Minimal project metadata, for more see parent/pom.xml -->
    <url>http://www.seamframework.org/Weld</url>
@@ -41,7 +41,19 @@
          </snapshots>
       </repository>
       <repository>
-        <id>oss.sonatype.org</id>
+         <id>snapshots.jboss.org</id>
+         <name>JBoss Snapshots Repository</name>
+         <url>http://snapshots.jboss.org/maven2</url>
+         <releases>
+            <enabled>false</enabled>
+         </releases>
+         <snapshots>
+            <enabled>true</enabled>
+            <updatePolicy>never</updatePolicy>
+         </snapshots>
+      </repository>
+      <repository>
+        <id>oss.sonatype.org/jboss-snapshots</id>
         <name>JBoss (Nexus) Snapshots Repository</name>
         <url>http://oss.sonatype.org/content/repositories/jboss-snapshots/</url>
         <releases>
@@ -69,7 +81,7 @@
       <jstl.api.version>1.2</jstl.api.version>
       <jta.api.version>1.0.1B</jta.api.version>
       <jms.api.version>1.1</jms.api.version>
-      <uel.api.version>2.1.2-b05</uel.api.version>
+      <uel.api.version>2.1.2-b04</uel.api.version>
       <jsf.api.version>1.2_13</jsf.api.version>
       <jaxws.api.version>2.1</jaxws.api.version>
       <interceptor.api.version>3.1.0-SNAPSHOT</interceptor.api.version>
@@ -202,11 +214,49 @@
          
       </dependencies>
    </dependencyManagement>
+   
+   <!-- The release profile -->
+   <profiles>
+      <profile>
+         <id>release</id>
+         <build>
+            <plugins>
+               <plugin>
+                 <groupId>org.apache.maven.plugins</groupId>
+                 <artifactId>maven-gpg-plugin</artifactId>
+                 <version>1.0.0-alpha-4</version>
+                 <executions>
+                   <execution>
+                     <id>sign-artifacts</id>
+                     <phase>verify</phase>
+                     <goals>
+                       <goal>sign</goal>
+                     </goals>
+                   </execution>
+                 </executions>
+               </plugin>
+            </plugins>
+         </build>
+      </profile>
+   </profiles>
 
-   <!-- SCM info-->
+   <!-- SCM info and distribution management-->
    <scm>
       <connection>scm:svn:http://anonsvn.jboss.org/repos/weld/api/trunk/bom</connection>
       <developerConnection>scm:svn:https://svn.jboss.org/repos/weld/api/trunk/bom</developerConnection>
    </scm>
+   
+   <distributionManagement>
+      <repository>
+         <id>oss.sonatype.org/jboss-staging</id>
+         <name>Sonatype Nexus Maven Repository</name>
+         <url>http://oss.sonatype.org/service/local/staging/deploy/maven2</url>
+      </repository>
+      <snapshotRepository>
+         <id>oss.sonatype.org/jboss-snapshots</id>
+         <name>Sonatype Nexus Snapshot Repository</name>
+         <url>http://oss.sonatype.org/content/repositories/jboss-snapshots</url>
+      </snapshotRepository>
+   </distributionManagement>
 
 </project>
