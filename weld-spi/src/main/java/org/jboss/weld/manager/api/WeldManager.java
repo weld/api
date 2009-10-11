@@ -25,6 +25,7 @@ import javax.enterprise.inject.spi.Bean;
 import javax.enterprise.inject.spi.BeanManager;
 import javax.enterprise.inject.spi.InjectionTarget;
 
+import org.jboss.weld.bootstrap.api.ServiceRegistry;
 import org.jboss.weld.ejb.spi.EjbDescriptor;
 
 /**
@@ -89,5 +90,11 @@ public interface WeldManager extends BeanManager, Serializable
     * @return
     */
    public <T> EjbDescriptor<T> getEjbDescriptor(String ejbName);
+   
+   /**
+    * Get the services registered for this manager
+    * @return
+    */
+   public ServiceRegistry getServices();
 
 }
