@@ -3,21 +3,22 @@
 
 	<parent>
 		<groupId>org.jboss.weld</groupId>
-		<artifactId>weld-parent</artifactId>
-		<version>1.0.0-SNAPSHOT</version>
+		<artifactId>weld-api-parent</artifactId>
+		<version>1.0-SNAPSHOT</version>
 	</parent>
 
 	<groupId>javax.enterprise</groupId>
 	<artifactId>cdi-api</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
-	<name>CDI API</name>
-	<url>http://www.seamframework.org/Weld</url>
+	
+   <name>CDI API</name>
+	<description>API for JSR-299: Contexts and Dependency Injection for Java EE</description>
 
 	<dependencies>
 		<dependency>
 			<groupId>javax.el</groupId>
 			<artifactId>el-api</artifactId>
+         <optional>true</optional>
 		</dependency>
       
 		<dependency>
