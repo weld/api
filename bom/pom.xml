@@ -167,6 +167,18 @@
             <groupId>org.jboss.ejb3</groupId>
             <artifactId>jboss-ejb3-api</artifactId>
             <version>${ejb.api.version}</version>
+            <exclusion>
+               <artifactId>jboss-jaxrpc</artifactId>
+               <groupId>jbossws</groupId>
+            </exclusion>
+            <exclusion>
+               <artifactId>jboss-transaction-api</artifactId>
+               <groupId>org.jboss.javaee</groupId>
+            </exclusion>
+            <exclusion>
+               <artifactId>jboss-jaxrpc</artifactId>
+               <groupId>jboss.jbossws</groupId>
+            </exclusion>
          </dependency>
          
          <!-- TODO replace with javax.interceptor:interceptor-api:3.1 once the JCP/Sun publish this -->

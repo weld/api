@@ -18,7 +18,7 @@
    <url>http://www.seamframework.org/Weld</url>
    
    <description>
-      The reference implementation of JSR 299: Weld
+      APIs for CDI and Weld, the reference implementation of JSR 299: Contexts and Dependency Injection for Java EE
    </description>
 
    <ciManagement>
@@ -69,6 +69,11 @@
          <name>Nicklas Karlsson</name>
       </developer>
    </developers>
+   
+   <properties>
+      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+      <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+   </properties>
 
    <!-- Configure non-API dependencies (e.g. testing)-->
    <dependencyManagement>
@@ -291,38 +296,5 @@
          </plugins>
       </pluginManagement>
    </build>
-   
-   <!-- The release profile -->
-   <profiles>
-      <profile>
-         <id>release</id>
-         <build>
-            <pluginManagement>
-               <plugins>
-                  <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-gpg-plugin</artifactId>
-                    <executions>
-                      <execution>
-                        <id>sign-artifacts</id>
-                        <phase>verify</phase>
-                        <goals>
-                          <goal>sign</goal>
-                        </goals>
-                      </execution>
-                    </executions>
-                  </plugin>
-               </plugins>
-            </pluginManagement>
-         </build>
-      </profile>
-   </profiles>
-
-   <!-- Configure the SCM connection -->
-   <scm>
-      <connection>scm:svn:http://anonsvn.jboss.org/repos/weld/ri/trunk/parent</connection>
-      <developerConnection>scm:svn:https://svn.jboss.org/repos/weld/ri/trunk/parent</developerConnection>
-      <url>http://fisheye.jboss.org/browse/Weld/ri</url>
-   </scm>
    
 </project>
