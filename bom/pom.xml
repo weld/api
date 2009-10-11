@@ -240,7 +240,7 @@
       </profile>
    </profiles>
 
-   <!-- SCM info and distribution management-->
+   <!-- SCM info and distribution management -->
    <scm>
       <connection>scm:svn:http://anonsvn.jboss.org/repos/weld/api/trunk/bom</connection>
       <developerConnection>scm:svn:https://svn.jboss.org/repos/weld/api/trunk/bom</developerConnection>

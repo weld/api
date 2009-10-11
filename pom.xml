@@ -11,38 +11,17 @@
    <!-- Minimal project metadata, for more see parent/pom.xml -->
    <description>The build aggregator for Weld and the CDI APIs, which takes care of calling the modules which make up Weld and CDI APIs</description>
 
-   <url>http://www.seamframework.org/Weld</url>
-
-   <licenses>
-      <license>
-         <name>Apache License, Version 2.0</name>
-         <distribution>repo</distribution>
-         <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
-      </license>
-   </licenses>
-
-   <developers>
-      <developer>
-         <name>Pete Muir</name>
-         <id>pmuir</id>
-         <organization>Red Hat Inc.</organization>
-         <roles>
-            <role>Project Lead</role>
-         </roles>
-         <email>pmuir@redhat.com</email>
-      </developer>
-   </developers>
-
    <!-- SCM and Distribution management -->
    <scm>
       <connection>scm:svn:http://anonsvn.jboss.org/repos/weld/api/trunk</connection>
       <developerConnection>scm:svn:https://svn.jboss.org/repos/weld/api/trunk</developerConnection>
       <url>http://fisheye.jboss.org/browse/Weld</url>
    </scm>
-
+   
+   <!-- Needed despite skipping deployment! -->
    <distributionManagement>
       <repository>
-         <id>oss.sonatype.org/jboss-releases</id>
+         <id>oss.sonatype.org/jboss-staging</id>
          <name>Sonatype Nexus Maven Repository</name>
          <url>http://oss.sonatype.org/service/local/staging/deploy/maven2</url>
       </repository>
@@ -75,31 +54,15 @@
                <tagBase>https://svn.jboss.org/repos/weld/api/tags</tagBase>
             </configuration>
          </plugin>
+         <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-deploy-plugin</artifactId>
+            <version>2.4</version>
+            <configuration>
+               <skip>true</skip>
+            </configuration>
+         </plugin>
       </plugins>
    </build>
    
-   <!-- The release profile -->
-   <profiles>
-      <profile>
-         <id>release</id>
-         <build>
-            <plugins>
-               <plugin>
-                 <groupId>org.apache.maven.plugins</groupId>
-                 <artifactId>maven-gpg-plugin</artifactId>
-                 <version>1.0.0-alpha-4</version>
-                 <executions>
-                   <execution>
-                     <id>sign-artifacts</id>
-                     <phase>verify</phase>
-                     <goals>
-                       <goal>sign</goal>
-                     </goals>
-                   </execution>
-                 </executions>
-               </plugin>
-            </plugins>
-         </build>
-      </profile>
-   </profiles>
 </project>
