@@ -73,8 +73,6 @@
    </repositories>
 
    <properties>
-      <cdi.api.version>${project.version}</cdi.api.version>
-      <weld.api.version>${project.version}</weld.api.version>
       <atinject.api.version>1.0-PFD-1</atinject.api.version>
       <ejb.api.version>3.1.0-Alpha1</ejb.api.version>
       <jsr250.api.version>1.0</jsr250.api.version>
@@ -197,19 +195,19 @@
          <dependency>
             <groupId>javax.enterprise</groupId>
             <artifactId>cdi-api</artifactId>
-            <version>${cdi.api.version}</version>
+            <version>${project.version}</version>
          </dependency>
 
          <dependency>
             <groupId>org.jboss.weld</groupId>
             <artifactId>weld-api</artifactId>
-            <version>${weld.api.version}</version>
+            <version>${project.version}</version>
          </dependency>
 
          <dependency>
             <groupId>org.jboss.weld</groupId>
             <artifactId>weld-spi</artifactId>
-            <version>${weld.api.version}</version>
+            <version>${project.version}</version>
          </dependency>
 
          <dependency>
