@@ -95,12 +95,6 @@
       <dependencies>
 
          <dependency>
-            <groupId>org.apache.wicket</groupId>
-            <artifactId>wicket</artifactId>
-            <version>${wicket.version}</version>
-         </dependency>
-
-         <dependency>
             <groupId>javax.annotation</groupId>
             <artifactId>jsr250-api</artifactId>
             <version>${jsr250.api.version}</version>
