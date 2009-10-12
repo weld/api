@@ -69,11 +69,6 @@
          <name>Nicklas Karlsson</name>
       </developer>
    </developers>
-   
-   <properties>
-      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-      <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-   </properties>
 
    <!-- Configure non-API dependencies (e.g. testing)-->
    <dependencyManagement>
