@@ -3,7 +3,7 @@
    <parent>
       <groupId>org.jboss.weld</groupId>
       <artifactId>weld-api-bom</artifactId>
-      <version>1.0-CR1</version>
+      <version>1.0-SNAPSHOT</version>
       <relativePath>../bom</relativePath>
    </parent>
    <groupId>org.jboss.weld</groupId>
