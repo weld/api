@@ -53,12 +53,6 @@ public interface Conversation
     */
    public void end();
 
-   /**
-    * Determine if a conversation is long running or transient
-    * 
-    * @return true if the conversation is long running
-    */
-   public boolean isLongRunning();
 
    /**
     * Get the id associated with the current long running conversation
