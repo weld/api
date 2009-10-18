@@ -19,6 +19,7 @@ package org.jboss.weld.bootstrap.spi;
 import java.util.Collection;
 
 import org.jboss.weld.bootstrap.api.ServiceRegistry;
+import org.jboss.weld.ejb.spi.EjbDescriptor;
 
 /**
  * Represents a deployment of a CDI application.
@@ -134,9 +135,12 @@ public interface Deployment
     * Load the {@link BeanDeploymentArchive} containing the given class.
     * 
     * If the deployment archive containing the given class is not currently a
-    * bean deployment archive, it should be added to the bean deployment archive
+    * bean deployment archive, it must be added to the bean deployment archive
     * graph and returned. If the deployment archive is currently a bean
     * deployment archive it should be returned.
+    * 
+    * If beanClass is the bean class of an EJB session bean, an {@link EjbDescriptor}
+    * for the bean must be returned by {@link BeanDeploymentArchive#getEjbs()}.
     * 
     * @param beanClass the bean class to load
     * @return the {@link BeanDeploymentArchive} containing the bean class

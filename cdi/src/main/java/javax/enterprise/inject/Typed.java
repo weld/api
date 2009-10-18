@@ -36,7 +36,7 @@ import java.lang.annotation.Target;
 @Target( { FIELD, METHOD, TYPE })
 @Retention(RUNTIME)
 @Documented
-public @interface BeanTypes
+public @interface Typed
 {
 
    Class<?>[] value() default {};

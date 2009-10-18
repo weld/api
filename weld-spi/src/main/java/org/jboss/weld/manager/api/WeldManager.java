@@ -21,6 +21,7 @@ import java.io.Serializable;
 import java.lang.annotation.Annotation;
 
 import javax.enterprise.context.ContextNotActiveException;
+import javax.enterprise.inject.spi.AnnotatedType;
 import javax.enterprise.inject.spi.Bean;
 import javax.enterprise.inject.spi.BeanManager;
 import javax.enterprise.inject.spi.InjectionTarget;
@@ -66,6 +67,10 @@ public interface WeldManager extends BeanManager, Serializable
     * The injection target for the given EJB, or null if Weld was not
     * given this descriptor in the deployment.
     * 
+    * This should only be used to create an inject contextual EJBs by 
+    * the EJB container. {@link #fireProcessInjectionTarget()} must be used
+    * to obtain an {@link InjectionTarget} for non-contextual EJB injection.
+    * 
     * @param <T>
     * @param descriptor
     * @return
@@ -96,5 +101,20 @@ public interface WeldManager extends BeanManager, Serializable
     * @return
     */
    public ServiceRegistry getServices();
+   
+   /**
+    * Fire a ProcessInjectionTarget event for the given type.
+    * 
+    * A helper method to allow integration code to easily fire the ProcessInjectionTarget
+    * for Java EE component classes supporting injection
+    * 
+    * The container must use the returned InjectionTarget to create, inject, dispose of
+    * and call the lifecycle callbacks for the Java EE components
+    * 
+    * @param <X>
+    * @param type
+    * @return
+    */
+   public <X> InjectionTarget<X> fireProcessInjectionTarget(AnnotatedType<X> type);
 
 }
