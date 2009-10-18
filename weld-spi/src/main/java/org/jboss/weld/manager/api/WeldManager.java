@@ -108,8 +108,7 @@ public interface WeldManager extends BeanManager, Serializable
     * A helper method to allow integration code to easily fire the ProcessInjectionTarget
     * for Java EE component classes supporting injection
     * 
-    * The container must use the returned InjectionTarget to create, inject, dispose of
-    * and call the lifecycle callbacks for the Java EE components
+    * The container must use the returned InjectionTarget to inject the Java EE component.
     * 
     * @param <X>
     * @param type
