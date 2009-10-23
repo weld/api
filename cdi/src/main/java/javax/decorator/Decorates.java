@@ -50,10 +50,9 @@ import java.lang.annotation.Target;
  * <p>All decorators have a delegate injection point. A delegate 
  * injection point is an injection point of the bean class. The 
  * type and qualifiers of the injection point are called the 
- * delegate type and delegate qualifiers.</p>
- * 
- * <p>The decorator applies to any bean that is eligible for injection 
- * to the delegate injection point.</p>
+ * delegate type and delegate qualifiers. The decorator applies to 
+ * any bean that is eligible for injection to the delegate injection 
+ * point.</p>
  * 
  * <p>A decorator must have exactly one delegate injection point. The 
  * delegate injection point must be an injected field, initializer 
@@ -65,8 +64,12 @@ import java.lang.annotation.Target;
  * 
  * <p>The container injects a delegate object to the delegate injection 
  * point. The delegate object implements the delegate type and delegates 
- * method invocations along the decorator stack.</p> 
- *
+ * method invocations along the decorator stack. When the container calls 
+ * a decorator during business method interception, the decorator may 
+ * invoke any method of the delegate object. If a decorator invokes the 
+ * delegate object at any other time, the invoked method throws an 
+ * {@link java.lang.IllegalStateException}.</p>
+ * 
  * <pre>
  * &#064;Decorator 
  * class TimestampLogger implements Logger { 
