@@ -30,9 +30,52 @@ import java.lang.annotation.Target;
 import javax.inject.Qualifier;
 
 /**
- * The default binding type.
+ * <p>The default qualifier.</p>
+ * 
+ * <p>If a bean does not explicitly declare a qualifier other than 
+ * {@link javax.inject.Named &#064;Named}, the bean has the qualifier 
+ * {@link javax.enterprise.inject.Default &#064;Default}.</p>
+ * 
+ * <p>If an injection point declares no qualifier, the injection point 
+ * has exactly one qualifier, the default qualifier 
+ * {@link javax.enterprise.inject.Default &#064;Default}.</p>
+ *
+ * <p>The following are equivalent:</p>
+ *
+ * <pre>
+ * &#064;ConversationScoped
+ * public class Order {
+ * 
+ *    private Product product;
+ *    private User customer;
+ * 
+ *    &#064;Inject
+ *    public void init(&#064;Selected Product product, User customer) {
+ *       this.product = product;
+ *       this.customer = customer;
+ *   }
+ *
+ * }
+ * </pre>      
+ *
+ * <pre>
+ * &#064;Default &#064;ConversationScoped
+ * public class Order {
+ *   
+ *    private Product product;
+ *    private User customer;
+ *   
+ *    &#064;Inject
+ *    public void init(&#064;Selected Product product, &#064;Default User customer) {
+ *       this.product = product;
+ *       this.customer = customer;
+ *    }
+ * 
+ * }
+ * </pre>
  * 
  * @author Pete Muir
+ * @author Gavin King
  */
 
 @Target( { TYPE, METHOD, PARAMETER, FIELD })
