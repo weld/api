@@ -27,7 +27,13 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
 /**
- * Specifies that an annotation type is a deployment type.
+ * <p>Specifies that a bean is an alternative. May be
+ * applied to a bean class, producer method or field
+ * or {@linkplain javax.enterprise.inject.Stereotype stereotype}.</p>
+ * 
+ * <p>An alternative must be explicitly declared in the 
+ * <tt>beans.xml</tt> file if it should be available for 
+ * lookup, injection or EL resolution.</p>
  * 
  * @author Gavin King
  * @author Pete Muir
