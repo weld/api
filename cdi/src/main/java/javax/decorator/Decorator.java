@@ -51,10 +51,10 @@ import javax.enterprise.inject.stereotype.Stereotype;
  * for instance passivation and conversational state defined by the 
  * EJB specification.</p>
  * 
- * A decorator may be an abstract Java class, and is not required 
- * to implement every method of every decorated type.
+ * <p>A decorator may be an abstract class, and is not required to 
+ * implement every method of every decorated type.</p>
  *  
- * The decorator intercepts every method: 
+ * <p>A decorator intercepts every method:</p>
  * <ul>
  * <li>declared by a decorated type of the decorator</li>
  * <li>that is implemented by the bean class of the decorator.</li>
