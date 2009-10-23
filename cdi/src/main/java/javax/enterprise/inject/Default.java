@@ -30,7 +30,7 @@ import java.lang.annotation.Target;
 import javax.inject.Qualifier;
 
 /**
- * <p>The default qualifier.</p>
+ * <p>The default qualifier type.</p>
  * 
  * <p>If a bean does not explicitly declare a qualifier other than 
  * {@link javax.inject.Named &#064;Named}, the bean has the qualifier 

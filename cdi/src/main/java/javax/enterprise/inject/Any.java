@@ -30,8 +30,13 @@ import java.lang.annotation.Target;
 import javax.inject.Qualifier;
 
 /**
- * A built-in binding type that is implicitly applied to all beans which do not
- * have the {@link New} built-in binding type.
+ * <p>The built-in qualifier type.</p>
+ * 
+ * <p>Every bean has the built-in qualifier 
+ * {@link javax.enterprise.inject.Any &#064;Any}, even if 
+ * it does not explicitly declare this qualifier, except 
+ * for the special {@link javax.enterprise.inject.New &#064;New} 
+ * qualified beans.</p>
  * 
  * @author Gavin King
  * @author David Allen
