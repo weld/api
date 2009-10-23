@@ -27,7 +27,41 @@ import java.lang.annotation.Target;
 import javax.enterprise.inject.stereotype.Stereotype;
 
 /**
- * Specifies that a class is a decorator.
+ * <p>Specifies that a class is a decorator.</p>
+ * 
+ * <pre>
+ * &#064;Decorator 
+ * class TimestampLogger implements Logger { ... }
+ * </pre>
+ * 
+ * <p>A decorator implements one or more bean types and 
+ * intercepts business method invocations of beans which 
+ * implement those bean types. These bean types are called 
+ * decorated types.</p>
+ * 
+ * <p>A decorator is a managed bean. The set of decorated types 
+ * of a decorator includes all interfaces implemented directly or 
+ * indirectly by the bean class, except for {@link java.io.Serializable}. 
+ * The decorator bean class and its superclasses are not decorated 
+ * types of the decorator. The decorator class may be abstract.</p>
+ * 
+ * <p>Decorators of a session bean must comply with the bean provider 
+ * programming restrictions defined by the EJB specification. 
+ * Decorators of a stateful session bean must comply with the rules 
+ * for instance passivation and conversational state defined by the 
+ * EJB specification.</p>
+ * 
+ * A decorator may be an abstract Java class, and is not required 
+ * to implement every method of every decorated type.
+ *  
+ * The decorator intercepts every method: 
+ * <ul>
+ * <li>declared by a decorated type of the decorator</li>
+ * <li>that is implemented by the bean class of the decorator.</li>
+ * </ul>
+ * 
+ * @see javax.decorator.Decorates &#064;Decorates identifies the 
+ * delegate injection point of a decorator.
  * 
  * @author Gavin King
  * @author Pete Muir

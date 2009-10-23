@@ -26,8 +26,61 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
 /**
- * Specifies that an injected field, initializer method parameter or bean
- * constructor parameter of a decorator class is the delegate attribute.
+ * <p>Identifies the delegate injection point of a decorator.</p>
+ * 
+ * <pre>
+ * &#064;Decorator 
+ * class TimestampLogger implements Logger { 
+ *    &#064;Decorates &#064;Any Logger logger; 
+ *    ... 
+ * } 
+ * </pre>
+ * <pre>
+ * &#064;Decorator 
+ * class TimestampLogger implements Logger { 
+ *    private Logger logger; 
+ *    
+ *    public TimestampLogger(&#064;Decorates &#064;Debug Logger logger) { 
+ *       this.logger=logger; 
+ *    } 
+ *    ... 
+ * } 
+ * </pre>
+ * 
+ * <p>All decorators have a delegate injection point. A delegate 
+ * injection point is an injection point of the bean class. The 
+ * type and qualifiers of the injection point are called the 
+ * delegate type and delegate qualifiers.</p>
+ * 
+ * <p>The decorator applies to any bean that is eligible for injection 
+ * to the delegate injection point.</p>
+ * 
+ * <p>A decorator must have exactly one delegate injection point. The 
+ * delegate injection point must be an injected field, initializer 
+ * method parameter or bean constructor method parameter.</p>
+ * 
+ * <p>The delegate type of a decorator must implement or extend every 
+ * decorated type. A decorator is not required to implement the delegate 
+ * type.</p>
+ * 
+ * <p>The container injects a delegate object to the delegate injection 
+ * point. The delegate object implements the delegate type and delegates 
+ * method invocations along the decorator stack.</p> 
+ *
+ * <pre>
+ * &#064;Decorator 
+ * class TimestampLogger implements Logger { 
+ *    &#064;Decorates &#064;Any Logger logger; 
+ *    
+ *    void log(String message) {
+ *       logger.log( timestamp() + ": " + message );
+ *    }
+ *    ...
+ * } 
+ * </pre>
+ * 
+ * @see javax.decorator.Decorator &#064;Decorator specifies that a
+ * class is a decorator.
  * 
  * @author Gavin King
  * @author Pete Muir
