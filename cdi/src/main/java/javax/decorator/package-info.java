@@ -7,6 +7,11 @@
  * conversely, unable to implement the cross-cutting concerns 
  * for which interceptors are optimized.</p>
  * 
+ * <p>A decorator is a managed bean annotated {@link 
+ * javax.decorator.Decorator &#064;Decorator} with a delegate 
+ * injection point annotated {@link javax.decorator.Decorates 
+ * &#064;Decorates}.</p>
+ * 
  * <p>By default, a bean deployment archive has no enabled 
  * decorators. A decorator must be explicitly enabled by listing 
  * its bean class under the <tt>&lt;decorators&gt;</tt> element 
