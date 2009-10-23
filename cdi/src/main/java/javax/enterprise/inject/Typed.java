@@ -27,10 +27,27 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
 /**
- * Allows the bean types of a bean to be explicitly specified by the user,
- * instead of using the transitive closure of the type hierarchy
+ * <p>Restricts the bean types of a bean. May be applied to
+ * a bean class or producer method or field.</p>
+ * 
+ * <pre>
+ * &#064;Typed(Shop.class)
+ * public class BookShop
+ *       extends Business
+ *       implements Shop&lt;Book&gt; { 
+ *    ... 
+ * }
+ * </pre>
+ * 
+ * <p>When a {@link javax.enterprise.inject.Typed &#064;Typed} 
+ * annotation is specified, only the types whose classes are 
+ * explicitly listed using the 
+ * {@link javax.enterprise.inject.Typed#value() value} member 
+ * are bean types of the bean.</p>
  * 
  * @author Pete Muir
+ * @author Gavin King
+ * 
  */
 
 @Target( { FIELD, METHOD, TYPE })
@@ -38,7 +55,14 @@ import java.lang.annotation.Target;
 @Documented
 public @interface Typed
 {
-
+   /**
+    * <p>Selects the bean types of the bean. Every class must 
+    * correspond to a type in the unrestricted set of bean 
+    * types of a bean.</p>
+    * 
+    * @return the classes corresponding to the bean types of 
+    * the bean
+    */
    Class<?>[] value() default {};
 
 }
