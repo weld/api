@@ -66,6 +66,11 @@ import javax.inject.Qualifier;
 public @interface New
 {
    /**
+    * <p>Selects the bean to be injected. The class
+    * must be the bean class of an enabled or disabled 
+    * bean. The bean class need not be deployed in a
+    * bean deployment archive.</p>
+    * 
     * @return the bean class of the bean to be injected
     */
    Class<?> value() default New.class;
