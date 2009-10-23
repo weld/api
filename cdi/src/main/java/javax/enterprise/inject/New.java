@@ -30,8 +30,31 @@ import java.lang.annotation.Target;
 import javax.inject.Qualifier;
 
 /**
- * The special binding type.
+ * <p>The built-in qualifier type.</p>
  * 
+ * <p>This allows the application to obtain a new instance of a bean which is
+ * not bound to the declared scope, but has had dependency injection performed.</p>
+ *
+ * <pre>
+ * &#064;Produces &#064;ConversationScoped 
+ * &#064;Special Order getSpecialOrder(&#064;New(Order.class) Order order) {
+ *    ...
+ *    return order;
+ * }
+ * </pre>
+ *    
+ * <p>When the qualifier {@link javax.enterprise.inject.New &#064;New} is specified 
+ * at an injection point and no {@link javax.enterprise.inject.New#value() value} 
+ * member is explicitly specified, the container defaults the 
+ * {@link javax.enterprise.inject.New#value() value} to the declared type of the 
+ * injection point. So the following injection point has qualifier
+ * <tt>&#064;New(Order.class)</tt>:</p>
+ * 
+ * <pre>
+ * &#064;Produces &#064;ConversationScoped 
+ * &#064;Special Order getSpecialOrder(&#064;New Order order) { ... }
+ * </pre>
+ *
  * @author Gavin King
  * @author Pete Muir
  */
@@ -42,7 +65,9 @@ import javax.inject.Qualifier;
 @Qualifier
 public @interface New
 {
-   
+   /**
+    * @return the bean class of the bean to be injected
+    */
    Class<?> value() default New.class;
    
 }
