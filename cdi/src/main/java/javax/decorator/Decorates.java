@@ -26,7 +26,9 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
 /**
- * <p>Identifies the delegate injection point of a decorator.</p>
+ * <p>Identifies the delegate injection point of a decorator.
+ * May be applied to a field, bean constructor parameter or 
+ * initializer method parameter of a decorator bean class.</p>
  * 
  * <pre>
  * &#064;Decorator 

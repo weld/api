@@ -27,7 +27,8 @@ import java.lang.annotation.Target;
 import javax.enterprise.inject.stereotype.Stereotype;
 
 /**
- * <p>Specifies that a class is a decorator.</p>
+ * <p>Specifies that a class is a decorator. May be applied to
+ * a bean class.</p>
  * 
  * <pre>
  * &#064;Decorator 
