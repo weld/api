@@ -25,7 +25,7 @@ package javax.enterprise.event;
  * @author Dan Allen
  * @author David Allen
  */
-public enum Notify
+public enum Reception
 {
    /**
     * Specifies that an observer method is only called if the current instance

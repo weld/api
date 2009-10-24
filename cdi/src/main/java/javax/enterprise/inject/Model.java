@@ -1,4 +1,4 @@
-package javax.enterprise.inject.stereotype;
+package javax.enterprise.inject;
 
 import static java.lang.annotation.ElementType.FIELD;
 import static java.lang.annotation.ElementType.METHOD;
