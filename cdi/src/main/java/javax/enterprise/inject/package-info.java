@@ -252,6 +252,24 @@
  * 
  * <p>A resource may not have an EL name.</p>
  * 
+ * <h3>Enabled and disabled beans</h3>
+ * 
+ * <p>A bean is said to be enabled if:</p>
+ * 
+ * <ul>
+ * <li>it is deployed in a bean deployment archive (a module with a <tt>beans.xml</tt>
+ * file), and</li>
+ * <li>it is not a 
+ * {@linkplain javax.enterprise.inject.Produces producer method or field} 
+ * of a disabled bean, and</li>
+ * <li>it is not {@linkplain javax.enterprise.inject.Specializes specialized} 
+ * by any other enabled bean, and either</li>
+ * <li>it is not an {@linkplain javax.enterprise.inject.Alternative alternative}, 
+ * or it is a selected alternative of at least one bean deployment archive.</li>
+ * </ul>
+ * 
+ * <p>Otherwise, the bean is said to be disabled.</p>
+ * 
  * @see javax.enterprise.inject.Produces
  * @see javax.inject.Scope
  * @see javax.inject.Named

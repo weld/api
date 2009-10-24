@@ -26,8 +26,36 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
 /**
- * Specifies that an implementation class directly specializes its superclass,
- * of that a producer method directly specializes the method it overrides.
+ * <p>Indicates that a bean directly specializes another bean.
+ * May be applied to a bean class or producer method.</p>
+ * 
+ * <p>If a bean directly specializes a second bean, it
+ * inherits all qualifiers of the second bean, and has the
+ * same name as the second bean. If the second bean has
+ * a name, the bean may not declare a name using
+ * {@link javax.inject.Named &#064;Named}. Furthermore, 
+ * the bean must have all the bean types of the second
+ * bean.</p>
+ * 
+ * <ul>
+ * <li>If a bean class of a managed bean is annotated 
+ * <tt>&#064;Specializes</tt>, then the bean class must 
+ * directly extend the bean class of a second managed bean. 
+ * Then the first managed bean directly specializes the 
+ * second managed bean.</li>
+ * 
+ * <li>If a bean class of a session bean is annotated 
+ * <tt>&#064;Specializes</tt>, then the bean class must 
+ * directly extend the bean class of a second session bean. 
+ * Then the first session bean directly specializes the 
+ * second session bean.</li>
+ * 
+ * <li>If a producer method is annotated 
+ * <tt>&#064;Specializes</tt>, then it must be non-static 
+ * and directly override another producer method. Then the 
+ * first producer method directly specializes the second
+ * producer method.</li>
+ * </ul>
  * 
  * @author Gavin King
  * @author Pete Muir
