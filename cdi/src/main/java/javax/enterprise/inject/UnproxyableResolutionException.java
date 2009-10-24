@@ -20,8 +20,7 @@ package javax.enterprise.inject;
 
 
 /**
- * Thrown if a bean has normal scope and the type cannot be proxied by the 
- * container
+ * Thrown if a bean has normal scope and cannot be proxied by the container.
  * 
  * @author Pete Muir
  */
