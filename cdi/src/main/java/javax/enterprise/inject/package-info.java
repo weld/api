@@ -53,7 +53,7 @@
  * 
  * <h3>Qualifiers</h3>
  * 
- * <p>A {@linkplain javax.inject.Qualfiier qualifier} represents some 
+ * <p>A {@linkplain javax.inject.Qualifier qualifier} represents some 
  * client-visible semantic associated with a type that is satisfied 
  * by some implementations of the type (and not by others). Qualifiers
  * are applied to injection points to distinguish which implementation 
