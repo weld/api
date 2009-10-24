@@ -29,6 +29,8 @@
  * } 
  * </pre>
  * 
+ * <p>The bean types of a bean are determined automatically.</p>
+ * 
  * <p>Almost any Java type may be a bean type of a bean:</tt>
  *  
  * <ul>
