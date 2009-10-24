@@ -84,9 +84,9 @@
  * 
  * <h3>Scope</h3>
  * 
- * <p>All beans have a scope. The scope of a bean determines the lifecycle 
- * of its instances, and which instances of the bean are visible to instances 
- * of other beans.</p>
+ * <p>All beans have a {@linkplain javax.enterprise.context scope}. The 
+ * scope of a bean determines the lifecycle of its instances, and which 
+ * instances of the bean are visible to instances of other beans.</p>
  * 
  * <p>The scope of a bean is defined by annotating the bean class or producer 
  * method or field with a scope type or stereotype that declares a default
@@ -96,6 +96,9 @@
  * &#064;ConversationScoped 
  * public class Order { ... } 
  * </pre>
+ * 
+ * <p>A bean class or producer method or field may specify at most one 
+ * scope type annotation.</p>
  * 
  * <h3>Bean EL name</h3>
  * 
