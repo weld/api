@@ -29,8 +29,6 @@
  * } 
  * </pre>
  * 
- * <p>The bean types of a bean are determined automatically.</p>
- * 
  * <p>Almost any Java type may be a bean type of a bean:</tt>
  *  
  * <ul>
@@ -49,7 +47,8 @@
  * <p>A type variable is not a legal bean type. A parameterized type 
  * that contains a wildcard type parameter is not a legal bean type.</p>
  * 
- * <p>The bean types of a bean may be resticted using the
+ * <p>The bean types of a bean are determined automatically. However, 
+ * the set of bean types may be resticted using the
  * {@link javax.enterprise.inject.Typed &#064;Typed} annotation.</p>
  * 
  * <h3>Qualifiers</h3>
