@@ -19,7 +19,7 @@ package javax.enterprise.inject;
 
 
 /**
- * Wraps any checked exceptions which occur during creation of an bean
+ * Wraps any checked exceptions which occur during creation of a bean.
  * 
  * @author Pete Muir
  */

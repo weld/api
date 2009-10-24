@@ -18,8 +18,9 @@ package javax.enterprise.inject;
 
 
 /**
- * Thrown if a producer method returns a null value or a producer field contains
- * a null value, and the scope of the method or field is not @Dependent
+ * Thrown if a producer method returns a null value or a producer 
+ * field contains a null value, and the scope of the method or 
+ * field is not <tt>&#064;Dependent</tt>.
  */
 public class IllegalProductException extends InjectionException 
 {
