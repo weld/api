@@ -50,9 +50,8 @@ import java.lang.annotation.Target;
  * <p>By default, a bean deployment archive has no selected 
  * alternatives. An alternative  must be explicitly declared 
  * using the <tt>&lt;alternatives&gt;</tt> element of the 
- * <tt>beans.xml</tt> file of the bean deployment archive.</p>
- * 
- * <p>The <tt>&lt;alternatives&gt;</tt> element contains a 
+ * <tt>beans.xml</tt> file of the bean deployment archive.
+ * The <tt>&lt;alternatives&gt;</tt> element contains a 
  * list of bean classes and stereotypes. An alternative is 
  * selected for the bean deployment archive if either:</p>
  * 
