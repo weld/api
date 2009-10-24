@@ -30,17 +30,6 @@ import java.lang.annotation.Target;
  * <p>Identifies a producer method or field. May be applied to 
  * a method or field of a bean class.</p>
  * 
- * <p>A producer method or field acts as a source of objects to be 
- * injected, where:</p>
- * <ul>
- * <li>the objects to be injected are not required to be instances 
- * of beans, or</li>
- * <li>the concrete type of the objects to be injected may vary at
- * runtime, or</li>
- * <li>the objects require some custom initialization that is not 
- * performed by the bean constructor.</li>
- * </ul>
- * 
  * <p>A producer method must be a non-abstract method of a managed 
  * bean class or session bean class. A producer method may be 
  * either static or non-static. If the bean is a session bean, the 

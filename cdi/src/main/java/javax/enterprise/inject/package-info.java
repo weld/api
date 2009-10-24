@@ -155,6 +155,98 @@
  * remote EJBs and web services)</li>
  * </ul>
  * 
+ * <h4>Managed beans</h4>
+ * 
+ * <p>A managed bean is a bean that is implemented by a Java class. The basic 
+ * lifecycle and semantics of managed beans are defined by the Managed Beans 
+ * specification.</p>
+ * 
+ * <p>A top-level Java class is a managed bean if it is defined to be a managed 
+ * bean by any other Java EE specification, or if it meets all of the following 
+ * conditions:</p>
+ * 
+ * <ul>
+ * <li>It is not a non-static inner class.</li>
+ * <li>It is a concrete class, or is annotated 
+ * {@link javax.enterprise.context.Decorator &#064;Decorator}.</li>
+ * <li>It is not annotated with an EJB component-defining annotation or declared 
+ * as an EJB bean class in <tt>ejb-jar.xml</tt>.</li>
+ * <li>It has an appropriate constructor; either the class has a constructor with 
+ * no parameters, or the class declares a constructor annotated 
+ * {@link javax.inject.Inject &#064;Inject}.</li>
+ * </ul>
+ *  
+ * <p>All Java classes that meet these conditions are managed beans and thus no 
+ * special declaration is required to define a managed bean.</p>
+ * 
+ * <p>If a managed bean has a public field, it must have scope 
+ * {@link javax.enterprise.context.Dependent &#064;Dependent}.</p>
+ * 
+ * <p>If the managed bean class is a generic type, it must have scope 
+ * {@link javax.enterprise.context.Dependent &#064;Dependent}.</p>
+ * 
+ * <h4>Session beans</h4>
+ * 
+ * <p>A session bean is a bean that is implemented by a session bean with an 
+ * EJB 3.x client view. The basic lifecycle and semantics of an EJB session bean 
+ * are defined by the EJB specification.</p>
+ * 
+ * <p>A stateless session bean must belong to the 
+ * {@link javax.enterprise.context.Dependent &#064;Dependent} pseudo-scope. A 
+ * singleton bean must belong to either the 
+ * {@link javax.enterprise.context.ApplicationScoped &#064;ApplicationScoped} 
+ * scope or to the {@link javax.enterprise.context.Dependent &#064;Dependent}
+ * pseudo-scope. A stateful session bean may have any scope.</p>
+ * 
+ * <p>If the session bean class is a generic type, it must have scope 
+ * {@link javax.enterprise.context.Dependent &#064;Dependent}.</p>
+ * 
+ * <p>If a session bean is a stateful session bean:</p>
+ * 
+ * <ul>
+ * <li>If the scope is {@link javax.enterprise.context.Dependent &#064;Dependent}, 
+ * the application may call any EJB remove method of a contextual instance of the 
+ * session bean.</li>
+ * <li>Otherwise, the application may not directly call any EJB remove method of 
+ * any contextual instance of the session bean.</li>
+ * </ul>
+ * 
+ * <h4>Producer methods and fields</h4>
+ * 
+ * <p>A {@linkplain javax.enterprise.inject.Produces producer method or field} 
+ * acts as a source of objects to be injected, where:</p>
+ * 
+ * <ul>
+ * <li>the objects to be injected are not required to be instances 
+ * of beans, or</li>
+ * <li>the concrete type of the objects to be injected may vary at
+ * runtime, or</li>
+ * <li>the objects require some custom initialization that is not 
+ * performed by the bean constructor.</li>
+ * </ul>
+ * 
+ * <h4>Resources</h4>
+ * 
+ * <p>A resource is a bean that represents a reference to a resource, persistence 
+ * context, persistence unit, remote EJB or web service in the Java EE component 
+ * environment.</p> 
+ * 
+ * <p>A resource may be declared by specifying a Java EE component environment 
+ * injection annotation as part of a producer field declaration.</p>
+ * 
+ * <ul>
+ * <li>For a Java EE resource, <tt>&#064;Resource</tt> must be specified.</li> 
+ * <li>For a persistence context, <tt>&#064;PersistenceContext</tt> must be specified. 
+ * <li>For a persistence unit, <tt>&#064;PersistenceUnit</tt> must be specified. 
+ * <li>For a remote EJB, <tt>&#064;EJB</tt> must be specified. 
+ * <li>or a web service, <tt>&#064;WebServiceRef</tt> must be specified.
+ * </ul>
+ * 
+ * <p>The injection annotation specifies the metadata needed to obtain the 
+ * resources, entity manager, entity manager factory, remote EJB instance or 
+ * web service reference from the component environment.</p>
+ * 
+ * @see javax.enterprise.inject.Produces
  * @see javax.inject.Scope
  * @see javax.inject.Named
  * 
