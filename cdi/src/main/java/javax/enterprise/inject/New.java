@@ -32,8 +32,10 @@ import javax.inject.Qualifier;
 /**
  * <p>The built-in qualifier type.</p>
  * 
- * <p>This allows the application to obtain a new instance of a bean which is
- * not bound to the declared scope, but has had dependency injection performed.</p>
+ * <p>The <tt>&#064;New</tt> qualifier allows the application 
+ * to obtain a new instance of a bean which is not bound to 
+ * the declared scope, but has had dependency injection 
+ * performed.</p>
  *
  * <pre>
  * &#064;Produces &#064;ConversationScoped 
@@ -43,11 +45,13 @@ import javax.inject.Qualifier;
  * }
  * </pre>
  *    
- * <p>When the qualifier {@link javax.enterprise.inject.New &#064;New} is specified 
- * at an injection point and no {@link javax.enterprise.inject.New#value() value} 
- * member is explicitly specified, the container defaults the 
- * {@link javax.enterprise.inject.New#value() value} to the declared type of the 
- * injection point. So the following injection point has qualifier
+ * <p>When the <tt>&#064;New</tt> qualifier is specified 
+ * at an injection point and no 
+ * {@link javax.enterprise.inject.New#value() value} 
+ * member is explicitly specified, the container defaults 
+ * the {@link javax.enterprise.inject.New#value() value} 
+ * to the declared type of the injection point. So the 
+ * following injection point has qualifier
  * <tt>&#064;New(Order.class)</tt>:</p>
  * 
  * <pre>

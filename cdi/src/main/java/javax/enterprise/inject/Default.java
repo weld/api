@@ -34,11 +34,11 @@ import javax.inject.Qualifier;
  * 
  * <p>If a bean does not explicitly declare a qualifier other than 
  * {@link javax.inject.Named &#064;Named}, the bean has the qualifier 
- * {@link javax.enterprise.inject.Default &#064;Default}.</p>
+ * <tt>&#064;Default</tt>.</p>
  * 
  * <p>If an injection point declares no qualifier, the injection point 
  * has exactly one qualifier, the default qualifier 
- * {@link javax.enterprise.inject.Default &#064;Default}.</p>
+ * <tt>&#064;Default</tt>.</p>
  *
  * <p>The following are equivalent:</p>
  *

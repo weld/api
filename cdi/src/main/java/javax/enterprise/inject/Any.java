@@ -32,19 +32,18 @@ import javax.inject.Qualifier;
 /**
  * <p>The built-in qualifier type.</p>
  * 
- * <p>Every bean has the built-in qualifier 
- * {@link javax.enterprise.inject.Any &#064;Any}, even if it 
- * does not explicitly declare this qualifier, except for the 
- * special {@link javax.enterprise.inject.New &#064;New} 
- * qualified beans.</p>
+ * <p>Every bean has the qualifier <tt>&#064;Any</tt>, 
+ * even if it does not explicitly declare this qualifier, 
+ * except for the special 
+ * {@link javax.enterprise.inject.New &#064;New qualified beans}.</p>
  * 
- * <p>Every event has the qualifier 
- * {@link javax.enterprise.inject.Any &#064;Any}, even if it 
- * does not explicitly declare this qualifier.</p>
+ * <p>Every event has the qualifier <tt>&#064;Any</tt>, 
+ * even if it was raised without explicitly declaration 
+ * of this qualifier.</p>
  * 
- * <p>The {@link javax.enterprise.inject.Any &#064;Any} 
- * qualifier allows an injection point to refer to all
- * beans or all events of a certain bean type.</p>
+ * <p>The <tt>&#064;Any</tt> qualifier allows an injection 
+ * point to refer to all beans or all events of a certain 
+ * bean type.</p>
  * 
  * <pre>
  * &#064;Inject &#064;Any Instance&lt;PaymentProcessor&gt; anyPaymentProcessor;
