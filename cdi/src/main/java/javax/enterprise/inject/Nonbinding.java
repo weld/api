@@ -24,8 +24,21 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
 /**
- * Specifies that a member of a binding type or interceptor binding type is to
- * be ignored for the purposes of resolution.
+ * <p>Excludes a member of a qualifier type or interceptor binding type 
+ * from consideration by the resolution algorithms.</p>
+ * 
+ * <pre>
+ * &#064;Qualifier
+ * &#064;Retention(RUNTIME)
+ * &#064;Target({METHOD, FIELD, PARAMETER, TYPE})
+ * public &#064;interface PayBy {
+ *    PaymentMethod value();
+ *    &#064;Nonbinding String comment();
+ * }
+ * </pre>
+ * 
+ * <p>Array-valued or annotation-valued members of a qualifier type should be 
+ * annotated <tt>&#064;Nonbinding</tt> in a portable application.</p>
  * 
  * @author Gavin King
  * 
