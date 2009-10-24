@@ -23,41 +23,135 @@ import javax.inject.Provider;
 
 
 /**
- * An interface for looking up beans of a particular type.
+ * <p>Allows the application to dynamically obtain instances of 
+ * beans with a specified combination of required type and 
+ * qualifiers.</p>
+ * 
+ * <p>In certain situations, injection is not the most convenient 
+ * way to obtain a contextual reference. For example, it may not 
+ * be used when:</p>
+ * 
+ * <ul>
+ * <li>the bean type or qualifiers vary dynamically at runtime, or</li>
+ * <li>depending upon the deployment, there may be no bean which 
+ * satisfies the type and qualifiers, or</li>
+ * <li>we would like to iterate over all beans of a certain type.</li>
+ * </ul>
+ * 
+ * <p>In these situations, an instance of the <tt>Instance</tt> may 
+ * be injected:</p>
+ * 
+ * <pre>
+ * &#064;Inject Instance&lt;PaymentProcessor&gt; paymentProcessor;
+ * </pre>
+ * 
+ * <p>Any combination of qualifiers may be specified at the injection 
+ * point:</p>
+ * 
+ * <pre>
+ * &#064;Inject &#064;PayBy(CHEQUE) Instance&lt;PaymentProcessor&gt; chequePaymentProcessor;
+ * </pre>
+ * 
+ * <p>Or, the {@link javax.enterprise.inject.Any &#064;Any} qualifier may 
+ * be used, allowing the application to specify qualifiers dynamically:</p>
+ * 
+ * <pre>
+ * &#064;Inject &#064;Any Instance&lt;PaymentProcessor&gt; anyPaymentProcessor;
+ * </pre>
+ * 
+ * <p>Finally, the {@link javax.enterprise.inject.New &#064;New} qualifier 
+ * may be used, allowing the application to obtain a 
+ * {@link javax.enterprise.inject.New &#064;New} qualified bean:</p>
+ * 
+ * <pre>
+ * &#064;Inject &#064;New(ChequePaymentProcessor.class) 
+ * Instance&lt;PaymentProcessor&gt; chequePaymentProcessor;
+ * </pre>
+ * 
+ * <p>For an injected <tt>Instance</tt>:</p>
+ * 
+ * <ul>
+ * <li>the <em>required type</em> is the type parameter specified at the 
+ * injection point, and</li>
+ * <li>the <em>required qualifiers</em> are the qualifiers specified at 
+ * the injection point.</li>
+ * </ul>
+ * 
+ * <p>The inherited {@link javax.inject.Provider#get()} method returns a
+ * contextual references for the unique bean that matches the required 
+ * type and required qualifiers and is eligible for injection into the class
+ * into which the parent <tt>Instance</tt> was injected, or throws an
+ * {@link javax.enterprise.inject.UnsatisfiedResolutionException} or
+ * {@link javax.enterprise.inject.AmbiguousResolutionException}.</p>
+ * 
+ * <pre>PaymentProcessor pp = chequePaymentProcessor.get();</pre>
+ * 
+ * <p>The inherited {@link java.lang.Iterable#iterator()} method returns
+ * an iterator over contextual references for beans that match the required 
+ * type and required qualifiers and are eligible for injection into the class
+ * into which the parent <tt>Instance</tt> was injected.</p>
+ * 
+ * <pre>for (PaymentProcessor pp: anyPaymentProcessor) pp.test();</pre>
+ * 
+ * @see {@link javax.inject.Provider#get()}
+ * @see {@link java.lang.Iterable#iterator()}
+ * @see javax.enterprise.inject.AnnotationLiteral
+ * @see javax.enterprise.inject.TypeLiteral
  * 
  * @author Gavin King
  * 
- * @param <T>
- *           the type of the event object
+ * @param <T> the required bean type
  */
 
 public interface Instance<T> extends Iterable<T>, Provider<T>
 {
+   
    /**
-    * Get an instance of a bean of the specified type.
+    * <p>Obtains a child <tt>Instance</tt> for a given required type and additional 
+    * required qualifiers. If no required type is given, the required type is the 
+    * same as the parent.
     * 
-    * Additional binding annotations may be specified at the injection point.
-    * 
-    * @param bindings
-    *           Additional binding types
-    * @return an instance of a bean of the specified type
-    * @throws IllegalArgumentException
-    *            if two instances of the same binding type are passed
-    * @throws IllegalArgumentException
-    *            if an instance of an annotation that is not a binding type is
-    *            passed
-    * 
+    * @param qualifiers the additional required qualifiers
+    * @return the child <tt>Instance</tt>
     */
-   public T get(Annotation... bindings);
-   
-   public Instance<T> select(Annotation... bindings); 
+   public Instance<T> select(Annotation... qualifiers); 
 
-   public <U extends T> Instance<U> select(Class<U> subtype, Annotation... bindings); 
+   /**
+    * <p>Obtains a child <tt>Instance</tt> for a given required type and additional 
+    * required qualifiers. If no required type is given, the required type is the 
+    * same as the parent.
+    * 
+    * @param <U> the required type
+    * @param subtype a {@link java.lang.Class} representing the required type
+    * @param qualifiers the additional required qualifiers
+    * @return the child <tt>Instance</tt>
+    */
+   public <U extends T> Instance<U> select(Class<U> subtype, Annotation... qualifiers); 
    
-   public <U extends T> Instance<U> select(TypeLiteral<U> subtype, Annotation... bindings); 
+   /**
+    * <p>Obtains a child <tt>Instance</tt> for a given required type and additional 
+    * required qualifiers. If no required type is given, the required type is the 
+    * same as the parent.
+    * 
+    * @param <U> the required type
+    * @param subtype a {@link javax.enterprise.inject.TypeLiteral} representing the required type
+    * @param qualifiers the additional required qualifiers
+    * @return the child <tt>Instance</tt>
+    */
+   public <U extends T> Instance<U> select(TypeLiteral<U> subtype, Annotation... qualifiers); 
    
+   /**
+    * @return <tt>true</tt> if there is no bean that matches the required type and 
+    * qualifiers and is eligible for injection into the class into which the parent 
+    * <tt>Instance</tt> was injected, or <tt>false</tt> otherwise.
+    */
    public boolean isUnsatisfied(); 
    
+   /**
+    * @return <tt>true</tt> if there is more than one bean that matches the required 
+    * type and qualifiers and is eligible for injection into the class into which the 
+    * parent <tt>Instance</tt> was injected, or <tt>false</tt> otherwise.
+    */
    public boolean isAmbiguous(); 
 
 }
