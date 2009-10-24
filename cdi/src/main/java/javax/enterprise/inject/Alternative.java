@@ -61,8 +61,8 @@ import java.lang.annotation.Target;
  * <li>the alternative is a producer method, field or resource, 
  * and the bean class that declares the method or field is listed, 
  * or</li>
- * <li>any {@link javax.enterprise.inject.Alternative &#064;Alternative} 
- * stereotype of the alternative is listed.</li>
+ * <li>any <tt>&#064;Alternative</tt> stereotype of the alternative 
+ * is listed.</li>
  * </ul>
  * 
  * @author Gavin King
