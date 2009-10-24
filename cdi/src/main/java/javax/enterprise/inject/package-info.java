@@ -246,6 +246,8 @@
  * resources, entity manager, entity manager factory, remote EJB instance or 
  * web service reference from the component environment.</p>
  * 
+ * <p>A resource may not have an EL name.</p>
+ * 
  * @see javax.enterprise.inject.Produces
  * @see javax.inject.Scope
  * @see javax.inject.Named
