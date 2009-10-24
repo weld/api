@@ -12,8 +12,11 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
 /**
- * A stereotype for MVC model objects
+ * <p>The built-in stereotype intended for use with beans 
+ * that define the model layer of an MVC web application 
+ * architecture such as JSF.</p>
  * 
+ * @see javax.enterprise.inject.Stereotype
  * @author Gavin King
  */
 
