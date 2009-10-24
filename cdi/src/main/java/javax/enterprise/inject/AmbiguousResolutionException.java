@@ -19,10 +19,8 @@ package javax.enterprise.inject;
 
 
 /**
- * An AmbiguousDependencyException is thrown when within the set of enabled
- * beans with the API type and bind- ing types declared there exists no unique
- * Web Bean with a higher precedence than all other beans in the set.
- * 
+ * Thrown when the set of enabled beans with the required bean type and 
+ * qualifiers contains multiple beans.
  * 
  * @author Pete Muir
  */

@@ -20,7 +20,8 @@ package javax.enterprise.inject;
 
 
 /**
- * Thrown if no beans can be resolved
+ * Thrown when the set of enabled beans with the required bean type 
+ * and qualifiers is empty.
  * 
  * @author Pete Muir
  */
