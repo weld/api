@@ -27,7 +27,69 @@ import java.lang.annotation.Target;
 
 /**
  * 
- * Specifies that a method of a bean is a producer method.
+ * <p>Identifies a producer method or field. May be applied to 
+ * a method or field of a bean class.</p>
+ * 
+ * <p>A producer method or field acts as a source of objects to be 
+ * injected, where:</p>
+ * <ul>
+ * <li>the objects to be injected are not required to be instances 
+ * of beans, or</li>
+ * <li>the concrete type of the objects to be injected may vary at
+ * runtime, or</li>
+ * <li>the objects require some custom initialization that is not 
+ * performed by the bean constructor.</li>
+ * </ul>
+ * 
+ * <p>A producer method must be a non-abstract method of a managed 
+ * bean class or session bean class. A producer method may be 
+ * either static or non-static. If the bean is a session bean, the 
+ * producer method must be either a business method of the EJB or 
+ * a static method of the bean class.</p>
+ * 
+ * <pre>
+ * public class Shop {
+ *    &#064;Produces &#064;ApplicationScoped 
+ *    &#064;Catalog &#064;Named("catalog") 
+ *    List&lt;Product&gt; getProducts() { ... }
+ *    ...
+ * } 
+ * </pre>
+ * 
+ * <p>A producer field must be a field of a managed bean class 
+ * or session bean class. A producer field may be either static or 
+ * non-static. If the bean is a session bean, the producer field 
+ * must be a static field of the bean class.</p>
+ *
+ * <pre>
+ * public class Shop { 
+ *    &#064;Produces &#064;ApplicationScoped 
+ *    &#064;Catalog &#064;Named("catalog") 
+ *    List&lt;Product&gt; products = ...;
+ *    ...
+ * } 
+ * </pre>
+ * 
+ * <p>If a producer method sometimes returns a null value, or if
+ * a producer field sometimes contains a null value when accessed,
+ * then the producer method or field must have scope 
+ * {@link javax.enterprise.context.Dependent &#064;Dependent}.</p>
+ * 
+ * <p>A producer method return type or producer field type may not
+ * be a type variable.</p>
+ * 
+ * <p>If the producer method return type or producer field type is 
+ * a parameterized type, it must specify an actual type parameter 
+ * or type variable for each type parameter.</p>
+ * 
+ * <p>If the producer method return type or producer field type is 
+ * a parameterized type with a type variable, it must have scope 
+ * {@link javax.enterprise.context.Dependent &#064;Dependent}.</p>
+ * 
+ * <p>A bean may declare multiple producer methods or fields.</p> 
+ * 
+ * <p>Interceptors and decorators may not declare producer methods 
+ * or fields.</p>
  * 
  * @author Gavin King
  * @author Pete Muir
