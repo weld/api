@@ -93,8 +93,8 @@ import javax.inject.Provider;
  * 
  * <pre>for (PaymentProcessor pp: anyPaymentProcessor) pp.test();</pre>
  * 
- * @see {@link javax.inject.Provider#get()}
- * @see {@link java.lang.Iterable#iterator()}
+ * @see javax.inject.Provider#get()
+ * @see java.lang.Iterable#iterator()
  * @see javax.enterprise.inject.AnnotationLiteral
  * @see javax.enterprise.inject.TypeLiteral
  * 
@@ -141,6 +141,10 @@ public interface Instance<T> extends Iterable<T>, Provider<T>
    public <U extends T> Instance<U> select(TypeLiteral<U> subtype, Annotation... qualifiers); 
    
    /**
+    * <p>Determines if there is no bean that matches the required type and 
+    * qualifiers and is eligible for injection into the class into which the parent 
+    * <tt>Instance</tt> was injected.</p>
+    * 
     * @return <tt>true</tt> if there is no bean that matches the required type and 
     * qualifiers and is eligible for injection into the class into which the parent 
     * <tt>Instance</tt> was injected, or <tt>false</tt> otherwise.
@@ -148,6 +152,10 @@ public interface Instance<T> extends Iterable<T>, Provider<T>
    public boolean isUnsatisfied(); 
    
    /**
+    * <p>Determines if there is more than one bean that matches the required type and 
+    * qualifiers and is eligible for injection into the class into which the parent 
+    * <tt>Instance</tt> was injected.</p>
+    * 
     * @return <tt>true</tt> if there is more than one bean that matches the required 
     * type and qualifiers and is eligible for injection into the class into which the 
     * parent <tt>Instance</tt> was injected, or <tt>false</tt> otherwise.
