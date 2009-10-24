@@ -32,6 +32,10 @@ import java.lang.annotation.Target;
  * developer to identify such a role and declare some common metadata 
  * for beans with that role in a central place.</p>
  * 
+ * <p>A bean may declare zero, one or multiple stereotypes, by
+ * applying the stereotype annotation to the bean class or producer 
+ * method or field.</p>
+ * 
  * <p>A stereotype encapsulates any combination of:</p>
  * 
  * <ul>
@@ -109,10 +113,6 @@ import java.lang.annotation.Target;
  * declarations are transitive. A stereotype declared by a second 
  * stereotype is inherited by all beans and other stereotypes that 
  * declare the second stereotype.</p>
- * 
- * <p>A bean may declare zero, one or multiple stereotypes, by
- * applying the stereotype annotation to the bean class or producer 
- * method or field.</p>
  * 
  * @see javax.enterprise.inject.Model the built-in stereotype <tt>&#064;Model</tt>
  * 
