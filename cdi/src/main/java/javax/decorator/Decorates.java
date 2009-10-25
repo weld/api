@@ -49,20 +49,9 @@ import java.lang.annotation.Target;
  * } 
  * </pre>
  * 
- * <p>All decorators have a delegate injection point. A delegate 
- * injection point is an injection point of the bean class. The 
- * type and qualifiers of the injection point are called the 
- * delegate type and delegate qualifiers. The decorator applies to 
- * any bean that is eligible for injection to the delegate injection 
- * point.</p>
- * 
  * <p>A decorator must have exactly one delegate injection point. The 
  * delegate injection point must be an injected field, initializer 
  * method parameter or bean constructor method parameter.</p>
- * 
- * <p>The delegate type of a decorator must implement or extend every 
- * decorated type. A decorator is not required to implement the delegate 
- * type.</p>
  * 
  * <p>The container injects a delegate object to the delegate injection 
  * point. The delegate object implements the delegate type and delegates 

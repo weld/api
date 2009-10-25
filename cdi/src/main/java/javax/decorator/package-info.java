@@ -6,18 +6,15 @@
  * implement those bean types. These bean types are called 
  * decorated types.</p>
  * 
+ * <p>A decorator is a managed bean annotated {@link 
+ * javax.decorator.Decorator &#064;Decorator}.</p>
+ * 
  * <p>Decorators are superficially similar to interceptors, 
  * but because they directly implement operations with business 
  * semantics, they are able to implement business logic and, 
  * conversely, unable to implement the cross-cutting concerns 
- * for which interceptors are optimized.</p>
- * 
- * <p>Decorators are called after interceptors.</p>
- * 
- * <p>A decorator is a managed bean annotated {@link 
- * javax.decorator.Decorator &#064;Decorator} with a delegate 
- * injection point annotated {@link javax.decorator.Decorates 
- * &#064;Decorates}.</p>
+ * for which interceptors are optimized. Decorators are called 
+ * after interceptors.</p>
  * 
  * <h3>Decorated types</h3>
  * 
@@ -35,7 +32,21 @@
  * 
  * <p>A decorator may be an abstract class, and is not required to 
  * implement every method of every decorated type.</p>
- *  
+ * 
+ * <h3>Delegate injection points</h3>
+ * 
+ * <p>All decorators have a 
+ * {@linkplain javax.decorator.Decorates delegate injection point}.  
+ * The decorator applies to any bean that is eligible for injection 
+ * to the delegate injection point.</p>
+ * 
+ * <p>A delegate injection point is an injection point of the bean 
+ * class annotated {@link javax.decorator.Decorates &#064;Decorates}.</p>
+ * 
+ * <p>The type of the delegate injection point must implement or 
+ * extend every decorated type. A decorator is not required to 
+ * implement the type of the delegate injection point.</p>
+ * 
  * <h3>Enabled decorators</h3>
  *  
  * <p>By default, a bean deployment archive has no enabled 
@@ -45,6 +56,9 @@
  * The order of the decorator declarations determines the decorator 
  * ordering. Decorators which occur earlier in the list are called 
  * first.</p>
+ * 
+ * @see javax.decorator.Decorator
+ * @see javax.decorator.Decorates
  * 
  */
 package javax.decorator;
