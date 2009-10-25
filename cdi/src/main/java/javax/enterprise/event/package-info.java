@@ -1,12 +1,13 @@
 /**
  * <p>Annotations and interfaces relating to events.<p>
  * 
- * <p>Beans may produce and consume events. This facility allows 
- * beans to interact in a completely decoupled fashion, with no 
- * compile-time dependency between the two beans. Most importantly, 
- * it allows stateful beans in one architectural or physical tier 
- * of the application to synchronize their internal state with 
- * state changes that occur in a different tier.</p>
+ * <p>{@linkplain javax.enterprise.inject Beans} may produce and 
+ * consume events. Events allows beans to interact in a completely 
+ * decoupled fashion, with no compile-time dependency between the 
+ * interacting beans. Most importantly, it allows stateful beans 
+ * in one architectural tier of the application to synchronize 
+ * their internal state with state changes that occur in a 
+ * different tier.</p>
  * 
  * <p>An event comprises:</p>
  * 
