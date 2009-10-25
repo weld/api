@@ -2,7 +2,8 @@
  * <p>Annotations relating to decorators.</p>
  * 
  * <p>A decorator implements one or more bean types and 
- * intercepts business method invocations of beans which 
+ * intercepts business method invocations of 
+ * {@linkplain javax.enterprise.inject beans} which 
  * implement those bean types. These bean types are called 
  * decorated types.</p>
  * 
