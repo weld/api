@@ -11,8 +11,9 @@
  * <p>An event comprises:</p>
  * 
  * <ul>
- * <li>A Java object—the event object</li>
- * <li>A (possibly empty) set of instances of qualifier types—the event qualifiers</li>
+ * <li>A Java object, called the event object</li>
+ * <li>A (possibly empty) set of instances of qualifier types, called 
+ * the event qualifiers</li>
  * </ul>
  * 
  * <p>The event object acts as a payload, to propagate state from 
