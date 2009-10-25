@@ -1,10 +1,13 @@
 /**
  * <p>Annotations and interfaces relating to scopes and contexts.</p>
  * 
+ * <p>A scope type is a Java annotation annotated 
+ * {@link javax.inject.Scope &#064;Scope}.</p>
+ * 
  * <p>Associated with every scope type is a context object. The 
  * context object determines the lifecycle and visibility of
- * instances of all beans with that scope. In particular, the 
- * context object defines:</p>
+ * instances of all {@linkplain javax.enterprise.inject beans} with 
+ * that scope. In particular, the context object defines:</p>
  * 
  * <ul>
  * <li>When a new instance of any bean with that scope is created</li>
@@ -88,14 +91,14 @@
  * {@link javax.enterprise.context.Dependent &#064;Dependent} and
  * {@link javax.inject.Singleton &#064;Singleton} pseudo-scopes.</p>
  * 
- * <h3>Contextual reference validity</h3>
+ * <h3>Contextual and injected reference validity</h3>
  * 
- * <p>A reference to a bean obtained from the container via injection
- * or programmatic lookup is called a contextual reference. A contextual
- * reference for a bean with a normal scope refers to the current instance
- * of the bean. Contextual reference of a bean are valid only for a 
- * certain period of time. The application should not invoke a method of 
- * an invalid reference.</p>
+ * <p>A reference to a bean obtained from the container via {@linkplain 
+ * javax.enterprise.inject.Instance programmatic lookup} is called a 
+ * contextual reference. A contextual reference for a bean with a normal 
+ * scope refers to the current instance of the bean. A contextual 
+ * reference for a bean are valid only for a certain period of time. The 
+ * application should not invoke a method of an invalid reference.</p>
  * 
  * <p>The validity of a contextual reference depends upon whether the 
  * scope of the injected bean is a normal scope or a pseudo-scope:</p>
@@ -112,6 +115,22 @@
  * even if the context associated with the pseudo-scope is not active. 
  * If the application invokes a method of a reference to an instance 
  * that has already been destroyed, the behavior is undefined.</li>
+ * </ul>
+ * 
+ * <p>A reference to a bean obtained from the container via {@linkplain 
+ * javax.inject.Inject dependency injection} is a special kind of
+ * contextual reference, called an injected reference. Additional
+ * restrictions apply to the validity of an injected reference:</p>
+ * 
+ * <ul>
+ * <li>A reference to a bean injected into a field, bean constructor or 
+ * initializer method is only valid until the object into which it was 
+ * injected is destroyed.</li>
+ * <li>A reference to a bean injected into a producer method is only 
+ * valid until the producer method bean instance that is being produced 
+ * is destroyed.<li>
+ * <li>A reference to a bean injected into a disposer method or observer 
+ * method is only valid until the invocation of the method completes.</li>
  * </ul>
  * 
  */
