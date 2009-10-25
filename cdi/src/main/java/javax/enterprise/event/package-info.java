@@ -26,7 +26,7 @@
  * superclasses and interfaces of the runtime class of the event object.
  * An event type may not contain a type variable.</p>
  * 
- * <p>An event qualifier type is just an ordinary qualifier type</p>
+ * <p>An event qualifier type is just an ordinary qualifier type.</p>
  * 
  * <p>An {@linkplain javax.enterprise.event.Observes observer method} 
  * acts as event consumer, observing events of a specific type, the 
