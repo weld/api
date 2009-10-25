@@ -172,7 +172,7 @@
  * <ul>
  * <li>It is not a non-static inner class.</li>
  * <li>It is a concrete class, or is annotated 
- * {@link javax.enterprise.context.Decorator &#064;Decorator}.</li>
+ * {@link javax.decorator.Decorator &#064;Decorator}.</li>
  * <li>It is not annotated with an EJB component-defining annotation or declared 
  * as an EJB bean class in <tt>ejb-jar.xml</tt>.</li>
  * <li>It has an appropriate constructor; either the class has a constructor with 
