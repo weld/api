@@ -44,7 +44,8 @@ import java.lang.annotation.Target;
  * <p>A bean may declare multiple observer methods.</p>
  * 
  * <p>Each observer method must have exactly one event parameter, of the same 
- * type as the event type it observes. When searching for observer methods for 
+ * type as the event type it observes. Event qualifiers may be declared 
+ * by annotating the event parameter. When searching for observer methods for 
  * an event, the container considers the type and qualifiers of the event 
  * parameter.</p>
  * 
