@@ -25,7 +25,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
 /**
- * Specifies that an annotation type is a scope type.
+ * <tt>Specifies that an annotation type is a normal scope type.</tt>
  * 
  * @author Gavin King
  * @author Pete Muir
