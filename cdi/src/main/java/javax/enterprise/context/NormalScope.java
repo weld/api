@@ -25,7 +25,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
 /**
- * <tt>Specifies that an annotation type is a normal scope type.</tt>
+ * <p>Specifies that an annotation type is a normal scope type.</p>
  * 
  * @author Gavin King
  * @author Pete Muir
@@ -38,8 +38,8 @@ public @interface NormalScope
 {
    
    /**
-    * @return true if this is a passivating scope (beans with this scope
-    *         type must be serializable)
+    * @return true if this is a passivating scope type (if beans with 
+    * this scope type must be serializable)
     */
    boolean passivating() default false;
 
