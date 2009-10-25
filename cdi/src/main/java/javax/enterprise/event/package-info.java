@@ -1,6 +1,5 @@
 /**
- * <p>This package contains annotations and interfaces relating to 
- * events.<p>
+ * <p>Annotations and interfaces relating to events.<p>
  * 
  * <p>Beans may produce and consume events. This facility allows 
  * beans to interact in a completely decoupled fashion, with no 

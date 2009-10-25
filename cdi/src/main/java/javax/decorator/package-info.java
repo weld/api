@@ -1,5 +1,5 @@
 /**
- * <p>This package contains annotations relating to decorators.</p>
+ * <p>Annotations relating to decorators.</p>
  * 
  * <p>Decorators are superficially similar to interceptors, 
  * but because they directly implement operations with business 
