@@ -29,8 +29,9 @@
  * 
  * <p>An {@linkplain javax.enterprise.event.Observes observer method} 
  * acts as event consumer, observing events of a specific type, the 
- * observed event type, with a specific set of qualifiers, the observed 
- * event qualifiers. Any Java type may be an observed event type.</p>
+ * <em>observed event type</em>, with a specific set of qualifiers, the 
+ * <em>observed event qualifiers</em>. Any Java type may be an observed 
+ * event type.</p>
  * 
  * <p>An observer method will be notified of an event if the observed 
  * event type it specifies is one of the event types of the event, and 
