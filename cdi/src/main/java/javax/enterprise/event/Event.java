@@ -22,15 +22,48 @@ import java.lang.annotation.Annotation;
 import javax.enterprise.inject.TypeLiteral;
 
 /**
- * An interface for firing events of a particular type, and registering
- * observers for events of that type.
+ * <p>Allows the application to fire events of a particular type, 
+ * and register observers for events of that type.</p>
+ * 
+ * <p>Beans fire events via an instance of the <tt>Event</tt> 
+ * interface, which may be injected:</p>
+ * 
+ * <pre>
+ * &#064;Inject &#064;Any Event&lt;LoggedInEvent&gt; loggedInEvent;
+ * </pre>
+ * 
+ * <p>The method {@link javax.enterprise.event.Event#fire(T)} accepts 
+ * an event object:</p>
+ * 
+ * <p>Any combination of qualifiers may be specified at the injection 
+ * point:</p>
+ * 
+ * <pre>
+ * &#064;Inject &#064;Admin Event&lt;LoggedInEvent&gt; adminLoggedInEvent;
+ * </pre>
+ * 
+ * <p>Or, the {@link javax.enterprise.inject.Any &#064;Any} qualifier may 
+ * be used, allowing the application to specify qualifiers dynamically:</p>
+ * 
+ * <pre>
+ * &#064;Inject &#064;Any Event&lt;LoggedInEvent&gt; loggedInEvent;
+ * </pre>
+ * 
+ * <p>For an injected <tt>Event</tt>:</p>
+ * 
+ * <ul>
+ * <li>the specified type is the type parameter specified at the injection 
+ * point, and</li>
+ * <li>the specified qualifiers are the qualifiers specified at the injection 
+ * point.</li>
+ * </ul>
+ * 
  * 
  * @author Gavin King
  * @author Pete Muir
  * @author David Allen
  * 
- * @param <T>
- *            the type of the event object
+ * @param <T> the type of the event object
  */
 
 public interface Event<T>
@@ -44,27 +77,27 @@ public interface Event<T>
    public void fire(T event);
    
    /**
-    * Returns a child Event with the additional specified bindings.
-    * @param bindings Additional bindings to add to child Event
+    * Returns a child Event with the additional specified qualifiers.
+    * @param qualifiers Additional qualifiers to add to child Event
     * @return new child Event
     */
-   public Event<T> select(Annotation... bindings);
+   public Event<T> select(Annotation... qualifiers);
    
    /**
-    * Returns a child Event of the type specified and additional specified bindings.
+    * Returns a child Event of the type specified and additional specified qualifiers.
     * @param <U> The subtype of T for the child Event
     * @param subtype The class of the subtype of T
-    * @param bindings Additional specified bindings
+    * @param qualifiers Additional specified qualifiers
     * @return new child Event
     */
-   public <U extends T> Event<U> select(Class<U> subtype, Annotation... bindings);
+   public <U extends T> Event<U> select(Class<U> subtype, Annotation... qualifiers);
    
    /**
-    * Returns a child Event of the type specified and additional specified bindings.
+    * Returns a child Event of the type specified and additional specified qualifiers.
     * @param <U> The subtype of T for the child Event
     * @param subtype The TypeLiteral of the subtype of T
-    * @param bindings Additional specified bindings
+    * @param qualifiers Additional specified qualifiers
     * @return new child Event
     */   
-   public <U extends T> Event<U> select(TypeLiteral<U> subtype, Annotation... bindings);
+   public <U extends T> Event<U> select(TypeLiteral<U> subtype, Annotation... qualifiers);
 }
