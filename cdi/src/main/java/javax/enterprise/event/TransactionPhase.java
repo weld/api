@@ -18,7 +18,7 @@ package javax.enterprise.event;
 
 /**
  * <p>Distinguishes the various kinds of transactional observer methods
- * from observer methods which are notified immediately.</p>
+ * from regular observer methods which are notified immediately.</p>
  * 
  * <p>Transactional observer methods are observer methods which receive 
  * event notifications during the before or after completion phase of the
