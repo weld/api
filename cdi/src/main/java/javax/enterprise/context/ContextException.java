@@ -19,7 +19,7 @@ package javax.enterprise.context;
 
 
 /**
- * A ContextException is the base type for any context problem
+ * The base type for any context-related exceptions.
  * 
  * @author Pete Muir
  * @author Shane Bryzak
