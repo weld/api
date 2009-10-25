@@ -107,36 +107,42 @@ public interface Instance<T> extends Iterable<T>, Provider<T>
 {
    
    /**
-    * <p>Obtains a child <tt>Instance</tt> for a given required type and additional 
-    * required qualifiers. If no required type is given, the required type is the 
-    * same as the parent.
+    * <p>Obtains a child <tt>Instance</tt> for the given additional 
+    * required qualifiers.</p>
     * 
     * @param qualifiers the additional required qualifiers
     * @return the child <tt>Instance</tt>
+    * @throws IllegalArgumentException if passed two instances of the 
+    * same qualifier type, or an instance of an annotation that is not 
+    * a qualifier type
     */
    public Instance<T> select(Annotation... qualifiers); 
 
    /**
-    * <p>Obtains a child <tt>Instance</tt> for a given required type and additional 
-    * required qualifiers. If no required type is given, the required type is the 
-    * same as the parent.
+    * <p>Obtains a child <tt>Instance</tt> for the given required type and 
+    * additional required qualifiers.</p>
     * 
     * @param <U> the required type
     * @param subtype a {@link java.lang.Class} representing the required type
     * @param qualifiers the additional required qualifiers
     * @return the child <tt>Instance</tt>
+    * @throws IllegalArgumentException if passed two instances of the 
+    * same qualifier type, or an instance of an annotation that is not 
+    * a qualifier type
     */
    public <U extends T> Instance<U> select(Class<U> subtype, Annotation... qualifiers); 
    
    /**
-    * <p>Obtains a child <tt>Instance</tt> for a given required type and additional 
-    * required qualifiers. If no required type is given, the required type is the 
-    * same as the parent.
+    * <p>Obtains a child <tt>Instance</tt> for the given required type and 
+    * additional required qualifiers.</p>
     * 
     * @param <U> the required type
     * @param subtype a {@link javax.enterprise.inject.TypeLiteral} representing the required type
     * @param qualifiers the additional required qualifiers
     * @return the child <tt>Instance</tt>
+    * @throws IllegalArgumentException if passed two instances of the 
+    * same qualifier type, or an instance of an annotation that is not 
+    * a qualifier type
     */
    public <U extends T> Instance<U> select(TypeLiteral<U> subtype, Annotation... qualifiers); 
    
