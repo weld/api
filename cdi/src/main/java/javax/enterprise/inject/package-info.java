@@ -3,6 +3,22 @@
  * built-in qualifiers, and interfaces and classes relating 
  * to programmatic lookup.</p>
  * 
+ * <p>A bean is a source of contextual objects which define application 
+ * state and/or logic. These objects are called contextual instances of 
+ * the bean. The container creates and destroys these instances and 
+ * associates them with the appropriate 
+ * {@linkplain javax.enterprise.context.spi.Context context}. Contextual 
+ * instances of a bean may be injected into other objects (including 
+ * other bean instances) that execute in the same context, and may be 
+ * used in Unified EL expressions that are evaluated in the same 
+ * context.</p>
+ * 
+ * <p>The lifecycle of contextual instances is managed by the container 
+ * according to the 
+ * {@linkplain javax.enterprise.context lifecycle context model}. 
+ * Annotations define the lifecycle of the bean and its interactions 
+ * with other beans.</p>
+ *
  * <p>A bean comprises the following attributes:</p>
  *
  * <ul>
