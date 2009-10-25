@@ -64,9 +64,8 @@
  * </pre>
  * 
  * <p>A qualifier type is a Java annotation annotated 
- * {@link javax.inject.Qualifier &#064;Qualifier}.</p>
- * 
- * <p>The qualifiers of a bean are declared by annotating the bean class 
+ * {@link javax.inject.Qualifier &#064;Qualifier}.
+ * The qualifiers of a bean are declared by annotating the bean class 
  * or producer method or field with the qualifier types.</p>
  * 
  * <pre>
@@ -92,11 +91,10 @@
  * instances of the bean are visible to instances of other beans.</p>
  * 
  * <p>A scope type is a Java annotation annotated 
- * {@link javax.inject.Scope &#064;Scope}.</p>
- * 
- * <p>The scope of a bean is defined by annotating the bean class or producer 
- * method or field with a scope type or stereotype that declares a default
- * scope type.</p>
+ * {@link javax.inject.Scope &#064;Scope}.
+ * The scope of a bean is defined by annotating the bean class or producer 
+ * method or field with a scope type or with a stereotype that declares a 
+ * default scope.</p>
  * 
  * <pre>
  * &#064;ConversationScoped 
@@ -131,10 +129,10 @@
  * EJB session or message-driven bean.</p>
  * 
  * <p>An interceptor binding type is a Java annotation annotated 
- * {@link javax.interceptor.InterceptorBinding &#064;InterceptorBinding}.</p>
- * 
- * <p>An interceptor binding may be declared by annotating the bean class, 
- * or a method of the bean class, with an interceptor binding type.</p>
+ * {@link javax.interceptor.InterceptorBinding &#064;InterceptorBinding}.
+ * An interceptor binding of a bean may be declared by annotating the bean 
+ * class, or a method of the bean class, with an interceptor binding type
+ * or with a stereotype that declares the interceptor binding.</p>
  * 
  * <p>In the following example, the <tt>TransactionInterceptor</tt> will be 
  * applied at the class level, and therefore applies to all business methods 
@@ -242,7 +240,7 @@
  * </ul>
  * 
  * <p>A producer method or field is a method or field of a bean class annotated
- * {@link javax.enterprise..inject.Produces &#064;Produces}.</p>
+ * {@link javax.enterprise.inject.Produces &#064;Produces}.</p>
  * 
  * <h4>Resources</h4>
  * 
