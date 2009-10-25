@@ -18,8 +18,9 @@
 package javax.enterprise.event;
 
 /**
- * <p>Wraps checked exceptions thrown by observer methods,
- * allowing them to be rethrown by the container.</p>
+ * <p>Wraps checked exceptions thrown by observer methods
+ * during event notification, allowing them to be rethrown 
+ * by the container.</p>
  * 
  * @author Pete Muir
  * @author Gavin King
