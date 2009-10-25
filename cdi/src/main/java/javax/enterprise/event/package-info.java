@@ -43,6 +43,19 @@
  * so portable applications should not rely upon the order in which 
  * observers are called.</p>
  * 
+ * <p>Observer methods may throw exceptions:</p>
+ * 
+ * <ul>
+ * <li>If the observer method is a 
+ * {@linkplain javax.enterprise.event.TransactionPhase transactional 
+ * observer method}, any exception is caught and logged by the container.</li>
+ * <li>Otherwise, the exception aborts processing of the event.
+ * No other observer methods of that event will be called. The 
+ * exception is rethrown. If the exception is a checked exception, 
+ * it is wrapped and rethrown as an (unchecked) 
+ * {@link javax.enterprise.event.ObserverException}.</li>
+ * </ul>
+ * 
  * @see javax.enterprise.event.Observes
  * @see javax.enterprise.event.Event
  */
