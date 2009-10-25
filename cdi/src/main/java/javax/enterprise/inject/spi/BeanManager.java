@@ -81,15 +81,15 @@ public interface BeanManager
    public <T> CreationalContext<T> createCreationalContext(Contextual<T> contextual);
 
    /**
-    * Returns the set of beans which match the given required type and bindings
+    * Returns the set of beans which match the given required type and qualifiers
     * and are accessible to the class into which the BeanManager was injected,
     * according to the rules of typesafe resolution.
     * 
     * Typesafe resolution usually occurs at container deployment time.
     * 
     * @param beanType the type of the beans to be resolved
-    * @param bindings the bindings used to restrict the matched beans. If no
-    *           bindings are passed to getBeans(), the default binding @Current
+    * @param qualifiers the qualifiers used to restrict the matched beans. If no
+    *           qualifiers are passed to getBeans(), the default binding @Current
     *           is assumed.
     * @return the matched beans
     * @throws IllegalArgumentException if the given type represents a type
@@ -99,7 +99,7 @@ public interface BeanManager
     * @throws IllegalArgumentException if an instance of an annotation that is
     *            not a binding type is given
     */
-   public Set<Bean<?>> getBeans(Type beanType, Annotation... bindings);
+   public Set<Bean<?>> getBeans(Type beanType, Annotation... qualifiers);
 
    /**
     * Returns the set of beans which match the given EL name and are accessible
@@ -150,7 +150,7 @@ public interface BeanManager
     * Fire an event
     * 
     * @param event the event object
-    * @param bindings the event bindings used to restrict the observers matched
+    * @param qualifiers the event qualifiers used to restrict the observers matched
     * @throws IllegalArgumentException if the runtime type of the event object
     *            contains a type variable
     * @throws IllegalArgumentException if two instances of the same binding type
@@ -158,14 +158,14 @@ public interface BeanManager
     * @throws IllegalArgumentException if an instance of an annotation that is
     *            not a binding type is given,
     */
-   public void fireEvent(Object event, Annotation... bindings);
+   public void fireEvent(Object event, Annotation... qualifiers);
 
    /**
-    * Obtains observers for an event by considering event type and bindings.
+    * Obtains observers for an event by considering event type and qualifiers.
     * 
     * @param <T> the type of the event to obtain
     * @param event the event object
-    * @param bindings the bindings used to restrict the matched observers
+    * @param qualifiers the qualifiers used to restrict the matched observers
     * @return the resolved observers
     * @throws IllegalArgumentException if a parameterized type with a type
     *            parameter or a wildcard is passed
@@ -174,14 +174,14 @@ public interface BeanManager
     * @throws IllegalArgumentException if two instances of the same binding type
     *            are passed
     */
-   public <T> Set<ObserverMethod<?, T>> resolveObserverMethods(T event, Annotation... bindings);
+   public <T> Set<ObserverMethod<?, T>> resolveObserverMethods(T event, Annotation... qualifiers);
 
    /**
     * Obtains an ordered list of enabled decorators for a set of bean types and
-    * a set of bindings
+    * a set of qualifiers
     * 
     * @param types the set of bean types of the decorated bean
-    * @param bindings the bindings declared by the decorated bean
+    * @param qualifiers the qualifiers declared by the decorated bean
     * @return the resolved decorators
     * @throws IllegalArgumentException if the set of bean types is empty
     * @throws IllegalArgumentException if an annotation which is not a binding
@@ -189,14 +189,14 @@ public interface BeanManager
     * @throws IllegalArgumentException if two instances of the same binding type
     *            are passed
     */
-   public List<Decorator<?>> resolveDecorators(Set<Type> types, Annotation... bindings);
+   public List<Decorator<?>> resolveDecorators(Set<Type> types, Annotation... qualifiers);
 
    /**
     * Obtains an ordered list of enabled interceptors for a set interceptor
     * bindings
     * 
     * @param type the type of the interception
-    * @param bindings the bindings used to restrict the matched interceptors
+    * @param interceptorBindings the bindings used to restrict the matched interceptors
     * @return the resolved interceptors
     * @throws IllegalArgumentException if no interceptor binding type is passed
     * @throws IllegalArgumentException if an annotation which is not a
