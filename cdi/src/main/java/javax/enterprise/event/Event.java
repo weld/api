@@ -31,8 +31,14 @@ import javax.enterprise.inject.TypeLiteral;
  * &#064;Inject &#064;Any Event&lt;LoggedInEvent&gt; loggedInEvent;
  * </pre>
  * 
- * <p>The method {@link javax.enterprise.event.Event#fire(T)} accepts 
- * an event object:</p>
+ * <p>The <tt>fire()</tt> method accepts an event object:</p>
+ * 
+ * <pre>
+ * public void login() { 
+ *    ...
+ *    loggedInEvent.fire( new LoggedInEvent(user) );
+ * }
+ * </pre>
  * 
  * <p>Any combination of qualifiers may be specified at the injection 
  * point:</p>
