@@ -79,7 +79,7 @@
  * <ul>
  * <li>the type of the injection point is one of the bean types of the 
  * bean, and</li>
- * <li>it has all the qualifiers of the injection point.</li>
+ * <li>the bean has all the qualifiers of the injection point.</li>
  * </ul>
  * 
  * <h3>Scope</h3>
@@ -273,6 +273,8 @@
  * @see javax.enterprise.inject.Produces
  * @see javax.inject.Scope
  * @see javax.inject.Named
+ * @see javax.inject.Qualifier
+ * @see javax.interceptor.InterceptorBinding
  * 
  */
 package javax.enterprise.inject;
