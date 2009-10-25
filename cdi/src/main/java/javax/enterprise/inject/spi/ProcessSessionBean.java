@@ -17,11 +17,42 @@
 
 package javax.enterprise.inject.spi;
 
+/**
+ * <p>
+ * The container fires an event of this type for each session bean it discovers,
+ * before registering the {@link javax.enterprise.inject.spi.Bean} object.
+ * </p>
+ * <p>
+ * If any observer method of a {@code ProcessSessionBean} event throws an
+ * exception, the exception is treated as a definition error by the container.
+ * </p>
+ * 
+ * @author David Allen
+ * @param <X>
+ */
 public interface ProcessSessionBean<X> extends ProcessManagedBean<Object>
 {
+   /**
+    * Returns the {@link javax.enterprise.inject.spi.AnnotatedType} representing
+    * the bean class.
+    * 
+    * @return the {@link javax.enterprise.inject.spi.AnnotatedType} for the bean
+    *         being registered
+    */
    public AnnotatedType<X> getAnnotatedSessionBeanClass();
 
+   /**
+    * Returns the EJB name of the session bean.
+    * 
+    * @return the name of the EJB
+    */
    public String getEjbName();
 
+   /**
+    * Returns a {@link javax.enterprise.inject.spi.SessionBeanType} representing the
+    * kind of session bean.
+    * 
+    * @return the {@link javax.enterprise.inject.spi.SessionBeanType}
+    */
    public SessionBeanType getSessionBeanType();
 }

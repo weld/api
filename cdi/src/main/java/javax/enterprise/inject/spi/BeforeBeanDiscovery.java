@@ -46,7 +46,9 @@ public interface BeforeBeanDiscovery
     * @param scopeType The annotation type to treat as a
     *           {@linkplain javax.enterprise.context scope type}
     * @param normal Indicates if the scope is normal
-    * @param passivating Indicates if the scope is passivation capable
+    * @param passivating Indicates if the scope is
+    *           {@linkplain javax.enterprise.inject.spi.PassivationCapable
+    *           passivation capable}
     */
    public void addScope(Class<? extends Annotation> scopeType, boolean normal, boolean passivating);
 

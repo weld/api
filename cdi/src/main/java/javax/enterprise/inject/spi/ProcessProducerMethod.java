@@ -16,9 +16,38 @@
  */
 package javax.enterprise.inject.spi;
 
+/**
+ * <p>
+ * The container fires an event of this type for each producer method it
+ * discovers, before registering the corresponding
+ * {@link javax.enterprise.inject.spi.Bean} object.
+ * </p>
+ * <p>
+ * If any observer method of a {@code ProcessProducerMethod} event throws an
+ * exception, the exception is treated as a definition error by the container.
+ * </p>
+ * 
+ * @author David Allen
+ * @param <T> The class of the return type of the producer method
+ * @param <X> The class of the bean representing the producer method
+ */
 public interface ProcessProducerMethod<T, X> extends ProcessBean<X>
 {
+   /**
+    * Returns the {@link javax.enterprise.inject.spi.AnnotatedMethod}
+    * representing the producer method.
+    * 
+    * @return the {@link javax.enterprise.inject.spi.AnnotatedMethod} for the
+    *         producer method being registered
+    */
    public AnnotatedMethod<T> getAnnotatedProducerMethod();
 
+   /**
+    * Returns the {@link javax.enterprise.inject.spi.AnnotatedParameter} for
+    * any matching injection point of the same type as the producer method
+    * return type found on a disposal method.
+    * 
+    * @return the disposal method's {@link javax.enterprise.inject.spi.AnnotatedParameter}
+    */
    public AnnotatedParameter<T> getAnnotatedDisposedParameter();
 }

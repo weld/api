@@ -16,7 +16,29 @@
  */
 package javax.enterprise.inject.spi;
 
+/**
+ * <p>
+ * The container fires an event of this type for each producer field it
+ * discovers, before registering the corresponding
+ * {@link javax.enterprise.inject.spi.Bean} object.
+ * </p>
+ * <p>
+ * If any observer method of a {@code ProcessProducerField} event throws an
+ * exception, the exception is treated as a definition error by the container.
+ * </p>
+ * 
+ * @author David Allen
+ * @param <T> The class of the producer field
+ * @param <X> The class of the bean representing the producer field
+ */
 public interface ProcessProducerField<T, X> extends ProcessBean<X>
 {
+   /**
+    * Returns the {@link javax.enterprise.inject.spi.AnnotatedField}
+    * representing the producer field.
+    * 
+    * @return the {@link javax.enterprise.inject.spi.AnnotatedField} for the
+    *         producer field being registered
+    */
    public AnnotatedField<T> getAnnotatedProducerField();
 }

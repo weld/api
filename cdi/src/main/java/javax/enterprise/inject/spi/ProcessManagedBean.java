@@ -16,7 +16,27 @@
  */
 package javax.enterprise.inject.spi;
 
+/**
+ * <p>
+ * The container fires an event of this type for each managed bean it discovers,
+ * before registering the {@link javax.enterprise.inject.spi.Bean} object.
+ * </p>
+ * <p>
+ * If any observer method of a {@code ProcessManagedBean} event throws an
+ * exception, the exception is treated as a definition error by the container.
+ * </p>
+ * 
+ * @author David Allen
+ * @param <X> The class of the bean
+ */
 public interface ProcessManagedBean<X> extends ProcessBean<X>
 {
+   /**
+    * Returns the {@link javax.enterprise.inject.spi.AnnotatedType} representing
+    * the bean class.
+    * 
+    * @return the {@link javax.enterprise.inject.spi.AnnotatedType} for the bean
+    *         being registered
+    */
    public AnnotatedType<X> getAnnotatedBeanClass();
 }
