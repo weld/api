@@ -16,27 +16,36 @@
  * the event qualifiers</li>
  * </ul>
  * 
+ * <h3>Event objects and event types</h3>
+ * 
  * <p>The event object acts as a payload, to propagate state from 
- * producer to consumer. The event qualifiers act as topic selectors, 
- * allowing the consumer to narrow the set of events it observes.</p>
+ * producer to consumer. An event object is an instance of a concrete 
+ * Java class with no type variables.</p> 
  * 
- * <p>An event object is an instance of a concrete Java class with 
- * no type variables. The event types of the event include all 
- * superclasses and interfaces of the runtime class of the event object.
- * An event type may not contain a type variable.</p>
+ * <p>The event types of the event include all superclasses and 
+ * interfaces of the runtime class of the event object. An event type 
+ * may not contain a type variable.</p>
  * 
- * <p>An event qualifier type is just an ordinary qualifier type.</p>
+ * <h3>Event qualifiers</h3>
+ * 
+ * <p>The event qualifiers act as topic selectors, allowing the consumer 
+ * to narrow the set of events it observes. An event qualfier may be an
+ * instance of any {@linkplain javax.inject.Qualifier qualifier type}.</p>
+ * 
+ * <h3>Observer methods</h3>
  * 
  * <p>An {@linkplain javax.enterprise.event.Observes observer method} 
- * acts as event consumer, observing events of a specific type, the 
- * <em>observed event type</em>, with a specific set of qualifiers, the 
- * <em>observed event qualifiers</em>. Any Java type may be an observed 
- * event type.</p>
+ * acts as event consumer, observing events of a specific type, with a 
+ * specific set of qualifiers. Any Java type may be observed by an 
+ * observer method.</p>
  * 
- * <p>An observer method will be notified of an event if the observed 
- * event type it specifies is one of the event types of the event, and 
- * if all the observed event qualifiers it specifies are event qualifiers 
- * of the event.</p>
+ * <p>An observer method will be notified of an event if:</p> 
+ * 
+ * <ul>
+ * <li>the type observed by the observer method is one of the event types 
+ * of the event, and</li>
+ * <li>the observer method has all the event qualifiers of the event.</li>
+ * </ul>
  * 
  * <p>The order in which observer methods are called is not defined, and 
  * so portable applications should not rely upon the order in which 
@@ -57,6 +66,7 @@
  * 
  * @see javax.enterprise.event.Observes
  * @see javax.enterprise.event.Event
+ * @see javax.inject.Qualifier
  */
 package javax.enterprise.event;
 
