@@ -195,12 +195,15 @@
  * EJB 3.x client view. The basic lifecycle and semantics of an EJB session bean 
  * are defined by the EJB specification.</p>
  * 
- * <p>A stateless session bean must belong to the 
- * {@link javax.enterprise.context.Dependent &#064;Dependent} pseudo-scope. A 
- * singleton bean must belong to either the 
+ * <ul>
+ * <li>A stateless session bean must belong to the 
+ * {@link javax.enterprise.context.Dependent &#064;Dependent} pseudo-scope.</li>
+ * <li>A  singleton bean must belong to either the 
  * {@link javax.enterprise.context.ApplicationScoped &#064;ApplicationScoped} 
  * scope or to the {@link javax.enterprise.context.Dependent &#064;Dependent}
- * pseudo-scope. A stateful session bean may have any scope.</p>
+ * pseudo-scope.</li>
+ * <li>A stateful session bean may have any scope.</li>
+ * </ul>
  * 
  * <p>If the session bean class is a generic type, it must have scope 
  * {@link javax.enterprise.context.Dependent &#064;Dependent}.</p>
