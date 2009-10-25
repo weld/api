@@ -270,6 +270,21 @@
  * 
  * <p>Otherwise, the bean is said to be disabled.</p>
  * 
+ * <h3>Eligible dependencies</h3>
+ * 
+ * <p>A bean is eligible for injection into a given class if it satisfies the 
+ * following conditions:</p>
+ * 
+ * <ul>
+ * <li>The bean is enabled.</li>
+ * <li>The bean is not an interceptor or decorator.</li>
+ * <li>The bean is either not an alternative, or is a selected alternative of 
+ * the bean deployment archive of the given class.</li>
+ * <li>In a Java EE or servlet container, the bean class is required to be 
+ * accessible to the given class, according to the class loading requirements 
+ * of the Java EE platform and Java Servlet specifications.</li>
+ * </ul>
+ * 
  * @see javax.enterprise.inject.Produces
  * @see javax.inject.Scope
  * @see javax.inject.Named
