@@ -17,9 +17,16 @@
 package javax.enterprise.event;
 
 /**
- * An enumeration that is used to declare the condition under which an observer
- * method should be called. The default behavior is to create the bean and
- * invoke the observer method synchronously.
+ * <p>Distinguishes conditional observer methods from observer methods
+ * which are always notified.</p>
+ * 
+ * <p>A conditional observer method is an observer method which is notified 
+ * of an event only if an instance of the bean that defines the observer 
+ * method already exists in the current context.</p>
+ * 
+ * <p>Beans with scope 
+ * {@link javax.enterprise.context.Dependent &#064;Dependent} may not 
+ * have conditional observer methods.</p>
  * 
  * @author Gavin King
  * @author Dan Allen
@@ -34,7 +41,7 @@ public enum Reception
    IF_EXISTS,
 
    /**
-    * Specifies that an observer method always receives the event notifications.
+    * Specifies that an observer method always receives event notifications.
     */
    ALWAYS
 }
