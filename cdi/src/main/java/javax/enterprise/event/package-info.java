@@ -39,7 +39,7 @@
  * if all the observed event qualifiers it specifies are event qualifiers 
  * of the event.</p>
  * 
- * <p>The order in which observer methods are called in not defined, and 
+ * <p>The order in which observer methods are called is not defined, and 
  * so portable applications should not rely upon the order in which 
  * observers are called.</p>
  * 
