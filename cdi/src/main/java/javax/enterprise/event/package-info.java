@@ -39,6 +39,9 @@
  * specific set of qualifiers. Any Java type may be observed by an 
  * observer method.</p>
  * 
+ * <p>An observer method is a method of a bean class with a parameter
+ * annotated {@link javax.enterprise.event.Observes &#064;Observes}.</p>
+ * 
  * <p>An observer method will be notified of an event if:</p> 
  * 
  * <ul>

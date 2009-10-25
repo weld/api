@@ -63,6 +63,9 @@
  * &#064;Inject &#064;Synchronous PaymentProcessor paymentProcessor; 
  * </pre>
  * 
+ * <p>A qualifier type is a Java annotation annotated 
+ * {@link javax.inject.Qualifier &#064;Qualifier}.</p>
+ * 
  * <p>The qualifiers of a bean are declared by annotating the bean class 
  * or producer method or field with the qualifier types.</p>
  * 
@@ -87,6 +90,9 @@
  * <p>All beans have a {@linkplain javax.enterprise.context scope}. The 
  * scope of a bean determines the lifecycle of its instances, and which 
  * instances of the bean are visible to instances of other beans.</p>
+ * 
+ * <p>A scope type is a Java annotation annotated 
+ * {@link javax.inject.Scope &#064;Scope}.</p>
  * 
  * <p>The scope of a bean is defined by annotating the bean class or producer 
  * method or field with a scope type or stereotype that declares a default
@@ -123,6 +129,9 @@
  * <p>Interceptor bindings may be used to associate interceptors with any 
  * managed bean that is not itself an interceptor or decorator or with any 
  * EJB session or message-driven bean.</p>
+ * 
+ * <p>An interceptor binding type is a Java annotation annotated 
+ * {@link javax.interceptor.InterceptorBinding &#064;InterceptorBinding}.</p>
  * 
  * <p>An interceptor binding may be declared by annotating the bean class, 
  * or a method of the bean class, with an interceptor binding type.</p>
@@ -231,6 +240,9 @@
  * <li>the objects require some custom initialization that is not 
  * performed by the bean constructor.</li>
  * </ul>
+ * 
+ * <p>A producer method or field is a method or field of a bean class annotated
+ * {@link javax.enterprise..inject.Produces &#064;Produces}.</p>
  * 
  * <h4>Resources</h4>
  * 
