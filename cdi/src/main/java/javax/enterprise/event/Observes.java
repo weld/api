@@ -25,44 +25,33 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
 /**
- * <p>
- * Specifies that a parameter of a method of a bean implementation class is the
- * event parameter of an observer method. An observer method is a non-abstract
+ * <p>Identifies the event parameter of an observer method. May be applied to 
+ * a parameter of a method of a bean class.</p>
+ * 
+ * <pre>
+ * public void afterLogin(@Observes LoggedInEvent event) { ... }
+ * </pre>
+ * 
+ * <p>An observer method allows the application to receive and respond to event 
+ * notifications.</p>
+ * 
+ * <p>An observer method is a non-abstract
  * method of a managed bean class or session bean class. An observer method may
  * be either static or non-static. If the bean is a session bean, the observer
  * method must be either a business method of the EJB or a static method of the
- * bean class. A bean class may also have any number of observer methods
- * declared.
- * </p>
+ * bean class.</p>
  * 
- * <p>
- * To observe a simple Java class as the event type, the {@literal @}Observes
- * annotation is used directly on the event parameter.</p>
- * <pre>
- *     public void afterLogin(@Observes LoggedInEvent event) { ... }
- * </pre>
+ * <p>A bean may declare multiple observer methods.</p>
  * 
- * <p>
- * Qualifiers may also be added to further differentiate between events of the same
- * type.  When multiple qualifiers are used, each of them must exist on the event
- * in order for the observer method to be invoked.  Also note that any of the
- * qualifiers may have type members bound to specific values which also must
- * match those of the event object.</p>
- * <pre>
- *     public void afterLogin(@Observes @Admin LoggedInEvent event) { ... }
- *     public void afterDocumentUpdatedByAdmin(@Observes @Updated @ByAdmin Document doc) { ... }
- *     public void afterAdminLogin(@Observes @Role("admin") LoggedInEvent event) { ... }
- * </pre>
+ * <p>Each observer method must have exactly one event parameter, of the same 
+ * type as the event type it observes. When searching for observer methods for 
+ * an event, the container considers the type and qualifiers of the event 
+ * parameter.</p>
  * 
- * <p>
- * An application may have any number of observers for the same event type. The
- * order in which these observers are called is indeterminate. For this reason,
- * caution must be used if any one of the observers might throw an exception
- * since the remaining observers not yet notified will never see the event.
- * Event processing for a single event is terminated whenever an exception is
- * thrown by an observer. Therefore the code should not make any assumptions
- * about the state of other similar observers.
- * </p>
+ * <p>If the event parameter does not explicitly declare any qualifier, the 
+ * observer method observes events with no qualifier.</p> 
+ * 
+ * <p>The event parameter type may contain a type variable or wildcard.</p>
  * 
  * @author Gavin King
  * @author Pete Muir
@@ -75,18 +64,22 @@ import java.lang.annotation.Target;
 public @interface Observes
 {
    /**
-    * Specifies when an observer method should be notified of an event.
-    * Defaults to ALWAYS meaning that if a bean instance with the observer
-    * method does not already exist, one will be created to receive the
-    * event.
+    * <p>Specifies 
+    * {@linkplain javax.enterprise.event.Reception under what conditions the 
+    * observer method is notified}.</p>
+    * 
+    * <p>By default, the observer method is notified even if no instance of
+    * the bean that defines the observer method already exists in the current 
+    * context.</p>
     */
 	public Reception notifyObserver() default Reception.ALWAYS;
 	
 	/**
-	 * Specifies whether or not the notification should occur as part of
-	 * an ongoing transaction, and if so, in which phase of the transaction
-	 * the notification should occur.  The default is IN_PROGRESS meaning
-	 * the notification is not transactional.
+	 * <p>Specifies 
+	 * {@linkplain javax.enterprise.event.Reception at what time the observer
+	 * method is notified}.</p>
+	 * 
+	 * <p>By default, the observer method is notified when the event is fired.</p>
 	 */
 	public TransactionPhase during() default TransactionPhase.IN_PROGRESS;
 }
