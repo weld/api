@@ -35,7 +35,8 @@
  * <h3>Observer methods</h3>
  * 
  * <p>An {@linkplain javax.enterprise.event.Observes observer method} 
- * acts as event consumer, observing events of a specific type, with a 
+ * allows the application to receive and respond to event notifications. 
+ * It acts as event consumer, observing events of a specific type, with a 
  * specific set of qualifiers. Any Java type may be observed by an 
  * observer method.</p>
  * 
