@@ -17,45 +17,51 @@
 package javax.enterprise.event;
 
 /**
- * The enumeration {@link TransactionPhase} identifies the kind
- * of transactional observer method
+ * <p>Distinguishes the various kinds of transactional observer methods
+ * from observer methods which are notified immediately.</p>
  * 
- * Transactional observer methods are observer methods which receive event
- * notifications during the before or after completion phase of the
+ * <p>Transactional observer methods are observer methods which receive 
+ * event notifications during the before or after completion phase of the
  * transaction in which the event was fired. If no transaction is in progress
  * when the event is fired, they are notified at the same time as other
- * observers.
- * 
+ * observers.</p>
  * 
  * @author Pete Muir
+ * @author Gavin King
  * 
  */
 public enum TransactionPhase
 {
 
+   /**
+    * <p>Identifies a regular observer method, called when the event 
+    * is fired.</p>
+    */
    IN_PROGRESS,
 
    /**
-    * A before completion observer method is called during the before completion
-    * phase of the transaction.
+    * <p>Identifies a before completion observer method, called during 
+    * the before completion phase of the transaction.</p>
     */
    BEFORE_COMPLETION,
 
    /**
-    * An after completion observer method is called during the after completion
-    * phase of the transaction.
+    * <p>Identifies an after completion observer method, called during the 
+    * after completion phase of the transaction.</p>
     */
    AFTER_COMPLETION,
 
    /**
-    * An after failure observer method is called during the after completion
-    * phase of the transaction, only when the transaction fails.
+    * <p>Identifies an after failure observer method, called during the 
+    * after completion phase of the transaction, only when the transaction 
+    * fails.</p>
     */
    AFTER_FAILURE,
 
    /**
-    * A before completion observer method is called during the before completion
-    * phase of the transaction.
+    * <p>Identifies an after success observer method, called during the 
+    * after completion phase of the transaction, only when the transaction 
+    * completes successfully.</p>
     */
    AFTER_SUCCESS
 
