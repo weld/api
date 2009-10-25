@@ -29,7 +29,7 @@ import java.lang.annotation.Target;
  * a parameter of a method of a bean class.</p>
  * 
  * <pre>
- * public void afterLogin(@Observes LoggedInEvent event) { ... }
+ * public void afterLogin(&#064;Observes LoggedInEvent event) { ... }
  * </pre>
  * 
  * <p>An observer method allows the application to receive and respond to event 
