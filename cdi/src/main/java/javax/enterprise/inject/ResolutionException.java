@@ -18,7 +18,9 @@ package javax.enterprise.inject;
 
 
 /**
- * Thrown if resolution fails
+ * <t>Indicates a problem relating to typesafe resolution.</t>
+ * 
+ * @author Gavin King
  */
 public class ResolutionException extends InjectionException 
 {

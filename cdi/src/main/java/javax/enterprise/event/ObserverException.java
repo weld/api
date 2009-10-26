@@ -18,14 +18,12 @@
 package javax.enterprise.event;
 
 /**
- * <p>Wraps checked exceptions thrown by observer methods
- * during event notification, allowing them to be rethrown 
- * by the container.</p>
+ * <p>Indicates that a checked exception was thrown by an
+ * observer method during event notification.</p>
  * 
  * @author Pete Muir
  * @author Gavin King
  */
-
 public class ObserverException extends RuntimeException
 {
 

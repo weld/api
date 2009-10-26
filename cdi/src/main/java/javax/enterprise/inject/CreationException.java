@@ -19,9 +19,11 @@ package javax.enterprise.inject;
 
 
 /**
- * Wraps any checked exceptions which occur during creation of a bean.
+ * <p>Indicates that a checked exception was thrown during 
+ * creation of a bean.</p>
  * 
  * @author Pete Muir
+ * @author Gavin King
  */
 public class CreationException extends InjectionException
 {

@@ -14,16 +14,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-
 package javax.enterprise.inject;
 
-
 /**
- * Thrown when the set of enabled beans with the required bean type 
- * and qualifiers is empty.
+ * <p>Indicates that no bean matches a certain combination of required 
+ * type and required qualifiers and is eligible for injection into a 
+ * certain class.</p>
  * 
  * @author Pete Muir
+ * @author Gavin King
  */
 public class UnsatisfiedResolutionException extends ResolutionException
 {

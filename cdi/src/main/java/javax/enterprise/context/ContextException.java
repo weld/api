@@ -19,12 +19,11 @@ package javax.enterprise.context;
 
 
 /**
- * The base type for any context-related exceptions.
+ * <p>Indicates a problem relating to context management.</p>
  * 
  * @author Pete Muir
  * @author Shane Bryzak
  */
-
 public class ContextException extends RuntimeException
 {
    

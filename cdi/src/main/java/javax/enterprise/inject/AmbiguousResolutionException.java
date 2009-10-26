@@ -14,15 +14,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package javax.enterprise.inject;
 
 
 /**
- * Thrown when the set of enabled beans with the required bean type and 
- * qualifiers contains multiple beans.
+ * <p>Indicates that multiple beans match a certain combination of required 
+ * type and required qualifiers and are eligible for injection into a 
+ * certain class.</p>
  * 
  * @author Pete Muir
+ * @author Gavin King
  */
 public class AmbiguousResolutionException extends ResolutionException
 {

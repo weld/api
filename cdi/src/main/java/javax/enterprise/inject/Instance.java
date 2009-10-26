@@ -79,9 +79,9 @@ import javax.inject.Provider;
  * 
  * <p>The inherited {@link javax.inject.Provider#get()} method returns a
  * contextual references for the unique bean that matches the required 
- * type and required qualifiers and is eligible for injection into the class
- * into which the parent <tt>Instance</tt> was injected, or throws an
- * {@link javax.enterprise.inject.UnsatisfiedResolutionException} or
+ * type and required qualifiers and is eligible for injection into the 
+ * class into which the parent <tt>Instance</tt> was injected, or throws 
+ * an {@link javax.enterprise.inject.UnsatisfiedResolutionException} or
  * {@link javax.enterprise.inject.AmbiguousResolutionException}.</p>
  * 
  * <pre>PaymentProcessor pp = chequePaymentProcessor.get();</pre>

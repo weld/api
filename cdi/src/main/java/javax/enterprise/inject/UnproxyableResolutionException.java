@@ -25,6 +25,7 @@ package javax.enterprise.inject;
  * be proxied by the container.</p>
  * 
  * @author Pete Muir
+ * @author Gavin King
  */
 public class UnproxyableResolutionException extends ResolutionException
 {
