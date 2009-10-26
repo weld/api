@@ -26,13 +26,32 @@ import java.util.Arrays;
 
 
 /**
- * Supports inline instantiation of annotation type instances.
+ * <p>Supports inline instantiation of annotation type instances.</p>
+ * 
+ * <p>An instance of an annotation type may be obtained by subclassing 
+ * <tt>AnnotationLiteral</tt>.</p>
+ * 
+ * <pre>
+ * public abstract class PayByQualifier 
+ *       extends AnnotationLiteral&lt;PayBy&gt;
+ *       implements PayBy {}
+ * </pre>
+ * 
+ * <pre>
+ * PayBy payby = new PayByQualifier() { public value() { return CHEQUE; } };
+ * </pre>
+ * 
+ * <p>Annotation values are often passed to APIs that perform typesafe 
+ * resolution.</p>
  * 
  * @author Pete Muir
  * @author Gavin King
  * 
- *  @param <T>
- *            the annotation type
+ * @param <T> the annotation type
+ * 
+ * @see javax.enterprise.inject.Instance#select(Annotation...)
+ * @see javax.enterprise.event.Event#select(Annotation...)
+ * 
  */
 public abstract class AnnotationLiteral<T extends Annotation> implements
       Annotation

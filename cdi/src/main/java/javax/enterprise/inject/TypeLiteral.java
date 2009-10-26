@@ -22,14 +22,26 @@ import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
 /**
- * Supports inline instantiation of objects that represent parameterized types
- * with actual type parameters.
+ * <p>Supports inline instantiation of objects that represent parameterized types
+ * with actual type parameters.</p>
+ * 
+ * <p>An object that represents any parameterized type may be obtained by 
+ * subclassing <tt>TypeLiteral</tt>.
+ * 
+ * <pre>
+ * TypeLiteral&lt;List&lt;String&gt;&gt; type = new TypeLiteral&lt;List&lt;String&gt;&gt;() {};
+ * </pre>
+ * 
+ * <p>This object may be passed to APIs that perform typesafe resolution.</p>
  * 
  * @author Gavin King
  * @author Pete Muir
  * 
- * @param <T>
- *            the type, including all actual type parameters
+ * @param <T> the type, including all actual type parameters
+ * 
+ * @see javax.enterprise.inject.Instance#select(TypeLiteral, Annotation...)
+ * @see javax.enterprise.event.Event#select(TypeLiteral, Annotation...)
+ * 
  */
 public abstract class TypeLiteral<T> 
 {
