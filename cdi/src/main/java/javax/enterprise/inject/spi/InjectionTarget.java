@@ -40,7 +40,8 @@ public interface InjectionTarget<T> extends Producer<T>
     * </p>
     * 
     * @param instance The instance upon which to perform injections
-    * @param ctx The CreationalContext to use for creating new instances
+    * @param ctx The {@link javax.enterprise.context.spi.CreationalContext} to
+    *           use for creating new instances
     */
    public void inject(T instance, CreationalContext<T> ctx);
 
