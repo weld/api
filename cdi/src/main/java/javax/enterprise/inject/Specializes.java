@@ -30,9 +30,15 @@ import java.lang.annotation.Target;
  * May be applied to a bean class or producer method.</p>
  * 
  * <p>If a bean directly specializes a second bean, it
- * inherits all qualifiers of the second bean, and has the
- * same name as the second bean. If the second bean has
- * a name, the bean may not declare a name using
+ * inherits:</p>
+ * 
+ * <ul>
+ * <li>all qualifiers of the second bean, and</li>
+ * <li>the name, if any, of the second bean.</li>
+ * </ul>
+ * 
+ * <p>If the second bean has a name, the bean may not 
+ * declare a name using
  * {@link javax.inject.Named &#064;Named}. Furthermore, 
  * the bean must have all the bean types of the second
  * bean.</p>
@@ -56,6 +62,9 @@ import java.lang.annotation.Target;
  * first producer method directly specializes the second
  * producer method.</li>
  * </ul>
+ * 
+ * <p>If a bean is specialized by any enabled bean, the
+ * first bean is disabled.</p>
  * 
  * @author Gavin King
  * @author Pete Muir
