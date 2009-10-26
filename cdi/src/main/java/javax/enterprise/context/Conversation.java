@@ -32,6 +32,8 @@ package javax.enterprise.context;
  * that a conversation should not be destroyed if it has been 
  * active within the last given interval in milliseconds.</p>
  * 
+ * @see javax.enterprise.context.ConversationScoped &#064;ConversationScoped
+ * 
  * @author Pete Muir
  * @author Gavin King
  * 
