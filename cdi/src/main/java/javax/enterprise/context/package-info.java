@@ -45,41 +45,30 @@
  * example, a third-party web application framework might provide a 
  * conversation context object for the built-in conversation scope.</p>
  * 
- * <p>For each of the built-in normal scopes, contexts propagate across 
- * any Java method call, including invocation of EJB local business methods. 
- * The built-in contexts do not propagate across remote method invocations 
- * or to asynchronous processes such as JMS message listeners or EJB timer 
- * service timeouts.</p>
+ * <p>The context associated with a built-in scope propagates across 
+ * local, synchronous Java method calls, including invocation of EJB 
+ * local business methods. The context does not propagate across remote 
+ * method invocations or to asynchronous processes such as JMS message 
+ * listeners or EJB timer service timeouts.</p>
  * 
  * <h3>Normal scopes and pseudo-scopes</h3>
  * 
- * <p>Most scopes are <em>normal scopes</em>. The 
- * {@linkplain javax.enterprise.context.spi.Context context object} for 
- * a normal scope type is a mapping from each contextual type with that 
- * scope to an instance of that contextual type. There may be no more than 
- * one mapped instance per contextual type per thread. The set of all 
- * mapped instances of contextual types with a certain scope for a 
- * certain thread is called the <em>context</em> for that scope associated 
- * with that thread.</p>
- * 
- * <p>A context may be associated with one or more threads. A context 
- * with a certain scope is said to <em>propagate</em> from one point in the 
- * execution of the program to another when the set of mapped instances 
- * of contextual types with that scope is preserved.</p>
- * 
- * <p>The context associated with the current thread is called the 
- * <em>current context</em> for the scope. The mapped instance of a 
- * contextual type associated with a current context is called the 
- * <em>current instance</em> of the contextual type.<p>
- * 
- * <p>Any scope that is not a normal scope is called a <em>pseudo-scope</em>. 
+ * <p>Most scopes are <em>normal scopes</em>. Normal scopes are declared 
+ * using {@link javax.enterprise.context.NormalScope &#064;NormalScope}. 
+ * If a bean has a normal scope, every client executing in a certain 
+ * thread sees the same contextual instance of the bean. This instance is 
+ * called the <em>current instance</em> of the bean. The operation 
+ * {@link javax.enterprise.context.spi.Context#get(Contextual)} of the 
+ * context object for a normal scope type always returns the current 
+ * instance of the given bean.</p> 
+ *
+ * <p>Any scope that is not a normal scope is called a <em>pseudo-scope</em>.
+ * Pseudo-scopes are declared using {@link javax.inject.Scope &#064;Scope}. 
  * The concept of a current instance is not well-defined in the case of 
- * a pseudo-scope.</p>
- * 
- * <p>All normal scopes must be explicitly declared 
- * {@link javax.enterprise.context.NormalScope &#064;NormalScope}. All 
- * pseudo-scopes must be explicitly declared 
- * {@link javax.inject.Scope &#064;Scope}.</p> 
+ * a pseudo-scope. Different clients executing in the same thread may
+ * see different instances of the bean. In the extreme case of the
+ * {@link javax.enterprise.context.Dependent &#064;Dependent} pseudo-scope,
+ * every client has its own private instance of the bean.</p> 
  * 
  * <p>All built-in scopes are normal scopes, except for the 
  * {@link javax.enterprise.context.Dependent &#064;Dependent} and
