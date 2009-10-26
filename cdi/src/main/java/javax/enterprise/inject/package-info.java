@@ -107,7 +107,8 @@
  * instances of the bean are visible to instances of other beans.</p>
  * 
  * <p>A scope type is a Java annotation annotated 
- * {@link javax.inject.Scope &#064;Scope}.
+ * {@link javax.inject.Scope &#064;Scope} or 
+ * {@link javax.enterprise.context.NormalScope &#064;NormalScope}.
  * The scope of a bean is defined by annotating the bean class or producer 
  * method or field with a scope type or with a stereotype that declares a 
  * default scope.</p>
@@ -328,8 +329,8 @@
  * <p>An injection point whose declared type cannot be proxied by the 
  * container must not resolve to a bean with a normal scope.</p>
  * 
+ * @see javax.enterprise.context
  * @see javax.enterprise.inject.Produces
- * @see javax.inject.Scope
  * @see javax.inject.Named
  * @see javax.inject.Qualifier
  * @see javax.interceptor.InterceptorBinding

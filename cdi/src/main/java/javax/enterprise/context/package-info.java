@@ -2,10 +2,12 @@
  * <p>Annotations and interfaces relating to scopes and contexts.</p>
  * 
  * <p>A scope type is a Java annotation annotated 
- * {@link javax.inject.Scope &#064;Scope}.</p>
+ * {@link javax.inject.Scope &#064;Scope} or 
+ * {@link javax.enterprise.context.NormalScope &#064;NormalScope}.</p>
  * 
- * <p>Associated with every scope type is a context object. The 
- * context object determines the lifecycle and visibility of
+ * <p>Associated with every scope type is a 
+ * {@linkplain javax.enterprise.context.spi.Context context object}. 
+ * The context object determines the lifecycle and visibility of
  * instances of all {@linkplain javax.enterprise.inject beans} with 
  * that scope. In particular, the context object defines:</p>
  * 
