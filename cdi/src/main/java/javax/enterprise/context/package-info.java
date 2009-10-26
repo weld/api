@@ -51,36 +51,28 @@
  * 
  * <h3>Normal scopes and pseudo-scopes</h3>
  * 
- * <p>Most scopes are normal scopes. The context object for a normal 
- * scope type is a mapping from each contextual type with that scope 
- * to an instance of that contextual type. There may be no more than 
+ * <p>Most scopes are <em>normal scopes</em>. The 
+ * {@linkplain javax.enterprise.context.spi.Context context object} for 
+ * a normal scope type is a mapping from each contextual type with that 
+ * scope to an instance of that contextual type. There may be no more than 
  * one mapped instance per contextual type per thread. The set of all 
  * mapped instances of contextual types with a certain scope for a 
- * certain thread is called the context for that scope associated with 
- * that thread.</p>
+ * certain thread is called the <em>context</em> for that scope associated 
+ * with that thread.</p>
  * 
  * <p>A context may be associated with one or more threads. A context 
- * with a certain scope is said to propagate from one point in the 
+ * with a certain scope is said to <em>propagate</em> from one point in the 
  * execution of the program to another when the set of mapped instances 
  * of contextual types with that scope is preserved.</p>
  * 
  * <p>The context associated with the current thread is called the 
- * current context for the scope. The mapped instance of a contextual 
- * type associated with a current context is called the current instance 
- * of the contextual type.<p>
+ * <em>current context</em> for the scope. The mapped instance of a 
+ * contextual type associated with a current context is called the 
+ * <em>current instance</em> of the contextual type.<p>
  * 
- * <p>Contexts with normal scopes must obey the following rule:</p>
- * 
- * <p><em>Suppose beans A, B and Z all have normal scopes. Suppose A 
- * has an injection point x, and B has an injection point y. Suppose 
- * further that both x and y resolve to bean Z according to the rules 
- * of typesafe resolution. If a is the current instance of A, and b 
- * is the current instance of B, then both a.x and b.y refer to the 
- * same instance of Z. This instance is the current instance of Z.</em></p>
- * 
- * <p>Any scope that is not a normal scope is called a pseudo-scope. 
- * The concept of a current instance is not well-defined in the case 
- * of a pseudo-scope.</p>
+ * <p>Any scope that is not a normal scope is called a <em>pseudo-scope</em>. 
+ * The concept of a current instance is not well-defined in the case of 
+ * a pseudo-scope.</p>
  * 
  * <p>All normal scopes must be explicitly declared 
  * {@link javax.enterprise.context.NormalScope &#064;NormalScope}. All 
