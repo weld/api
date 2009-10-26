@@ -17,8 +17,9 @@
 package javax.enterprise.event;
 
 /**
- * <p>Distinguishes conditional observer methods from observer methods
- * which are always notified.</p>
+ * <p>Distinguishes conditional 
+ * {@linkplain javax.enterprise.event.Observes observer methods} from observer 
+ * methods which are always notified.</p>
  * 
  * <p>A conditional observer method is an observer method which is notified 
  * of an event only if an instance of the bean that defines the observer 
