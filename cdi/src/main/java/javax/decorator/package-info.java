@@ -38,10 +38,7 @@
  * 
  * <p>All decorators have a 
  * {@linkplain javax.decorator.Decorates delegate injection point}.  
- * The decorator applies to any bean that is eligible for injection 
- * to the delegate injection point.</p>
- * 
- * <p>A delegate injection point is an injection point of the bean 
+ * A delegate injection point is an injection point of the bean 
  * class annotated {@link javax.decorator.Decorates &#064;Decorates}.</p>
  * 
  * <p>The type of the delegate injection point must implement or 
@@ -57,6 +54,15 @@
  * The order of the decorator declarations determines the decorator 
  * ordering. Decorators which occur earlier in the list are called 
  * first.</p>
+ * 
+ * <p>A decorator is bound to a bean if:</p>
+ * 
+ * <ul>
+ * <li>The bean is {@linkplain javax.enterprise.inject eligible for injection} 
+ * to the delegate injection point of the decorator.</li>
+ * <li>The decorator is enabled in the bean deployment archive of 
+ * the bean.</li>
+ * </ul>
  * 
  * @see javax.decorator.Decorator
  * @see javax.decorator.Decorates

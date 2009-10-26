@@ -141,9 +141,18 @@
  * 
  * <h3>Interceptor bindings</h3>
  * 
- * <p>Interceptor bindings may be used to associate interceptors with any 
- * managed bean that is not itself an interceptor or decorator or with any 
- * EJB session or message-driven bean.</p>
+ * <p>{@linkplain javax.interceptor Interceptors} may be bound to any managed 
+ * bean that is not itself an interceptor or decorator or to any EJB session 
+ * or message-driven bean. An interceptor that is annotated 
+ * {@link javax.interceptor.Interceptor &#064;Interceptor} may be identified 
+ * by its interceptor bindings.</p>
+ * 
+ * <pre>
+ * &#064;Transactional &#064;Interceptor
+ * public class TransactionInterceptor {
+ *    &#064;AroundInvoke public Object manageTransaction(InvocationContext ctx) { ... }
+ * }
+ * </pre>
  * 
  * <p>An interceptor binding type is a Java annotation annotated 
  * {@link javax.interceptor.InterceptorBinding &#064;InterceptorBinding}.
@@ -363,11 +372,29 @@
  * <p>If an EL name resolves to more than one bean, the container attempts to resolve 
  * the ambiguity by eliminating all beans which are not alternatives.</p>
  * 
+ * <h3>Enabled interceptors</h3>
+ * 
+ * <p>By default, a bean deployment archive has no enabled interceptors. An 
+ * interceptor must be explicitly enabled by listing its bean class under the 
+ * <tt>&lt;interceptors&gt;</tt> element of the <tt>beans.xml</tt> file of the 
+ * bean deployment archive. The order of the interceptor declarations determines 
+ * the interceptor ordering. Interceptors which occur earlier in the list are 
+ * called first.</p>
+ * 
+ * <p>An interceptor is bound to a bean if:</p>
+ * 
+ * <ul>
+ * <li>The bean has all the interceptor bindings of the interceptor.</li>
+ * <li>The interceptor is enabled in the bean deployment archive of 
+ * the bean.</li>
+ * </ul>
+ * 
  * @see javax.enterprise.context
+ * @see javax.inject
+ * @see javax.interceptor
+ * @see javax.decorator
+ * 
  * @see javax.enterprise.inject.Produces
- * @see javax.inject.Named
- * @see javax.inject.Qualifier
- * @see javax.interceptor.InterceptorBinding
  * @see javax.enterprise.inject.Alternative
  * 
  */
