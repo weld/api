@@ -21,12 +21,12 @@ import java.util.Set;
 import javax.enterprise.context.spi.CreationalContext;
 
 /**
- * The interface javax.enterprise.inject.spi.Producer provides a generic
+ * The interface {@link javax.enterprise.inject.spi.Producer} provides a generic
  * operation for producing an instance of a type.
  * 
  * @author Pete Muir
  * 
- * @param <T>
+ * @param <T> The class of object produced by the producer
  */
 public interface Producer<T>
 {

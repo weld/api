@@ -18,27 +18,39 @@
 package javax.enterprise.inject.spi;
 
 /**
- * The container fires an event of this type for each observer method
- * that is registered.
+ * <p>
+ * The container fires an event of this type for each
+ * {@linkplain javax.enterprise.inject.spi.ObserverMethod observer method} that
+ * is registered.
+ * </p>
+ * <p>
+ * If any observer method of a {@code ProcessObserverMethod} event throws an
+ * exception, the exception is treated as a definition error by the container.
+ * </p>
  * 
  * @author Gavin King
  * @author David Allen
- *
  * @param <X> The bean type containing the observer method
  * @param <T> The type of the event being observed
  */
 public interface ProcessObserverMethod<X, T>
 {
    /**
-    * The AnnotatedMethod representing the observer method
-    * @return the AnnotatedMethod representing the observer method 
+    * The {@link javax.enterprise.inject.spi.AnnotatedMethod} representing the
+    * observer method.
+    * 
+    * @return the {@link javax.enterprise.inject.spi.AnnotatedMethod}
+    *         representing the observer method
     */
    public AnnotatedMethod<X> getAnnotatedMethod();
 
    /**
-    * The ObserverMethod object that will be used by the container
-    * to invoke the observer when a matching event is fired.
-    * @return the ObserverMethod object that will be used by the container to call the observer method
+    * The {@link javax.enterprise.inject.spi.ObserverMethod} object that will be
+    * used by the container to invoke the observer when a matching event is
+    * fired.
+    * 
+    * @return the {@link javax.enterprise.inject.spi.ObserverMethod} object that
+    *         will be used by the container to call the observer method
     */
    public ObserverMethod<X, T> getObserverMethod();
 
@@ -46,7 +58,7 @@ public interface ProcessObserverMethod<X, T>
     * Registers a definition error with the container, causing the container to
     * abort deployment after bean discovery is complete.
     * 
-    * @param t A throwable representing the definition error
+    * @param t A {@link java.lang.Throwable} representing the definition error
     */
    public void addDefinitionError(Throwable t);
 }
