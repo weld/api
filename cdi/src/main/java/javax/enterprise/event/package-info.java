@@ -72,6 +72,8 @@
  * {@link javax.enterprise.event.ObserverException}.</li>
  * </ul>
  * 
+ * @see javax.enterprise.inject
+ * 
  * @see javax.enterprise.event.Observes
  * @see javax.enterprise.event.Event
  * @see javax.inject.Qualifier

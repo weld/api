@@ -116,5 +116,7 @@
  * method is only valid until the invocation of the method completes.</li>
  * </ul>
  * 
+ * @see javax.enterprise.inject
+ * 
  */
 package javax.enterprise.context;

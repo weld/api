@@ -64,6 +64,8 @@
  * the bean.</li>
  * </ul>
  * 
+ * @see javax.enterprise.inject
+ * 
  * @see javax.decorator.Decorator
  * @see javax.decorator.Decorates
  * 

@@ -393,6 +393,7 @@
  * @see javax.inject
  * @see javax.interceptor
  * @see javax.decorator
+ * @see javax.enterprise.event
  * 
  * @see javax.enterprise.inject.Produces
  * @see javax.enterprise.inject.Alternative
