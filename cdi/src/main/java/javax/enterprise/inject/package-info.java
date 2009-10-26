@@ -314,6 +314,20 @@
  * of the Java EE platform and Java Servlet specifications.</li>
  * </ul>
  * 
+ * <h3>Unproxyable bean types</h3>
+ * 
+ * <p>Certain legal bean types cannot be proxied by the container:</p>
+ * 
+ * <ul>
+ * <li>classes which don't have a non-private constructor with no parameters,</li>
+ * <li>classes which are declared final or have final methods,</li>
+ * <li>primitive types,</li>
+ * <li>and array types.</li>
+ * </ul>
+ * 
+ * <p>An injection point whose declared type cannot be proxied by the 
+ * container must not resolve to a bean with a normal scope.</p>
+ * 
  * @see javax.enterprise.inject.Produces
  * @see javax.inject.Scope
  * @see javax.inject.Named

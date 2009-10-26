@@ -20,7 +20,9 @@ package javax.enterprise.inject;
 
 
 /**
- * Thrown if a bean has normal scope and cannot be proxied by the container.
+ * <p>Indicates that a contextual reference for a bean with a normal scope 
+ * and a certain bean type cannot be obtained because the bean type cannot 
+ * be proxied by the container.</p>
  * 
  * @author Pete Muir
  */
