@@ -19,15 +19,13 @@ package javax.enterprise.context;
 
 
 /**
- * A {@link ContextNotActiveException} is thrown if at a particular point in the
- * execution of the program the context is inactive with respect to the current
- * thread. When the context is inactive, any invocation of the get() from the
- * current thread upon the Context object for that scope results in a
- * ContextNotActiveException.
+ * <p>Indicates that a context is not active.</p>
  * 
+ * @see javax.enterprise.context.spi.Context
  * 
  * @author Pete Muir
  * @author Shane Bryzak
+ * @author Gavin King
  */
 
 public class ContextNotActiveException extends ContextException
