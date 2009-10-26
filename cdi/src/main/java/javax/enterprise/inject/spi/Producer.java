@@ -65,6 +65,7 @@ public interface Producer<T>
     * contextual instance of the bean that declares the disposer method or
     * performs any additional required cleanup, if any, to destroy state
     * associated with a resource.
+    * </p>
     * 
     * @param instance The instance to dispose
     */

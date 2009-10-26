@@ -51,7 +51,7 @@ public interface Annotated
    public Set<Type> getTypeClosure();
 
    /**
-    * Get the annotation instance on the annoated element for a given annotation
+    * Get the annotation instance on the annotated element for a given annotation
     * type.
     * 
     * @param <T> the type of the annotation
