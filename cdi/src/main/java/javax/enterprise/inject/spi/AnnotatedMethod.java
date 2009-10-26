@@ -20,21 +20,17 @@ import java.lang.reflect.Method;
 
 /**
  * The metadata for an annotated method which can be parsed by the
- * {@link BeanManager}
- * 
- * The semantics are similar to {@link Method}
+ * {@link BeanManager}. The semantics are similar to {@link Method}.
  * 
  * @author Pete Muir
- * 
  * @param <X> the return type of the method
  */
 public interface AnnotatedMethod<X> extends AnnotatedCallable<X>
 {
 
    /**
-    * Get the underlying {@link Method} instance
-    * 
-    * return the method
+    * Get the underlying {@link Method} instance. return the {@linkplain Method
+    * method}
     */
    public Method getJavaMember();
 }

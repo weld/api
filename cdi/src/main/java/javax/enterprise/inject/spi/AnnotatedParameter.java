@@ -19,7 +19,7 @@ package javax.enterprise.inject.spi;
 
 /**
  * The metadata for an annotated parameter which can be parsed by the
- * {@link BeanManager}
+ * {@link BeanManager}.
  * 
  * @author Pete Muir
  * 
@@ -29,16 +29,16 @@ public interface AnnotatedParameter<X> extends Annotated
 {
 
    /**
-    * The position of the parameter in the callable's argument list
+    * The position of the parameter in the callable's argument list.
     * 
     * @return the position of the parameter
     */
    public int getPosition();
 
    /**
-    * The declaring callable
+    * The declaring {@linkplain AnnotatedCallable callable}.
     * 
-    * @return the declaring callable
+    * @return the declaring {@linkplain AnnotatedCallable callable}
     */
    public AnnotatedCallable<X> getDeclaringCallable();
 

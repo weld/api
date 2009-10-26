@@ -33,7 +33,7 @@ public interface AnnotatedCallable<X> extends AnnotatedMember<X>
 {
 
    /**
-    * Get the parameters of the callable member
+    * Get the parameters of the callable member.
     * 
     * @return the parameters
     */

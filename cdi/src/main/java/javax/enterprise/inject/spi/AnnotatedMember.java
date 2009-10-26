@@ -21,32 +21,31 @@ import java.lang.reflect.Member;
 
 /**
  * The metadata for an annotated member which can be parsed by the
- * {@link BeanManager}.
- * 
- * The semantics are similar to {@link Member}
+ * {@link BeanManager}. The semantics are similar to {@link Member}.
  * 
  * @author Pete Muir
- * 
  * @param <X> the type of the declaring type
  */
-public interface AnnotatedMember<X> extends Annotated 
+public interface AnnotatedMember<X> extends Annotated
 {
    /**
-    * Get the underlying {@link Member} instance
+    * Get the underlying {@link Member} instance.
     * 
-    * @return the member
+    * @return the {@linkplain Member member}
     */
    public Member getJavaMember();
 
    /**
-    * Determine if the member is static
-    * @return
+    * Determines if the member is static.
+    * 
+    * @return true if the member is static
     */
    public boolean isStatic();
 
    /**
-    * Get the type which declares this member
-    * @return the type of which declares this member
+    * Get the {@linkplain AnnotatedType type} which declares this member.
+    * 
+    * @return the {@linkplain AnnotatedType type} of which declares this member
     */
    public AnnotatedType<X> getDeclaringType();
 }

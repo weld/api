@@ -23,7 +23,7 @@ import java.lang.reflect.Constructor;
  * The metadata for an annotated constructor which can be parsed by the
  * {@link BeanManager}.
  * 
- * The semantics are similar to {@link Constructor}
+ * The semantics are similar to {@link Constructor}.
  * 
  * @author Pete Muir
  * 
@@ -33,7 +33,7 @@ public interface AnnotatedConstructor<X> extends AnnotatedCallable<X>
 {
 
    /**
-    * Get the underlying {@link Constructor} instance
+    * Get the underlying {@link Constructor} instance.
     * 
     * @return the constructor instance
     */

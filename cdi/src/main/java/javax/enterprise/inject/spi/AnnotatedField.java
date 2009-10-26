@@ -20,9 +20,9 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Member;
 
 /**
- * The metadata for an annotated field which can be parsed by the {@link BeanManager}
+ * The metadata for an annotated field which can be parsed by the {@link BeanManager}.
  * 
- * The semantics are similar to {@link Field}
+ * The semantics are similar to {@link Field}.
  * 
  * @author Pete Muir
  *
@@ -31,7 +31,7 @@ import java.lang.reflect.Member;
 public interface AnnotatedField<X> extends AnnotatedMember<X> {
 
    /**
-    * Get the underlying {@link Member} instance
+    * Get the underlying {@link Member} instance.
     * 
     * @return the member instance
     */

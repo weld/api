@@ -20,44 +20,41 @@ package javax.enterprise.inject.spi;
 import java.util.Set;
 
 /**
- * The metadata for an annotated type which can be parsed by the {@link BeanManager}
- * 
- * The semantics are similar to {@link Class}.
+ * The metadata for an annotated type which can be parsed by the
+ * {@link BeanManager}. The semantics are similar to {@link Class}.
  * 
  * @author Pete Muir
- *
  * @param <X> the type of the class
  */
-public interface AnnotatedType<X> extends Annotated {
+public interface AnnotatedType<X> extends Annotated
+{
 
    /**
-    * Get the underlying class instance
+    * Get the underlying {@linkplain java.lang.Class class} instance.
     * 
     * @return
     */
    public Class<X> getJavaClass();
 
    /**
-    * Get the constructors belonging to the class
+    * Get the {@linkplain AnnotatedConstructor constructors} belonging to the class If an empty set is returned, a
+    * default (no-args) constructor will be assumed.
     * 
-    * If an empty set is returned, a default (no-args) constructor will be 
-    * assumed.
-    * 
-    * @return the constructors, or an empty set if none are defined
+    * @return the {@linkplain AnnotatedConstructor constructors}, or an empty set if none are defined
     */
    public Set<AnnotatedConstructor<X>> getConstructors();
 
    /**
-    * Get the business methods belonging to the class.
+    * Get the {@linkplain AnnotatedMethod business methods} belonging to the class.
     * 
-    * @return the methods, or an empty set if none are defined
+    * @return the {@linkplain AnnotatedMethod methods}, or an empty set if none are defined
     */
    public Set<AnnotatedMethod<? super X>> getMethods();
 
    /**
-    * Get the fields belonging to the class
+    * Get the {@linkplain AnnotatedField fields} belonging to the class.
     * 
-    * @return the fields, or an empty set if none are defined
+    * @return the {@linkplain AnnotatedField fields}, or an empty set if none are defined
     */
    public Set<AnnotatedField<? super X>> getFields();
 }
