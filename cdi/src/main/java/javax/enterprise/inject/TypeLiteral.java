@@ -63,9 +63,7 @@ public abstract class TypeLiteral<T>
    }
 
    /**
-    * Get the actual type represented by type literal
-    * 
-    * @return
+    * @return the actual type represented by type literal
     */
    public final Type getType() 
    {
@@ -73,9 +71,7 @@ public abstract class TypeLiteral<T>
    }
 
    /**
-    * Get the raw type represented by the type literal
-    * 
-    * @return
+    * @return the raw type represented by the type literal
     */
    @SuppressWarnings("unchecked")
    public final Class<T> getRawType() {
