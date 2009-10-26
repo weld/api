@@ -75,7 +75,9 @@ import java.lang.annotation.Target;
  * a parameterized type with a type variable, it must have scope 
  * {@link javax.enterprise.context.Dependent &#064;Dependent}.</p>
  * 
- * <p>A bean may declare multiple producer methods or fields.</p> 
+ * <p>A bean may declare multiple producer methods or fields.</p>
+ * 
+ * <p>Producer methods and fields are not inherited by bean subclasses.</p>
  * 
  * <p>Interceptors and decorators may not declare producer methods 
  * or fields.</p>

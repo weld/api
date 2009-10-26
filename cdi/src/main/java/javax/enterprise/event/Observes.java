@@ -51,6 +51,8 @@ import java.lang.annotation.Target;
  * 
  * <p>A bean may declare multiple observer methods.</p>
  * 
+ * <p>Observer methods are inherited by bean subclasses.</p>
+ * 
  * @author Gavin King
  * @author Pete Muir
  * @author David Allen

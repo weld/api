@@ -69,6 +69,8 @@ import java.lang.annotation.Target;
  * container must call it when destroying any instance 
  * returned by any of these producer methods.</p> 
  * 
+ * <p>Disposer methods are not inherited by bean subclasses.</p>
+ * 
  * @see javax.enterprise.inject.Produces &#064;Produces
  * 
  * @author Gavin King
