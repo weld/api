@@ -17,7 +17,8 @@
 package javax.enterprise.context;
 
 /**
- * <p>Allows the application to manage the conversation context
+ * <p>Allows the application to manage the 
+ * {@linkplain javax.enterprise.context.ConversationScoped conversation context}
  * by marking the current conversation as transient or long-running,
  * specifying a conversation identifier, or setting the conversation
  * timeout.</p>
