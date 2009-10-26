@@ -83,8 +83,8 @@
  * reference for a bean are valid only for a certain period of time. The 
  * application should not invoke a method of an invalid reference.</p>
  * 
- * <p>The validity of a contextual reference depends upon whether the 
- * scope of the injected bean is a normal scope or a pseudo-scope:</p>
+ * <p>The validity of a contextual reference for a bean depends upon 
+ * whether the scope of the bean is a normal scope or a pseudo-scope:</p>
  * 
  * <ul>
  * <li>Any reference to a bean with a normal scope is valid as long as 
