@@ -1,0 +1,49 @@
+<html>
+
+<body>
+
+<p>Contexts and Dependency Injection (CDI) defines the following 
+complementary services:</p>
+
+<ul>
+<li>The lifecycle and interactions of stateful 
+{@linkplain javax.enterprise.inject beans} bound to well-defined 
+lifecycle {@linkplain javax.enterprise.context contexts}, where 
+the set of contexts is {@linkplain javax.enterprise.context.spi 
+extensible}</li>
+<li>A sophisticated, typesafe {@linkplain javax.enterprise.inject 
+dependency injection mechanism}, including a 
+{@linkplain javax.enterprise.inject.Alternative facility} for 
+choosing between various beans that implement the same Java 
+interface at deployment time</li>
+<li>{@linkplain javax.enterprise.inject Integration} with the 
+Unified Expression Language, allowing any bean to be used directly 
+within a JSF or JSP page</li>
+<li>The ability to {@linkplain javax.decorator decorate} injected 
+components</li>
+<li>The ability to associate 
+{@linkplain javax.interceptor interceptors} with beans via 
+{@linkplain javax.enterprise.inject typesafe interceptor bindings}</li>
+<li>An {@linkplain javax.enterprise.event event} notification model</li>
+<li>A web {@linkplain javax.enterprise.context.ConversationScoped 
+conversation context} in addition to the three standard 
+web contexts defined by the Java Servlets specification</li>
+<li>An {@linkplain javax.enterprise.inject.spi SPI} allowing portable 
+extensions to integrate cleanly with the Java EE environment</li>
+</ul>
+
+<p>CDI allows objects to be bound to lifecycle contexts, to be 
+injected, to be associated with interceptors and decorators, and to 
+interact in a loosely coupled fashion by 
+{@linkplain javax.enterprise.event.Event firing} and 
+{@linkplain javax.enterprise.event.Observes observing} events. 
+{@linkplain javax.enterprise.inject Various kinds} of objects are 
+injectable, including EJB 3 session beans, managed beans, 
+{@linkplain javax.enterprise.inject.Produces producer methods } and 
+Java EE resources. We refer to these objects in general terms as beans 
+and to instances of beans that are bound to contexts as contextual 
+instances.</p>
+
+</body>
+
+</html>
