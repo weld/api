@@ -92,13 +92,9 @@
  * } 
  * </pre>
  * 
- * <p>A bean may only be injected to an injection point if</p>
- * 
- * <ul>
- * <li>the type of the injection point is one of the bean types of the 
- * bean, and</li>
- * <li>the bean has all the qualifiers of the injection point.</li>
- * </ul>
+ * <p>If a bean does not explicitly declare a qualifier other than 
+ * {@link javax.inject.Named &#064;Named}, the bean has the qualifier 
+ * {@link javax.enterprise.inject.Default &#064;Default}.</p>
  * 
  * <h3>Scope</h3>
  * 
@@ -120,6 +116,10 @@
  * 
  * <p>A bean class or producer method or field may specify at most one 
  * scope type annotation.</p>
+ * 
+ * <p>If the bean does not explicitly declare a scope or a stereotype
+ * with a default scope, the scope defaults to 
+ * {@link javax.enterprise.context.Dependent &#064;Dependent}.</p>
  * 
  * <h3>Bean EL name</h3>
  * 
@@ -300,10 +300,9 @@
  * 
  * <p>Otherwise, the bean is said to be disabled.</p>
  * 
- * <h3>Eligible dependencies</h3>
+ * <h3>Dependency injection</h3>
  * 
- * <p>A bean is eligible for injection into a given class if it satisfies the 
- * following conditions:</p>
+ * <p>A bean is eligible for injection into a given class if:</p>
  * 
  * <ul>
  * <li>The bean is enabled.</li>
@@ -315,7 +314,23 @@
  * of the Java EE platform and Java Servlet specifications.</li>
  * </ul>
  * 
- * <h3>Unproxyable bean types</h3>
+ * <p>A bean is eligible for injection into a given injection point if:</p>
+ * 
+ * <ul>
+ * <li>The bean has a bean type that matches the type of the injection point. For 
+ * this purpose, primitive types are considered to match their corresponding wrapper 
+ * types in {@link java.lang} and array types are considered to match only if their 
+ * element types are identical.</li>
+ * <li>The bean has all the qualifiers of the injection point. If the injection point
+ * does not explicitly declare a qualifier, it has the default qualifier 
+ * {@link javax.enterprise.inject.Default &#064;Default}.</li>
+ * <li>The bean is eligible for injection into the class that declares the injection 
+ * point.</li>
+ * </ul>
+ * 
+ * <p>If more than one bean is eligible for injection to the injection point, the
+ * container attempts to resolve the ambiguity by eliminating all beans which are 
+ * not alternatives.</p>
  * 
  * <p>Certain legal bean types cannot be proxied by the container:</p>
  * 
@@ -327,13 +342,33 @@
  * </ul>
  * 
  * <p>An injection point whose declared type cannot be proxied by the 
- * container must not resolve to a bean with a normal scope.</p>
+ * container must not resolve to a bean with a 
+ * {@linkplain javax.enterprise.context normal scope}.</p>
+ * 
+ * <h3>EL name resolution</h3>
+ * 
+ * <p>EL names are resolved when Unified EL expressions are evaluated. An EL name 
+ * resolves to a bean if:</p>
+ * 
+ * <ul>
+ * <li>The bean has the given EL name.</li>
+ * <li>The bean is enabled.</li>
+ * <li>The bean is either not an alternative, or is a selected alternative of the 
+ * war containing the JSP or JSF page with the EL expression.</li>
+ * <li>The bean class is required to be accessible to classes in the war containing 
+ * the JSP or JSF page with the EL expression, according to the class loading 
+ * requirements of the Java EE platform and Java Servlet specifications.</li>
+ * </ul>
+ * 
+ * <p>If an EL name resolves to more than one bean, the container attempts to resolve 
+ * the ambiguity by eliminating all beans which are not alternatives.</p>
  * 
  * @see javax.enterprise.context
  * @see javax.enterprise.inject.Produces
  * @see javax.inject.Named
  * @see javax.inject.Qualifier
  * @see javax.interceptor.InterceptorBinding
+ * @see javax.enterprise.inject.Alternative
  * 
  */
 package javax.enterprise.inject;
