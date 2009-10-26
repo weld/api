@@ -19,19 +19,50 @@ package javax.enterprise.inject.spi;
 import javax.enterprise.context.spi.CreationalContext;
 
 /**
- * 
+ * <p>
+ * This interface provides operations for performing dependency injection and
+ * lifecycle callbacks on an instance of a type.
+ * </p>
  * 
  * @author Pete Muir
- *
- * @param <T>
+ * @author David Allen
+ * @param <T> The class of the instance
  */
 public interface InjectionTarget<T> extends Producer<T>
 {
 
+   /**
+    * <p>
+    * Performs dependency injection upon the given object. First, the container
+    * performs Java EE component environment injection according to the
+    * semantics required by the Java EE platform specification. Next, it sets
+    * the value of all injected fields, and then calls all initializer methods.
+    * </p>
+    * 
+    * @param instance The instance upon which to perform injections
+    * @param ctx The CreationalContext to use for creating new instances
+    */
    public void inject(T instance, CreationalContext<T> ctx);
 
+   /**
+    * <p>
+    * Calls the {@link javax.annotation.PostConstruct} callback, if it exists,
+    * according to the semantics required by the Java EE platform specification.
+    * </p>
+    * 
+    * @param instance
+    */
    public void postConstruct(T instance);
 
+   /**
+    * <p>
+    * Calls the {@link javax.annotation.PreDestroy} callback, if it exists,
+    * according to the semantics required by the Java EE platform specification.
+    * </p>
+    * 
+    * @param instance The instance on which to invoke the
+    *           {@link javax.annotation.PreDestroy} method
+    */
    public void preDestroy(T instance);
 
 }
