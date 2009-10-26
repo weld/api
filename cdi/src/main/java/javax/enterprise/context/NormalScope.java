@@ -29,8 +29,9 @@ import java.lang.annotation.Target;
  * 
  * @author Gavin King
  * @author Pete Muir
+ * 
+ * @see javax.inject.Scope &#064;Scope is used to declare pseudo-scopes.
  */
-
 @Target(ANNOTATION_TYPE)
 @Retention(RUNTIME)
 @Documented
@@ -38,8 +39,14 @@ public @interface NormalScope
 {
    
    /**
-    * @return true if this is a passivating scope type (if beans with 
-    * this scope type must be serializable)
+    * <p>Determines whether the normal scope type is a passivating scope.</p>
+    * 
+    * <p>A bean is called passivation capable if the container is able to 
+    * temporarily transfer the state of any idle instance to secondary 
+    * storage. A passivating scope requires that beans with the scope are 
+    * passivation capable.</p>
+    * 
+    * @return <tt>true</tt> if the scope type is a passivating scope type
     */
    boolean passivating() default false;
 
