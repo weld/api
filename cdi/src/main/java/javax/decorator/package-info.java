@@ -19,11 +19,11 @@
  * 
  * <h3>Decorated types</h3>
  * 
- * <p>The set of decorated types 
- * of a decorator includes all interfaces implemented directly or 
- * indirectly by the bean class, except for {@link java.io.Serializable}. 
- * The decorator bean class and its superclasses are not decorated 
- * types of the decorator. The decorator class may be abstract.</p>
+ * <p>The set of decorated types of a decorator includes all 
+ * interfaces implemented directly or indirectly by the bean class, 
+ * except for {@link java.io.Serializable}. The decorator bean 
+ * class and its superclasses are not decorated types of the 
+ * decorator. The decorator class may be abstract.</p>
  * 
  * <p>A decorator intercepts every method:</p>
  * <ul>
@@ -63,6 +63,11 @@
  * <li>The decorator is enabled in the bean deployment archive of 
  * the bean.</li>
  * </ul>
+ * 
+ * <p>If a managed bean class is declared final, it may not have
+ * decorators. If a managed bean has a non-static, non-private, 
+ * final method, it may not have any decorator which implements
+ * that method.</p>
  * 
  * @see javax.enterprise.inject
  * 
