@@ -48,7 +48,6 @@ import java.lang.annotation.Target;
  * @author Gavin King
  * 
  */
-
 @Target( { FIELD, METHOD, TYPE })
 @Retention(RUNTIME)
 @Documented
