@@ -179,6 +179,11 @@
  * } 
  * </pre>
  * 
+ * <p>If a managed bean class is declared final, it may not have any interceptor 
+ * bindings. If a managed bean has a non-static, non-private, final method, it 
+ * may not have any class-level interceptor bindings, and that method may not
+ * have any method-level interceptor bindings.</p>
+ * 
  * <h3>Bean implementation</h3>
  * 
  * <p>The container provides built-in support for injection and contextual 
