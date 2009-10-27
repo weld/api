@@ -16,8 +16,6 @@
  */
 package javax.enterprise.inject.spi;
 
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
 import javax.enterprise.context.spi.CreationalContext;
 
 /**
@@ -49,23 +47,23 @@ public interface InjectionTarget<T> extends Producer<T>
 
    /**
     * <p>
-    * Calls the {@link PostConstruct} callback, if it exists,
+    * Calls the {@link javax.annotation.PostConstruct} callback, if it exists,
     * according to the semantics required by the Java EE platform specification.
     * </p>
     * 
     * @param instance The instance on which to invoke the
-    *           {@link PostConstruct} method
+    *           {@link javax.annotation.PostConstruct} method
     */
    public void postConstruct(T instance);
 
    /**
     * <p>
-    * Calls the {@link PreDestroy} callback, if it exists,
+    * Calls the {@link javax.annotation.PreDestroy} callback, if it exists,
     * according to the semantics required by the Java EE platform specification.
     * </p>
     * 
     * @param instance The instance on which to invoke the
-    *           {@link PreDestroy} method
+    *           {@link javax.annotation.PreDestroy} method
     */
    public void preDestroy(T instance);
 
