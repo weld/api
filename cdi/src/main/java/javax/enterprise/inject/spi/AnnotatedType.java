@@ -32,7 +32,7 @@ public interface AnnotatedType<X> extends Annotated
    /**
     * Get the underlying {@linkplain java.lang.Class class} instance.
     * 
-    * @return
+    * @return the {@link java.lang.Class} of the instance
     */
    public Class<X> getJavaClass();
 

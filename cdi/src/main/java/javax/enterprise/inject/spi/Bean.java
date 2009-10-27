@@ -23,70 +23,84 @@ import java.util.Set;
 
 import javax.enterprise.context.spi.Contextual;
 
+/**
+ * <p>
+ * This interface defines everything the container needs to manage instances of
+ * a certain bean.
+ * </p>
+ * 
+ * @author David Allen
+ * @param <T> the class of the bean instance
+ */
 public interface Bean<T> extends Contextual<T>
 {
 
    /**
-    * The client-visible types of a bean
+    * Returns the client-visible {@linkplain Type types} of a bean.
     * 
-    * @return the bean types
+    * @return the bean {@linkplain Type types}
     */
    public Set<Type> getTypes();
 
    /**
-    * The bindings of a bean
+    * Returns the {@linkplain javax.inject.Qualifier qualifiers} of a bean.
     * 
-    * @return the bindings
+    * @return the {@linkplain javax.inject.Qualifier qualifiers}
     */
    public Set<Annotation> getQualifiers();
 
    /**
-    * The scope of a bean
+    * Returns the {@linkplain javax.enterprise.context scope} of a bean.
     * 
-    * @return the scope
+    * @return the {@linkplain javax.enterprise.context scope}
     */
    public Class<? extends Annotation> getScope();
 
    /**
-    * The name of a bean
+    * Returns the name of a bean, if it has one.
     * 
     * @return the name
     */
    public String getName();
 
    /**
-    * The stereotypes applied to this bean
+    * The {@linkplain javax.enterprise.inject.Stereotype stereotypes} applied to
+    * this bean
     * 
-    * @return stereotypes if any
+    * @return {@linkplain javax.enterprise.inject.Stereotype stereotypes} if any
     */
    public Set<Class<? extends Annotation>> getStereotypes();
 
    /**
-    * The bean class of the managed bean or session bean or of the bean that
-    * declares the producer method or field
+    * The bean {@linkplain Class class} of the managed bean or session bean or
+    * of the bean that declares the producer method or field
     * 
-    * @return the class of the managed bean
+    * @return the {@linkplain Class class} of the managed bean
     */
    public Class<?> getBeanClass();
 
    /**
-    * Test to see if the bean is a policy
+    * Test to see if the bean is an
+    * {@linkplain javax.enterprise.inject.Alternative alternative}.
     * 
-    * @return true if the bean is a policy
+    * @return true if the bean is an
+    *         {@linkplain javax.enterprise.inject.Alternative alternative}
     */
    public boolean isAlternative();
 
    /**
-    * The nullability of a bean
+    * Determines if the {@code create()} method may sometimes return a null
+    * value.
     * 
-    * @return true if the bean is nullable
+    * @return true if the {@code create()} method may return a null
     */
    public boolean isNullable();
 
    /**
-    * The injection points of a bean
+    * A set of {@link InjectionPoint} objects representing injection points of
+    * the bean, that will be validated by the container at initialization time.
     * 
-    * @return the injection points of a bean
+    * @return the {@linkplain InjectionPoint injection points} of a bean
     */
    public Set<InjectionPoint> getInjectionPoints();
 

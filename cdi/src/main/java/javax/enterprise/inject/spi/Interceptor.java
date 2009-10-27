@@ -29,20 +29,20 @@ import javax.interceptor.InvocationContext;
  * @author Pete Muir
  * @author David Allen
  *
- * @param <T>
+ * @param <T> the {@link java.lang.Class} of bean intercepted
  */
 public interface Interceptor<T> extends Bean<T>
 {
 
    /**
-    * The interceptor bindings used to bind an interceptor to a bean
+    * Returns the set of interceptor bindings used to bind an interceptor to a bean.
     * 
     * @return the interceptor bindings
     */
    public Set<Annotation> getInterceptorBindingTypes();
    
    /**
-    * Tests if this intercepts callbacks or business methods of the given type
+    * Tests if this intercepts callbacks or business methods of the given type.
     * 
     * @param type The type of interception
     * @return true if this intercepts the given type of methods
@@ -51,7 +51,7 @@ public interface Interceptor<T> extends Bean<T>
    
    /**
     * Invokes the specified kind of lifecycle callback or business method upon the 
-    * given instance
+    * given instance.
     * 
     * @param type the interception type
     * @param instance the instance to invoke
