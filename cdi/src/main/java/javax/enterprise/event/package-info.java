@@ -55,6 +55,13 @@
  * <li>the observer method has all the event qualifiers of the event.</li>
  * </ul>
  * 
+ * <p>If the observer method is a 
+ * {@linkplain javax.enterprise.event.TransactionPhase transactional 
+ * observer method} and there is a JTA transaction in progress when the
+ * event is fired, the observer method is notified during the appropriate 
+ * transaction completion phase. Otherwise, the observer is notified when 
+ * the event is fired.</p>
+ * 
  * <p>The order in which observer methods are called is not defined, and 
  * so portable applications should not rely upon the order in which 
  * observers are called.</p>
