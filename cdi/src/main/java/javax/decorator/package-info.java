@@ -69,6 +69,10 @@
  * final method, it may not have any decorator which implements
  * that method.</p>
  * 
+ * <p>A decorator instance is a 
+ * {@linkplain javax.enterprise.context.Dependent dependent object} 
+ * of the object it decorates.</p>
+ * 
  * @see javax.enterprise.inject
  * 
  * @see javax.decorator.Decorator

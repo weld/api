@@ -400,6 +400,10 @@
  * the bean.</li>
  * </ul>
  * 
+ * <p>An interceptor instance is a
+ * {@linkplain javax.enterprise.context.Dependent dependent object} 
+ * of the object it intercepts.</p>
+ * 
  * @see javax.enterprise.context
  * @see javax.inject
  * @see javax.interceptor
