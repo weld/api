@@ -32,11 +32,10 @@ import java.lang.annotation.Target;
  * public void afterLogin(&#064;Observes LoggedInEvent event) { ... }
  * </pre>
  * 
- * <p>An observer method is a non-abstract
- * method of a managed bean class or session bean class. An observer method may
- * be either static or non-static. If the bean is a session bean, the observer
- * method must be either a business method of the EJB or a static method of the
- * bean class.</p>
+ * <p>An observer method is a non-abstract method of a managed bean class or 
+ * session bean class. An observer method may be either static or non-static. 
+ * If the bean is a session bean, the observer method must be either a business 
+ * method of the EJB or a static method of the bean class.</p>
  * 
  * <p>Each observer method must have exactly one event parameter, of the same 
  * type as the event type it observes. Event qualifiers may be declared 
@@ -52,6 +51,9 @@ import java.lang.annotation.Target;
  * <p>A bean may declare multiple observer methods.</p>
  * 
  * <p>Observer methods are inherited by bean subclasses.</p>
+ * 
+ * <p>Interceptors and decorators may not declare observer 
+ * methods.</p>
  * 
  * @author Gavin King
  * @author Pete Muir

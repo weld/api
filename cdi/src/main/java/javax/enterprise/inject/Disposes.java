@@ -71,6 +71,9 @@ import java.lang.annotation.Target;
  * 
  * <p>Disposer methods are not inherited by bean subclasses.</p>
  * 
+ * <p>Interceptors and decorators may not declare disposer 
+ * methods.</p>
+ * 
  * @see javax.enterprise.inject.Produces &#064;Produces
  * 
  * @author Gavin King
