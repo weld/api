@@ -314,21 +314,23 @@
  * 
  * <p>Otherwise, the bean is said to be disabled.</p>
  * 
- * <h3>Dependency injection</h3>
+ * <h3>Inter-module injection</h3>
  * 
- * <p>A bean is eligible for injection into a given class if:</p>
+ * <p>A bean is available for injection in a certain Java EE module or library if:</p>
  * 
  * <ul>
- * <li>The bean is enabled.</li>
- * <li>The bean is not an interceptor or decorator.</li>
- * <li>The bean is either not an alternative, or is a selected alternative of 
- * the bean deployment archive of the given class.</li>
- * <li>In a Java EE or servlet container, the bean class is required to be 
- * accessible to the given class, according to the class loading requirements 
- * of the Java EE platform and Java Servlet specifications.</li>
+ * <li>the bean is enabled,</li>
+ * <li>the bean is either not an alternative, or the module or library is a bean 
+ * deployment archive and the bean is a selected alternative of the bean deployment 
+ * archive, and</li>
+ * <li>the bean class is required to be accessible to classes in the module or 
+ * library, according to the class loading requirements of the Java EE platform and 
+ * Java Servlet specifications.</li>
  * </ul>
  * 
- * <p>A bean is eligible for injection into a given injection point if:</p>
+ * <h3>Dependency injection</h3>
+ * 
+ * <p>A bean is assignable to a given injection point if:</p>
  * 
  * <ul>
  * <li>The bean has a bean type that matches the type of the injection point. For 
@@ -340,6 +342,14 @@
  * {@link javax.enterprise.inject.Default &#064;Default}.</li>
  * <li>The bean is eligible for injection into the class that declares the injection 
  * point.</li>
+ * </ul>
+ * 
+ * <p>A bean is eligible for injection into a given injection point if:</p>
+ * 
+ * <ul>
+ * <li>it is available for injection in the Java EE module or library that contains 
+ * the class that declares the injection point, and</li>
+ * <li>it is assignable to the injection point.</li>
  * </ul>
  * 
  * <p>If more than one bean is eligible for injection to the injection point, the
@@ -366,12 +376,8 @@
  * 
  * <ul>
  * <li>The bean has the given EL name.</li>
- * <li>The bean is enabled.</li>
- * <li>The bean is either not an alternative, or is a selected alternative of the 
- * war containing the JSP or JSF page with the EL expression.</li>
- * <li>The bean class is required to be accessible to classes in the war containing 
- * the JSP or JSF page with the EL expression, according to the class loading 
- * requirements of the Java EE platform and Java Servlet specifications.</li>
+ * <li>the bean is available for injection in the war containing the JSP or JSF 
+ * page with the EL expression.</li>
  * </ul>
  * 
  * <p>If an EL name resolves to more than one bean, the container attempts to resolve 
