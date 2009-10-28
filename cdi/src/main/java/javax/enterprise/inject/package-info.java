@@ -39,7 +39,7 @@
  * 
  * <pre>
  * public class BookShop 
-         extends Business 
+ *       extends Business 
  *       implements Shop&lt;Book&gt; { 
  *    ... 
  * } 
