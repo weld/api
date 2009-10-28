@@ -105,10 +105,11 @@ public interface BeanManager
    public <T> CreationalContext<T> createCreationalContext(Contextual<T> contextual);
 
    /**
-    * Returns the set of beans which match the given required type and
-    * qualifiers and are accessible to the class into which the BeanManager was
-    * injected, according to the rules of typesafe resolution. Typesafe
-    * resolution usually occurs at container deployment time.
+    * Returns the set of beans which have the given required type and qualifiers 
+    * and are available for injection in the module or library containing the 
+    * class into which the BeanManager was injected or the Java EE component from 
+    * whose JNDI environment namespace the BeanManager was obtained, according to 
+    * the rules of typesafe resolution.
     * 
     * @param beanType the type of the beans to be resolved
     * @param qualifiers the qualifiers used to restrict the matched beans. If no
@@ -125,9 +126,11 @@ public interface BeanManager
    public Set<Bean<?>> getBeans(Type beanType, Annotation... qualifiers);
 
    /**
-    * Returns the set of beans which match the given EL name and are accessible
-    * to the class into which the BeanManager was injected, according to the
-    * rules of EL name resolution.
+    * Returns the set of beans which have the given EL name and are available for 
+    * injection in the module or library containing the class into which the 
+    * BeanManager was injected or the Java EE component from whose JNDI environment 
+    * namespace the BeanManager was obtained, according to the rules of EL name 
+    * resolution.
     * 
     * @param name the name used to restrict the beans matched
     * @return the matched beans
