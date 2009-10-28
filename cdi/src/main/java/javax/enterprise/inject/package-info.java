@@ -150,7 +150,8 @@
  * <pre>
  * &#064;Transactional &#064;Interceptor
  * public class TransactionInterceptor {
- *    &#064;AroundInvoke public Object manageTransaction(InvocationContext ctx) { ... }
+ *    &#064;AroundInvoke 
+ *    public Object manageTransaction(InvocationContext ctx) { ... }
  * }
  * </pre>
  * 
