@@ -55,11 +55,11 @@
  * <h3>Container lifecycle events</h3>
  * 
  * <p>During the application initialization process, the container fires 
- * a series of events, allowing portable extensions to integrate with the 
- * container initialization process. Observers of these events must be 
- * service providers of the service 
- * {@link javax.enterprise.inject.spi.Extension} declared in 
- * <tt>META-INF/services</tt>.</p>
+ * a series of {@linkplain javax.enterprise.event events}, allowing 
+ * portable extensions to integrate with the container initialization 
+ * process. Observer methods of these events must belong to
+ * {@linkplain javax.enterprise.inject.spi.Extension extensions} declared 
+ * in <tt>META-INF/services</tt>.</p>
  * 
  * @see javax.enterprise.inject
  * @see javax.enterprise.context.spi
