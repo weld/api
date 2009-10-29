@@ -124,8 +124,8 @@
  * <h3>Bean EL name</h3>
  * 
  * <p>A bean may have a bean EL name. A bean with an EL name may be referred 
- * to by its name in Unified EL expressions. A valid bean EL name is a 
- * period-separated list of valid EL identifiers.</p>
+ * to by its name in {@linkplain javax.el Unified EL} expressions. A valid 
+ * bean EL name is a period-separated list of valid EL identifiers.</p>
  * 
  * <p>To specify the EL name of a bean, the qualifier 
  * {@link javax.inject.Named &#064;Named} is applied to the bean class or 
@@ -220,7 +220,8 @@
  * </ul>
  *  
  * <p>All Java classes that meet these conditions are managed beans and thus no 
- * special declaration is required to define a managed bean.</p>
+ * special declaration is required to define a managed bean. Optionally, a
+ * managed bean may be annotated {@link javax.annotation.ManagedBean}.</p>
  * 
  * <p>If a managed bean has a public field, it must have scope 
  * {@link javax.enterprise.context.Dependent &#064;Dependent}.</p>
@@ -230,18 +231,17 @@
  * 
  * <h4>Session beans</h4>
  * 
- * <p>A session bean is a bean that is implemented by a session bean with an 
- * EJB 3.x client view. The basic lifecycle and semantics of an EJB session bean 
- * are defined by the EJB specification.</p>
+ * <p>The basic lifecycle and semantics of EJB session beans are defined by the 
+ * EJB specification.</p>
  * 
  * <ul>
- * <li>A stateless session bean must belong to the 
+ * <li>A {@linkplain javax.ejb.Stateless stateless session bean} must belong to the 
  * {@link javax.enterprise.context.Dependent &#064;Dependent} pseudo-scope.</li>
- * <li>A  singleton bean must belong to either the 
+ * <li>A {@linkplain javax.ejb.Singleton singleton bean} must belong to either the 
  * {@link javax.enterprise.context.ApplicationScoped &#064;ApplicationScoped} 
  * scope or to the {@link javax.enterprise.context.Dependent &#064;Dependent}
  * pseudo-scope.</li>
- * <li>A stateful session bean may have any scope.</li>
+ * <li>A {@linkplain javax.ejb.Stateful stateful session bean} may have any scope.</li>
  * </ul>
  * 
  * <p>If the session bean class is a generic type, it must have scope 
@@ -294,6 +294,31 @@
  * <p>The injection annotation specifies the metadata needed to obtain the 
  * resources, entity manager, entity manager factory, remote EJB instance or 
  * web service reference from the component environment.</p>
+ * 
+ * <pre>
+ * &#064;Produces &#064;WebServiceRef(lookup="java:app/service/PaymentService")
+ * PaymentService paymentService;
+ * </pre>
+ * 
+ * <pre>
+ * &#064;Produces &#064;EJB(ejbLink="../their.jar#PaymentService")
+ * PaymentService paymentService;
+ * </pre>
+ * 
+ * <pre>
+ * &#064;Produces &#064;Resource(lookup="java:global/env/jdbc/CustomerDatasource")
+ * &#064;CustomerDatabase Datasource customerDatabase;
+ * </pre>
+ * 
+ * <pre>
+ * &#064;Produces &#064;PersistenceContext(unitName="CustomerDatabase")
+ * &#064;CustomerDatabase EntityManager customerDatabasePersistenceContext;
+ * </pre>
+ * 
+ * <pre>
+ * &#064;Produces &#064;PersistenceUnit(unitName="CustomerDatabase")
+ * &#064;CustomerDatabase EntityManagerFactory customerDatabasePersistenceUnit;
+ * </pre>
  * 
  * <p>A resource may not have an EL name.</p>
  * 
