@@ -37,9 +37,9 @@
  * <h3>Delegate injection points</h3>
  * 
  * <p>All decorators have a 
- * {@linkplain javax.decorator.Decorates delegate injection point}.  
+ * {@linkplain javax.decorator.Delegate delegate injection point}.  
  * A delegate injection point is an injection point of the bean 
- * class annotated {@link javax.decorator.Decorates &#064;Decorates}.</p>
+ * class annotated {@link javax.decorator.Delegate &#064;Decorates}.</p>
  * 
  * <p>The type of the delegate injection point must implement or 
  * extend every decorated type. A decorator is not required to 
@@ -76,7 +76,7 @@
  * @see javax.enterprise.inject
  * 
  * @see javax.decorator.Decorator
- * @see javax.decorator.Decorates
+ * @see javax.decorator.Delegate
  * 
  */
 package javax.decorator;
