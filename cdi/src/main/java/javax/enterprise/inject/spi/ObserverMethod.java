@@ -8,14 +8,13 @@ import javax.enterprise.event.Reception;
 import javax.enterprise.event.TransactionPhase;
 
 /**
- * <p>
- * This interface defines everything the container needs to know about an
- * observer method.
- * </p>
+ * <p>Represents an observer method of an enabled bean. Defines 
+ * everything the container needs to know about an observer method.</p>
  * 
+ * @author Gavin King
  * @author David Allen
- * @param <X> the type of bean with the observer method
- * @param <T> the type of event
+ * @param <X> the type of the bean with the observer method
+ * @param <T> the event type 
  */
 public interface ObserverMethod<X, T>
 {

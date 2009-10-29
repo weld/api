@@ -35,9 +35,10 @@ public interface Interceptor<T> extends Bean<T>
 {
 
    /**
-    * <p>Get the interceptor bindings of the interceptor.</p>
+    * <p>Obtains the {@linkplain javax.interceptor.InterceptorBinding interceptor bindings} 
+    * of the interceptor.</p>
     * 
-    * @return the set of interceptor bindings
+    * @return the set of {@linkplain javax.interceptor.InterceptorBinding interceptor bindings}
     */
    public Set<Annotation> getInterceptorBindingTypes();
    

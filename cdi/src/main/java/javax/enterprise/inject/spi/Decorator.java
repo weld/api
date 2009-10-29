@@ -33,24 +33,24 @@ public interface Decorator<T> extends Bean<T>
 {
 
    /**
-    * <p>Get the delegate type</p>
+    * <p>Obtains the delegate {@linkplain Type type}.</p>
     * 
-    * @return the delegate type
+    * @return the delegate {@linkplain Type type}
     */
    public Type getDelegateType();
 
    /**
-    * <p>Get the {@linkplain javax.inject.Qualifier qualifiers} of the delegate
+    * <p>Obtains the {@linkplain javax.inject.Qualifier qualifiers} of the delegate
     * injection point.</p>
     * 
-    * @return the delegate qualifiers
+    * @return the delegate {@linkplain javax.inject.Qualifier qualifiers}
     */
    public Set<Annotation> getDelegateQualifiers();
    
    /**
-    * <p>Get the decorated types.</p>
+    * <p>Obtains the decorated {@linkplain Type types}.</p>
     * 
-    * @return the set of decorated types
+    * @return the set of decorated {@linkplain Type types}
     */
    public Set<Type> getDecoratedTypes();
 
