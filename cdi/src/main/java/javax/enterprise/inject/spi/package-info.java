@@ -59,9 +59,9 @@
  * registering an instance} with the container.</p>
  * 
  * <p>A portable extension may be notified of the existence of an
- * enabled bean or observer method by observing the container
- * lifecycle event type {@link javax.enterprise.inject.spi.ProcessBean}
- * or one of its {@linkplain javax.enterprise.inject.spi.ProcessBean subtypes},
+ * enabled bean by observing the container lifecycle event type 
+ * {@link javax.enterprise.inject.spi.ProcessBean} or one of its 
+ * {@linkplain javax.enterprise.inject.spi.ProcessBean subtypes},
  * or of the existence of an observer method of an enabled bean by 
  * observing the event type
  * {@link javax.enterprise.inject.spi.ProcessObserverMethod}.</p>
