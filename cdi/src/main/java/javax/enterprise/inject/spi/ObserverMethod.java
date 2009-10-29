@@ -26,17 +26,16 @@ public interface ObserverMethod<X, T>
    public Class<X> getBeanClass();
 
    /**
-    * Obtains the {@linkplain Type type} of event being observed.
+    * Obtains the observed event {@linkplain Type type}.
     * 
-    * @return the event {@linkplain Type type}
+    * @return the observed event {@linkplain Type type}
     */
    public Type getObservedType();
 
    /**
-    * Obtains the set of {@linkplain javax.inject.Qualifier qualifiers} for the
-    * event being observed.
+    * Obtains the set of observed event {@linkplain javax.inject.Qualifier qualifiers}.
     * 
-    * @return the {@linkplain javax.inject.Qualifier qualifiers} for the event
+    * @return the observed event {@linkplain javax.inject.Qualifier qualifiers}
     */
    public Set<Annotation> getObservedQualifiers();
 
@@ -58,7 +57,7 @@ public interface ObserverMethod<X, T>
    /**
     * Calls the observer method passing the given event object.
     * 
-    * @param event The event object
+    * @param event the event object
     */
    public void notify(T event);
 }
