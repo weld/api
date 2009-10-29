@@ -18,9 +18,10 @@
 package javax.enterprise.inject.spi;
 
 /**
- * Identifies the kind of lifecycle callback or business method
- * interceptor.
+ * <p>Identifies the kind of lifecycle callback, EJB timeout method or 
+ * business method interception.</p>
  * 
+ * @author Gavin King
  * @author Pete Muir
  *
  */

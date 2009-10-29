@@ -43,8 +43,8 @@ public interface Interceptor<T> extends Bean<T>
    public Set<Annotation> getInterceptorBindingTypes();
    
    /**
-    * <p>Determines if the interceptor intercepts callbacks or business methods of 
-    * the given type.</p>
+    * <p>Determines if the interceptor intercepts the specified 
+    * {@linkplain InterceptionType kind of lifecycle callback or method invocation}.</p>
     * 
     * @param type the type of interception
     * @return  returns <tt>true</tt> if the interceptor intercepts callbacks 
@@ -53,8 +53,8 @@ public interface Interceptor<T> extends Bean<T>
    public boolean intercepts(InterceptionType type); 
    
    /**
-    * <p>Invokes the specified kind of lifecycle callback or business method upon the 
-    * given interceptor instance.</p>
+    * <p>Invokes the specified {@linkplain InterceptionType kind of lifecycle 
+    * callback or method invocation interception} upon the given interceptor instance.</p>
     * 
     * @param type the interception type
     * @param instance the interceptor instance to invoke
