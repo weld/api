@@ -16,24 +16,21 @@
  */
 package javax.enterprise.inject.spi;
 
-import java.lang.reflect.Member;
 import java.util.List;
 
 /**
- * The metadata for a callable member which can be parsed by the
- * {@link BeanManager}.
+ * <p>Represents a callable member of a Java type.</p>
  * 
- * The semantics are similar to {@link Member}
- * 
+ * @author Gavin King
  * @author Pete Muir
  * 
- * @param <X> the type of the member
+ * @param <X> the declaring type
  */
 public interface AnnotatedCallable<X> extends AnnotatedMember<X>
 {
 
    /**
-    * Get the parameters of the callable member.
+    * <p>Get the parameters of the callable member.</p>
     * 
     * @return the parameters
     */

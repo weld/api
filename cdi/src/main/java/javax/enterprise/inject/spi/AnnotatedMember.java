@@ -20,32 +20,35 @@ package javax.enterprise.inject.spi;
 import java.lang.reflect.Member;
 
 /**
- * The metadata for an annotated member which can be parsed by the
- * {@link BeanManager}. The semantics are similar to {@link Member}.
+ * <p>Represents a member of a Java type.</p>
  * 
+ * @author Gavin King
  * @author Pete Muir
- * @param <X> the type of the declaring type
+ * 
+ * @param <X> the declaring type
+ * @see Member
  */
 public interface AnnotatedMember<X> extends Annotated
 {
    /**
-    * Get the underlying {@link Member} instance.
+    * <p>Get the underlying {@link Member}.</p>
     * 
-    * @return the {@linkplain Member member}
+    * @return the {@link Member}
     */
    public Member getJavaMember();
 
    /**
-    * Determines if the member is static.
+    * <p>Determines if the member is static.</p>
     * 
-    * @return true if the member is static
+    * @return <tt>true</tt> if the member is static
     */
    public boolean isStatic();
 
    /**
-    * Get the {@linkplain AnnotatedType type} which declares this member.
+    * <p>Get the {@linkplain AnnotatedType type} which declares this 
+    * member.</p>
     * 
-    * @return the {@linkplain AnnotatedType type} of which declares this member
+    * @return the type which declares this member
     */
    public AnnotatedType<X> getDeclaringType();
 }

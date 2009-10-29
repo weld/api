@@ -20,41 +20,44 @@ package javax.enterprise.inject.spi;
 import java.util.Set;
 
 /**
- * The metadata for an annotated type which can be parsed by the
- * {@link BeanManager}. The semantics are similar to {@link Class}.
+ * <p>Represents a Java type.</p>
  * 
+ * @author Gavin King
  * @author Pete Muir
- * @param <X> the type of the class
+ * 
+ * @param <X> the type
+ * @see java.lang.Class
  */
 public interface AnnotatedType<X> extends Annotated
 {
 
    /**
-    * Get the underlying {@linkplain java.lang.Class class} instance.
+    * <p>Get the underlying {@link java.lang.Class}.</p>
     * 
-    * @return the {@link java.lang.Class} of the instance
+    * @return the {@link java.lang.Class}
     */
    public Class<X> getJavaClass();
 
    /**
-    * Get the {@linkplain AnnotatedConstructor constructors} belonging to the class If an empty set is returned, a
-    * default (no-args) constructor will be assumed.
+    * <p>Get the {@linkplain AnnotatedConstructor constructors} of the type. 
+    * If an empty set is returned, a default constructor with no parameters
+    * will be assumed.</p>
     * 
-    * @return the {@linkplain AnnotatedConstructor constructors}, or an empty set if none are defined
+    * @return the constructors, or an empty set if none are defined
     */
    public Set<AnnotatedConstructor<X>> getConstructors();
 
    /**
-    * Get the {@linkplain AnnotatedMethod business methods} belonging to the class.
+    * <p>Get the {@linkplain AnnotatedMethod methods} of the type.</p>
     * 
-    * @return the {@linkplain AnnotatedMethod methods}, or an empty set if none are defined
+    * @return the methods, or an empty set if none are defined
     */
    public Set<AnnotatedMethod<? super X>> getMethods();
 
    /**
-    * Get the {@linkplain AnnotatedField fields} belonging to the class.
+    * <p>Get the {@linkplain AnnotatedField fields} of the type.<p>
     * 
-    * @return the {@linkplain AnnotatedField fields}, or an empty set if none are defined
+    * @return the fields, or an empty set if none are defined
     */
    public Set<AnnotatedField<? super X>> getFields();
 }

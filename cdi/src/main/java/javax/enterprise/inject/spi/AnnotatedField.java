@@ -17,23 +17,22 @@
 package javax.enterprise.inject.spi;
 
 import java.lang.reflect.Field;
-import java.lang.reflect.Member;
 
 /**
- * The metadata for an annotated field which can be parsed by the {@link BeanManager}.
+ * <p>Represents a field of a Java class.</p>
  * 
- * The semantics are similar to {@link Field}.
- * 
+ * @author Gavin King
  * @author Pete Muir
  *
- * @param <X> the type of the field
+ * @param <X> the declaring type
+ * @see Field
  */
 public interface AnnotatedField<X> extends AnnotatedMember<X> {
 
    /**
-    * Get the underlying {@link Member} instance.
+    * <p>Get the underlying {@link Field}.</p>
     * 
-    * @return the member instance
+    * @return the {@link Field}
     */
    public Field getJavaMember();
 

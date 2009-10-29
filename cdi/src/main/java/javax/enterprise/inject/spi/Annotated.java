@@ -22,7 +22,7 @@ import java.lang.reflect.Type;
 import java.util.Set;
 
 /**
- * <p>Represents an annotated program element.<p>
+ * <p>Represents a Java program element that can be annotated.<p>
  * 
  * <p>A portable extension may provide an alternative metadata 
  * source, such as configuration by XML. <tt>Annotated</tt>

@@ -19,18 +19,21 @@ package javax.enterprise.inject.spi;
 import java.lang.reflect.Method;
 
 /**
- * The metadata for an annotated method which can be parsed by the
- * {@link BeanManager}. The semantics are similar to {@link Method}.
+ * <p>Represents a method of a Java type.</p>
  * 
+ * @author Gavin King
  * @author Pete Muir
- * @param <X> the return type of the method
+ * 
+ * @param <X> the declaring type
+ * @see Method
  */
 public interface AnnotatedMethod<X> extends AnnotatedCallable<X>
 {
 
    /**
-    * Get the underlying {@link Method} instance. return the {@linkplain Method
-    * method}
+    * <p>Get the underlying {@link Method}.</p> 
+    * 
+    * @return the {@link Method}
     */
    public Method getJavaMember();
 }

@@ -20,22 +20,21 @@ package javax.enterprise.inject.spi;
 import java.lang.reflect.Constructor;
 
 /**
- * The metadata for an annotated constructor which can be parsed by the
- * {@link BeanManager}.
+ * <p>Represents a constructor of a Java class.</p>
  * 
- * The semantics are similar to {@link Constructor}.
- * 
+ * @author Gavin King
  * @author Pete Muir
  * 
- * @param <X> the type of declaring class
+ * @param <X> the declaring class
+ * @see Constructor
  */
 public interface AnnotatedConstructor<X> extends AnnotatedCallable<X>
 {
 
    /**
-    * Get the underlying {@link Constructor} instance.
+    * <p>Get the underlying {@link Constructor}.</p>
     * 
-    * @return the constructor instance
+    * @return the constructor
     */
    public Constructor<X> getJavaMember();
 

@@ -18,27 +18,29 @@
 package javax.enterprise.inject.spi;
 
 /**
- * The metadata for an annotated parameter which can be parsed by the
- * {@link BeanManager}.
+ * <p>Represents a parameter of a method or constructor.</p>
  * 
+ * @author Gavin King
  * @author Pete Muir
  * 
- * @param <X> the type of the parameter
+ * @param <X> the type that declares the method or constructor
  */
 public interface AnnotatedParameter<X> extends Annotated
 {
 
    /**
-    * The position of the parameter in the callable's argument list.
+    * <p>Get the position of the parameter in the method or
+    * constructor argument list.</p>
     * 
     * @return the position of the parameter
     */
    public int getPosition();
 
    /**
-    * The declaring {@linkplain AnnotatedCallable callable}.
+    * <p>Get the declaring {@linkplain AnnotatedCallable method or
+    * constructor}.</p>
     * 
-    * @return the declaring {@linkplain AnnotatedCallable callable}
+    * @return the declaring callable
     */
    public AnnotatedCallable<X> getDeclaringCallable();
 
