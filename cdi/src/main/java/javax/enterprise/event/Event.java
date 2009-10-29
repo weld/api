@@ -19,7 +19,7 @@ package javax.enterprise.event;
 
 import java.lang.annotation.Annotation;
 
-import javax.enterprise.inject.TypeLiteral;
+import javax.enterprise.util.TypeLiteral;
 
 /**
  * <p>Allows the application to fire events of a particular type.</p>
@@ -113,7 +113,7 @@ public interface Event<T>
     * additional required qualifiers.</p>
     * 
     * @param <U> the specified type
-    * @param subtype a {@link javax.enterprise.inject.TypeLiteral} representing the specified type
+    * @param subtype a {@link javax.enterprise.util.TypeLiteral} representing the specified type
     * @param qualifiers the additional specified qualifiers
     * @return the child <tt>Event</tt>
     * @throws IllegalArgumentException if passed two instances of the 

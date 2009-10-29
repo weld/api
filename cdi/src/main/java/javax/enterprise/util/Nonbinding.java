@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package javax.enterprise.inject;
+package javax.enterprise.util;
 
 import static java.lang.annotation.ElementType.METHOD;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;

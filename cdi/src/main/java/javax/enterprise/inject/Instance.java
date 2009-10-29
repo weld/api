@@ -19,6 +19,7 @@ package javax.enterprise.inject;
 
 import java.lang.annotation.Annotation;
 
+import javax.enterprise.util.TypeLiteral;
 import javax.inject.Provider;
 
 
@@ -95,8 +96,8 @@ import javax.inject.Provider;
  * 
  * @see javax.inject.Provider#get()
  * @see java.lang.Iterable#iterator()
- * @see javax.enterprise.inject.AnnotationLiteral
- * @see javax.enterprise.inject.TypeLiteral
+ * @see javax.enterprise.util.AnnotationLiteral
+ * @see javax.enterprise.util.TypeLiteral
  * 
  * @author Gavin King
  * 
@@ -137,7 +138,7 @@ public interface Instance<T> extends Iterable<T>, Provider<T>
     * additional required qualifiers.</p>
     * 
     * @param <U> the required type
-    * @param subtype a {@link javax.enterprise.inject.TypeLiteral} representing the required type
+    * @param subtype a {@link javax.enterprise.util.TypeLiteral} representing the required type
     * @param qualifiers the additional required qualifiers
     * @return the child <tt>Instance</tt>
     * @throws IllegalArgumentException if passed two instances of the 

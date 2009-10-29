@@ -15,7 +15,7 @@
 * limitations under the License.
 */
 
-package javax.enterprise.inject;
+package javax.enterprise.util;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.InvocationTargetException;
@@ -23,6 +23,8 @@ import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.Arrays;
+
+import javax.enterprise.inject.Instance;
 
 
 /**

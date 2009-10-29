@@ -15,11 +15,13 @@
 * limitations under the License.
 */
 
-package javax.enterprise.inject;
+package javax.enterprise.util;
 
 import java.lang.reflect.GenericArrayType;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+
+import javax.enterprise.inject.Instance;
 
 /**
  * <p>Supports inline instantiation of objects that represent parameterized types
