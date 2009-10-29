@@ -15,6 +15,5 @@
  * element types and annotations, instead of directly calling the 
  * Java Reflection API.</p>
  * 
-
  */
 package javax.enterprise.inject.spi;
