@@ -35,7 +35,7 @@ import java.util.Set;
  * element types and annotations, instead of directly calling the 
  * Java Reflection API.</p>
  * 
- * @see java.lang.reflect.AnnotatedElement.
+ * @see java.lang.reflect.AnnotatedElement
  * 
  * @author Gavin King
  * @author Pete Muir
