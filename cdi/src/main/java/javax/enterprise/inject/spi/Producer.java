@@ -39,9 +39,9 @@ public interface Producer<T>
     * <p>
     * If the {@code Producer} represents a class, this will invoke the
     * constructor annotated {@link javax.inject.Inject} if it exists, or the
-    * constructor with no parameters. If the class has interceptors, produce()
-    * is responsible for building the interceptors and decorators of the
-    * instance.
+    * constructor with no parameters otherwise. If the class has interceptors, 
+    * <tt>produce()</tt> is responsible for building the interceptors and 
+    * decorators of the instance.
     * </p>
     * <p>
     * If the {@code Producer} represents a producer field or method, this will
@@ -51,7 +51,7 @@ public interface Producer<T>
     * 
     * @param ctx The {@link javax.enterprise.context.spi.CreationalContext} to
     *           use for the produced object
-    * @return an instance of the produced object
+    * @return the instance produced
     */
    public T produce(CreationalContext<T> ctx);
 
@@ -61,10 +61,13 @@ public interface Producer<T>
     * </p>
     * <p>
     * If the {@code Producer} represents a class, then this operation does
-    * nothing. Otherwise, this calls the disposer method, if any, on a
-    * contextual instance of the bean that declares the disposer method or
-    * performs any additional required cleanup, if any, to destroy state
-    * associated with a resource.
+    * nothing.
+    * </p>
+    * <p>
+    * If the {@code Producer} represents a producer field or method, this 
+    * calls the disposer method, if any, on a contextual instance of the 
+    * bean that declares the disposer method or performs any additional 
+    * required cleanup, if any, to destroy state associated with a resource.
     * </p>
     * 
     * @param instance The instance to dispose
@@ -73,7 +76,7 @@ public interface Producer<T>
 
    /**
     * <p>
-    * Returns the set of all {@code InjectionPoints} for the producer. If the
+    * Returns the set of all {@code InjectionPoints}. If the
     * {@code Producer} represents a class, then this returns returns the set of
     * {@code InjectionPoint} objects representing all injected fields, bean
     * constructor parameters and initializer method parameters. For a producer

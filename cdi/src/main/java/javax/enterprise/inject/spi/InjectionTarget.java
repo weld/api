@@ -33,13 +33,12 @@ public interface InjectionTarget<T> extends Producer<T>
 
    /**
     * <p>
-    * Performs dependency injection upon the given object. First, the container
-    * performs Java EE component environment injection according to the
-    * semantics required by the Java EE platform specification. Next, it sets
-    * the value of all injected fields, and then calls all initializer methods.
+    * Performs dependency injection upon the given object. Performs Java EE 
+    * component environment injection, sets the value of all injected fields, 
+    * and calls all initializer methods.
     * </p>
     * 
-    * @param instance The instance upon which to perform injections
+    * @param instance The instance upon which to perform injection
     * @param ctx The {@link javax.enterprise.context.spi.CreationalContext} to
     *           use for creating new instances
     */
