@@ -274,6 +274,9 @@
  * <p>A producer method or field is a method or field of a bean class annotated
  * {@link javax.enterprise.inject.Produces &#064;Produces}.</p>
  * 
+ * <p>A common pattern in generic code is a producer method that injects an 
+ * {@link javax.enterprise.inject.spi.InjectionPoint} object.</p>
+ * 
  * <h4>Resources</h4>
  * 
  * <p>A resource is a bean that represents a reference to a resource, persistence 
