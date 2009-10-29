@@ -18,7 +18,24 @@
 package javax.enterprise.inject.spi;
 
 /**
+ * <p>Service interface implemented by service providers that 
+ * observe container lifecycle events. Service providers must
+ * be declared in <tt>META-INF/services</tt></p>
  * 
+ * <p>The container instantiates a single instance of each 
+ * service provider at the beginning of the application 
+ * initialization process and maintains a reference to it until
+ * the application shuts down.</p>
+ *  
+ * <p>Service providers may have observer methods, which may 
+ * observe container initialization events and obtain an injected 
+ * {@link javax.enterprise.inject.spi.BeanManager}.<p>
+ * 
+ * <p>Service providers are made available for injection as beans
+ * with the qualifier {@link javax.context.Default &#064;Default}.</p>
+ * 
+ * 
+ * @author Gavin King
  * @author Pete Muir
  *
  */

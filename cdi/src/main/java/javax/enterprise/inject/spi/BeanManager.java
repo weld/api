@@ -32,35 +32,23 @@ import javax.enterprise.inject.AmbiguousResolutionException;
 import javax.enterprise.inject.UnsatisfiedResolutionException;
 
 /**
- * <p>
- * This interface provides operations for obtaining contextual references for
- * beans, along with many other operations of use to portable extensions.
- * Occasionally it is necessary to use this programmatic API to fully utilize
- * portable extensions in the Contexts and Dependency Injection for the Java EE
- * platform standard.
- * </p>
- * <p>
- * The container provides a built-in bean with bean type BeanManager, scope
- * {@literal @}{@link javax.enterprise.context.Dependent} and qualifier
- * {@literal @}{@link javax.enterprise.inject.Default}. The built-in
- * implementation is a {@linkplain PassivationCapable passivation capable}
- * dependency. Thus, any bean may obtain an instance of BeanManager by injecting
- * it:
- * </p>
+ * <p>Allows a portable extension to interact directly with the container.
+ * Provides operations for obtaining contextual references for beans, along 
+ * with many other operations of use to portable extensions.</p>
+ * 
+ * <p>Any bean may obtain an instance of <tt>BeanManager</tt> by injecting
+ * it:</p>
  * 
  * <pre>
- * &#064;Inject
- * BeanManager manager;
+ * &#064;Inject BeanManager manager;
  * </pre>
- * <p>
- * Java EE components may also obtain an instance of BeanManager from
+ * 
+ * <p>Java EE components may obtain an instance of <tt>BeanManager</tt> from
  * {@linkplain javax.naming JNDI} by looking up the name {@code
- * java:comp/BeanManager}.
- * </p>
- * <p>
- * Any operation of BeanManager may be called at any time during the execution
- * of the application.
- * </p>
+ * java:comp/BeanManager}.</p>
+ * 
+ * <p>Any operation of <tt>BeanManager</tt> may be called at any time during 
+ * the execution of the application.</p>
  * 
  * @author Gavin King
  * @author Pete Muir
