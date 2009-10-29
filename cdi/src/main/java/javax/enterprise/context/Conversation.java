@@ -94,6 +94,9 @@ public interface Conversation
    public void setTimeout(long milliseconds);
 
    /**
+    * <p>Determine if the conversation is marked transient or 
+    * long-running.</p>
+    * 
     * @return <tt>true</tt> if the conversation is marked transient, 
     * or <tt>false</tt>if it is marked long-running.
     */
