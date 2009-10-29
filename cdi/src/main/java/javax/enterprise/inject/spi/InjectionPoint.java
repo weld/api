@@ -23,11 +23,10 @@ import java.lang.reflect.Type;
 import java.util.Set;
 
 
-
 /**
- * 
- * Provides access to metadata about the injection point into which a dependent
- * object is injected.
+ * <p>Provides access to metadata about an injection point. May represent an 
+ * injected field or a parameter of a bean constructor, initializer method, 
+ * producer method, disposer method or observer method.</p>
  * 
  * @author Gavin King
  * @author Pete Muir
@@ -36,48 +35,63 @@ public interface InjectionPoint
 {
    
    /**
-    * Get the declared type of injection point
+    * Get the required type of injection point.
     * 
-    * If the injection point is declared in XML, the type and binding types are
-    * determined according to Section 10.8, �Specifying API types and binding
-    * types�.
-    * 
-    * @return the declared type of the injection point
+    * @return the required type
     */
    public Type getType();
    
    /**
-    * Get the declared binding types of the injection point
+    * Get the required qualifiers of the injection point.
     * 
-    * If the injection point is declared in XML, the type and binding types are
-    * determined according to Section 10.8, �Specifying API types and binding
-    * types�.
-    * 
-    * @return the declared binding types of the injection point
+    * @return the required qualifiers
     */
    public Set<Annotation> getQualifiers();
    
    /**
-    * Get the Bean object representing the Web Bean that defines the injection
-    * point
+    * Get the {@link javax.enterprise.inject.spi.Bean} object representing the 
+    * bean that defines the injection point. If the injection point does not 
+    * belong to a bean, return a null value.
     * 
-    * @return the Bean object representing the Web Bean that defines the
-    *         injection point
+    * @return the {@link javax.enterprise.inject.spi.Bean} object representing 
+    *         bean that defines the injection point, of null if the injection 
+    *         point does not belong to a bean
     */
    public Bean<?> getBean();
    
    /**
-    * Get the Field object in the case of field injection, the Method object in
-    * the case of method parameter injection or the Constructor object in the
-    * case of constructor parameter injection.
+    * Get the {@link java.lang.reflect.Field} object in the case of field 
+    * injection, the {@link java.lang.reflect.Method} object in
+    * the case of method parameter injection or the 
+    * {@link java.lang.reflect.Constructor} object in the case of constructor 
+    * parameter injection.
     * 
-    * @return the member being injected into
+    * @return the member
     */
    public Member getMember();
    
+   /**
+    * Obtain an instance of {@link javax.enterprise.inject.spi.AnnotatedField} 
+    * or {@link javax.enterprise.inject.spi.AnnotatedParameter}, depending upon 
+    * whether the injection point is an injected field or a constructor/method parameter.
+    * 
+    * @return an {@code AnnotatedField} or {@code AnnotatedParameter}
+    */
    public Annotated getAnnotated();
    
+   /**
+    * Determines if the injection point is a decorator delegate injection point.
+    * 
+    * @return <tt>true</tt> if the injection point is a decorator delegate injection point, 
+    * and <tt>false</tt> otherwise
+    */
    public boolean isDelegate();
    
+   /**
+    * Determines if the injection is a transient field.
+    * 
+    * @return <tt>true</tt> if the injection point is a transient field, and <tt>false</tt> 
+    * otherwise
+    */
    public boolean isTransient();
 }

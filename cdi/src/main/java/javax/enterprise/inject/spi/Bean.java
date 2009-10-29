@@ -35,71 +35,75 @@ public interface Bean<T> extends Contextual<T>
 {
 
    /**
-    * Returns the client-visible {@linkplain Type types} of a bean.
+    * Obtains the {@linkplain javax.enterprise.inject bean types} of the bean.
     * 
-    * @return the bean {@linkplain Type types}
+    * @return the {@linkplain javax.enterprise.inject bean types}
     */
    public Set<Type> getTypes();
 
    /**
-    * Returns the {@linkplain javax.inject.Qualifier qualifiers} of a bean.
+    * Obtains the {@linkplain javax.inject.Qualifier qualifiers} of the bean.
     * 
     * @return the {@linkplain javax.inject.Qualifier qualifiers}
     */
    public Set<Annotation> getQualifiers();
 
    /**
-    * Returns the {@linkplain javax.enterprise.context scope} of a bean.
+    * Obtains the {@linkplain javax.enterprise.context scope} of the bean.
     * 
     * @return the {@linkplain javax.enterprise.context scope}
     */
    public Class<? extends Annotation> getScope();
 
    /**
-    * Returns the name of a bean, if it has one.
+    * Obtains the {@linkplain javax.enterprise.inject EL name} of a bean, if it has one.
     * 
-    * @return the name
+    * @return the {@linkplain javax.enterprise.inject EL name}
     */
    public String getName();
 
    /**
-    * The {@linkplain javax.enterprise.inject.Stereotype stereotypes} applied to
-    * this bean
+    * Obtains the {@linkplain javax.enterprise.inject.Stereotype stereotypes}
+    * of the bean.
     * 
-    * @return {@linkplain javax.enterprise.inject.Stereotype stereotypes} if any
+    * @return the set of {@linkplain javax.enterprise.inject.Stereotype stereotypes}
     */
    public Set<Class<? extends Annotation>> getStereotypes();
 
    /**
     * The bean {@linkplain Class class} of the managed bean or session bean or
-    * of the bean that declares the producer method or field
+    * of the bean that declares the producer method or field.
     * 
-    * @return the {@linkplain Class class} of the managed bean
+    * @return the bean {@linkplain Class class}
     */
    public Class<?> getBeanClass();
 
    /**
-    * Test to see if the bean is an
+    * Determines if the bean is an
     * {@linkplain javax.enterprise.inject.Alternative alternative}.
     * 
-    * @return true if the bean is an
-    *         {@linkplain javax.enterprise.inject.Alternative alternative}
+    * @return <tt>true</tt> if the bean is an
+    *         {@linkplain javax.enterprise.inject.Alternative alternative},
+    *         and <tt>false</tt> otherwise.
     */
    public boolean isAlternative();
 
    /**
-    * Determines if the {@code create()} method may sometimes return a null
-    * value.
+    * Determines if 
+    * {@link javax.enterprise.context.spi.Contextual#create(CreationalContext)} 
+    * sometimes return a null value.
     * 
-    * @return true if the {@code create()} method may return a null
+    * @return <tt>true</tt> if the {@code create()} method may return a null 
+    *        value, and <tt>false</tt> otherwise
     */
    public boolean isNullable();
 
    /**
-    * A set of {@link InjectionPoint} objects representing injection points of
-    * the bean, that will be validated by the container at initialization time.
+    * Obtains the {@link javax.enterprise.inject.spi.InjectionPoint} objects 
+    * representing injection points of the bean, that will be validated by the 
+    * container at initialization time.
     * 
-    * @return the {@linkplain InjectionPoint injection points} of a bean
+    * @return the set of {@linkplain javax.enterprise.inject.spi.InjectionPoint injection points} of the bean
     */
    public Set<InjectionPoint> getInjectionPoints();
 
