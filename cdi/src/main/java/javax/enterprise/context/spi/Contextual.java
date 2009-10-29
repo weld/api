@@ -20,33 +20,46 @@ package javax.enterprise.context.spi;
 import javax.enterprise.inject.CreationException;
 
 /**
- * The contract between a context and a contextual type This interface should
- * not be implemented directly by the application.
+ * <p>Defines operations to create and destroy contextual instances of a 
+ * certain type. Any implementation of {@code Contextual} is called a 
+ * contextual type. In particular, all beans are contextual types.</p>
  * 
+ * @see javax.enterprise.inject.spi.Bean
+ * 
+ * @author Gavin King
  * @author Nicklas Karlsson
  * @author Pete Muir
  */
 public interface Contextual<T>
 {
    /**
-    * Create a new instance of the contextual type
+    * Create a new instance of the contextual type. Instances should
+    * use the given {@link javax.enterprise.context.spi.CreationalContext} 
+    * when obtaining contextual references to inject, in order to ensure 
+    * that any dependent objects are associated with the contextual instance 
+    * that is being created. An implementation may call 
+    * {@link javax.enterprise.context.spi.CreationalContext#push(Object)} 
+    * between instantiation and injection to help the container minimize the 
+    * use of client proxy objects.
     * 
-    * @param creationalContext
-    *           the creational context in which incompletely initialized
-    *           contexts may be placed
+    * @param creationalContext 
+    *            the context in which this instance is being created
     * @return the contextual instance
     * @throws CreationException
-    *            if a checked exception occurs whilst creating the instance
+    *            if a checked exception occurs while creating the instance
     */
    public T create(CreationalContext<T> creationalContext);
    
    /**
-    * Destroys an instance of the contexual type
+    * Destroy an instance of the contextual type. Implementations should
+    * call {@link javax.enterprise.context.spi.CreationalContext#release()} 
+    * to allow the container to destroy dependent objects of the contextual 
+    * instance.
     * 
     * @param instance
-    *           the insance to destroy
+    *           the contextual instance to destroy
     * @param creationalContext
-    *           the creational context used to create the instance
+    *           the context in which this instance was created
     */
    public void destroy(T instance, CreationalContext<T> creationalContext);
 }

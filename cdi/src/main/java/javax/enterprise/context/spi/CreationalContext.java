@@ -17,10 +17,11 @@
 package javax.enterprise.context.spi;
 
 /**
- * Allows registration of an incompletely initialized contextual instance with
- * the container. The contextual instance is considered incompletely initialized
- * until the create() method returns the instance.
+ * <p>Provides operations that are used by the 
+ * {@link javax.enterprise.context.spi.Contextual} implementation during 
+ * instance creation and destruction.</p>
  * 
+ * @author Gavin King
  * @author Pete Muir
  *
  */
@@ -28,12 +29,20 @@ public interface CreationalContext<T>
 {
  
    /**
-    * Push an incomplete instance to the container
+    * Registers an incompletely initialized contextual instance the with the 
+    * container. A contextual instance is considered incompletely initialized 
+    * until it is returned by 
+    * {@link javax.enterprise.context.spi.Contextual#create(CreationalContext)}.
     * 
-    * @param incompleteInstance
+    * @param incompleteInstance the incompletely initialized instance
     */
    public void push(T incompleteInstance);
    
+   /**
+    * Destroys all dependent objects of the instance which is being destroyed, 
+    * by passing each dependent object to 
+    * {@link javax.enterprise.context.spi.Contextual#destroy(Object, CreationalContext)}.
+    */
    public void release();
    
 }
