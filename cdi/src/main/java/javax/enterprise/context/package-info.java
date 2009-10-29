@@ -3,26 +3,16 @@
  * 
  * <p>A scope type is a Java annotation annotated 
  * {@link javax.inject.Scope &#064;Scope} or 
- * {@link javax.enterprise.context.NormalScope &#064;NormalScope}.</p>
- * 
- * <p>Associated with every scope type is a 
- * {@linkplain javax.enterprise.context.spi.Context context object}. 
- * The context object determines the lifecycle and visibility of
- * instances of all {@linkplain javax.enterprise.inject beans} with 
- * that scope. In particular, the context object defines:</p>
+ * {@link javax.enterprise.context.NormalScope &#064;NormalScope}.
+ * The scope of a bean determines the lifecycle and visibility of
+ * its instances. In particular, the scope determines:</p>
  * 
  * <ul>
- * <li>When a new instance of any bean with that scope is created</li>
- * <li>When an existing instance of any bean with that scope is 
- * destroyed</li>
- * <li>Which injected references refer to any instance of a bean 
- * with that scope</li>
+ * <li>When a new instance of the bean is created</li>
+ * <li>When an existing instance of the bean is destroyed</li>
+ * <li>Which injected references refer to any instance of the
+ * bean</li>
  * </ul>
- * 
- * <p>The context implementation collaborates with the container via 
- * the {@link javax.enterprise.context.spi.Context Context} and 
- * {@link javax.enterprise.context.spi.Contextual Contextual} 
- * interfaces to create and destroy contextual instances.</p>
  * 
  * <h3>Built-in scopes</h3>
  * 
@@ -40,10 +30,11 @@
  * and EJB invocations. The built-in conversation context supports
  * JSF requests.</p>
  * 
- * <p>For other kinds of invocations, a portable extension may define 
- * a custom context object for any or all of the built-in scopes. For 
- * example, a third-party web application framework might provide a 
- * conversation context object for the built-in conversation scope.</p>
+ * <p>For other kinds of invocations, a portable extension may define a 
+ * custom {@linkplain javax.enterprise.context.spi.Context context object} 
+ * for any or all of the built-in scopes. For example, a third-party web 
+ * application framework might provide a conversation context object for 
+ * the built-in conversation scope.</p>
  * 
  * <p>The context associated with a built-in scope propagates across 
  * local, synchronous Java method calls, including invocation of EJB 
