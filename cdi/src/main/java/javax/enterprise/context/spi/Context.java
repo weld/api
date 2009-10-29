@@ -35,6 +35,9 @@ import javax.enterprise.context.ContextNotActiveException;
  * {@link javax.enterprise.context.spi.CreationalContext} to {@code Contextual.destroy()} 
  * that it passed to {@code Contextual.create()} when it created the instance.</p>
  * 
+ * <p>A custom context object may be registered with the container using
+ * {@link javax.enterprise.inject.spi.AfterBeanDiscovery#addContext(Context)}.</p>
+ * 
  * @author Gavin King
  * @author Pete Muir
  */
