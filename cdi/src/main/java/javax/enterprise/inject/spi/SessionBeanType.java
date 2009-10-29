@@ -25,15 +25,15 @@ package javax.enterprise.inject.spi;
 public enum SessionBeanType
 {
    /**
-    * A {@link javax.ejb.Stateless stateless} session bean
+    * A {@linkplain javax.ejb.Stateless stateless} session bean
     */
    STATELESS, 
    /**
-    * A {@link javax.ejb.Stateful stateful} session bean
+    * A {@linkplain javax.ejb.Stateful stateful} session bean
     */
    STATEFUL, 
    /**
-    * A {@link javax.ejb.Singleton singleton} session bean
+    * A {@linkplain javax.ejb.Singleton singleton} session bean
     */
    SINGLETON
 }
