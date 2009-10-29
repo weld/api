@@ -16,7 +16,24 @@
  */
 package javax.enterprise.inject.spi;
 
+/**
+ * Identifies the kind of EJB session bean.
+ * 
+ * @author Gavin King
+ *
+ */
 public enum SessionBeanType
 {
-   STATELESS, STATEFUL, SINGLETON
+   /**
+    * A {@link javax.ejb.Stateless stateless} session bean
+    */
+   STATELESS, 
+   /**
+    * A {@link javax.ejb.Stateful stateful} session bean
+    */
+   STATEFUL, 
+   /**
+    * A {@link javax.ejb.Singleton singleton} session bean
+    */
+   SINGLETON
 }
