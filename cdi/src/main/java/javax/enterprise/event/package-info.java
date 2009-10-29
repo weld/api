@@ -44,15 +44,19 @@
  * specific set of qualifiers. Any Java type may be observed by an 
  * observer method.</p>
  * 
- * <p>An observer method is a method of a bean class with a parameter
- * annotated {@link javax.enterprise.event.Observes &#064;Observes}.</p>
+ * <p>An observer method is a method of a bean class or 
+ * {@linkplain javax.enterprise.inject.spi.Extension extension} with a 
+ * parameter annotated {@link javax.enterprise.event.Observes &#064;Observes}.</p>
  * 
  * <p>An observer method will be notified of an event if:</p> 
  * 
  * <ul>
- * <li>the type observed by the observer method is one of the event types 
- * of the event, and</li>
- * <li>the observer method has all the event qualifiers of the event.</li>
+ * <li>the event object is assignable to the type observed by the observer 
+ * method,</li>
+ * <li>the observer method has all the event qualifiers of the event, and</li>
+ * <li>either the event is not a container lifecycle event, or the observer 
+ * method belongs to an 
+ * {@linkplain javax.enterprise.inject.spi.Extension extension}.
  * </ul>
  * 
  * <p>If the observer method is a 

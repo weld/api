@@ -28,7 +28,8 @@ package javax.enterprise.inject.spi;
  * the application shuts down.</p>
  *  
  * <p>Service providers may have observer methods, which may 
- * observe container initialization events and obtain an injected 
+ * observe any event, including any container lifecycle event, 
+ * and obtain an injected 
  * {@link javax.enterprise.inject.spi.BeanManager}.<p>
  * 
  * <p>Service providers are made available for injection as beans

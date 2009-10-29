@@ -26,16 +26,18 @@ import java.lang.annotation.Target;
 
 /**
  * <p>Identifies the event parameter of an observer method. May be applied to 
- * a parameter of a method of a bean class.</p>
+ * a parameter of a method of a bean class or 
+ * {@linkplain javax.enterprise.inject.spi.Extension extension}.</p>
  * 
  * <pre>
  * public void afterLogin(&#064;Observes LoggedInEvent event) { ... }
  * </pre>
  * 
  * <p>An observer method is a non-abstract method of a managed bean class or 
- * session bean class. An observer method may be either static or non-static. 
- * If the bean is a session bean, the observer method must be either a business 
- * method of the EJB or a static method of the bean class.</p>
+ * session bean class (or of an extension). An observer method may be either 
+ * static or non-static. If the bean is a session bean, the observer method 
+ * must be either a business method of the EJB or a static method of the bean 
+ * class.</p>
  * 
  * <p>Each observer method must have exactly one event parameter, of the same 
  * type as the event type it observes. Event qualifiers may be declared 
@@ -48,7 +50,7 @@ import java.lang.annotation.Target;
  * 
  * <p>The event parameter type may contain a type variable or wildcard.</p>
  * 
- * <p>A bean may declare multiple observer methods.</p>
+ * <p>A bean (or extension) may declare multiple observer methods.</p>
  * 
  * <p>Observer methods are inherited by bean subclasses.</p>
  * 
