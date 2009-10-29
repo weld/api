@@ -54,8 +54,9 @@
  * <li>the event object is assignable to the type observed by the observer 
  * method,</li>
  * <li>the observer method has all the event qualifiers of the event, and</li>
- * <li>either the event is not a container lifecycle event, or the observer 
- * method belongs to an 
+ * <li>either the event is not a 
+ * {@linkplain javax.enterprise.inject.spi container lifecycle event}, or 
+ * the observer method belongs to an 
  * {@linkplain javax.enterprise.inject.spi.Extension extension}.
  * </ul>
  * 
