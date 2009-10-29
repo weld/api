@@ -19,7 +19,7 @@ package javax.enterprise.inject.spi;
 
 /**
  * Indicates that a custom implementation of 
- * {@link javax.enterprise.inject.spi.Bean or
+ * {@link javax.enterprise.inject.spi.Bean} or
  * {@link javax.enterprise.context.spi.Contextual} 
  * is passivation capable.
  * 
