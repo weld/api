@@ -22,33 +22,35 @@ import java.lang.reflect.Type;
 import java.util.Set;
 
 /**
- * The bean object for a decorator must implement this interface.
+ * <p>Represents an enabled decorator.</p>
  * 
+ * @author Gavin King
  * @author Pete Muir
  *
- * @param <T> the decorator type
+ * @param <T> the decorator bean class
  */
 public interface Decorator<T> extends Bean<T>
 {
 
    /**
-    * Obtains the delegate {@linkplain Type type}.
+    * <p>Get the delegate type</p>
     * 
-    * @return the delegate {@linkplain Type type}
+    * @return the delegate type
     */
    public Type getDelegateType();
 
    /**
-    * Obtains the {@linkplain javax.inject.Qualifier qualifiers} of the delegate.
+    * <p>Get the {@linkplain javax.inject.Qualifier qualifiers} of the delegate
+    * injection point.</p>
     * 
-    * @return the {@linkplain javax.inject.Qualifier qualifiers} of the delegate
+    * @return the delegate qualifiers
     */
    public Set<Annotation> getDelegateQualifiers();
    
    /**
-    * Obtains the decorated {@linkplain Type types} of the decorator
+    * <p>Get the decorated types.</p>
     * 
-    * @return the set of decorated {@linkplain Type types} of the decorator
+    * @return the set of decorated types
     */
    public Set<Type> getDecoratedTypes();
 

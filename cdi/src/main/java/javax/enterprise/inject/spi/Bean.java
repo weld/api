@@ -24,11 +24,10 @@ import java.util.Set;
 import javax.enterprise.context.spi.Contextual;
 
 /**
- * <p>
- * This interface defines everything the container needs to manage instances of
- * a certain bean.
- * </p>
+ * <p>Represents an enabled bean. This interface defines everything 
+ * the container needs to manage instances of the bean.</p>
  * 
+ * @author Gavin King
  * @author David Allen
  * @param <T> the class of the bean instance
  */
