@@ -366,15 +366,4 @@ public interface BeanManager
     */
    public <T> InjectionTarget<T> createInjectionTarget(AnnotatedType<T> type);
 
-   /**
-    * Allows a new bean to be registered. This fires a ProcessBean event and
-    * then registers a new bean with the container, thereby making it available
-    * for injection into other beans. This method may be called at any time in
-    * the applications lifecycle.
-    * 
-    * @param bean the bean to register
-    */
-   @Deprecated
-   public void addBean(Bean<?> bean);
-
 }
