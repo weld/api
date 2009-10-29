@@ -22,8 +22,7 @@ package javax.enterprise.inject.spi;
  * registering the {@link javax.enterprise.inject.spi.Bean} object.
  * </p>
  * <p>
- * The event object type in the package javax.enterprise.inject.spi depends upon
- * what kind of bean was discovered:
+ * The event object type depends upon what kind of bean was discovered:
  * </p>
  * <ul>
  * <li>For a managed bean with bean class X, the container must raise an event
