@@ -20,7 +20,7 @@ import javax.enterprise.context.spi.CreationalContext;
 
 /**
  * <p>
- * This interface provides operations for performing dependency injection and
+ * Provides operations for performing dependency injection and
  * lifecycle callbacks on an instance of a type.
  * </p>
  * 

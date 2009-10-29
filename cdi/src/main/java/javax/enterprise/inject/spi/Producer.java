@@ -22,8 +22,7 @@ import javax.enterprise.context.spi.CreationalContext;
 
 /**
  * <p>
- * The interface {@link javax.enterprise.inject.spi.Producer} provides a generic
- * operation for producing an instance of a type.
+ * Provides a generic operation for producing an instance of a type.
  * </p>
  * 
  * @author Pete Muir
