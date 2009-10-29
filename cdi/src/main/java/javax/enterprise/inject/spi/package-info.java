@@ -61,5 +61,7 @@
  * {@link javax.enterprise.inject.spi.Extension} declared in 
  * <tt>META-INF/services</tt>.</p>
  * 
+ * @see javax.enterprise.inject
+ * @see javax.enterprise.context.spi
  */
 package javax.enterprise.inject.spi;
