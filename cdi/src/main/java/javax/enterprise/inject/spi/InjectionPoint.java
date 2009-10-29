@@ -28,6 +28,26 @@ import java.util.Set;
  * injected field or a parameter of a bean constructor, initializer method, 
  * producer method, disposer method or observer method.</p>
  * 
+ * <p>Occasionally, a bean with scope 
+ * {@link javax.enterprise.context.Dependent &#064;Dependent} needs to access 
+ * metadata relating to the object to which it belongs. The bean may inject an 
+ * {@code InjectionPoint} representing the injection point into which the bean 
+ * was injected.</p>
+ * 
+ * <p>For example, the following producer method creates injectable <tt>Logger</tt>s. 
+ * The log category of a <tt>Logger</tt> depends upon the class of the object into 
+ * which it is injected.</p>
+ * 
+ * <pre>
+ * &#064;Produces 
+ * Logger createLogger(InjectionPoint injectionPoint) { 
+ *    return Logger.getLogger( injectionPoint.getMember().getDeclaringClass().getName() );
+ * }
+ * </pre>
+ * 
+ * <p>Only {@linkplain javax.enterprise.context.Dependent dependent} objects, may 
+ * obtain information about the injection point to which they belong.</p>
+ * 
  * @author Gavin King
  * @author Pete Muir
  */
