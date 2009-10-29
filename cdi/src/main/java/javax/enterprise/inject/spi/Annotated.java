@@ -18,17 +18,26 @@
 package javax.enterprise.inject.spi;
 
 import java.lang.annotation.Annotation;
-import java.lang.reflect.AnnotatedElement;
 import java.lang.reflect.Type;
 import java.util.Set;
 
 /**
- * The metadata for an annotated element which can be parsed by the
- * {@link BeanManager}.
+ * <p>Represents an annotated program element.<p>
  * 
- * The semantics are similar to {@link AnnotatedElement}.
+ * <p>A portable extension may provide an alternative metadata 
+ * source, such as configuration by XML. <tt>Annotated</tt>
+ * and its subtypes allow a portable extension to specify 
+ * metadata that overrides the annotations that exist on a 
+ * bean class. The portable extension is responsible for 
+ * implementing the interfaces, thereby exposing the metadata 
+ * to the container. The container must use the operations of 
+ * <tt>Annotated</tt> and its subinterfaces to discover program 
+ * element types and annotations, instead of directly calling the 
+ * Java Reflection API.</p>
  * 
+ * @see java.lang.reflect.AnnotatedElement.
  * 
+ * @author Gavin King
  * @author Pete Muir
  * @author Clint Popetz
  * 
@@ -37,43 +46,46 @@ public interface Annotated
 {
 
    /**
-    * Get the type of the annotated element
+    *  <p>Get the type of the annotated program element.</p>
     * 
-    * @return the type
+    * @return the type of the annotated program element
     */
    public Type getBaseType();
 
    /**
-    * Get all types the base type should be considered assignable to
+    *  <p>Get all types to which the base type should be considered 
+    * assignable.</p>
     * 
-    * @return a set of types the base type should be considered assignable to
+    * @return a set of all types to which the base type should be considered 
+    * assignable
     */
    public Set<Type> getTypeClosure();
 
    /**
-    * Get the annotation instance on the annotated element for a given annotation
-    * type.
+    *  <p>Get program element annotation of a certain annotation type.</p>
     * 
     * @param <T> the type of the annotation
-    * @param annotationType the class object of the annotation type
-    * @return the annotation instance, or null if no annotation is present for
-    *         the given annotationType
+    * @param annotationType the class of the annotation type
+    * @return the program element annotation of the given annotation type, 
+    * or a null value
     */
    public <T extends Annotation> T getAnnotation(Class<T> annotationType);
 
    /**
-    * Get all the annotation instances on the annotated element
+    * <p>Get all annotations of the program element.</p>
     * 
-    * @return the annotation instances, or an empty set if no annotations are
-    *         present
+    * @return all annotations of the program element, or an empty set if no 
+    * annotations are present
     */
    public Set<Annotation> getAnnotations();
 
    /**
-    * Determine if an annotation is present on the annotated element
+    * <p>Determine if the program element has an annotation of a 
+    * certain annotation type.<p>
     * 
     * @param annotationType the annotation type to check for
-    * @return true if the annotation is present
+    * @return <tt>true</tt> if the program element has an annotation of the 
+    * given annotation type, or <tt>false</tt> otherwise
     */
    public boolean isAnnotationPresent(Class<? extends Annotation> annotationType);
 }
