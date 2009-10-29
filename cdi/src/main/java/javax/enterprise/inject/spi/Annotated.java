@@ -24,17 +24,6 @@ import java.util.Set;
 /**
  * <p>Represents a Java program element that can be annotated.<p>
  * 
- * <p>A portable extension may provide an alternative metadata 
- * source, such as configuration by XML. <tt>Annotated</tt>
- * and its subtypes allow a portable extension to specify 
- * metadata that overrides the annotations that exist on a 
- * bean class. The portable extension is responsible for 
- * implementing the interfaces, thereby exposing the metadata 
- * to the container. The container must use the operations of 
- * <tt>Annotated</tt> and its subinterfaces to discover program 
- * element types and annotations, instead of directly calling the 
- * Java Reflection API.</p>
- * 
  * @see java.lang.reflect.AnnotatedElement
  * 
  * @author Gavin King
