@@ -18,7 +18,10 @@
 package javax.enterprise.inject.spi;
 
 /**
- * Used to indicate that a custom bean is passivation capable.
+ * Indicates that a custom implementation of 
+ * {@link javax.enterprise.inject.spi.Bean or
+ * {@link javax.enterprise.context.spi.Contextual} 
+ * is passivation capable.
  * 
  * @author Gavin King
  * @author David Allen
@@ -27,11 +30,15 @@ package javax.enterprise.inject.spi;
 public interface PassivationCapable
 {
    /**
-    * A string that uniquely identifies the Bean or Contextual. It is
-    * recommended that the string contain the package name of the class that
-    * implements Bean or Contextual.
+    * A string that uniquely identifies the instance of 
+    * {@link javax.enterprise.inject.spi.Bean} or 
+    * {@link javax.enterprise.context.spi.Contextual}. It is
+    * recommended that the string contain the package name of 
+    * the class that implements {@code Bean} or {@code Contextual}.
     * 
-    * @return a unique identifier for the Bean or Contextual
+    * @return a unique identifier for the 
+    * {@link javax.enterprise.inject.spi.Bean} or 
+    * {@link javax.enterprise.context.spi.Contextual}
     */
    public String getId();
 }
