@@ -26,13 +26,11 @@ import java.lang.reflect.Type;
  * with actual type parameters.</p>
  * 
  * <p>An object that represents any parameterized type may be obtained by 
- * subclassing <tt>TypeLiteral</tt>.
+ * subclassing <tt>TypeLiteral</tt>.</p>
  * 
  * <pre>
  * TypeLiteral&lt;List&lt;String&gt;&gt; type = new TypeLiteral&lt;List&lt;String&gt;&gt;() {};
  * </pre>
- * 
- * <p>This object may be passed to APIs that perform typesafe resolution.</p>
  * 
  * @author Gavin King
  * @author Pete Muir

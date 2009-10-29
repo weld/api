@@ -24,8 +24,11 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
 /**
- * <p>Excludes a member of a qualifier type or interceptor binding type 
- * from consideration by the resolution algorithms.</p>
+ * <p>Excludes a member of an annotation type (such as a 
+ * {@linkplain javax.inject.Qualifier qualifier type} or
+ * {@linkplain javax.interceptor interceptor binding type})
+ * from consideration when the container compares two
+ * annotation instances.</p>
  * 
  * <pre>
  * &#064;Qualifier
@@ -37,10 +40,10 @@ import java.lang.annotation.Target;
  * }
  * </pre>
  * 
- * <p>Array-valued or annotation-valued members of a qualifier type should be 
- * annotated <tt>&#064;Nonbinding</tt> in a portable application.</p>
- * 
  * @author Gavin King
+ * 
+ * @see javax.inject.Qualifier &#064;Qualifier
+ * @see javax.interceptor.InterceptorBinding &#064;InterceptorBinding
  * 
  */
 @Retention(RUNTIME)

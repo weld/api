@@ -41,9 +41,6 @@ import java.util.Arrays;
  * PayBy payby = new PayByQualifier() { public value() { return CHEQUE; } };
  * </pre>
  * 
- * <p>Annotation values are often passed to APIs that perform typesafe 
- * resolution.</p>
- * 
  * @author Pete Muir
  * @author Gavin King
  * 
