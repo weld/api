@@ -24,8 +24,6 @@ import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.Arrays;
 
-import javax.enterprise.inject.Instance;
-
 
 /**
  * <p>Supports inline instantiation of annotation type instances.</p>
