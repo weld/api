@@ -272,7 +272,7 @@ public interface BeanManager
     * @return true if the annotationType is a {@linkplain Interceptor
     *         interceptor} binding type
     */
-   public boolean isInterceptorBindingType(Class<? extends Annotation> annotationType);
+   public boolean isInterceptorBinding(Class<? extends Annotation> annotationType);
 
    /**
     * Tests the given annotationType to determine if it is a
