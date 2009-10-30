@@ -191,7 +191,7 @@ public interface BeanManager
     * @throws IllegalArgumentException if two instances of the same binding type
     *            are passed
     */
-   public <T> Set<ObserverMethod<?, T>> resolveObserverMethods(T event, Annotation... qualifiers);
+   public <T> Set<ObserverMethod<T>> resolveObserverMethods(T event, Annotation... qualifiers);
 
    /**
     * Obtains an ordered list of enabled decorators for a set of bean types and

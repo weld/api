@@ -79,7 +79,7 @@ public interface AfterBeanDiscovery
     * 
     * @param observerMethod The custom observer method to add to the deployment
     */
-   public void addObserverMethod(ObserverMethod<?, ?> observerMethod);
+   public void addObserverMethod(ObserverMethod<?> observerMethod);
 
    /**
     * Registers a custom {@link javax.enterprise.context.spi.Context} object

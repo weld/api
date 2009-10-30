@@ -13,17 +13,16 @@ import javax.enterprise.event.TransactionPhase;
  * 
  * @author Gavin King
  * @author David Allen
- * @param <X> the type of the bean with the observer method
  * @param <T> the event type 
  */
-public interface ObserverMethod<X, T>
+public interface ObserverMethod<T>
 {
    /**
     * Obtains the {@linkplain Class class} of bean defining the observer method.
     * 
     * @return the defining {@linkplain Class class}
     */
-   public Class<X> getBeanClass();
+   public Class<?> getBeanClass();
 
    /**
     * Obtains the observed event {@linkplain Type type}.

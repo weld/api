@@ -52,7 +52,7 @@ public interface ProcessObserverMethod<X, T>
     * @return the {@link javax.enterprise.inject.spi.ObserverMethod} object that
     *         will be used by the container to call the observer method
     */
-   public ObserverMethod<X, T> getObserverMethod();
+   public ObserverMethod<T> getObserverMethod();
 
    /**
     * Registers a definition error with the container, causing the container to
