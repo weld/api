@@ -33,7 +33,7 @@ package javax.enterprise.inject.spi;
  * @param <X> The bean type containing the observer method
  * @param <T> The type of the event being observed
  */
-public interface ProcessObserverMethod<X, T>
+public interface ProcessObserverMethod<T, X>
 {
    /**
     * The {@link javax.enterprise.inject.spi.AnnotatedMethod} representing the
