@@ -41,7 +41,7 @@ import javax.enterprise.inject.Stereotype;
  * for instance passivation and conversational state defined by the 
  * EJB specification.</p>
  * 
- * @see javax.decorator.Delegate &#064;Decorates identifies the 
+ * @see javax.decorator.Delegate &#064;Delegate identifies the 
  * delegate injection point of a decorator.
  * 
  * @author Gavin King

@@ -54,7 +54,7 @@ import javax.inject.Qualifier;
  * </pre>
  * 
  * <pre>
- * &#064;Decorates &#064;Any Logger logger;
+ * &#064;Inject &#064;Delegate &#064;Any Logger logger;
  * </pre>
  * 
  * @author Gavin King

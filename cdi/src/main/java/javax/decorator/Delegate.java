@@ -33,16 +33,17 @@ import java.lang.annotation.Target;
  * <pre>
  * &#064;Decorator 
  * class TimestampLogger implements Logger { 
- *    &#064;Decorates &#064;Any Logger logger; 
+ *    &#064;Inject &#064;Delegate &#064;Any Logger logger; 
  *    ... 
  * } 
  * </pre>
  * <pre>
  * &#064;Decorator 
  * class TimestampLogger implements Logger { 
- *    private Logger logger; 
+ *    private Logger logger;
  *    
- *    public TimestampLogger(&#064;Decorates &#064;Debug Logger logger) { 
+ *    &#064;Inject
+ *    public TimestampLogger(&#064;Delegate &#064;Debug Logger logger) { 
  *       this.logger=logger; 
  *    } 
  *    ... 
@@ -64,7 +65,7 @@ import java.lang.annotation.Target;
  * <pre>
  * &#064;Decorator 
  * class TimestampLogger implements Logger { 
- *    &#064;Decorates &#064;Any Logger logger; 
+ *    &#064;Inject &#064;Delegate &#064;Any Logger logger; 
  *    
  *    void log(String message) {
  *       logger.log( timestamp() + ": " + message );
