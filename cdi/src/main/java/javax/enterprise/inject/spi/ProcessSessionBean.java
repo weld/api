@@ -33,15 +33,6 @@ package javax.enterprise.inject.spi;
 public interface ProcessSessionBean<X> extends ProcessManagedBean<Object>
 {
    /**
-    * Returns the {@link javax.enterprise.inject.spi.AnnotatedType} representing
-    * the bean class.
-    * 
-    * @return the {@link javax.enterprise.inject.spi.AnnotatedType} for the bean
-    *         being registered
-    */
-   public AnnotatedType<X> getAnnotatedSessionBeanClass();
-
-   /**
     * Returns the EJB name of the session bean.
     * 
     * @return the name of the EJB
