@@ -19,9 +19,9 @@ package javax.enterprise.inject.spi;
 
 /**
  * <p>
- * The container will fire an event of this type for each
- * {@linkplain javax.enterprise.inject.Produces producer method or field},
- * including resources.
+ * The container fires an event of this type for each
+ * {@linkplain javax.enterprise.inject.Produces producer method or field}
+ * of each enabled bean, including resources.
  * </p>
  * <p>
  * Any observer of this event is permitted to wrap and/or replace the {@code

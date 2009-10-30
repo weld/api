@@ -19,7 +19,7 @@ package javax.enterprise.inject.spi;
 
 /**
  * <p>
- * The container fires an event of this type for each session bean it discovers,
+ * The container fires an event of this type for each enabled session bean,
  * before registering the {@link javax.enterprise.inject.spi.Bean} object.
  * </p>
  * <p>

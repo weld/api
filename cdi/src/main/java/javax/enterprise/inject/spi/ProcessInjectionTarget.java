@@ -18,8 +18,10 @@ package javax.enterprise.inject.spi;
 
 /**
  * <p>
- * The container will fire an event of this type for each managed bean, session
- * bean, Java EE component class supporting injection.
+ * The container fires an event of this type for every Java EE component class supporting 
+ * injection that may be instantiated by the container at runtime, including every
+ * managed bean declared using {@code javax.annotation.ManagedBean}, EJB session 
+ * or message-driven bean, enabled bean, enabled interceptor or enabled decorator.
  * </p>
  * <p>
  * Any observer of this event is permitted to wrap and/or replace the

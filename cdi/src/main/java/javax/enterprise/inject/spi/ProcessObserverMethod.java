@@ -20,8 +20,9 @@ package javax.enterprise.inject.spi;
 /**
  * <p>
  * The container fires an event of this type for each
- * {@linkplain javax.enterprise.inject.spi.ObserverMethod observer method} that
- * is registered.
+ * {@linkplain javax.enterprise.event.Observes observer method} 
+ * of each enabled bean, before registering the 
+ * {@link javax.enterprise.inject.spi.ObserverMethod} object.
  * </p>
  * <p>
  * If any observer method of a {@code ProcessObserverMethod} event throws an

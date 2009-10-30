@@ -18,8 +18,9 @@ package javax.enterprise.inject.spi;
 
 /**
  * <p>
- * The container fires this event for each Java class or interface it discovers,
- * before it reads the declared annotations.
+ * The container fires an event of this type for each Java class or interface 
+ * it discovers in a bean deployment archive, before it reads the declared 
+ * annotations.
  * </p>
  * <p>
  * Any observer of this event is permitted to wrap and/or replace the

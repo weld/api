@@ -18,8 +18,9 @@ package javax.enterprise.inject.spi;
 
 /**
  * <p>
- * The container fires an event of this type for each bean it discovers, before
- * registering the {@link javax.enterprise.inject.spi.Bean} object.
+ * The container fires an event of this type for each enabled bean, interceptor 
+ * or decorator deployed in a bean deployment archive, before registering the 
+ * {@link javax.enterprise.inject.spi.Bean} object.
  * </p>
  * <p>
  * The event object type depends upon what kind of bean was discovered:

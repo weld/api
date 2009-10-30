@@ -18,9 +18,8 @@ package javax.enterprise.inject.spi;
 
 /**
  * <p>
- * The container fires an event of this type for each producer method it
- * discovers, before registering the corresponding
- * {@link javax.enterprise.inject.spi.Bean} object.
+ * The container fires an event of this type for each enabled producer method, 
+ * before registering the {@link javax.enterprise.inject.spi.Bean} object.
  * </p>
  * <p>
  * If any observer method of a {@code ProcessProducerMethod} event throws an
