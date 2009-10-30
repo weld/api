@@ -214,6 +214,7 @@
  * {@link javax.decorator.Decorator &#064;Decorator}.</li>
  * <li>It is not annotated with an EJB component-defining annotation or declared 
  * as an EJB bean class in <tt>ejb-jar.xml</tt>.</li>
+ * <li>It does not implement {@link javax.enterprise.inject.spi.Extension}.</li>
  * <li>It has an appropriate constructor; either the class has a constructor with 
  * no parameters, or the class declares a constructor annotated 
  * {@link javax.inject.Inject &#064;Inject}.</li>
