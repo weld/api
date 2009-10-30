@@ -47,8 +47,10 @@
  * a bean, interceptor, decorator or observer method.</p>
  * 
  * <p>An instance of <tt>Bean</tt> exists for every  
- * {@linkplain javax.enterprise.inject enabled bean}. A portable extension 
- * may add support for new kinds of beans by implementing <tt>Bean</tt> and 
+ * {@linkplain javax.enterprise.inject enabled bean}. A portable 
+ * extension may add support for new kinds of beans by implementing 
+ * <tt>Bean</tt>, observing the event
+ * {@link javax.enterprise.inject.spi.AfterBeanDiscovery} event 
  * {@linkplain javax.enterprise.inject.spi.AfterBeanDiscovery#addBean(Bean) 
  * registering beans} with the container. An instance of 
  * <tt>ObserverMethod</tt> exists for every 
@@ -83,9 +85,9 @@
  * 
  * <p>A portable extension provides its metadata to the 
  * container by observing the event 
- * {@link javax.enterprise.inject.spi.ProcessAnnotatedType} and
- * calling 
- * {@link javax.enterprise.inject.spi.ProcessAnnotatedType#setAnnotatedType(AnnotatedType)}.</p>
+ * {@link javax.enterprise.inject.spi.ProcessAnnotatedType} and 
+ * {@linkplain javax.enterprise.inject.spi.ProcessAnnotatedType#setAnnotatedType(AnnotatedType)
+ * wrapping} the {@link javax.enterprise.inject.spi.AnnotatedType}.</p>
  * 
  * <h3><tt>Producer</tt> and <tt>InjectionTarget</tt></h3>
  * 
@@ -96,8 +98,9 @@
  * and lifecycle callbacks.</p>
  * 
  * <p>An instance of {@link javax.enterprise.inject.spi.InjectionTarget} 
- * may be obtained using 
- * {@link javax.enterprise.inject.spi.BeanManager#createInjectionTarget(AnnotatedType)},
+ * may be 
+ * {@linkplain javax.enterprise.inject.spi.BeanManager#createInjectionTarget(AnnotatedType) 
+ * obtained} from the {@link javax.enterprise.inject.spi.BeanManager},
  * allowing a portable extension to request these container services for
  * objects under the control of the portable extension.</p>
  * 
