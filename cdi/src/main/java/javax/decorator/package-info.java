@@ -20,7 +20,7 @@
  * <h3>Decorated types</h3>
  * 
  * <p>The set of decorated types of a decorator includes all 
- * interfaces implemented directly or indirectly by the bean class, 
+ * bean types of the managed bean that are Java interfaces, 
  * except for {@link java.io.Serializable}. The decorator bean 
  * class and its superclasses are not decorated types of the 
  * decorator. The decorator class may be abstract.</p>
