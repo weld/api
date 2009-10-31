@@ -20,9 +20,13 @@ import javax.enterprise.context.spi.CreationalContext;
 
 /**
  * <p>
- * Provides operations for performing dependency injection and
+ * Provides operations for performing 
+ * {@linkplain javax.enterprise.inject dependency injection} and
  * lifecycle callbacks on an instance of a type.
  * </p>
+ * 
+ * @see javax.annotation.PostConstruct
+ * @see javax.annotation.PreDestroy
  * 
  * @author Pete Muir
  * @author David Allen

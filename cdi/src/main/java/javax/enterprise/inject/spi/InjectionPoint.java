@@ -24,7 +24,8 @@ import java.util.Set;
 
 
 /**
- * <p>Provides access to metadata about an injection point. May represent an 
+ * <p>Provides access to metadata about an 
+ * {@linkplain javax.inject.Inject injection point}. May represent an 
  * injected field or a parameter of a bean constructor, initializer method, 
  * producer method, disposer method or observer method.</p>
  * 
