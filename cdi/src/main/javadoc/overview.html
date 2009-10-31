@@ -2,11 +2,12 @@
 
 <body>
 
-<p>Contexts and Dependency Injection (CDI) defines the following 
-complementary services:</p>
+<p>Contexts and Dependency Injection (CDI) defines a set of 
+complementary services that help improve the structure of application
+code.</p>
 
 <ul>
-<li>The lifecycle and interactions of stateful 
+<li>A well-defined lifecycle for stateful
 {@linkplain javax.enterprise.inject beans} bound to well-defined 
 lifecycle {@linkplain javax.enterprise.context contexts}, where 
 the set of contexts is {@linkplain javax.enterprise.context.spi 
@@ -16,14 +17,15 @@ dependency injection mechanism}, including a
 {@linkplain javax.enterprise.inject.Alternative facility} for 
 choosing between various beans that implement the same Java 
 interface at deployment time</li>
+<li>Integration with the Java EE module and component architecture</li>
 <li>{@linkplain javax.enterprise.inject Integration} with the 
 Unified Expression Language, allowing any bean to be used directly 
 within a JSF or JSP page</li>
 <li>The ability to {@linkplain javax.decorator decorate} injected 
-components</li>
+beans</li>
 <li>The ability to associate 
-{@linkplain javax.interceptor interceptors} with beans via 
-{@linkplain javax.enterprise.inject typesafe interceptor bindings}</li>
+{@linkplain javax.interceptor interceptors} with beans via typesafe
+{@linkplain javax.enterprise.inject interceptor bindings}</li>
 <li>An {@linkplain javax.enterprise.event event} notification model</li>
 <li>A web {@linkplain javax.enterprise.context.ConversationScoped 
 conversation context} in addition to the three standard 
@@ -39,7 +41,7 @@ interact in a loosely coupled fashion by
 {@linkplain javax.enterprise.event.Observes observing} events. 
 {@linkplain javax.enterprise.inject Various kinds} of objects are 
 injectable, including EJB 3 session beans, managed beans, 
-{@linkplain javax.enterprise.inject.Produces producer methods } and 
+{@linkplain javax.enterprise.inject.Produces producer methods} and 
 Java EE resources. We refer to these objects in general terms as beans 
 and to instances of beans that are bound to contexts as contextual 
 instances.</p>
