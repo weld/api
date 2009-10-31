@@ -24,10 +24,13 @@ import java.util.Set;
 
 
 /**
- * <p>Provides access to metadata about an 
- * {@linkplain javax.inject.Inject injection point}. May represent an 
- * injected field or a parameter of a bean constructor, initializer method, 
- * producer method, disposer method or observer method.</p>
+ * <p>Provides access to metadata about an injection point. May represent an 
+ * {@linkplain javax.inject.Inject injected field} or a parameter of a 
+ * {@linkplain javax.inject.Inject bean constructor}, 
+ * {@linkplain javax.inject.Inject initializer method}, 
+ * {@linkplain javax.enterprise.inject.Produces producer method}, 
+ * {@linkplain javax.enterprise.inject.Disposes disposer method} or 
+ * {@linkplain javax.enterprise.event.Observes observer method}.</p>
  * 
  * <p>Occasionally, a bean with scope 
  * {@link javax.enterprise.context.Dependent &#064;Dependent} needs to access 
