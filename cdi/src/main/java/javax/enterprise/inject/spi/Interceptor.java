@@ -23,7 +23,7 @@ import java.util.Set;
 import javax.interceptor.InvocationContext;
 
 /**
- * <p>Represents an enabled interceptor.</p>
+ * <p>Represents an enabled {@linkplain javax.interceptor interceptor}.</p>
  * 
  * @author Gavin King
  * @author Pete Muir
@@ -46,7 +46,7 @@ public interface Interceptor<T> extends Bean<T>
     * <p>Determines if the interceptor intercepts the specified 
     * {@linkplain InterceptionType kind of lifecycle callback or method invocation}.</p>
     * 
-    * @param type the type of interception
+    * @param type the {@linkplain InterceptionType kind of interception}
     * @return  returns <tt>true</tt> if the interceptor intercepts callbacks 
     * or business methods of the given type, and <tt>false</tt> otherwise.
     */
@@ -56,10 +56,10 @@ public interface Interceptor<T> extends Bean<T>
     * <p>Invokes the specified {@linkplain InterceptionType kind of lifecycle 
     * callback or method invocation interception} upon the given interceptor instance.</p>
     * 
-    * @param type the interception type
+    * @param type the {@linkplain InterceptionType kind of interception}
     * @param instance the interceptor instance to invoke
     * @param ctx the context for the invocation
-    * @return the return value from the invocation
+    * @return the invocation return value
     */
    public Object intercept(InterceptionType type, T instance, InvocationContext ctx); 
 
