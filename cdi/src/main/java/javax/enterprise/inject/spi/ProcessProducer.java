@@ -44,6 +44,7 @@ package javax.enterprise.inject.spi;
  * exception is treated as a definition error by the container.
  * </p>
  * 
+ * @see Producer
  * @author David Allen
  * @param <T> The bean class of the bean that declares the producer method or
  *           field

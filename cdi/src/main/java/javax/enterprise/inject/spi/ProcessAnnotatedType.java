@@ -46,7 +46,7 @@ package javax.enterprise.inject.spi;
  * </p>
  * 
  * @author David Allen
- * @see javax.enterprise.inject.spi.AnnotatedType
+ * @see AnnotatedType
  * @param <X> The class being annotated
  */
 public interface ProcessAnnotatedType<X>

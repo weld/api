@@ -45,6 +45,7 @@ package javax.enterprise.inject.spi;
  * the exception is treated as a definition error by the container.
  * </p>
  * 
+ * @see Bean
  * @author David Allen
  * @param <X> The class of the bean
  */

@@ -46,6 +46,7 @@ package javax.enterprise.inject.spi;
  * the exception is treated as a definition error by the container.
  * </p>
  * 
+ * @see InjectionTarget
  * @author David Allen
  * @param <X> The managed bean class, session bean class or Java EE component
  *           class supporting injection

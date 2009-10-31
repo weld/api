@@ -29,6 +29,7 @@ package javax.enterprise.inject.spi;
  * exception, the exception is treated as a definition error by the container.
  * </p>
  * 
+ * @see ObserverMethod
  * @author Gavin King
  * @author David Allen
  * @param <X> The bean type containing the observer method
