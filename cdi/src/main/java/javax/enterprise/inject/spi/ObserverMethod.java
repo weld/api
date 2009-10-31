@@ -8,8 +8,9 @@ import javax.enterprise.event.Reception;
 import javax.enterprise.event.TransactionPhase;
 
 /**
- * <p>Represents an observer method of an enabled bean. Defines 
- * everything the container needs to know about an observer method.</p>
+ * <p>Represents an {@linkplain javax.enterprise.event.Observes observer method} 
+ * of an {@linkplain javax.enterprise.inject enabled bean}. Defines everything 
+ * the container needs to know about an observer method.</p>
  * 
  * @author Gavin King
  * @author David Allen

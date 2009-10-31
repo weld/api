@@ -24,8 +24,9 @@ import java.util.Set;
 import javax.enterprise.context.spi.Contextual;
 
 /**
- * <p>Represents an enabled bean. This interface defines everything 
- * the container needs to manage instances of the bean.</p>
+ * <p>Represents an {@linkplain javax.enterprise.inject enabled bean}. This 
+ * interface defines everything the container needs to manage instances of 
+ * the bean.</p>
  * 
  * @author Gavin King
  * @author David Allen
