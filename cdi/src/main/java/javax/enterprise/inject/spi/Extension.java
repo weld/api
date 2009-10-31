@@ -35,7 +35,7 @@ package javax.enterprise.inject.spi;
  * instance by calling its observer methods.</p>
  *  
  * <p>Service providers are made available for injection as beans
- * with the qualifier {@link javax.context.Default &#064;Default}.</p>
+ * with the qualifier {@link javax.enterprise.inject.Default &#064;Default}.</p>
  * 
  * @author Gavin King
  * @author Pete Muir
