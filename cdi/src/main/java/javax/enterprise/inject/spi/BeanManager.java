@@ -263,11 +263,11 @@ public interface BeanManager
 
    /**
     * Test the given annotation type to determine if it is an
-    * {@linkplain javax.interceptor.InterceptorBindingType interceptor binding type}.
+    * {@linkplain javax.interceptor.InterceptorBinding interceptor binding type}.
     * 
     * @param annotationType the annotation to test
     * @return <tt>true</tt> if the annotation type is a {@linkplain 
-    *            javax.interceptor.InterceptorBindingType interceptor binding type} 
+    *            javax.interceptor.InterceptorBinding interceptor binding type} 
     */
    public boolean isInterceptorBinding(Class<? extends Annotation> annotationType);
 
@@ -283,10 +283,10 @@ public interface BeanManager
 
    /**
     * Obtains the set of meta-annotations for a certain 
-    * {@linkplain javax.interceptor.InterceptorBindingType interceptor binding type}.
+    * {@linkplain javax.interceptor.InterceptorBinding interceptor binding type}.
     * 
     * @param bindingType the
-    *           {@linkplain javax.interceptor.InterceptorBindingType interceptor binding type}
+    *           {@linkplain javax.interceptor.InterceptorBinding interceptor binding type}
     * @return the set of meta-annotations
     */
    public Set<Annotation> getInterceptorBindingTypeDefinition(Class<? extends Annotation> bindingType);
