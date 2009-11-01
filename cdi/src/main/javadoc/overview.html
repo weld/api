@@ -13,11 +13,14 @@ lifecycle {@linkplain javax.enterprise.context contexts}, where
 the set of contexts is {@linkplain javax.enterprise.context.spi 
 extensible}</li>
 <li>A sophisticated, typesafe {@linkplain javax.enterprise.inject 
-dependency injection mechanism}, including a 
-{@linkplain javax.enterprise.inject.Alternative facility} for 
-choosing between various beans that implement the same Java 
-interface at deployment time</li>
-<li>Integration with the Java EE module and component architecture</li>
+dependency injection mechanism}, including the ability to select 
+dependencies at either {@linkplain javax.inject.Qualifier development} 
+or {@linkplain javax.enterprise.inject.Alternative deployment} time, 
+without verbose configuration</li>
+<li>Support for Java EE modularity and the Java EE component
+architecture&mdash;the modular structure of a Java EE application is 
+taken into account when resolving dependencies between Java EE 
+components</li>
 <li>{@linkplain javax.enterprise.inject Integration} with the 
 Unified Expression Language, allowing any bean to be used directly 
 within a JSF or JSP page</li>
@@ -31,7 +34,7 @@ beans</li>
 conversation context} in addition to the three standard 
 web contexts defined by the Java Servlets specification</li>
 <li>An {@linkplain javax.enterprise.inject.spi SPI} allowing portable 
-extensions to integrate cleanly with the Java EE environment</li>
+extensions to integrate cleanly with the container</li>
 </ul>
 
 <p>CDI allows objects to be bound to lifecycle contexts, to be 
