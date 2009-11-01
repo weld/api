@@ -331,8 +331,7 @@
  * <p>A bean is said to be enabled if:</p>
  * 
  * <ul>
- * <li>it is deployed in a bean deployment archive (a module with a <tt>beans.xml</tt>
- * file), and</li>
+ * <li>it is deployed in a bean deployment archive, and</li>
  * <li>it is not a 
  * {@linkplain javax.enterprise.inject.Produces producer method or field} 
  * of a disabled bean, and</li>
