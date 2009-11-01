@@ -8,7 +8,7 @@
    <parent>
       <groupId>org.jboss.weld</groupId>
       <artifactId>weld-parent</artifactId>
-      <version>2</version>
+      <version>4</version>
    </parent>
 
    <name>Weld and CDI APIs Build Aggregator</name>
