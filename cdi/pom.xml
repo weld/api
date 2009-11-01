@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
    <modelVersion>4.0.0</modelVersion>
 
    <parent>
@@ -22,21 +23,22 @@
          <optional>true</optional>
       </dependency>
 
-	  <dependency>
-		 <groupId>org.jboss.ejb3</groupId>
-		 <artifactId>jboss-ejb3-api</artifactId>
-		 <optional>true</optional>
-	  </dependency>
+      <dependency>
+         <groupId>org.jboss.ejb3</groupId>
+         <artifactId>jboss-ejb3-api</artifactId>
+         <optional>true</optional>
+      </dependency>
 
-	  <dependency>
-		 <groupId>org.jboss.interceptor</groupId>
-		 <artifactId>jboss-interceptor-api</artifactId>
-		 <version>${interceptor.api.version}</version>
-	  </dependency>
+      <dependency>
+         <groupId>org.jboss.interceptor</groupId>
+         <artifactId>jboss-interceptor-api</artifactId>
+         <version>${interceptor.api.version}</version>
+      </dependency>
 
       <dependency>
          <groupId>javax.inject</groupId>
          <artifactId>javax.inject</artifactId>
       </dependency>
    </dependencies>
+   
 </project>
