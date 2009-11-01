@@ -3,7 +3,7 @@
    <groupId>org.jboss.weld</groupId>
    <artifactId>weld-api-bom</artifactId>
    <packaging>pom</packaging>
-   <version>1.0-CR3</version>
+   <version>1.0-SNAPSHOT</version>
 
    <parent>
       <groupId>org.jboss.weld</groupId>
@@ -223,11 +223,4 @@
 
       </dependencies>
    </dependencyManagement>
-   
-
-  <scm>
-    <connection>scm:svn:http://anonsvn.jboss.org/repos/weld/api/tags/1.0-CR3</connection>
-    <developerConnection>scm:svn:https://svn.jboss.org/repos/weld/api/tags/1.0-CR3</developerConnection>
-    <url>http://fisheye.jboss.org/browse/Weld/api/tags/1.0-CR3/build/tags/weld-parent-4/weld-api-bom</url>
-  </scm>
 </project>
