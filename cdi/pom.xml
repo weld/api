@@ -32,7 +32,11 @@
       <dependency>
          <groupId>org.jboss.interceptor</groupId>
          <artifactId>jboss-interceptor-api</artifactId>
-         <version>${interceptor.api.version}</version>
+      </dependency>
+
+      <dependency>
+         <groupId>javax.annotation</groupId>
+         <artifactId>jsr250-api</artifactId>
       </dependency>
 
       <dependency>
@@ -40,5 +44,5 @@
          <artifactId>javax.inject</artifactId>
       </dependency>
    </dependencies>
-   
+
 </project>
