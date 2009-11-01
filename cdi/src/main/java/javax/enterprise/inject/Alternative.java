@@ -37,9 +37,8 @@ import java.lang.annotation.Target;
  * </pre>
  * 
  * <p>An alternative is never available for injection, 
- * lookup or EL resolution in a Java EE module or library 
- * that is not a bean deployment archive (a module or 
- * library with no <tt>beans.xml</tt> file).</p>
+ * lookup or EL resolution in a module that is not a bean 
+ * deployment archive.</p>
  * 
  * <p>Nor is an alternative available for injection, lookup 
  * or EL resolution in every bean deployment archive. An 

@@ -346,16 +346,22 @@
  * 
  * <h3>Inter-module injection</h3>
  * 
- * <p>A bean is available for injection in a certain Java EE module or library if:</p>
+ * <p>Beans and their clients may be deployed in modules in a module architecture 
+ * such as the Java EE environment. In a module architecture, certain modules are 
+ * considered bean deployment archives. In the Java EE module architecture, any 
+ * Java EE module or library is a module. The Java EE module or library is a bean 
+ * deployment archive if it contains a <literal>beans.xml</literal> file in the
+ * metadata directory.</para>
+ *
+ * <p>A bean is available for injection in a certain module if:</p>
  * 
  * <ul>
  * <li>the bean is enabled,</li>
- * <li>the bean is either not an alternative, or the module or library is a bean 
- * deployment archive and the bean is a selected alternative of the bean deployment 
+ * <li>the bean is either not an alternative, or the module is a bean deployment 
+ * archive and the bean is a selected alternative of the bean deployment 
  * archive, and</li>
- * <li>the bean class is required to be accessible to classes in the module or 
- * library, according to the class loading requirements of the Java EE platform and 
- * Java Servlet specifications.</li>
+ * <li>the bean class is required to be accessible to classes in the module, 
+ * according to the class accessibility requirements of the module architecture.</li>
  * </ul>
  * 
  * <h3>Dependency injection</h3>
@@ -377,8 +383,8 @@
  * <p>A bean is eligible for injection into a given injection point if:</p>
  * 
  * <ul>
- * <li>it is available for injection in the Java EE module or library that contains 
- * the class that declares the injection point, and</li>
+ * <li>it is available for injection in the module that contains the 
+ * class that declares the injection point, and</li>
  * <li>it is assignable to the injection point.</li>
  * </ul>
  * 
