@@ -350,8 +350,8 @@
  * such as the Java EE environment. In a module architecture, certain modules are 
  * considered bean deployment archives. In the Java EE module architecture, any 
  * Java EE module or library is a module. The Java EE module or library is a bean 
- * deployment archive if it contains a <literal>beans.xml</literal> file in the
- * metadata directory.</para>
+ * deployment archive if it contains a <tt>beans.xml</tt> file in the metadata 
+ * directory.</para>
  *
  * <p>A bean is available for injection in a certain module if:</p>
  * 
