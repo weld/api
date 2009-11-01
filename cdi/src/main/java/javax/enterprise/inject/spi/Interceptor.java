@@ -40,7 +40,7 @@ public interface Interceptor<T> extends Bean<T>
     * 
     * @return the set of {@linkplain javax.interceptor.InterceptorBinding interceptor bindings}
     */
-   public Set<Annotation> getInterceptorBindingTypes();
+   public Set<Annotation> getInterceptorBindings();
    
    /**
     * <p>Determines if the interceptor intercepts the specified 

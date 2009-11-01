@@ -29,6 +29,7 @@ import javax.enterprise.context.spi.Context;
 import javax.enterprise.context.spi.Contextual;
 import javax.enterprise.context.spi.CreationalContext;
 import javax.enterprise.inject.AmbiguousResolutionException;
+import javax.enterprise.inject.InjectionException;
 import javax.enterprise.inject.UnsatisfiedResolutionException;
 
 /**
@@ -190,7 +191,7 @@ public interface BeanManager
     * @throws IllegalArgumentException if an instance of an annotation that is not
     *            a qualifier type is given
     */
-   public <T> Set<ObserverMethod<T>> resolveObserverMethods(T event, Annotation... qualifiers);
+   public <T> Set<ObserverMethod<? super T>> resolveObserverMethods(T event, Annotation... qualifiers);
 
    /**
     * Return an ordered list of enabled {@linkplain Decorator decorators} for a set 
