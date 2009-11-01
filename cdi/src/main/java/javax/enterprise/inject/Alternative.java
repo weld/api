@@ -36,15 +36,13 @@ import java.lang.annotation.Target;
  * public class MockOrder extends Order { ... }
  * </pre>
  * 
- * <p>An alternative is never available for injection, 
- * lookup or EL resolution in a module that is not a bean 
- * deployment archive.</p>
- * 
- * <p>Nor is an alternative available for injection, lookup 
- * or EL resolution in every bean deployment archive. An 
- * alternative must be explicitly <em>selected</em> in every
- * bean deployment archive in which the alternative should 
- * be available for injection, lookup and EL resolution.</p>
+ * <p>An alternative is not available for injection, lookup 
+ * or EL resolution to classes or JSP/JSF pages in a module 
+ * unless the module is a bean deployment archive and the 
+ * alternative is explicitly <em>selected</em> in that bean 
+ * deployment archive. An alternative is never available for 
+ * injection, lookup or EL resolution in a module that is not 
+ * a bean deployment archive.</p>
  * 
  * <p>By default, a bean deployment archive has no selected 
  * alternatives. An alternative  must be explicitly declared 
