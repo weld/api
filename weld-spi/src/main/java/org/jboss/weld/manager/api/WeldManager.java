@@ -115,5 +115,11 @@ public interface WeldManager extends BeanManager, Serializable
     * @return
     */
    public <X> InjectionTarget<X> fireProcessInjectionTarget(AnnotatedType<X> type);
+   
+   /**
+    * The ID of the manager, identical to the ID provided by the BDA
+    * @return
+    */
+   public String getId();
 
 }
