@@ -290,7 +290,7 @@ public interface BeanManager
     *           {@linkplain javax.interceptor.InterceptorBinding interceptor binding type}
     * @return the set of meta-annotations
     */
-   public Set<Annotation> getInterceptorBindingTypeDefinition(Class<? extends Annotation> bindingType);
+   public Set<Annotation> getInterceptorBindingDefinition(Class<? extends Annotation> bindingType);
 
    /**
     * Obtains meta-annotations for a certain
