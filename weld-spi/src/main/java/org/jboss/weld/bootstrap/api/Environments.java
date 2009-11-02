@@ -25,6 +25,7 @@ import org.jboss.weld.injection.spi.InjectionServices;
 import org.jboss.weld.injection.spi.JpaInjectionServices;
 import org.jboss.weld.injection.spi.ResourceInjectionServices;
 import org.jboss.weld.resources.spi.ResourceLoader;
+import org.jboss.weld.resources.spi.ScheduledExecutorServiceFactory;
 import org.jboss.weld.security.spi.SecurityServices;
 import org.jboss.weld.servlet.api.ServletServices;
 import org.jboss.weld.transaction.spi.TransactionServices;
@@ -54,6 +55,7 @@ public enum Environments implements Environment
          .addRequiredDeploymentService(ValidationServices.class)
          .addRequiredDeploymentService(ServletServices.class)
          .addRequiredDeploymentService(EjbServices.class)
+         .addRequiredDeploymentService(ScheduledExecutorServiceFactory.class)
          .addRequiredBeanDeploymentArchiveService(JpaInjectionServices.class)
          .addRequiredBeanDeploymentArchiveService(ResourceInjectionServices.class)
          .addRequiredBeanDeploymentArchiveService(EjbInjectionServices.class)
@@ -74,6 +76,7 @@ public enum Environments implements Environment
          .addRequiredDeploymentService(ValidationServices.class)
          .addRequiredDeploymentService(ServletServices.class)
          .addRequiredDeploymentService(EjbServices.class)
+         .addRequiredDeploymentService(ScheduledExecutorServiceFactory.class)
          .addRequiredBeanDeploymentArchiveService(InjectionServices.class)
    ),
    
@@ -85,12 +88,15 @@ public enum Environments implements Environment
    SERVLET(new EnvironmentBuilder()
          .addRequiredDeploymentService(ResourceLoader.class)
          .addRequiredDeploymentService(ServletServices.class)
+         .addRequiredDeploymentService(ScheduledExecutorServiceFactory.class)
    ),
    
    /**
     * Java SE
     */
    SE(new EnvironmentBuilder()
+         .addRequiredDeploymentService(ResourceLoader.class)
+         .addRequiredDeploymentService(ScheduledExecutorServiceFactory.class)
    );
    
    private final Set<Class<? extends Service>> requiredDeploymentServices;
