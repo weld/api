@@ -410,7 +410,7 @@
  * resolves to a bean if:</p>
  * 
  * <ul>
- * <li>The bean has the given EL name.</li>
+ * <li>the bean has the given EL name, and</li>
  * <li>the bean is available for injection in the war containing the JSP or JSF 
  * page with the EL expression.</li>
  * </ul>
