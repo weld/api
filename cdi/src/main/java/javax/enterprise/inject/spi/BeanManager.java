@@ -210,7 +210,7 @@ public interface BeanManager
 
    /**
     * Return an ordered list of enabled {@linkplain Interceptor interceptors} for a set 
-    * of interceptor bindings.
+    * of interceptor bindings and the type of interception.
     * 
     * @param type the type of the interception
     * @param interceptorBindings the interceptor bindings
