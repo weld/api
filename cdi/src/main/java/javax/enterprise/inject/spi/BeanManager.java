@@ -194,8 +194,11 @@ public interface BeanManager
    public <T> Set<ObserverMethod<? super T>> resolveObserverMethods(T event, Annotation... qualifiers);
 
    /**
-    * Return an ordered list of enabled {@linkplain Decorator decorators} for a set 
-    * of bean types and a set of qualifiers.
+    * Return an ordered list of {@linkplain Decorator decorators} for a set of 
+    * bean types and a set of qualifiers that are enabled in the module or 
+    * library containing the class into which the <tt>BeanManager</tt> was
+    * injected or the Java EE component from whose JNDI environment namespace 
+    * the <tt>BeanManager</tt> was obtained.
     * 
     * @param types the set of bean types of the decorated bean
     * @param qualifiers the qualifiers declared by the decorated bean
@@ -209,8 +212,11 @@ public interface BeanManager
    public List<Decorator<?>> resolveDecorators(Set<Type> types, Annotation... qualifiers);
 
    /**
-    * Return an ordered list of enabled {@linkplain Interceptor interceptors} for a set 
-    * of interceptor bindings and the type of interception.
+    * Return an ordered list of enabled {@linkplain Interceptor interceptors} for 
+    * a set of interceptor bindings and a type of interception that are enabled 
+    * in the module or library containing the class into which the <tt>BeanManager</tt> 
+    * was injected or the Java EE component from whose JNDI environment namespace 
+    * the <tt>BeanManager</tt> was obtained.
     * 
     * @param type the type of the interception
     * @param interceptorBindings the interceptor bindings
