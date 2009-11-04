@@ -355,6 +355,7 @@
  * <p>A bean is available for injection in a certain module if:</p>
  * 
  * <ul>
+ * <li>the bean is not an interceptor or decorator,</li>
  * <li>the bean is enabled,</li>
  * <li>the bean is either not an alternative, or the module is a bean deployment 
  * archive and the bean is a selected alternative of the bean deployment 
