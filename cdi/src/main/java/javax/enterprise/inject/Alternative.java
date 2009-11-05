@@ -52,8 +52,8 @@ import java.lang.annotation.Target;
  * for the bean archive if either:</p>
  * 
  * <ul>
- * <li>the alternative is a managed bean or session bean and 
- * the bean class of the bean is listed,</li>
+ * <li>the alternative is a managed bean or session bean and the 
+ * bean class of the bean is listed,</li>
  * <li>the alternative is a producer method, field or resource, 
  * and the bean class that declares the method or field is listed, 
  * or</li>

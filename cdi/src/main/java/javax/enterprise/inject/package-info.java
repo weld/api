@@ -236,8 +236,8 @@
  * EJB specification.</p>
  * 
  * <ul>
- * <li>A {@linkplain javax.ejb.Stateless stateless session bean} must belong to the 
- * {@link javax.enterprise.context.Dependent &#064;Dependent} pseudo-scope.</li>
+ * <li>A {@linkplain javax.ejb.Stateless stateless session bean} must belong to 
+ * the {@link javax.enterprise.context.Dependent &#064;Dependent} pseudo-scope.</li>
  * <li>A {@linkplain javax.ejb.Singleton singleton bean} must belong to either the 
  * {@link javax.enterprise.context.ApplicationScoped &#064;ApplicationScoped} 
  * scope or to the {@link javax.enterprise.context.Dependent &#064;Dependent}
@@ -264,12 +264,10 @@
  * acts as a source of objects to be injected, where:</p>
  * 
  * <ul>
- * <li>the objects to be injected are not required to be instances 
- * of beans, or</li>
- * <li>the concrete type of the objects to be injected may vary at
- * runtime, or</li>
- * <li>the objects require some custom initialization that is not 
- * performed by the bean constructor.</li>
+ * <li>the objects to be injected are not required to be instances of beans, or</li>
+ * <li>the concrete type of the objects to be injected may vary at runtime, or</li>
+ * <li>the objects require some custom initialization that is not performed by 
+ * the bean constructor.</li>
  * </ul>
  * 
  * <p>A producer method or field is a method or field of a bean class annotated
@@ -356,9 +354,8 @@
  * <ul>
  * <li>the bean is not an interceptor or decorator,</li>
  * <li>the bean is enabled,</li>
- * <li>the bean is either not an alternative, or the module is a bean deployment 
- * archive and the bean is a selected alternative of the bean deployment 
- * archive, and</li>
+ * <li>the bean is either not an alternative, or the module is a bean archive and 
+ * the bean is a selected alternative of the bean archive, and</li>
  * <li>the bean class is required to be accessible to classes in the module, 
  * according to the class accessibility requirements of the module architecture.</li>
  * </ul>
@@ -400,9 +397,8 @@
  * <li>and array types.</li>
  * </ul>
  * 
- * <p>An injection point whose declared type cannot be proxied by the 
- * container must not resolve to a bean with a 
- * {@linkplain javax.enterprise.context normal scope}.</p>
+ * <p>An injection point whose declared type cannot be proxied by the container must 
+ * not resolve to a bean with a {@linkplain javax.enterprise.context normal scope}.</p>
  * 
  * <h3>EL name resolution</h3>
  * 
