@@ -331,14 +331,14 @@
  * <p>A bean is said to be enabled if:</p>
  * 
  * <ul>
- * <li>it is deployed in a bean deployment archive, and</li>
+ * <li>it is deployed in a bean archive, and</li>
  * <li>it is not a 
  * {@linkplain javax.enterprise.inject.Produces producer method or field} 
  * of a disabled bean, and</li>
  * <li>it is not {@linkplain javax.enterprise.inject.Specializes specialized} 
  * by any other enabled bean, and either</li>
  * <li>it is not an {@linkplain javax.enterprise.inject.Alternative alternative}, 
- * or it is a selected alternative of at least one bean deployment archive.</li>
+ * or it is a selected alternative of at least one bean archive.</li>
  * </ul>
  * 
  * <p>Otherwise, the bean is said to be disabled.</p>
@@ -347,10 +347,9 @@
  * 
  * <p>Beans and their clients may be deployed in modules in a module architecture 
  * such as the Java EE environment. In a module architecture, certain modules are 
- * considered bean deployment archives. In the Java EE module architecture, any 
- * Java EE module or library is a module. The Java EE module or library is a bean 
- * deployment archive if it contains a <tt>beans.xml</tt> file in the metadata 
- * directory.</para>
+ * considered bean archives. In the Java EE module architecture, any Java EE 
+ * module or library is a module. The Java EE module or library is a bean archive 
+ * if it contains a <tt>beans.xml</tt> file in the metadata directory.</para>
  *
  * <p>A bean is available for injection in a certain module if:</p>
  * 
@@ -416,24 +415,23 @@
  * page with the EL expression.</li>
  * </ul>
  * 
- * <p>If an EL name resolves to more than one bean, the container attempts to resolve 
- * the ambiguity by eliminating all beans which are not alternatives.</p>
+ * <p>If an EL name resolves to more than one bean, the container attempts to 
+ * resolve the ambiguity by eliminating all beans which are not alternatives.</p>
  * 
  * <h3>Enabled interceptors</h3>
  * 
- * <p>By default, a bean deployment archive has no enabled interceptors. An 
- * interceptor must be explicitly enabled by listing its bean class under the 
+ * <p>By default, a bean archive has no enabled interceptors. An interceptor 
+ * must be explicitly enabled by listing its bean class under the 
  * <tt>&lt;interceptors&gt;</tt> element of the <tt>beans.xml</tt> file of the 
- * bean deployment archive. The order of the interceptor declarations determines 
- * the interceptor ordering. Interceptors which occur earlier in the list are 
+ * bean archive. The order of the interceptor declarations determines the 
+ * interceptor ordering. Interceptors which occur earlier in the list are 
  * called first.</p>
  * 
  * <p>An interceptor is bound to a bean if:</p>
  * 
  * <ul>
  * <li>The bean has all the interceptor bindings of the interceptor.</li>
- * <li>The interceptor is enabled in the bean deployment archive of 
- * the bean.</li>
+ * <li>The interceptor is enabled in the bean archive of the bean.</li>
  * </ul>
  * 
  * <p>An interceptor instance is a

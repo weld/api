@@ -38,19 +38,18 @@ import java.lang.annotation.Target;
  * 
  * <p>An alternative is not available for injection, lookup 
  * or EL resolution to classes or JSP/JSF pages in a module 
- * unless the module is a bean deployment archive and the 
- * alternative is explicitly <em>selected</em> in that bean 
- * deployment archive. An alternative is never available for 
- * injection, lookup or EL resolution in a module that is not 
- * a bean deployment archive.</p>
+ * unless the module is a bean archive and the alternative is 
+ * explicitly <em>selected</em> in that bean archive. An 
+ * alternative is never available for injection, lookup or EL 
+ * resolution in a module that is not a bean archive.</p>
  * 
- * <p>By default, a bean deployment archive has no selected 
- * alternatives. An alternative  must be explicitly declared 
- * using the <tt>&lt;alternatives&gt;</tt> element of the 
- * <tt>beans.xml</tt> file of the bean deployment archive.
- * The <tt>&lt;alternatives&gt;</tt> element contains a 
- * list of bean classes and stereotypes. An alternative is 
- * selected for the bean deployment archive if either:</p>
+ * <p>By default, a bean archive has no selected alternatives. 
+ * An alternative must be explicitly declared using the 
+ * <tt>&lt;alternatives&gt;</tt> element of the 
+ * <tt>beans.xml</tt> file of the bean archive. The 
+ * <tt>&lt;alternatives&gt;</tt> element contains a list of 
+ * bean classes and stereotypes. An alternative is selected 
+ * for the bean archive if either:</p>
  * 
  * <ul>
  * <li>the alternative is a managed bean or session bean and 

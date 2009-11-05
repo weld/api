@@ -19,7 +19,7 @@ package javax.enterprise.inject.spi;
 /**
  * <p>
  * The container fires an event of this type for each enabled bean, interceptor 
- * or decorator deployed in a bean deployment archive, before registering the 
+ * or decorator deployed in a bean archive, before registering the 
  * {@link javax.enterprise.inject.spi.Bean} object.
  * </p>
  * <p>

@@ -47,21 +47,19 @@
  * 
  * <h3>Enabled decorators</h3>
  *  
- * <p>By default, a bean deployment archive has no enabled 
- * decorators. A decorator must be explicitly enabled by listing 
- * its bean class under the <tt>&lt;decorators&gt;</tt> element 
- * of the <tt>beans.xml</tt> file of the bean deployment archive. 
- * The order of the decorator declarations determines the decorator 
- * ordering. Decorators which occur earlier in the list are called 
- * first.</p>
+ * <p>By default, a bean archive has no enabled decorators. A 
+ * decorator must be explicitly enabled by listing its bean class 
+ * under the <tt>&lt;decorators&gt;</tt> element of the 
+ * <tt>beans.xml</tt> file of the bean archive. The order of the 
+ * decorator declarations determines the decorator ordering. 
+ * Decorators which occur earlier in the list are called first.</p>
  * 
  * <p>A decorator is bound to a bean if:</p>
  * 
  * <ul>
  * <li>The bean is {@linkplain javax.enterprise.inject eligible for injection} 
  * to the delegate injection point of the decorator.</li>
- * <li>The decorator is enabled in the bean deployment archive of 
- * the bean.</li>
+ * <li>The decorator is enabled in the bean archive of the bean.</li>
  * </ul>
  * 
  * <p>If a managed bean class is declared final, it may not have
