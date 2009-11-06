@@ -139,6 +139,10 @@ public interface BeanManager
     * the given identifier.
     * 
     * @param id the identifier
+    * @return a {@link Bean} that implements 
+    *            {@link javax.enterprise.inject.spi.PassivationCapable}
+    *            and has the given identifier, or a null value if there 
+    *            is no such bean
     */
    public Bean<?> getPassivationCapableBean(String id);
 
