@@ -20,7 +20,7 @@ package javax.enterprise.inject.spi;
 import java.util.Set;
 
 /**
- * <p>Represents a Java type.</p>
+ * <p>Represents a Java class or interface.</p>
  * 
  * @author Gavin King
  * @author Pete Muir

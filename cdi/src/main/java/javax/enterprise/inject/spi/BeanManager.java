@@ -342,10 +342,11 @@ public interface BeanManager
    public ExpressionFactory wrapExpressionFactory(ExpressionFactory expressionFactory);
 
    /**
-    * Obtain an {@link AnnotatedType} for the given class.
+    * Obtain an {@link AnnotatedType} that may be used to read the annotations 
+    * of the given class or interface.
     * 
-    * @param <T> the class
-    * @param type the class
+    * @param <T> the class or interface
+    * @param type the {@link java.lang.Class} object
     * @return the {@link AnnotatedType}
     */
    public <T> AnnotatedType<T> createAnnotatedType(Class<T> type);
