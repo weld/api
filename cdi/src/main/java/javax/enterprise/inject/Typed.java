@@ -42,7 +42,8 @@ import java.lang.annotation.Target;
  * <p>When a <tt>&#064;Typed</tt> annotation is specified, 
  * only the types whose classes are explicitly listed using 
  * the {@link javax.enterprise.inject.Typed#value() value} 
- * member are bean types of the bean.</p>
+ * member, along with {@link java.lang.Object}, are bean 
+ * types of the bean.</p>
  * 
  * @author Pete Muir
  * @author Gavin King
