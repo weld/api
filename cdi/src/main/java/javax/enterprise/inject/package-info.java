@@ -34,8 +34,8 @@
  * 
  * <p>A bean type is a client-visible type of the bean. A 
  * bean may have multiple bean types. The following bean has 
- * bean types <tt>BookShop</tt>, <tt>Business</tt> and 
- * <tt>Shop&lt;Book&gt;</tt>.</p>
+ * bean types <tt>BookShop</tt>, <tt>Business</tt>, 
+ * <tt>Shop&lt;Book&gt;</tt> and {@link java.lang.Object}.</p>
  * 
  * <pre>
  * public class BookShop 
