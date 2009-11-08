@@ -386,7 +386,8 @@
  * 
  * <p>If more than one bean is eligible for injection to the injection point, the
  * container attempts to resolve the ambiguity by eliminating all beans which are 
- * not alternatives.</p>
+ * not alternatives, except for producer methods and fields of beans that are 
+ * alternatives.</p>
  * 
  * <p>Certain legal bean types cannot be proxied by the container:</p>
  * 
@@ -412,7 +413,8 @@
  * </ul>
  * 
  * <p>If an EL name resolves to more than one bean, the container attempts to 
- * resolve the ambiguity by eliminating all beans which are not alternatives.</p>
+ * resolve the ambiguity by eliminating all beans which are not alternatives, 
+ * except for producer methods and fields of beans that are alternatives.</p>
  * 
  * <h3>Enabled interceptors</h3>
  * 
