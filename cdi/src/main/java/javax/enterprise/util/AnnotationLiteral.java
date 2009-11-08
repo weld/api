@@ -64,6 +64,10 @@ public abstract class AnnotationLiteral<T extends Annotation>
    {
       if (members==null) {
          members = annotationType().getDeclaredMethods();
+         if ( members.length>0 && !annotationType().isAssignableFrom(this.getClass()) )
+         {
+            throw new RuntimeException(getClass() + " does not implement the annotation type with members " + annotationType().getName());
+         }
       }
       return members;
    }
@@ -113,7 +117,7 @@ public abstract class AnnotationLiteral<T extends Annotation>
          annotationType = getTypeParameter(annotationLiteralSubclass);
          if (annotationType == null)
          {
-            throw new RuntimeException(getClass() + " is missing type parameter in AnnotationLiteral");
+            throw new RuntimeException(getClass() + " does not specify the type parameter T of AnnotationLiteral<T>");
          }
       }
       return annotationType;

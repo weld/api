@@ -64,7 +64,7 @@ public abstract class TypeLiteral<T> implements Serializable
          actualType = getTypeParameter(typeLiteralSubclass);
          if (actualType == null)
          {
-            throw new RuntimeException(getClass() + " is missing type parameter in TypeLiteral");
+            throw new RuntimeException(getClass() + " does not specify the type parameter T of TypeLiteral<T>");
          }
       }
       return actualType;
