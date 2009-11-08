@@ -30,7 +30,7 @@ import java.lang.reflect.Type;
  * subclassing <tt>TypeLiteral</tt>.</p>
  * 
  * <pre>
- * TypeLiteral&lt;List&lt;String&gt;&gt; type = new TypeLiteral&lt;List&lt;String&gt;&gt;() {};
+ * TypeLiteral&lt;List&lt;String&gt;&gt; stringListType = new TypeLiteral&lt;List&lt;String&gt;&gt;() {};
  * </pre>
  * 
  * @author Gavin King
