@@ -115,6 +115,10 @@ public abstract class AnnotationLiteral<T extends Annotation>
          {
             throw new RuntimeException(getClass() + " is missing type parameter in AnnotationLiteral");
          }
+         if ( !annotationType.isAssignableFrom(this.getClass()) )
+         {
+            throw new RuntimeException(getClass() + " does not implement the annotation type");
+         }
       }
       return annotationType;
    }
