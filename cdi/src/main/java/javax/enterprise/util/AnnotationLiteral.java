@@ -39,7 +39,7 @@ import java.util.Arrays;
  * </pre>
  * 
  * <pre>
- * PayBy payby = new PayByQualifier() { public value() { return CHEQUE; } };
+ * PayBy payby = new PayByQualifier() { public PaymentMethod value() { return CHEQUE; } };
  * </pre>
  * 
  * @author Pete Muir
