@@ -160,21 +160,45 @@ public abstract class AnnotationLiteral<T extends Annotation>
          {
             appendInBraces(string, Arrays.toString((char[])value));
          }
+         else if (value instanceof String[]) 
+         {
+            String[] strings = (String[]) value;
+            String[] quoted = new String[strings.length];
+            for(int j=0; j<strings.length; j++) 
+            {
+               quoted[j] = "\"" + strings[j] + "\"";
+            }
+            appendInBraces(string, Arrays.toString(quoted));
+         }
+         else if (value instanceof Class[]) 
+         {
+            Class[] classes = (Class[]) value;
+            String[] names = new String[classes.length];
+            for(int j=0; j<classes.length; j++) 
+            {
+               names[j] = classes[j].getName() + ".class";
+            }
+            appendInBraces(string, Arrays.toString(names));
+         }
          else if (value instanceof Object[]) 
          {
             appendInBraces(string, Arrays.toString((Object[])value));
          }
-         /*else if (value instanceof Class<?>) 
+         else if (value instanceof String) 
          {
-            string.append(((Class<?>)value).getName()).append(".class");
-         }*/
+            string.append('"').append(value).append('"');
+         }
+         else if (value instanceof Class) 
+         {
+            string.append(((Class)value).getName()).append(".class");
+         }
          else 
          {
             string.append(value);
          }
          if (i < getMembers().length - 1)
          {
-            string.append(',');
+            string.append(", ");
          }
       }
       return string.append(')').toString();
