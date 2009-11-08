@@ -17,6 +17,7 @@
 
 package javax.enterprise.util;
 
+import java.io.Serializable;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -50,31 +51,23 @@ import java.util.Arrays;
  * @see javax.enterprise.event.Event#select(Annotation...)
  * 
  */
-public abstract class AnnotationLiteral<T extends Annotation> implements
-      Annotation
+public abstract class AnnotationLiteral<T extends Annotation> 
+      implements Annotation, Serializable
 {
    
-   private Class<T> annotationType;
-   private Method[] members;
+   private transient Class<T> annotationType;
+   private transient Method[] members;
 
-   protected AnnotationLiteral()
-   {
-      Class<?> annotationLiteralSubclass = getAnnotationLiteralSubclass(this.getClass());
-      if (annotationLiteralSubclass == null)
-      {
-         throw new RuntimeException(getClass() + "is not a subclass of AnnotationLiteral ");
-      }
-      
-      annotationType = getTypeParameter(annotationLiteralSubclass);
-      
-      if (annotationType == null)
-      {
-         throw new RuntimeException(getClass() + " is missing type parameter in AnnotationLiteral");
-      }
-      
-      this.members = annotationType.getDeclaredMethods();
-   }
+   protected AnnotationLiteral() {}
    
+   private Method[] getMembers() 
+   {
+      if (members==null) {
+         members = annotationType().getDeclaredMethods();
+      }
+      return members;
+   }
+	   
    private static Class<?> getAnnotationLiteralSubclass(Class<?> clazz)
    {
       Class<?> superclass = clazz.getSuperclass();
@@ -110,23 +103,85 @@ public abstract class AnnotationLiteral<T extends Annotation> implements
 
    public Class<? extends Annotation> annotationType()
    {
+      if (annotationType==null) 
+      {
+         Class<?> annotationLiteralSubclass = getAnnotationLiteralSubclass(this.getClass());
+         if (annotationLiteralSubclass == null)
+         {
+            throw new RuntimeException(getClass() + "is not a subclass of AnnotationLiteral");
+         }
+         annotationType = getTypeParameter(annotationLiteralSubclass);
+         if (annotationType == null)
+         {
+            throw new RuntimeException(getClass() + " is missing type parameter in AnnotationLiteral");
+         }
+      }
       return annotationType;
    }
 
    @Override
    public String toString()
    {
-     String string = "@" + annotationType().getName() + "(";
-     for (int i = 0; i < members.length; i++)
-     {
-        string += members[i].getName() + "=";
-        string += invoke(members[i], this);
-        if (i < members.length - 1)
-        {
-           string += ",";
-        }
-     }
-     return string + ")";
+      StringBuilder string = new StringBuilder();
+      string.append('@').append(annotationType().getName()).append('(');
+      for (int i = 0; i < getMembers().length; i++)
+      {
+         string.append(getMembers()[i].getName()).append('=');
+         Object value = invoke(getMembers()[i], this);
+         if (value instanceof boolean[]) 
+         {
+            appendInBraces(string, Arrays.toString((boolean[])value));
+         }
+         else if (value instanceof byte[]) 
+         {
+            appendInBraces(string, Arrays.toString((byte[])value));
+         }
+         else if (value instanceof short[]) 
+         {
+            appendInBraces(string, Arrays.toString((short[])value));
+         }
+         else if (value instanceof int[]) 
+         {
+            appendInBraces(string, Arrays.toString((int[])value));
+         }
+         else if (value instanceof long[]) 
+         {
+            appendInBraces(string, Arrays.toString((long[])value));
+         }
+         else if (value instanceof float[]) 
+         {
+            appendInBraces(string, Arrays.toString((float[])value));
+         }
+         else if (value instanceof double[]) 
+         {
+            appendInBraces(string, Arrays.toString((double[])value));
+         }
+         else if (value instanceof char[]) 
+         {
+            appendInBraces(string, Arrays.toString((char[])value));
+         }
+         else if (value instanceof Object[]) 
+         {
+            appendInBraces(string, Arrays.toString((Object[])value));
+         }
+         /*else if (value instanceof Class<?>) 
+         {
+            string.append(((Class<?>)value).getName()).append(".class");
+         }*/
+         else 
+         {
+            string.append(value);
+         }
+         if (i < getMembers().length - 1)
+         {
+            string.append(',');
+         }
+      }
+      return string.append(')').toString();
+   }
+   
+   private void appendInBraces(StringBuilder buf, String s) {
+      buf.append('{').append(s.substring(1,s.length()-1)).append('}');
    }
    
    @Override
@@ -137,12 +192,13 @@ public abstract class AnnotationLiteral<T extends Annotation> implements
          Annotation that = (Annotation) other;
          if (this.annotationType().equals(that.annotationType()))
          {
-            for (Method member : members)
+            for (Method member : getMembers())
             {
                Object thisValue = invoke(member, this);
                Object thatValue = invoke(member, that);
                if (thisValue.getClass().isArray() && thatValue.getClass().isArray())
                {
+                  //TODO: broken for primitive arrays!
                   if (!Arrays.equals(Object[].class.cast(thisValue), Object[].class.cast(thatValue)))
                   {
                      return false;
@@ -163,10 +219,11 @@ public abstract class AnnotationLiteral<T extends Annotation> implements
    public int hashCode()
    {
       int hashCode = 0;
-      for (Method member : members)
+      for (Method member : getMembers())
       {
          int memberNameHashCode = 127 * member.getName().hashCode();
          Object value = invoke(member, this);
+         //TODO: broken for primitive arrays!
          int memberValueHashCode = value.getClass().isArray() ? Arrays.hashCode(Object[].class.cast(value)) : value.hashCode();
          hashCode += memberNameHashCode ^ memberValueHashCode;
       }       
@@ -193,4 +250,5 @@ public abstract class AnnotationLiteral<T extends Annotation> implements
          throw new RuntimeException("Error checking value of member method " + method.getName() + " on " + method.getDeclaringClass(), e);
       }
    }
+
 }

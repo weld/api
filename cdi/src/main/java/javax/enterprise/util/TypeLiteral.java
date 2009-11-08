@@ -17,6 +17,7 @@
 
 package javax.enterprise.util;
 
+import java.io.Serializable;
 import java.lang.reflect.GenericArrayType;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
@@ -41,35 +42,36 @@ import java.lang.reflect.Type;
  * @see javax.enterprise.event.Event#select(TypeLiteral, Annotation...)
  * 
  */
-public abstract class TypeLiteral<T> 
+public abstract class TypeLiteral<T> implements Serializable
 {
 
-   private Type actualType;
+   private transient Type actualType;
    
-   protected TypeLiteral() 
-   {
-      Class<?> typeLiteralSubclass = getTypeLiteralSubclass(this.getClass());
-      if (typeLiteralSubclass == null) 
-      {
-         throw new RuntimeException(getClass() + " is not a subclass of TypeLiteral");
-      }
-      actualType = getTypeParameter(typeLiteralSubclass);
-      if (actualType == null)
-      {
-         throw new RuntimeException(getClass() + " is missing type parameter in TypeLiteral");
-      }
-   }
+   protected TypeLiteral() {}
 
    /**
-    * @return the actual type represented by type literal
+    * @return the actual type represented by this object
     */
    public final Type getType() 
    {
+      if (actualType==null) 
+      {
+         Class<?> typeLiteralSubclass = getTypeLiteralSubclass(this.getClass());
+         if (typeLiteralSubclass == null) 
+         {
+            throw new RuntimeException(getClass() + " is not a subclass of TypeLiteral");
+         }
+         actualType = getTypeParameter(typeLiteralSubclass);
+         if (actualType == null)
+         {
+            throw new RuntimeException(getClass() + " is missing type parameter in TypeLiteral");
+         }
+      }
       return actualType;
    }
 
    /**
-    * @return the raw type represented by the type literal
+    * @return the raw type represented by this object
     */
    @SuppressWarnings("unchecked")
    public final Class<T> getRawType() {
@@ -123,5 +125,25 @@ public abstract class TypeLiteral<T>
       return null;
    }
    
-   // TODO: equals(), hashCode()
+   @Override
+   public boolean equals(Object obj) {
+      if (obj instanceof TypeLiteral<?>)
+      {
+         TypeLiteral<?> that = (TypeLiteral<?>) obj;
+         return this.getType().equals(that.getType());
+      }
+      return false;
+   }
+   
+   @Override
+   public int hashCode() {
+      return getType().hashCode();
+   }
+
+   @Override
+   public String toString()
+   {
+      return getType().toString();
+   }
+   
 }
