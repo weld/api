@@ -115,10 +115,6 @@ public abstract class AnnotationLiteral<T extends Annotation>
          {
             throw new RuntimeException(getClass() + " is missing type parameter in AnnotationLiteral");
          }
-         if ( !annotationType.isAssignableFrom(this.getClass()) )
-         {
-            throw new RuntimeException(getClass() + " does not implement the annotation type");
-         }
       }
       return annotationType;
    }
@@ -174,9 +170,9 @@ public abstract class AnnotationLiteral<T extends Annotation>
             }
             appendInBraces(string, Arrays.toString(quoted));
          }
-         else if (value instanceof Class[]) 
+         else if (value instanceof Class<?>[]) 
          {
-            Class[] classes = (Class[]) value;
+            Class<?>[] classes = (Class<?>[]) value;
             String[] names = new String[classes.length];
             for(int j=0; j<classes.length; j++) 
             {
@@ -192,9 +188,9 @@ public abstract class AnnotationLiteral<T extends Annotation>
          {
             string.append('"').append(value).append('"');
          }
-         else if (value instanceof Class) 
+         else if (value instanceof Class<?>) 
          {
-            string.append(((Class)value).getName()).append(".class");
+            string.append(((Class<?>)value).getName()).append(".class");
          }
          else 
          {
