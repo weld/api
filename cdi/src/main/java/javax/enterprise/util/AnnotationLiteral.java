@@ -196,17 +196,45 @@ public abstract class AnnotationLiteral<T extends Annotation>
             {
                Object thisValue = invoke(member, this);
                Object thatValue = invoke(member, that);
-               if (thisValue.getClass().isArray() && thatValue.getClass().isArray())
+               if (thisValue instanceof byte[] && thatValue instanceof byte[])
                {
-                  //TODO: broken for primitive arrays!
-                  if (!Arrays.equals(Object[].class.cast(thisValue), Object[].class.cast(thatValue)))
-                  {
-                     return false;
-                  }
+                  if ( !Arrays.equals((byte[])thisValue, (byte[])thatValue) ) return false;
                }
-               else if (!thisValue.equals(thatValue))
+               else if (thisValue instanceof short[] && thatValue instanceof short[])
                {
-                  return false;
+                  if ( !Arrays.equals((short[])thisValue, (short[])thatValue) ) return false;
+               }
+               else if (thisValue instanceof int[] && thatValue instanceof int[])
+               {
+                  if ( !Arrays.equals((int[])thisValue, (int[])thatValue) ) return false;
+               }
+               else if (thisValue instanceof long[] && thatValue instanceof long[])
+               {
+                  if ( !Arrays.equals((long[])thisValue, (long[])thatValue) ) return false;
+               }
+               else if (thisValue instanceof float[] && thatValue instanceof float[])
+               {
+                  if ( !Arrays.equals((float[])thisValue, (float[])thatValue) ) return false;
+               }
+               else if (thisValue instanceof double[] && thatValue instanceof double[])
+               {
+                  if ( !Arrays.equals((double[])thisValue, (double[])thatValue) ) return false;
+               }
+               else if (thisValue instanceof char[] && thatValue instanceof char[])
+               {
+                  if ( !Arrays.equals((char[])thisValue, (char[])thatValue) ) return false;
+               }
+               else if (thisValue instanceof boolean[] && thatValue instanceof boolean[])
+               {
+                  if ( !Arrays.equals((boolean[])thisValue, (boolean[])thatValue) ) return false;
+               }
+               else if (thisValue instanceof Object[] && thatValue instanceof Object[])
+               {
+                  if ( !Arrays.equals((Object[])thisValue, (Object[])thatValue) ) return false;
+               }
+               else 
+               {
+            	   if (!thisValue.equals(thatValue)) return false;
                }
             }
             return true;
@@ -219,12 +247,51 @@ public abstract class AnnotationLiteral<T extends Annotation>
    public int hashCode()
    {
       int hashCode = 0;
-      for (Method member : getMembers())
+      for (Method member: getMembers())
       {
          int memberNameHashCode = 127 * member.getName().hashCode();
          Object value = invoke(member, this);
-         //TODO: broken for primitive arrays!
-         int memberValueHashCode = value.getClass().isArray() ? Arrays.hashCode(Object[].class.cast(value)) : value.hashCode();
+         int memberValueHashCode;
+         if (value instanceof boolean[])
+         {
+            memberValueHashCode = Arrays.hashCode((boolean[]) value);
+         }
+         else if (value instanceof short[])
+         {
+            memberValueHashCode = Arrays.hashCode((short[]) value);
+         }
+         else if (value instanceof int[])
+         {
+            memberValueHashCode = Arrays.hashCode((int[]) value);
+         }
+         else if (value instanceof long[])
+         {
+            memberValueHashCode = Arrays.hashCode((long[]) value);
+         }
+         else if (value instanceof float[])
+         {
+            memberValueHashCode = Arrays.hashCode((float[]) value);
+         }
+         else if (value instanceof double[])
+         {
+            memberValueHashCode = Arrays.hashCode((double[]) value);
+         }
+         else if (value instanceof byte[])
+         {
+            memberValueHashCode = Arrays.hashCode((byte[]) value);
+         }
+         else if (value instanceof char[])
+         {
+            memberValueHashCode = Arrays.hashCode((char[]) value);
+         }
+         else if (value instanceof Object[])
+         {
+            memberValueHashCode = Arrays.hashCode((Object[]) value);
+         }
+         else 
+         {
+            memberValueHashCode = value.hashCode();
+         }
          hashCode += memberNameHashCode ^ memberValueHashCode;
       }       
       return hashCode;
