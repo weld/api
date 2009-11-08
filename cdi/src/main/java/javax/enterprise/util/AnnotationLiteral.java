@@ -325,7 +325,7 @@ public abstract class AnnotationLiteral<T extends Annotation>
    {
       try
       {
-         method.setAccessible(true);
+         if (!method.isAccessible()) method.setAccessible(true);
          return method.invoke(instance);
       }
       catch (IllegalArgumentException e)
