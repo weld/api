@@ -38,7 +38,6 @@ import java.lang.annotation.Target;
  * filter and when the container calls any <tt>ServletRequestListener</tt> 
  * or <tt>AsyncListener</tt>,</li>
  * <li>during any Java EE web service invocation,</li>
- * <li>during any asynchronous observer method notification,</li>
  * <li>during any remote method invocation of any EJB, during 
  * any asynchronous method invocation of any EJB, during any 
  * call to an EJB timeout method and during message delivery 
@@ -55,7 +54,6 @@ import java.lang.annotation.Target;
  * method, all <tt>doFilter()</tt> methods, and all <tt>requestDestroyed()</tt>
  * and <tt>onComplete()</tt> notifications return,</li>
  * <li>after the web service invocation completes,</li>
- * <li>after the asynchronous observer notification completes,</li>
  * <li>after the EJB remote method invocation, asynchronous 
  * method invocation, timeout or message delivery completes, or</li>
  * <li>after the message delivery to the <tt>MessageListener</tt> 

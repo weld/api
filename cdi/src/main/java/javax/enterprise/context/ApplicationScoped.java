@@ -40,7 +40,6 @@ import java.lang.annotation.Target;
  * <tt>ServletContextListener</tt>, <tt>HttpSessionListener</tt>, 
  * <tt>AsyncListener</tt> or <tt>ServletRequestListener</tt>,</li>
  * <li>during any Java EE web service invocation,</li>
- * <li>during any asynchronous observer method notification,</li>
  * <li>during any remote method invocation of any EJB, during 
  * any asynchronous method invocation of any EJB, during any 
  * call to an EJB timeout method and during message delivery 
@@ -53,13 +52,12 @@ import java.lang.annotation.Target;
  * is called.</li>
  * </ul>
  * 
- * <p>The application context is shared between all servlet 
- * requests, asynchronous observer method notifications, web 
- * service invocations, EJB remote method invocations, EJB
+ * <p>The application context is shared between all servlet requests, 
+ * web service invocations, EJB remote method invocations, EJB
  * asynchronous method invocations, EJB timeouts and message 
- * deliveries to message-driven beans that execute within the 
- * same application. The application context is destroyed when 
- * the application is shut down.</p>
+ * deliveries to message-driven beans that execute within the same 
+ * application. The application context is destroyed when the 
+ * application is shut down.</p>
  * 
  * @author Gavin King
  * @author Pete Muir
