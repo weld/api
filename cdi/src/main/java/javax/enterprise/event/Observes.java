@@ -50,6 +50,14 @@ import java.lang.annotation.Target;
  * 
  * <p>The event parameter type may contain a type variable or wildcard.</p>
  * 
+ * <p>In addition to the event parameter, observer methods may declare 
+ * additional parameters, which may declare qualifiers. These additional 
+ * parameters are injection points.</p>
+ * 
+ * <pre>
+ * public void afterLogin(&#064;Observes LoggedInEvent event, &#064;Manager User user, Logger log) { ... }
+ * </pre>
+ * 
  * <p>A bean (or extension) may declare multiple observer methods.</p>
  * 
  * <p>Observer methods are inherited by bean subclasses.</p>

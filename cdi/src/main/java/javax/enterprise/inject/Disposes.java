@@ -64,6 +64,14 @@ import java.lang.annotation.Target;
  * same bean class, the container must call this method when 
  * destroying any instance returned by that producer method.</p>
  * 
+ * <p>In addition to the disposed parameter, a disposer method 
+ * may declare additional parameters, which may also specify 
+ * qualifiers. These additional parameters are injection points.</p>
+ * 
+ * <pre>
+ * public void close(&#064Disposes &#064UserDatabase EntityManager em, Logger log) { ... }
+ * </pre>
+ *    
  * <p>A disposer method may resolve to multiple producer 
  * methods declared by the bean class, in which case the 
  * container must call it when destroying any instance 

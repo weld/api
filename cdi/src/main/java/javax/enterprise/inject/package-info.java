@@ -360,6 +360,33 @@
  * according to the class accessibility requirements of the module architecture.</li>
  * </ul>
  * 
+ * <h3>Injection points</h3>
+ * 
+ * <p>The following kinds of injection point exist:<p>
+ * 
+ * <ul>
+ * <li>When the container instantiates a bean class, it calls the bean constructor. 
+ * The bean constructor is a constructor of the bean class. The bean constructor may 
+ * be identified by annotating the constructor 
+ * {@link javax.inject.Inject &#064;javax.inject.Inject}. If a bean class does not 
+ * explicitly declare a constructor using <tt>&#064;Inject</tt>, the constructor that 
+ * accepts no parameters is the bean constructor. A bean constructor may have any number 
+ * of parameters. All parameters of a bean constructor are injection points.</li>
+ * <li>An injected field is a non-static, non-final field of a bean class, or of any 
+ * Java EE component class supporting injection. An injected field may be declared by 
+ * annotating the field {@link javax.inject.Inject &#064;javax.inject.Inject}.</li>
+ * <li>An initializer method is a non-abstract, non-static, non-generic method of a 
+ * bean class, or of any Java EE component class supporting injection. If the bean is 
+ * a session bean, the initializer method is not required to be a business method of 
+ * the session bean. An initializer method may be declared by annotating the method
+ * {@link javax.inject.Inject &#064;javax.inject.Inject}. An initializer method may 
+ * have any number of parameters. All initializer method parameters are injection 
+ * points.</li>
+ * <li>Finally, parameters of {@linkplain javax.enterprise.inject.Produces producer methods},
+ * {@linkplain javax.enterprise.inject.Disposes diposer methods} and 
+ * {@linkplain javax.enterprise.event.Observes observer methods} are injection points.</li>
+ * </ul>
+ * 
  * <h3>Dependency injection</h3>
  * 
  * <p>A bean is assignable to a given injection point if:</p>

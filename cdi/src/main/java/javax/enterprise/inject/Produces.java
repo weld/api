@@ -74,7 +74,20 @@ import java.lang.annotation.Target;
  * <p>If the producer method return type or producer field type is 
  * a parameterized type with a type variable, it must have scope 
  * {@link javax.enterprise.context.Dependent &#064;Dependent}.</p>
+ *
+ * <p>A producer method may have any number of parameters. All 
+ * producer method parameters are injection points.</p>
  * 
+ * <pre>public class OrderFactory {
+ * 
+ *    &#064;Produces &#064;ConversationScoped
+ *    public Order createCurrentOrder(&#064;New(Order.class) Order order, &#064;Selected Product product) {
+ *       order.setProduct(product);
+ *       return order;
+ *    }
+ * 
+ * }</pre>
+
  * <p>A bean may declare multiple producer methods or fields.</p>
  * 
  * <p>Producer methods and fields are not inherited by bean subclasses.</p>
