@@ -16,8 +16,8 @@
    -->
 
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-   elementFormDefault="qualified" targetNamespace="http://seamframework.org/ns/CDI"
-   xmlns:cdi="http://seamframework.org/ns/CDI" version="1.0">
+   elementFormDefault="qualified" targetNamespace="http://java.sun.com/xml/ns/javaee"
+   xmlns:javaee="http://java.sun.com/xml/ns/javaee" version="1.0">
 
    <xs:annotation>
       <xs:documentation>
@@ -25,7 +25,7 @@
          a set of complementary services that help improve the structure
          of application code. beans.xml is used to enable CDI services
          for the current bean archive as well as to enable named
-         interceptors, decorators and altenatives for the current bean
+         interceptors, decorators and alternatives for the current bean
          archive.
       </xs:documentation>
    </xs:annotation>
@@ -45,9 +45,9 @@
       </xs:annotation>
       <xs:complexType>
          <xs:all>
-            <xs:element ref="cdi:interceptors" />
-            <xs:element ref="cdi:decorators" />
-            <xs:element ref="cdi:alternatives" />
+            <xs:element ref="javaee:interceptors" />
+            <xs:element ref="javaee:decorators" />
+            <xs:element ref="javaee:alternatives" />
          </xs:all>
       </xs:complexType>
    </xs:element>
