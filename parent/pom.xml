@@ -82,5 +82,12 @@
       
       </dependencies>
    </dependencyManagement>
+
+   <scm>
+      <connection>scm:svn:http://anonsvn.jboss.org/repos/weld/api/trunk/parent</connection>
+      <developerConnection>scm:svn:https://svn.jboss.org/repos/weld/api/trunk/parent</developerConnection>
+      <url>http://fisheye.jboss.org/browse/weld/api/trunk/parent</url>
+   </scm>
+
    
 </project>

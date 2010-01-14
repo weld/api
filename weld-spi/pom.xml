@@ -79,4 +79,11 @@
 
    </dependencies>
 
+   <scm>
+      <connection>scm:svn:http://anonsvn.jboss.org/repos/weld/api/trunk/weld-spi</connection>
+      <developerConnection>scm:svn:https://svn.jboss.org/repos/weld/api/trunk/weld-spi</developerConnection>
+      <url>http://fisheye.jboss.org/browse/weld/api/trunk/weld-spi</url>
+   </scm>
+
+
 </project>

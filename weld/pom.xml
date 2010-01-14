@@ -19,4 +19,11 @@
       
    </dependencies>
 
+   <scm>
+      <connection>scm:svn:http://anonsvn.jboss.org/repos/weld/api/trunk/weld</connection>
+      <developerConnection>scm:svn:https://svn.jboss.org/repos/weld/api/trunk/weld</developerConnection>
+      <url>http://fisheye.jboss.org/browse/weld/api/trunk/weld</url>
+   </scm>
+
+
 </project>
