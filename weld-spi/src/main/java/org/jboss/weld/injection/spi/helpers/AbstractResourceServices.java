@@ -13,7 +13,7 @@ import org.jboss.weld.bootstrap.api.Service;
 
 public abstract class AbstractResourceServices implements Service
 {  
-   private static final String RESOURCE_LOOKUP_PREFIX = "java:/comp/env";
+   private static final String RESOURCE_LOOKUP_PREFIX = "java:comp/env";
    
    /* (non-Javadoc)
     * @see org.jboss.weld.resources.spi.helpers.ResourceServices#resolveResource(javax.inject.manager.InjectionPoint)
