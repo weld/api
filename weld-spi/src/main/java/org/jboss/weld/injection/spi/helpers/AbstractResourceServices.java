@@ -31,9 +31,6 @@ public abstract class AbstractResourceServices implements Service
 {  
    private static final String RESOURCE_LOOKUP_PREFIX = "java:comp/env";
    
-   /* (non-Javadoc)
-    * @see org.jboss.weld.resources.spi.helpers.ResourceServices#resolveResource(javax.inject.manager.InjectionPoint)
-    */
    public Object resolveResource(InjectionPoint injectionPoint)
    {
       if (!injectionPoint.getAnnotated().isAnnotationPresent(Resource.class))
