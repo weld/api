@@ -2,7 +2,7 @@
    <parent>
       <artifactId>weld-api-parent</artifactId>
       <groupId>org.jboss.weld</groupId>
-      <version>1.0-SNAPSHOT</version>
+      <version>1.0-SP1</version>
       <relativePath>../parent/pom.xml</relativePath>
    </parent>
    <modelVersion>4.0.0</modelVersion>
@@ -20,9 +20,9 @@
    </dependencies>
 
    <scm>
-      <connection>scm:svn:http://anonsvn.jboss.org/repos/weld/api/trunk/weld</connection>
-      <developerConnection>scm:svn:https://svn.jboss.org/repos/weld/api/trunk/weld</developerConnection>
-      <url>http://fisheye.jboss.org/browse/weld/api/trunk/weld</url>
+      <connection>scm:svn:http://anonsvn.jboss.org/repos/weld/api/tags/1.0-SP1/weld</connection>
+      <developerConnection>scm:svn:https://svn.jboss.org/repos/weld/api/tags/1.0-SP1/weld</developerConnection>
+      <url>http://fisheye.jboss.org/browse/weld/api/tags/1.0-SP1/weld</url>
    </scm>
 
 

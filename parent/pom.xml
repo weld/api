@@ -3,7 +3,7 @@
    <parent>
       <groupId>org.jboss.weld</groupId>
       <artifactId>weld-api-bom</artifactId>
-      <version>1.0-SNAPSHOT</version>
+      <version>1.0-SP1</version>
       <relativePath>../bom/pom.xml</relativePath>
    </parent>
    <groupId>org.jboss.weld</groupId>
@@ -84,9 +84,9 @@
    </dependencyManagement>
 
    <scm>
-      <connection>scm:svn:http://anonsvn.jboss.org/repos/weld/api/trunk/parent</connection>
-      <developerConnection>scm:svn:https://svn.jboss.org/repos/weld/api/trunk/parent</developerConnection>
-      <url>http://fisheye.jboss.org/browse/weld/api/trunk/parent</url>
+      <connection>scm:svn:http://anonsvn.jboss.org/repos/weld/api/tags/1.0-SP1/parent</connection>
+      <developerConnection>scm:svn:https://svn.jboss.org/repos/weld/api/tags/1.0-SP1/parent</developerConnection>
+      <url>http://fisheye.jboss.org/browse/weld/api/tags/1.0-SP1/parent</url>
    </scm>
 
    
