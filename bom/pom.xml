@@ -14,10 +14,10 @@
    <name>Weld and CDI APIs BOM</name>
 
    <!-- Minimal project metadata, for more see parent/pom.xml -->
-   <url>http://www.seamframework.org/Weld</url>
 
    <description>Weld and CDI APIs "bill of materials" which can be imported by any project using the Weld implementation of CDI. It provides dependency management for the developer APIs and SPIs, as well as container integrator SPIs</description>
 
+   <url>http://www.seamframework.org/Weld</url>
    <licenses>
       <license>
          <name>Apache License, Version 2.0</name>

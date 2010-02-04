@@ -10,6 +10,15 @@
    <artifactId>weld-api</artifactId>
    <name>Weld APIs</name>
    <description>Weld specifc extensions to the CDI API</description>
+   <url>http://www.seamframework.org/Weld</url>
+   <licenses>
+      <license>
+         <name>Apache License, Version 2.0</name>
+         <distribution>repo</distribution>
+         <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
+      </license>
+   </licenses>
+
    <dependencies>
 
       <dependency>
