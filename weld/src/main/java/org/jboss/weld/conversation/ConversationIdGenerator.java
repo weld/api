@@ -20,7 +20,7 @@ package org.jboss.weld.conversation;
  * Generates conversation ID:s for the conversation manager
  * 
  * @author Nicklas Karlsson
- * @see org.jboss.weld.conversation.ConversationManager#beginOrRestoreConversation(String)
+ * @see org.jboss.weld.conversation.ConversationManager#setupConversation(String)
  */
 public interface ConversationIdGenerator
 {
