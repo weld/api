@@ -52,7 +52,10 @@ public interface SessionObjectReference extends Serializable
    public void remove();
    
    /**
-    * Determine whether the session object has been removed
+    * Determine whether the session object has been removed.
+    * 
+    * If the session object has yet to be referenced by {@link #getBusinessObject(Class)}
+    * then this method should not return true.
     * 
     * @return true if the session object has been removed
     */
