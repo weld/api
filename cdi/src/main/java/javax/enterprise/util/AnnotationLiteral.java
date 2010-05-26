@@ -132,6 +132,7 @@ public abstract class AnnotationLiteral<T extends Annotation>
       {
          string.append(getMembers()[i].getName()).append('=');
          Object value = invoke(getMembers()[i], this);
+         assertMemberValueNotNull(getMembers()[i], this, value);
          if (value instanceof boolean[]) 
          {
             appendInBraces(string, Arrays.toString((boolean[])value));
@@ -223,7 +224,9 @@ public abstract class AnnotationLiteral<T extends Annotation>
             for (Method member : getMembers())
             {
                Object thisValue = invoke(member, this);
+               assertMemberValueNotNull(member, this, thisValue);
                Object thatValue = invoke(member, that);
+               assertMemberValueNotNull(member, this, thatValue);
                if (thisValue instanceof byte[] && thatValue instanceof byte[])
                {
                   if ( !Arrays.equals((byte[])thisValue, (byte[])thatValue) ) return false;
@@ -279,6 +282,7 @@ public abstract class AnnotationLiteral<T extends Annotation>
       {
          int memberNameHashCode = 127 * member.getName().hashCode();
          Object value = invoke(member, this);
+         assertMemberValueNotNull(member, this, value);
          int memberValueHashCode;
          if (value instanceof boolean[])
          {
@@ -343,6 +347,14 @@ public abstract class AnnotationLiteral<T extends Annotation>
       catch (InvocationTargetException e)
       {
          throw new RuntimeException("Error checking value of member method " + method.getName() + " on " + method.getDeclaringClass(), e);
+      }
+   }
+   
+   private static void assertMemberValueNotNull(Method member, Annotation instance, Object value)
+   {
+      if (value == null)
+      {
+         throw new IllegalArgumentException("Annotation member " + instance.getClass().getName() + "." + member.getName() + " must not be null");
       }
    }
 
