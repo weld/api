@@ -144,6 +144,7 @@ public interface Deployment
     * 
     * @param beanClass the bean class to load
     * @return the {@link BeanDeploymentArchive} containing the bean class
+    * @throws IllegalArgumentException if the beanClass is not visisble to the current deployment
     */
    public BeanDeploymentArchive loadBeanDeploymentArchive(Class<?> beanClass);
   
