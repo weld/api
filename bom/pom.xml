@@ -83,6 +83,7 @@
       <jta.api.version>1.1</jta.api.version>
       <jms.api.version>1.1</jms.api.version>
       <uel.api.version>2.2</uel.api.version>
+      <!-- Stick with JSF API 1.2 to preserve backwards compatibility with JSF 1.2 - we don't need any JSF 2 features -->
       <jsf.api.version>1.2_13</jsf.api.version>
       <jaxws.api.version>2.1</jaxws.api.version>
       <interceptor.api.version>1.1</interceptor.api.version>
