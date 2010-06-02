@@ -8,7 +8,7 @@
    <parent>
       <groupId>org.jboss.weld</groupId>
       <artifactId>weld-parent</artifactId>
-      <version>10</version>
+      <version>11</version>
    </parent>
 
    <name>Weld and CDI APIs BOM</name>
