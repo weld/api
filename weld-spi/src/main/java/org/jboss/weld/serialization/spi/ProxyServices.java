@@ -51,10 +51,10 @@ public interface ProxyServices extends Service
     * hold proxies while still providing access to the given type and any of its
     * ancestors and used types.
     * 
-    * @param type the super type (class or interface) of the proxy
+    * @param proxiedBeanType the base type (class or interface) being proxied
     * @return the class loader to use for the proxy class
     */
-   public ClassLoader getClassLoader(Class<?> type);
+   public ClassLoader getClassLoader(Class<?> proxiedBeanType);
 
    /**
     * Returns the protection domain to use when a security manager is present
@@ -62,10 +62,10 @@ public interface ProxyServices extends Service
     * protection domain will need to correspond to the one used with the class
     * loader provided by {@link #getClassLoader(Class)}.
     * 
-    * @param type the super type (class or interface) of the proxy
+    * @param proxiedBeanType the base type (class or interface) being proxied
     * @return the protection domain to use for the proxy class
     */
-   public ProtectionDomain getProtectionDomain(Class<?> type);
+   public ProtectionDomain getProtectionDomain(Class<?> proxiedBeanType);
 
    /**
     * Allows a proxy object to be intercepted before it is serialized to an
@@ -81,16 +81,23 @@ public interface ProxyServices extends Service
    public Object wrapForSerialization(Object proxyObject);
 
    /**
-    * Loads the superclass of a proxy using the correct classloader for an
-    * application. The superclass will usually be a class contained in a Weld
-    * deployment or some class accessible from a deployment's classloader. This
-    * is only used during deserialization of a proxy where the superclass for it
-    * is needed to create that proxy class just before deserializing the proxy
-    * object.
+    * <p>
+    * Loads classes or interfaces extended/implemented by a bean or in
+    * particular a proxy class for a bean. This includes application types of
+    * the bean as well as Weld types used for proxy classes. Thus the class
+    * loader(s) used here must be able to resolve both application classes and
+    * Weld implementation classes.
+    * </p>
+    * <p>
+    * This method is only called during deserialization of a proxy object. It
+    * does not necessarily need to use the same class loader that the proxy
+    * class itself exists in since {@link #getClassLoader(Class)} will still be
+    * used to get the correct class loader for the bean type.
+    * </p>
     * 
-    * @param className the superclass name for the proxy class
+    * @param className the class name
     * @return the corresponding Class object
     */
-   public Class<?> loadProxySuperClass(String className);
+   public Class<?> loadBeanClass(String className);
 
 }
