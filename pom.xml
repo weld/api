@@ -3,7 +3,7 @@
    <groupId>org.jboss.weld</groupId>
    <artifactId>weld-api-build-aggregator</artifactId>
    <packaging>pom</packaging>
-   <version>1.0-SNAPSHOT</version>
+   <version>1.1-SNAPSHOT</version>
 
    <parent>
       <groupId>org.jboss.weld</groupId>
@@ -11,10 +11,10 @@
       <version>12</version>
    </parent>
 
-   <name>Weld and CDI APIs Build Aggregator</name>
+   <name>Weld APIs Build Aggregator</name>
 
    <!-- Minimal project metadata, for more see parent/pom.xml -->
-   <description>The build aggregator for Weld and the CDI APIs, which takes care of calling the modules which make up Weld and CDI APIs</description>
+   <description>The build aggregator for Weld APIs, which takes care of calling the modules which make up Weld APIs</description>
 
    <!-- SCM and Distribution management -->
    <scm>
@@ -26,7 +26,6 @@
    <modules>
       <module>bom</module>
       <module>parent</module>
-      <module>cdi</module>
       <module>weld</module>
       <module>weld-spi</module>
    </modules>

@@ -3,7 +3,7 @@
    <groupId>org.jboss.weld</groupId>
    <artifactId>weld-api-bom</artifactId>
    <packaging>pom</packaging>
-   <version>1.0-SNAPSHOT</version>
+   <version>1.1-SNAPSHOT</version>
 
    <parent>
       <groupId>org.jboss.weld</groupId>
@@ -11,11 +11,11 @@
       <version>12</version>
    </parent>
 
-   <name>Weld and CDI APIs BOM</name>
+   <name>Weld APIs BOM</name>
 
    <!-- Minimal project metadata, for more see parent/pom.xml -->
 
-   <description>Weld and CDI APIs "bill of materials" which can be imported by any project using the Weld implementation of CDI. It provides dependency management for the developer APIs and SPIs, as well as container integrator SPIs</description>
+   <description>Weld APIs "bill of materials" which can be imported by any project using the Weld implementation of CDI. It provides dependency management for the developer APIs and SPIs, as well as container integrator SPIs</description>
 
    <url>http://www.seamframework.org/Weld</url>
    <licenses>
@@ -73,6 +73,7 @@
 
    <properties>
       <atinject.api.version>1</atinject.api.version>
+      <cdi.api.version>1.0-SP1</cdi.api.version>
       <ejb.api.version>3.1.0</ejb.api.version>
       <jsr250.api.version>1.0</jsr250.api.version>
       <jpa.api.version>1.0</jpa.api.version>
@@ -195,7 +196,7 @@
          <dependency>
             <groupId>javax.enterprise</groupId>
             <artifactId>cdi-api</artifactId>
-            <version>${project.version}</version>
+            <version>${cdi.api.version}</version>
          </dependency>
 
          <dependency>
