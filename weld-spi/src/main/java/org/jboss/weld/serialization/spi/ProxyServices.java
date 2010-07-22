@@ -68,19 +68,6 @@ public interface ProxyServices extends Service
    public ProtectionDomain getProtectionDomain(Class<?> proxiedBeanType);
 
    /**
-    * Allows a proxy object to be intercepted before it is serialized to an
-    * object stream. The object may be wrapped or otherwise handled in such a
-    * way to allow it to be serialized and then later deserialized in another
-    * VM. The default Weld implementation uses a wrapper class which contains
-    * enough information to recreate the proxy class and then to deserialize the
-    * proxy object itself.
-    * 
-    * @param proxyObject the proxy object from Weld being serialized
-    * @return a replacement object or the proxy
-    */
-   public Object wrapForSerialization(Object proxyObject);
-
-   /**
     * <p>
     * Loads classes or interfaces extended/implemented by a bean or in
     * particular a proxy class for a bean. This includes application types of
