@@ -9,7 +9,7 @@
    <parent>
       <groupId>org.jboss.weld</groupId>
       <artifactId>weld-parent</artifactId>
-      <version>13</version>
+      <version>15</version>
    </parent>
 
    <name>Weld APIs BOM</name>
@@ -234,9 +234,9 @@
    </profiles>
 
    <scm>
-      <connection>scm:svn:http://anonsvn.jboss.org/repos/weld/api/trunk/bom</connection>
-      <developerConnection>scm:svn:https://svn.jboss.org/repos/weld/api/trunk/bom</developerConnection>
-      <url>http://fisheye.jboss.org/browse/weld/api/trunk/bom</url>
+      <connection>scm:git:git://github.com/weld/api.git</connection>
+      <developerConnection>scm:git:git://github.com/weld/api.git</developerConnection>
+      <url>scm:git:git://github.com/weld/api.git</url>
    </scm>
 
 </project>
