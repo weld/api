@@ -57,17 +57,6 @@ public interface ProxyServices extends Service
    public ClassLoader getClassLoader(Class<?> proxiedBeanType);
 
    /**
-    * Returns the protection domain to use when a security manager is present
-    * during generation of a proxy class with the given super type. Usually this
-    * protection domain will need to correspond to the one used with the class
-    * loader provided by {@link #getClassLoader(Class)}.
-    * 
-    * @param proxiedBeanType the base type (class or interface) being proxied
-    * @return the protection domain to use for the proxy class
-    */
-   public ProtectionDomain getProtectionDomain(Class<?> proxiedBeanType);
-
-   /**
     * <p>
     * Loads classes or interfaces extended/implemented by a bean or in
     * particular a proxy class for a bean. This includes application types of
