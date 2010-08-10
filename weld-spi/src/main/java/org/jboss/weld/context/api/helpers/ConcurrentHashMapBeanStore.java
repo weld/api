@@ -21,8 +21,6 @@ import java.io.Serializable;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import javax.enterprise.context.spi.Contextual;
-
 import org.jboss.weld.context.api.ContextualInstance;
 
 /**
@@ -54,6 +52,12 @@ public class ConcurrentHashMapBeanStore extends AbstractMapBackedBeanStore imple
    public Map<String, ContextualInstance<? extends Object>> delegate()
    {
       return delegate;
+   }
+   
+   @Override
+   public String toString()
+   {
+      return "contextuals " + delegate;
    }
 
 }
