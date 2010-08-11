@@ -17,18 +17,39 @@
 package org.jboss.weld.injection.spi;
 
 import javax.enterprise.inject.spi.InjectionTarget;
+import javax.inject.Inject;
+
+import org.jboss.weld.ejb.api.SessionObjectReference;
 
 /**
- * @author pmuir
- *
+ * The context in which instance injection occurs.
+ * 
+ * @author Pete Muir
+ * 
  */
 public interface InjectionContext<T>
 {
-   
+
+   /**
+    * Calling {@link #proceed()} will cause Weld to perform injection on the
+    * instance as it normally would. It is legal to not call {@link #proceed()},
+    * however the container must ensure all injection, including CDI-style
+    * {@link Inject} injection is done.
+    */
    public void proceed();
-   
+
+   /**
+    * Get the underlying instance to be injected. If the instance being injected
+    * is an EJB this will be whatever is returned by
+    * {@link SessionObjectReference#getBusinessObject(Class)}
+    * 
+    */
    public T getTarget();
-   
+
+   /**
+    * Get the {@link InjectionTarget} for the instance being injected
+    * 
+    */
    public InjectionTarget<T> getInjectionTarget();
 
 }
