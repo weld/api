@@ -17,8 +17,6 @@
 
 package org.jboss.weld.serialization.spi;
 
-import java.security.ProtectionDomain;
-
 import org.jboss.weld.bootstrap.api.Service;
 
 /**
