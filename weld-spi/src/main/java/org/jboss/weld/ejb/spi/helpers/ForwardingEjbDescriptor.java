@@ -43,6 +43,11 @@ public abstract class ForwardingEjbDescriptor<T> implements EjbDescriptor<T>
       return delegate().getLocalBusinessInterfaces();
    }
    
+   public Collection<BusinessInterfaceDescriptor<?>> getRemoteBusinessInterfaces()
+   {
+      return delegate().getRemoteBusinessInterfaces();
+   }
+   
    public Collection<Method> getRemoveMethods()
    {
       return delegate().getRemoveMethods();

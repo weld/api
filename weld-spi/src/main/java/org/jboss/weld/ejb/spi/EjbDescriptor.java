@@ -46,6 +46,13 @@ public interface EjbDescriptor<T>
    public Collection<BusinessInterfaceDescriptor<?>> getLocalBusinessInterfaces();
    
    /**
+    * Gets the remote business interfaces of the EJB
+    * 
+    * @return An iterator over the remote business interfaces
+    */
+   public Collection<BusinessInterfaceDescriptor<?>> getRemoteBusinessInterfaces();
+   
+   /**
     * Get the EJB name
     * 
     * @return
