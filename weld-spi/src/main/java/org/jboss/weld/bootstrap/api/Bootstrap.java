@@ -16,6 +16,8 @@
  */
 package org.jboss.weld.bootstrap.api;
 
+import java.net.URL;
+
 import javax.enterprise.inject.spi.AfterBeanDiscovery;
 import javax.enterprise.inject.spi.AfterDeploymentValidation;
 import javax.enterprise.inject.spi.BeforeBeanDiscovery;
@@ -23,6 +25,7 @@ import javax.enterprise.inject.spi.BeforeShutdown;
 import javax.enterprise.inject.spi.Extension;
 
 import org.jboss.weld.bootstrap.spi.BeanDeploymentArchive;
+import org.jboss.weld.bootstrap.spi.BeansXml;
 import org.jboss.weld.bootstrap.spi.Deployment;
 import org.jboss.weld.context.api.BeanStore;
 import org.jboss.weld.manager.api.WeldManager;
@@ -133,5 +136,25 @@ public interface Bootstrap
     * @return the manager or null if not yet available or not found.
     */
    public WeldManager getManager(BeanDeploymentArchive beanDeploymentArchive);
+   
+   /**
+    * Parse the specified URL as a beans.xml file.
+    * 
+    * @param url the url to parse
+    * @return the BeansXml data structure which represents the URL
+    * @throws IllegalArgumentException if the URL cannot be opened
+    */
+   public BeansXml parse(URL url);
+   
+   /**
+    * Parse the specified URLs as a series of beans.xml file and merge the result.
+    * 
+    * Duplicate entries are not removed.
+    * 
+    * @param url the url to parse
+    * @return the BeansXml data structure which represents the URL
+    * @throws IllegalArgumentException if the URL cannot be opened
+    */
+   public BeansXml parse(Iterable<URL> urls);
 
 }

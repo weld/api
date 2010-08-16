@@ -16,10 +16,10 @@
  */
 package org.jboss.weld.bootstrap.spi.helpers;
 
-import java.net.URL;
 import java.util.Collection;
 
 import org.jboss.weld.bootstrap.spi.BeanDeploymentArchive;
+import org.jboss.weld.bootstrap.spi.BeansXml;
 import org.jboss.weld.ejb.spi.EjbDescriptor;
 
 /**
@@ -41,7 +41,7 @@ public abstract class ForwardingBeanDeploymentArchive implements BeanDeploymentA
       return delegate().getBeanDeploymentArchives();
    }
 
-   public Collection<URL> getBeansXml()
+   public BeansXml getBeansXml()
    {
       return delegate().getBeansXml();
    }

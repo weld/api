@@ -16,9 +16,9 @@
  */
 package org.jboss.weld.bootstrap.spi;
 
-import java.net.URL;
 import java.util.Collection;
 
+import org.jboss.weld.bootstrap.api.Bootstrap;
 import org.jboss.weld.bootstrap.api.ServiceRegistry;
 import org.jboss.weld.ejb.spi.EjbDescriptor;
 
@@ -71,15 +71,18 @@ public interface BeanDeploymentArchive
    /**
     * Get any deployment descriptors in the bean deployment archive.
     * 
-    * The container will normally return a single deployment descriptor per bean
-    * deployment archive (the physical META-INF/beans.xml or WEB-INF/beans.xml),
-    * however it is permitted to return other deployment descriptors defined
-    * using other methods.
+    * The container will return a a merged view of the beans.xml per bean
+    * deployment archive. This will normally represent a single file such as the
+    * physical META-INF/beans.xml or WEB-INF/beans.xml)
     * 
-    * @return the URLs pointing to the deployment descriptor,
-    *         or an empty set if none are present
+    * The container may choose to parse beans.xml itself, or it may use Weld to
+    * parse beans.xml
+    * 
+    * @return the parsed beans.xml
+    * @see {@link Bootstrap#parse(java.net.URL)}
+    * @see {@link Bootstrap#parse(Iterable)}
     */
-   public Collection<URL> getBeansXml();
+   public BeansXml getBeansXml();
 
    /**
     * Get all the EJBs in the deployment archive

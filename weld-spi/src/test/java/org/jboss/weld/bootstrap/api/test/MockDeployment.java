@@ -16,13 +16,15 @@
  */
 package org.jboss.weld.bootstrap.api.test;
 
-import java.net.URL;
+import static org.jboss.weld.bootstrap.spi.BeansXml.EMPTY_BEANS_XML;
+
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
 import org.jboss.weld.bootstrap.api.ServiceRegistry;
 import org.jboss.weld.bootstrap.spi.BeanDeploymentArchive;
+import org.jboss.weld.bootstrap.spi.BeansXml;
 import org.jboss.weld.bootstrap.spi.Deployment;
 import org.jboss.weld.ejb.spi.EjbDescriptor;
 
@@ -53,9 +55,9 @@ public class MockDeployment implements Deployment
          return Collections.emptySet();
       }
 
-      public Collection<URL> getBeansXml()
+      public BeansXml getBeansXml()
       {
-         return Collections.emptySet();
+         return EMPTY_BEANS_XML;
       }
 
       public Collection<EjbDescriptor<?>> getEjbs()

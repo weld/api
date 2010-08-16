@@ -50,6 +50,7 @@ public class BootstrapTest
       deploymentServices.add(ServletServices.class, new MockServletServices());
       deploymentServices.add(ScheduledExecutorServiceFactory.class, new MockScheduledExecutorServiceFactory());
       
+      
       bdaServices.add(JpaInjectionServices.class, new MockJpaServices());
       bdaServices.add(ResourceInjectionServices.class, new MockResourceServices());
       bdaServices.add(EjbInjectionServices.class, new MockEjbInjectionServices());
@@ -71,6 +72,7 @@ public class BootstrapTest
       deploymentServices.add(ServletServices.class, new MockServletServices());
       deploymentServices.add(ScheduledExecutorServiceFactory.class, new MockScheduledExecutorServiceFactory());
       
+      
       bdaServices.add(JpaInjectionServices.class, new MockJpaServices());
       bdaServices.add(ResourceInjectionServices.class, new MockResourceServices());
       
@@ -90,6 +92,7 @@ public class BootstrapTest
       deploymentServices.add(ServletServices.class, new MockServletServices());
       deploymentServices.add(EjbServices.class, new MockEjbServices());
       deploymentServices.add(ScheduledExecutorServiceFactory.class, new MockScheduledExecutorServiceFactory());
+      
       
       ServiceRegistry bdaServices = new SimpleServiceRegistry();
       
@@ -113,6 +116,7 @@ public class BootstrapTest
       deploymentServices.add(EjbServices.class, new MockEjbServices());
       deploymentServices.add(ScheduledExecutorServiceFactory.class, new MockScheduledExecutorServiceFactory());
       
+      
       ServiceRegistry bdaServices = new SimpleServiceRegistry();
       
       bdaServices.add(JpaInjectionServices.class, new MockJpaServices());
@@ -134,6 +138,7 @@ public class BootstrapTest
       deploymentServices.add(ServletServices.class, new MockServletServices());
       deploymentServices.add(EjbServices.class, new MockEjbServices());
       deploymentServices.add(ScheduledExecutorServiceFactory.class, new MockScheduledExecutorServiceFactory());
+      
       
       ServiceRegistry bdaServices = new SimpleServiceRegistry();
       bdaServices.add(EjbInjectionServices.class, new MockEjbInjectionServices());
@@ -157,6 +162,7 @@ public class BootstrapTest
       deploymentServices.add(EjbServices.class, new MockEjbServices());
       deploymentServices.add(ScheduledExecutorServiceFactory.class, new MockScheduledExecutorServiceFactory());
       
+      
       ServiceRegistry bdaServices = new SimpleServiceRegistry();
       bdaServices.add(EjbInjectionServices.class, new MockEjbInjectionServices());
       bdaServices.add(JpaInjectionServices.class, new MockJpaServices());
@@ -177,6 +183,7 @@ public class BootstrapTest
       deploymentServices.add(ServletServices.class, new MockServletServices());
       deploymentServices.add(EjbServices.class, new MockEjbServices());
       deploymentServices.add(ScheduledExecutorServiceFactory.class, new MockScheduledExecutorServiceFactory());
+      
       
       ServiceRegistry bdaServices = new SimpleServiceRegistry();
       bdaServices.add(EjbInjectionServices.class, new MockEjbInjectionServices());
@@ -199,6 +206,7 @@ public class BootstrapTest
       deploymentServices.add(ServletServices.class, new MockServletServices());
       deploymentServices.add(EjbServices.class, new MockEjbServices());
       deploymentServices.add(ScheduledExecutorServiceFactory.class, new MockScheduledExecutorServiceFactory());
+      
       
       ServiceRegistry bdaServices = new SimpleServiceRegistry();
       bdaServices.add(EjbInjectionServices.class, new MockEjbInjectionServices());
@@ -241,6 +249,7 @@ public class BootstrapTest
       deploymentServices.add(EjbServices.class, new MockEjbServices());
       deploymentServices.add(ServletServices.class, new MockServletServices());
       
+      
       ServiceRegistry bdaServices = new SimpleServiceRegistry();
       bdaServices.add(EjbInjectionServices.class, new MockEjbInjectionServices());
       bdaServices.add(JpaInjectionServices.class, new MockJpaServices());
@@ -257,6 +266,7 @@ public class BootstrapTest
       ServiceRegistry deploymentServices = new SimpleServiceRegistry();
       deploymentServices.add(ResourceLoader.class, new MockResourceLoader());
       deploymentServices.add(ScheduledExecutorServiceFactory.class, new MockScheduledExecutorServiceFactory());
+      
       ServiceRegistry bdaServices = new SimpleServiceRegistry();
       Deployment deployment = new MockDeployment(deploymentServices, new MockBeanDeploymentArchive(bdaServices));
       bootstrap.startContainer(Environments.SE, deployment, null);
@@ -269,6 +279,7 @@ public class BootstrapTest
       ServiceRegistry deploymentServices = new SimpleServiceRegistry();
       deploymentServices.add(ResourceLoader.class, new MockResourceLoader());
       deploymentServices.add(ServletServices.class, new MockServletServices());
+      
       deploymentServices.add(ScheduledExecutorServiceFactory.class, new MockScheduledExecutorServiceFactory());
       ServiceRegistry bdaServices = new SimpleServiceRegistry();
       Deployment deployment = new MockDeployment(deploymentServices, new MockBeanDeploymentArchive(bdaServices));

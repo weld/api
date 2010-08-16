@@ -16,6 +16,9 @@
  */
 package org.jboss.weld.bootstrap.api.test;
 
+import static org.jboss.weld.bootstrap.spi.BeansXml.EMPTY_BEANS_XML;
+
+import java.net.URL;
 import java.util.Set;
 
 import org.jboss.weld.bootstrap.api.Bootstrap;
@@ -23,6 +26,7 @@ import org.jboss.weld.bootstrap.api.Environment;
 import org.jboss.weld.bootstrap.api.Service;
 import org.jboss.weld.bootstrap.api.ServiceRegistry;
 import org.jboss.weld.bootstrap.spi.BeanDeploymentArchive;
+import org.jboss.weld.bootstrap.spi.BeansXml;
 import org.jboss.weld.bootstrap.spi.Deployment;
 import org.jboss.weld.context.api.BeanStore;
 import org.jboss.weld.manager.api.WeldManager;
@@ -75,6 +79,16 @@ public class MockBootstrap implements Bootstrap
       verifyServices(deployment.getServices(), environment.getRequiredDeploymentServices());
       verifyServices(deployment.getBeanDeploymentArchives().iterator().next().getServices(), environment.getRequiredBeanDeploymentArchiveServices());
       return this;
+   }
+   
+   public BeansXml parse(URL url)
+   {
+      return EMPTY_BEANS_XML;
+   }
+   
+   public BeansXml parse(Iterable<URL> urls)
+   {
+      return EMPTY_BEANS_XML;
    }
 
    
