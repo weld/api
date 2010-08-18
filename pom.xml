@@ -36,13 +36,6 @@
       <plugins>
          <plugin>
             <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-release-plugin</artifactId>
-            <configuration>
-               <tagBase>https://svn.jboss.org/repos/weld/api/tags</tagBase>
-            </configuration>
-         </plugin>
-         <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-deploy-plugin</artifactId>
             <configuration>
                <skip>true</skip>
