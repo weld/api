@@ -36,7 +36,7 @@
    <properties>
       <atinject.api.version>1</atinject.api.version>
       <cdi.api.version>1.0-SP2</cdi.api.version>
-      <ejb.api.version>3.1.0</ejb.api.version>
+      <ejb.api.version>1.0.0.CR2</ejb.api.version>
       <jsr250.api.version>1.0</jsr250.api.version>
       <jpa.api.version>1.0</jpa.api.version>
       <validation.api.version>1.0.0.GA</validation.api.version>
@@ -129,21 +129,17 @@
             publish this
          -->
          <dependency>
-            <groupId>org.jboss.ejb3</groupId>
-            <artifactId>jboss-ejb3-api</artifactId>
+            <groupId>org.jboss.spec.javax.ejb</groupId>
+            <artifactId>jboss-ejb-api_3.1_spec</artifactId>
             <version>${ejb.api.version}</version>
             <exclusions>
                <exclusion>
-                  <artifactId>jboss-jaxrpc</artifactId>
-                  <groupId>jbossws</groupId>
+                  <artifactId>jboss-transaction-api_1.1_spec</artifactId>
+                  <groupId>org.jboss.spec.javax.transaction</groupId>
                </exclusion>
                <exclusion>
-                  <artifactId>jboss-transaction-api</artifactId>
-                  <groupId>org.jboss.javaee</groupId>
-               </exclusion>
-               <exclusion>
-                  <artifactId>jboss-jaxrpc</artifactId>
-                  <groupId>jboss.jbossws</groupId>
+                  <artifactId>jaxrpc-api</artifactId>
+                  <groupId>javax.xml</groupId>
                </exclusion>
             </exclusions>
          </dependency>
