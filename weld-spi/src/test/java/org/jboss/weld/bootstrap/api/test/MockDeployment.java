@@ -16,11 +16,14 @@
  */
 package org.jboss.weld.bootstrap.api.test;
 
+import static java.util.Collections.emptyList;
 import static org.jboss.weld.bootstrap.spi.BeansXml.EMPTY_BEANS_XML;
 
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+
+import javax.enterprise.inject.spi.Extension;
 
 import org.jboss.weld.bootstrap.api.ServiceRegistry;
 import org.jboss.weld.bootstrap.spi.BeanDeploymentArchive;
@@ -99,6 +102,11 @@ public class MockDeployment implements Deployment
    public ServiceRegistry getServices()
    {
       return services;
+   }
+   
+   public Iterable<Extension> getExtensions()
+   {
+      return emptyList();
    }
 
 }

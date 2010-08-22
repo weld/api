@@ -17,6 +17,9 @@
 package org.jboss.weld.bootstrap.spi;
 
 import java.util.Collection;
+import java.util.ServiceLoader;
+
+import javax.enterprise.inject.spi.Extension;
 
 import org.jboss.weld.bootstrap.api.ServiceRegistry;
 import org.jboss.weld.ejb.spi.EjbDescriptor;
@@ -49,9 +52,8 @@ import org.jboss.weld.ejb.spi.EjbDescriptor;
  * which is currently not a bean deployment archive. Weld will request the
  * {@link BeanDeploymentArchive} for each programmatically using
  * {@link #loadBeanDeploymentArchive(Class)}. If any unknown
- * {@link BeanDeploymentArchive}s are loaded, before Weld proceeds to
- * validating the deployment, the bean archive deployment structure will
- * re-requested.
+ * {@link BeanDeploymentArchive}s are loaded, before Weld proceeds to validating
+ * the deployment, the bean archive deployment structure will re-requested.
  * </p>
  * 
  * <p>
@@ -117,14 +119,14 @@ public interface Deployment
 {
 
    /**
-    * Get the bean deployment archives which are part of this deployment
-    * and adjacent to it in the deployment archive graph. This should include
-    * all Java EE modules such as WARs, EJB jars and RARs.
+    * Get the bean deployment archives which are part of this deployment and
+    * adjacent to it in the deployment archive graph. This should include all
+    * Java EE modules such as WARs, EJB jars and RARs.
     * 
-    * Cycles in the accessible BeanDeploymentArchive graph are allowed. If a 
-    * cycle is detected by Weld, it will be automatically removed by Web
-    * Beans. This means any implementor of this interface don't need to worry
-    * about circularities.
+    * Cycles in the accessible BeanDeploymentArchive graph are allowed. If a
+    * cycle is detected by Weld, it will be automatically removed by Web Beans.
+    * This means any implementor of this interface don't need to worry about
+    * circularities.
     * 
     * @return the accessible bean deployment archives
     * 
@@ -139,15 +141,16 @@ public interface Deployment
     * graph and returned. If the deployment archive is currently a bean
     * deployment archive it should be returned.
     * 
-    * If beanClass is the bean class of an EJB session bean, an {@link EjbDescriptor}
-    * for the bean must be returned by {@link BeanDeploymentArchive#getEjbs()}.
+    * If beanClass is the bean class of an EJB session bean, an
+    * {@link EjbDescriptor} for the bean must be returned by
+    * {@link BeanDeploymentArchive#getEjbs()}.
     * 
     * @param beanClass the bean class to load
     * @return the {@link BeanDeploymentArchive} containing the bean class
-    * @throws IllegalArgumentException if the beanClass is not visisble to the current deployment
+    * @throws IllegalArgumentException if the beanClass is not visisble to the
+    *            current deployment
     */
    public BeanDeploymentArchive loadBeanDeploymentArchive(Class<?> beanClass);
-  
 
    /**
     * Get the services available to this deployment
@@ -155,5 +158,23 @@ public interface Deployment
     * @return the services available
     */
    public ServiceRegistry getServices();
+
+   /**
+    * Specifies the extensions this deployment should call observer methods on.
+    * 
+    * JSR-299 specifies that extensions should be loaded using <a href="http://download.oracle.com/javase/1.5.0/docs/guide/jar/jar.html#Service%20Provider"
+    * >Service Providers from the JAR File specification</a>
+    * 
+    * Weld delegates this task to the container, allowing the container to
+    * programatically alter the extensions registered. To load extensions, the
+    * container could use the {@link ServiceLoader} available in the JDK (since
+    * Java 6). In pre Java 6 environments, the container must provide the
+    * ServiceLoader itself. We provide an example Service Loader <a
+    * href="http://gist.github.com/540594">here</a>.
+    * 
+    * @return the extensions to call observer methods on, or an empty list if
+    *         there are no observers
+    */
+   public Iterable<Extension> getExtensions();
 
 }
