@@ -16,6 +16,7 @@
  */
 package org.jboss.weld.injection.spi;
 
+import javax.enterprise.inject.spi.AnnotatedType;
 import javax.enterprise.inject.spi.InjectionTarget;
 import javax.inject.Inject;
 
@@ -51,5 +52,11 @@ public interface InjectionContext<T>
     * 
     */
    public InjectionTarget<T> getInjectionTarget();
+   
+   /**
+    * Get the {@link AnnotatedType} for the instance being injected
+    * 
+    */
+   public AnnotatedType<T> getAnnotatedType();
 
 }

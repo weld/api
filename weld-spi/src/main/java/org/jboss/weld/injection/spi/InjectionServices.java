@@ -24,14 +24,20 @@ import org.jboss.weld.bootstrap.api.Service;
  * 
  * This service may be used to provide EE-style injection.
  * 
+ * The container <b>must</b> respect any modifications made to type via the
+ * container lifecycle events. Container lifecycle events may alter the
+ * annotations placed on the type, it's members, and the formal parameters of
+ * it's members. {@link InjectionContext#getAnnotatedType()} gives access to the
+ * modified state of the type.
+ * 
  * {@link InjectionServices} is a per-BeanDeploymentArchive service.
  * 
- * @author pmuir
- *
+ * @author Pete Muir
+ * 
  */
 public interface InjectionServices extends Service
 {
-   
+
    /**
     * Callback for injection.
     * 
