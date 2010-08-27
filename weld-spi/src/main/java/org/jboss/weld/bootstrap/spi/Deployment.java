@@ -175,6 +175,6 @@ public interface Deployment
     * @return the extensions to call observer methods on, or an empty list if
     *         there are no observers
     */
-   public Iterable<Extension> getExtensions();
+   public Iterable<Metadata<Extension>> getExtensions();
 
 }

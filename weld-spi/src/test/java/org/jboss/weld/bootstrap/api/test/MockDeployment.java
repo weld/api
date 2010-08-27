@@ -17,6 +17,7 @@
 package org.jboss.weld.bootstrap.api.test;
 
 import static java.util.Collections.emptyList;
+import static java.util.Collections.emptySet;
 import static org.jboss.weld.bootstrap.spi.BeansXml.EMPTY_BEANS_XML;
 
 import java.util.Collection;
@@ -29,6 +30,7 @@ import org.jboss.weld.bootstrap.api.ServiceRegistry;
 import org.jboss.weld.bootstrap.spi.BeanDeploymentArchive;
 import org.jboss.weld.bootstrap.spi.BeansXml;
 import org.jboss.weld.bootstrap.spi.Deployment;
+import org.jboss.weld.bootstrap.spi.Metadata;
 import org.jboss.weld.ejb.spi.EjbDescriptor;
 
 /**
@@ -48,14 +50,14 @@ public class MockDeployment implements Deployment
          this.services = services;
       }
 
-      public Collection<Class<?>> getBeanClasses()
+      public Collection<String> getBeanClasses()
       {
-         return Collections.emptySet();
+         return emptySet();
       }
 
       public Collection<BeanDeploymentArchive> getBeanDeploymentArchives()
       {
-         return Collections.emptySet();
+         return emptySet();
       }
 
       public BeansXml getBeansXml()
@@ -65,7 +67,7 @@ public class MockDeployment implements Deployment
 
       public Collection<EjbDescriptor<?>> getEjbs()
       {
-         return Collections.emptySet();
+         return emptySet();
       }
 
       public ServiceRegistry getServices()
@@ -104,7 +106,7 @@ public class MockDeployment implements Deployment
       return services;
    }
    
-   public Iterable<Extension> getExtensions()
+   public Iterable<Metadata<Extension>> getExtensions()
    {
       return emptyList();
    }

@@ -31,7 +31,7 @@ public abstract class ForwardingBeanDeploymentArchive implements BeanDeploymentA
 
    protected abstract BeanDeploymentArchive delegate();
    
-   public Collection<Class<?>> getBeanClasses()
+   public Collection<String> getBeanClasses()
    {
       return delegate().getBeanClasses();
    }

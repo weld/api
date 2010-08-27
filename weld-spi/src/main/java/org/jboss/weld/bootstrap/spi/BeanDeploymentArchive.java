@@ -66,7 +66,7 @@ public interface BeanDeploymentArchive
     * 
     * @return the classes, empty if no classes are present
     */
-   public Collection<Class<?>> getBeanClasses();
+   public Collection<String> getBeanClasses();
 
    /**
     * Get any deployment descriptors in the bean deployment archive.

@@ -27,6 +27,7 @@ import javax.enterprise.inject.spi.Extension;
 import org.jboss.weld.bootstrap.spi.BeanDeploymentArchive;
 import org.jboss.weld.bootstrap.spi.BeansXml;
 import org.jboss.weld.bootstrap.spi.Deployment;
+import org.jboss.weld.bootstrap.spi.Metadata;
 import org.jboss.weld.context.api.BeanStore;
 import org.jboss.weld.manager.api.WeldManager;
 
@@ -156,5 +157,13 @@ public interface Bootstrap
     * @throws IllegalArgumentException if the URL cannot be opened
     */
    public BeansXml parse(Iterable<URL> urls);
+   
+   /**
+    * Load CDI extensions using the provided ClassLoader
+    * 
+    * @param classLoader the ClassLoader to use to load the extensions
+    * @throws IllegalArgumentException if classLoader is null
+    */
+   public Iterable<Metadata<Extension>> loadExtensions(ClassLoader classLoader);
 
 }

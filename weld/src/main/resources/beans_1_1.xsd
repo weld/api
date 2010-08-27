@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+   <!--
+      JBoss, Home of Professional Open Source Copyright 2008, Red Hat
+      Middleware LLC, and individual contributors by the @authors tag.
+      See the copyright.txt in the distribution for a full listing of
+      individual contributors. Licensed under the Apache License,
+      Version 2.0 (the "License"); you may not use this file except in
+      compliance with the License. You may obtain a copy of the License
+      at http://www.apache.org/licenses/LICENSE-2.0 Unless required by
+      applicable law or agreed to in writing, software distributed under
+      the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
+      OR CONDITIONS OF ANY KIND, either express or implied. See the
+      License for the specific language governing permissions and
+      limitations under the License.
+   -->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+   elementFormDefault="qualified" 
+   targetNamespace="http://jboss.org/schema/weld/beans"
+   xmlns:javaee="http://java.sun.com/xml/ns/javaee"
+   xmlns:weld="http://jboss.org/schema/weld/beans" 
+   version="1.1">
+
+   <xs:annotation>
+      <xs:documentation>
+         Weld defines a number of extensions to beans.xml, in the namespace 
+         http://jboss.org/schema/weld/beans
+      </xs:documentation>
+   </xs:annotation>
+
+   <xs:element name="scan">
+      <xs:annotation>
+         <xs:documentation>
+            &lt;scan&gt; provides fine control over the classes loaded by
+            Weld for scanning by nesting a number of include and exclude 
+            filters. Exclusions cause the class to not be loaded, not have
+            any container lifecycle events fired for them, and not be deployed
+            as beans. 
+            
+            In general, the semantics defined by Ant's pattern 
+            sets (http://ant.apache.org/manual/dirtasks.html#patternset)
+            are followed. If no include filters are defined, all classes are
+            included. If both include filters and excludes filters are provided, 
+            only class names which match at least one include filter and don't 
+            match any exclude filter are scanned.
+         </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+         <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element ref="weld:include" />
+            <xs:element ref="weld:exclude" />
+         </xs:choice>
+      </xs:complexType>
+   </xs:element>
+
+   <xs:element name="include" type="weld:filter">
+      <xs:annotation>
+         <xs:documentation>
+            An include filter causes a class to be scanned. If no include filters
+            are specified, then all classes are scanned.  If both include filters
+            and excludes filters are specified, only class names which match at 
+            least one include filter and don't match any exclude filter are 
+            scanned. 
+            
+            A filter may specify match against either the name of a class (or 
+            package) or a regular expression to match. 
+            
+            A filter is active by default, or may specify activation conditions. If
+            activation conditions are specified, then the filter is active only if
+            all activation conditions are met. If all conditions are met, then
+            classes matching either the name or pattern will be filtered.
+        </xs:documentation>
+      </xs:annotation>
+   </xs:element>
+
+   <xs:element name="exclude" type="weld:filter">
+      <xs:annotation>
+         <xs:documentation>
+            An exclude filter causes a class to not be scanned. If no exclude 
+            filters are specified, then all classes are scanned.  If both include 
+            filters and excludes filters are specified, only class names which 
+            match at least one include filter and don't match any exclude filter
+            are scanned. 
+            
+            A filter may specify match against either the name of a class (or 
+            package) or a regular expression to match. 
+            
+            A filter is active by default, or may specify activation conditions. If
+            activation conditions are specified, then the filter is active only if
+            all activation conditions are met. If all conditions are met, then
+            classes matching either the name or pattern will be filtered.
+        </xs:documentation>
+      </xs:annotation>
+   </xs:element>
+   
+   <xs:attributeGroup name="filter-attributes" id="filter-attributes">
+      <xs:attribute name="name" type="xs:string">
+         <xs:annotation>
+            <xs:documentation>
+               The filter applies to classes whose fully qualified name matches this
+               pattern. Ant-style patterns (see 
+               http://ant.apache.org/manual/dirtasks.html#patterns) are used, such that
+               '*' matches zero or more characters (in the current package) and '?' 
+               matches one character in the current package. Additionally, '**' matches 
+               this package, and all sub packages.
+               
+               For example:
+               com.redhat.J???? will match any class in the com.redhat package, 
+                 whose name starts with the letter 'J' and is five characters long.
+               com.redhat.R* will match any class in the com.redhat package, whose name 
+                 starts with the letter 'R'.
+               com.redhat.* will match any class in the com.redhat package, but not 
+                 subpackages.
+               com.redhat.** will match any class in the com.redhat package, and all
+                 subpackages.
+                
+               If you wish to use a Java regular expression, then pattern should be used.
+               Only one of name or pattern should be specified
+            </xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="pattern" type="xs:string">
+         <xs:annotation>
+            <xs:documentation>
+               The filter applies to classes whose fully qualified name matches this
+               regular expression.
+               
+               If you wish to use a simple, Ant-style pattern, then name should be used. 
+               Only one of name or pattern should be specified
+            </xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+   </xs:attributeGroup>
+   
+   <xs:complexType name="filter" id="filter">
+      <xs:choice maxOccurs="unbounded" minOccurs="0">
+         <xs:element name="if-class-available">
+            <xs:annotation>
+               <xs:documentation>
+                   Activate the filter only activated if a class with the specified name 
+                   is available on the application's classpath. If the name starts with 
+                   a !, then the filter is active if the class is not available
+               </xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+               <xs:attribute name="name" type="xs:string" use="required"/>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="if-system-property">
+            <xs:annotation>
+               <xs:documentation>
+                    Activate the filter only if the specified system property is set. 
+                    If no value is specified, then it will match the system property
+                    on property name alone. If the property name starts with a !, then 
+                    the filter is active if the property is not set. If the property value
+                    starts with a !, then the filter is active if the property values do 
+                    not match.
+               </xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+               <xs:attribute name="name" type="xs:string" use="required"/>
+               <xs:attribute name="value" type="xs:string" />
+            </xs:complexType>
+         </xs:element>
+      </xs:choice>
+      <xs:attributeGroup ref="weld:filter-attributes" />
+   </xs:complexType>
+
+</xs:schema>
