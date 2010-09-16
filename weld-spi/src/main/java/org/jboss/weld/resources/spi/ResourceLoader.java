@@ -25,9 +25,14 @@ import org.jboss.weld.bootstrap.api.Service;
 /**
  * Resource loading/class creation services for Weld. By default an
  * implementation which uses the Thread Context ClassLoader if available, 
- * otherwise the classloading of the implementation is used.
+ * otherwise the classloading of the implementation is used. An alternative
+ * implementation that uses a predefined classloader is available for 
+ * multi-modular environments.
  * 
- * The {@link ResourceLoader} is a per-deployment service.
+ * The {@link ResourceLoader} is a per-BeanManager service. Single-module
+ * deployments can use the default implementation, but applications
+ * that consist of multiple modules must use an implementation that is
+ * aware of the module classloader.
  * 
  * @author Pete Muir
  *
