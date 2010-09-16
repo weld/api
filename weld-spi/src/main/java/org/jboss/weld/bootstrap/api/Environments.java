@@ -49,11 +49,11 @@ public enum Environments implements Environment
     */
    EE_INJECT(new EnvironmentBuilder()
          .addRequiredDeploymentService(TransactionServices.class)
-         .addRequiredDeploymentService(ResourceLoader.class)
          .addRequiredDeploymentService(SecurityServices.class)
          .addRequiredDeploymentService(ValidationServices.class)
          .addRequiredDeploymentService(EjbServices.class)
          .addRequiredDeploymentService(ScheduledExecutorServiceFactory.class)
+         .addRequiredBeanDeploymentArchiveService(ResourceLoader.class)
          .addRequiredBeanDeploymentArchiveService(JpaInjectionServices.class)
          .addRequiredBeanDeploymentArchiveService(ResourceInjectionServices.class)
          .addRequiredBeanDeploymentArchiveService(EjbInjectionServices.class)
@@ -69,10 +69,10 @@ public enum Environments implements Environment
     */
    EE(new EnvironmentBuilder()
          .addRequiredDeploymentService(TransactionServices.class)
-         .addRequiredDeploymentService(ResourceLoader.class)
          .addRequiredDeploymentService(SecurityServices.class)
          .addRequiredDeploymentService(ValidationServices.class)
          .addRequiredDeploymentService(EjbServices.class)
+         .addRequiredDeploymentService(ResourceLoader.class)
          .addRequiredDeploymentService(ScheduledExecutorServiceFactory.class)
          .addRequiredBeanDeploymentArchiveService(InjectionServices.class)
    ),
@@ -83,16 +83,16 @@ public enum Environments implements Environment
     * Servlet container such as Tomcat
     */
    SERVLET(new EnvironmentBuilder()
-         .addRequiredDeploymentService(ResourceLoader.class)
          .addRequiredDeploymentService(ScheduledExecutorServiceFactory.class)
+         .addRequiredBeanDeploymentArchiveService(ResourceLoader.class)
    ),
    
    /**
     * Java SE
     */
    SE(new EnvironmentBuilder()
-         .addRequiredDeploymentService(ResourceLoader.class)
          .addRequiredDeploymentService(ScheduledExecutorServiceFactory.class)
+         .addRequiredBeanDeploymentArchiveService(ResourceLoader.class)
    );
    
    private final Set<Class<? extends Service>> requiredDeploymentServices;
