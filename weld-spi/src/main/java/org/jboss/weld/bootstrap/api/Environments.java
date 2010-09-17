@@ -72,7 +72,7 @@ public enum Environments implements Environment
          .addRequiredDeploymentService(SecurityServices.class)
          .addRequiredDeploymentService(ValidationServices.class)
          .addRequiredDeploymentService(EjbServices.class)
-         .addRequiredDeploymentService(ResourceLoader.class)
+         .addRequiredBeanDeploymentArchiveService(ResourceLoader.class)
          .addRequiredDeploymentService(ScheduledExecutorServiceFactory.class)
          .addRequiredBeanDeploymentArchiveService(InjectionServices.class)
    ),
