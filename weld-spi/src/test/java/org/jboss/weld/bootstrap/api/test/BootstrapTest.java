@@ -29,7 +29,6 @@ import org.jboss.weld.injection.spi.ResourceInjectionServices;
 import org.jboss.weld.resources.spi.ResourceLoader;
 import org.jboss.weld.resources.spi.ScheduledExecutorServiceFactory;
 import org.jboss.weld.security.spi.SecurityServices;
-import org.jboss.weld.servlet.api.ServletServices;
 import org.jboss.weld.transaction.spi.TransactionServices;
 import org.jboss.weld.validation.spi.ValidationServices;
 import org.testng.annotations.Test;
@@ -47,9 +46,7 @@ public class BootstrapTest
       deploymentServices.add(TransactionServices.class, new MockTransactionServices());
       deploymentServices.add(SecurityServices.class, new MockSecurityServices());
       deploymentServices.add(ValidationServices.class, new MockValidationServices());
-      deploymentServices.add(ServletServices.class, new MockServletServices());
       deploymentServices.add(ScheduledExecutorServiceFactory.class, new MockScheduledExecutorServiceFactory());
-      
       
       bdaServices.add(JpaInjectionServices.class, new MockJpaServices());
       bdaServices.add(ResourceInjectionServices.class, new MockResourceServices());
@@ -69,9 +66,7 @@ public class BootstrapTest
       deploymentServices.add(TransactionServices.class, new MockTransactionServices());
       deploymentServices.add(SecurityServices.class, new MockSecurityServices());
       deploymentServices.add(ValidationServices.class, new MockValidationServices());
-      deploymentServices.add(ServletServices.class, new MockServletServices());
-      deploymentServices.add(ScheduledExecutorServiceFactory.class, new MockScheduledExecutorServiceFactory());
-      
+      deploymentServices.add(ScheduledExecutorServiceFactory.class, new MockScheduledExecutorServiceFactory());    
       
       bdaServices.add(JpaInjectionServices.class, new MockJpaServices());
       bdaServices.add(ResourceInjectionServices.class, new MockResourceServices());
@@ -89,7 +84,6 @@ public class BootstrapTest
       deploymentServices.add(TransactionServices.class, new MockTransactionServices());
       deploymentServices.add(SecurityServices.class, new MockSecurityServices());
       deploymentServices.add(ValidationServices.class, new MockValidationServices());
-      deploymentServices.add(ServletServices.class, new MockServletServices());
       deploymentServices.add(EjbServices.class, new MockEjbServices());
       deploymentServices.add(ScheduledExecutorServiceFactory.class, new MockScheduledExecutorServiceFactory());
       
@@ -112,7 +106,6 @@ public class BootstrapTest
       deploymentServices.add(ResourceLoader.class, new MockResourceLoader());
       deploymentServices.add(TransactionServices.class, new MockTransactionServices());
       deploymentServices.add(ValidationServices.class, new MockValidationServices());
-      deploymentServices.add(ServletServices.class, new MockServletServices());
       deploymentServices.add(EjbServices.class, new MockEjbServices());
       deploymentServices.add(ScheduledExecutorServiceFactory.class, new MockScheduledExecutorServiceFactory());
       
@@ -135,7 +128,6 @@ public class BootstrapTest
       deploymentServices.add(ResourceLoader.class, new MockResourceLoader());
       deploymentServices.add(TransactionServices.class, new MockTransactionServices());
       deploymentServices.add(SecurityServices.class, new MockSecurityServices());
-      deploymentServices.add(ServletServices.class, new MockServletServices());
       deploymentServices.add(EjbServices.class, new MockEjbServices());
       deploymentServices.add(ScheduledExecutorServiceFactory.class, new MockScheduledExecutorServiceFactory());
       
@@ -158,7 +150,6 @@ public class BootstrapTest
       deploymentServices.add(TransactionServices.class, new MockTransactionServices());
       deploymentServices.add(SecurityServices.class, new MockSecurityServices());
       deploymentServices.add(ValidationServices.class, new MockValidationServices());
-      deploymentServices.add(ServletServices.class, new MockServletServices());
       deploymentServices.add(EjbServices.class, new MockEjbServices());
       deploymentServices.add(ScheduledExecutorServiceFactory.class, new MockScheduledExecutorServiceFactory());
       
@@ -180,7 +171,6 @@ public class BootstrapTest
       deploymentServices.add(ResourceLoader.class, new MockResourceLoader());
       deploymentServices.add(SecurityServices.class, new MockSecurityServices());
       deploymentServices.add(ValidationServices.class, new MockValidationServices());
-      deploymentServices.add(ServletServices.class, new MockServletServices());
       deploymentServices.add(EjbServices.class, new MockEjbServices());
       deploymentServices.add(ScheduledExecutorServiceFactory.class, new MockScheduledExecutorServiceFactory());
       
@@ -196,28 +186,6 @@ public class BootstrapTest
 
    @Test(expectedExceptions = IllegalStateException.class)
    public void testMissingResourceServices()
-   {
-      Bootstrap bootstrap = new MockBootstrap();
-      ServiceRegistry deploymentServices = new SimpleServiceRegistry();
-      deploymentServices.add(ResourceLoader.class, new MockResourceLoader());
-      deploymentServices.add(TransactionServices.class, new MockTransactionServices());
-      deploymentServices.add(SecurityServices.class, new MockSecurityServices());
-      deploymentServices.add(ValidationServices.class, new MockValidationServices());
-      deploymentServices.add(ServletServices.class, new MockServletServices());
-      deploymentServices.add(EjbServices.class, new MockEjbServices());
-      deploymentServices.add(ScheduledExecutorServiceFactory.class, new MockScheduledExecutorServiceFactory());
-      
-      
-      ServiceRegistry bdaServices = new SimpleServiceRegistry();
-      bdaServices.add(EjbInjectionServices.class, new MockEjbInjectionServices());
-      bdaServices.add(JpaInjectionServices.class, new MockJpaServices());
-      
-      Deployment deployment = new MockDeployment(deploymentServices, new MockBeanDeploymentArchive(bdaServices));
-      bootstrap.startContainer(Environments.EE_INJECT, deployment, null);
-   }
-
-   @Test(expectedExceptions = IllegalStateException.class)
-   public void testMissingServletServices()
    {
       Bootstrap bootstrap = new MockBootstrap();
       ServiceRegistry deploymentServices = new SimpleServiceRegistry();
@@ -246,9 +214,7 @@ public class BootstrapTest
       deploymentServices.add(TransactionServices.class, new MockTransactionServices());
       deploymentServices.add(SecurityServices.class, new MockSecurityServices());
       deploymentServices.add(ValidationServices.class, new MockValidationServices());
-      deploymentServices.add(EjbServices.class, new MockEjbServices());
-      deploymentServices.add(ServletServices.class, new MockServletServices());
-      
+      deploymentServices.add(EjbServices.class, new MockEjbServices()); 
       
       ServiceRegistry bdaServices = new SimpleServiceRegistry();
       bdaServices.add(EjbInjectionServices.class, new MockEjbInjectionServices());
@@ -278,7 +244,6 @@ public class BootstrapTest
       Bootstrap bootstrap = new MockBootstrap();
       ServiceRegistry deploymentServices = new SimpleServiceRegistry();
       deploymentServices.add(ResourceLoader.class, new MockResourceLoader());
-      deploymentServices.add(ServletServices.class, new MockServletServices());
       
       deploymentServices.add(ScheduledExecutorServiceFactory.class, new MockScheduledExecutorServiceFactory());
       ServiceRegistry bdaServices = new SimpleServiceRegistry();
