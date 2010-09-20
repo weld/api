@@ -53,7 +53,7 @@ public class BootstrapTest
       bdaServices.add(EjbInjectionServices.class, new MockEjbInjectionServices());
       
       Deployment deployment = new MockDeployment(deploymentServices, new MockBeanDeploymentArchive(bdaServices));
-      bootstrap.startContainer(Environments.EE_INJECT, deployment, null);
+      bootstrap.startContainer(Environments.EE_INJECT, deployment);
    }
    
    @Test(expectedExceptions = IllegalStateException.class)
@@ -72,7 +72,7 @@ public class BootstrapTest
       bdaServices.add(ResourceInjectionServices.class, new MockResourceServices());
       
       Deployment deployment = new MockDeployment(deploymentServices, new MockBeanDeploymentArchive(bdaServices));
-      bootstrap.startContainer(Environments.EE_INJECT, deployment, null);
+      bootstrap.startContainer(Environments.EE_INJECT, deployment);
    }
 
    @Test(expectedExceptions = IllegalStateException.class)
@@ -87,7 +87,6 @@ public class BootstrapTest
       deploymentServices.add(EjbServices.class, new MockEjbServices());
       deploymentServices.add(ScheduledExecutorServiceFactory.class, new MockScheduledExecutorServiceFactory());
       
-      
       ServiceRegistry bdaServices = new SimpleServiceRegistry();
       
       bdaServices.add(EjbInjectionServices.class, new MockEjbInjectionServices());
@@ -95,7 +94,7 @@ public class BootstrapTest
       bdaServices.add(EjbInjectionServices.class, new MockEjbInjectionServices());
       
       Deployment deployment = new MockDeployment(deploymentServices, new MockBeanDeploymentArchive(bdaServices));
-      bootstrap.startContainer(Environments.EE_INJECT, deployment, null);
+      bootstrap.startContainer(Environments.EE_INJECT, deployment);
    }
 
    @Test(expectedExceptions = IllegalStateException.class)
@@ -109,7 +108,6 @@ public class BootstrapTest
       deploymentServices.add(EjbServices.class, new MockEjbServices());
       deploymentServices.add(ScheduledExecutorServiceFactory.class, new MockScheduledExecutorServiceFactory());
       
-      
       ServiceRegistry bdaServices = new SimpleServiceRegistry();
       
       bdaServices.add(JpaInjectionServices.class, new MockJpaServices());
@@ -117,7 +115,7 @@ public class BootstrapTest
       bdaServices.add(EjbInjectionServices.class, new MockEjbInjectionServices());
       
       Deployment deployment = new MockDeployment(deploymentServices, new MockBeanDeploymentArchive(bdaServices));
-      bootstrap.startContainer(Environments.EE_INJECT, deployment, null);
+      bootstrap.startContainer(Environments.EE_INJECT, deployment);
    }
 
    @Test(expectedExceptions = IllegalStateException.class)
@@ -131,14 +129,13 @@ public class BootstrapTest
       deploymentServices.add(EjbServices.class, new MockEjbServices());
       deploymentServices.add(ScheduledExecutorServiceFactory.class, new MockScheduledExecutorServiceFactory());
       
-      
       ServiceRegistry bdaServices = new SimpleServiceRegistry();
       bdaServices.add(EjbInjectionServices.class, new MockEjbInjectionServices());
       bdaServices.add(JpaInjectionServices.class, new MockJpaServices());
       bdaServices.add(ResourceInjectionServices.class, new MockResourceServices());
       
       Deployment deployment = new MockDeployment(deploymentServices, new MockBeanDeploymentArchive(bdaServices));
-      bootstrap.startContainer(Environments.EE_INJECT, deployment, null);
+      bootstrap.startContainer(Environments.EE_INJECT, deployment);
    }
 
    @Test
@@ -160,7 +157,7 @@ public class BootstrapTest
       bdaServices.add(ResourceInjectionServices.class, new MockResourceServices());
       
       Deployment deployment = new MockDeployment(deploymentServices, new MockBeanDeploymentArchive(bdaServices));
-      bootstrap.startContainer(Environments.EE_INJECT, deployment, null);
+      bootstrap.startContainer(Environments.EE_INJECT, deployment);
    }
 
    @Test(expectedExceptions = IllegalStateException.class)
@@ -174,14 +171,13 @@ public class BootstrapTest
       deploymentServices.add(EjbServices.class, new MockEjbServices());
       deploymentServices.add(ScheduledExecutorServiceFactory.class, new MockScheduledExecutorServiceFactory());
       
-      
       ServiceRegistry bdaServices = new SimpleServiceRegistry();
       bdaServices.add(EjbInjectionServices.class, new MockEjbInjectionServices());
       bdaServices.add(JpaInjectionServices.class, new MockJpaServices());
       bdaServices.add(ResourceInjectionServices.class, new MockResourceServices());
       
       Deployment deployment = new MockDeployment(deploymentServices, new MockBeanDeploymentArchive(bdaServices));
-      bootstrap.startContainer(Environments.EE_INJECT, deployment, null);
+      bootstrap.startContainer(Environments.EE_INJECT, deployment);
    }
 
    @Test(expectedExceptions = IllegalStateException.class)
@@ -199,10 +195,9 @@ public class BootstrapTest
       ServiceRegistry bdaServices = new SimpleServiceRegistry();
       bdaServices.add(EjbInjectionServices.class, new MockEjbInjectionServices());
       bdaServices.add(JpaInjectionServices.class, new MockJpaServices());
-      bdaServices.add(ResourceInjectionServices.class, new MockResourceServices());
       
       Deployment deployment = new MockDeployment(deploymentServices, new MockBeanDeploymentArchive(bdaServices));
-      bootstrap.startContainer(Environments.EE_INJECT, deployment, null);
+      bootstrap.startContainer(Environments.EE_INJECT, deployment);
    }
    
    @Test(expectedExceptions = IllegalStateException.class)
@@ -222,7 +217,7 @@ public class BootstrapTest
       bdaServices.add(ResourceInjectionServices.class, new MockResourceServices());
       
       Deployment deployment = new MockDeployment(deploymentServices, new MockBeanDeploymentArchive(bdaServices));
-      bootstrap.startContainer(Environments.EE_INJECT, deployment, null);
+      bootstrap.startContainer(Environments.EE_INJECT, deployment);
    }
 
    @Test
@@ -235,7 +230,7 @@ public class BootstrapTest
       
       ServiceRegistry bdaServices = new SimpleServiceRegistry();
       Deployment deployment = new MockDeployment(deploymentServices, new MockBeanDeploymentArchive(bdaServices));
-      bootstrap.startContainer(Environments.SE, deployment, null);
+      bootstrap.startContainer(Environments.SE, deployment);
    }
 
    @Test
@@ -248,7 +243,7 @@ public class BootstrapTest
       deploymentServices.add(ScheduledExecutorServiceFactory.class, new MockScheduledExecutorServiceFactory());
       ServiceRegistry bdaServices = new SimpleServiceRegistry();
       Deployment deployment = new MockDeployment(deploymentServices, new MockBeanDeploymentArchive(bdaServices));
-      bootstrap.startContainer(Environments.SERVLET, deployment, null);
+      bootstrap.startContainer(Environments.SERVLET, deployment);
    }
 
 }

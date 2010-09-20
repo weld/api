@@ -20,7 +20,6 @@ import org.jboss.weld.bootstrap.api.Bootstrap;
 import org.jboss.weld.bootstrap.api.Environment;
 import org.jboss.weld.bootstrap.spi.BeanDeploymentArchive;
 import org.jboss.weld.bootstrap.spi.Deployment;
-import org.jboss.weld.context.api.BeanStore;
 import org.jboss.weld.manager.api.WeldManager;
 
 /**
@@ -38,9 +37,9 @@ public abstract class ForwardingBootstrap implements Bootstrap
       return delegate().getManager(beanDeploymentArchive);
    }
    
-   public Bootstrap startContainer(Environment environment, Deployment deployment, BeanStore beanStore)
+   public Bootstrap startContainer(Environment environment, Deployment deployment)
    {
-      return delegate().startContainer(environment, deployment, beanStore);
+      return delegate().startContainer(environment, deployment);
    }
    
    public void shutdown()

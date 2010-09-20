@@ -32,7 +32,6 @@ import org.jboss.weld.bootstrap.spi.BeanDeploymentArchive;
 import org.jboss.weld.bootstrap.spi.BeansXml;
 import org.jboss.weld.bootstrap.spi.Deployment;
 import org.jboss.weld.bootstrap.spi.Metadata;
-import org.jboss.weld.context.api.BeanStore;
 import org.jboss.weld.manager.api.WeldManager;
 
 public class MockBootstrap implements Bootstrap
@@ -78,7 +77,7 @@ public class MockBootstrap implements Bootstrap
       }
    }
 
-   public Bootstrap startContainer(Environment environment, Deployment deployment, BeanStore beanStore)
+   public Bootstrap startContainer(Environment environment, Deployment deployment)
    {
       verifyServices(deployment.getServices(), environment.getRequiredDeploymentServices());
       verifyServices(deployment.getBeanDeploymentArchives().iterator().next().getServices(), environment.getRequiredBeanDeploymentArchiveServices());
