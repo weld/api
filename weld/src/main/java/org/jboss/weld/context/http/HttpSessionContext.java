@@ -6,6 +6,22 @@ import javax.servlet.http.HttpSession;
 import org.jboss.weld.context.BoundContext;
 import org.jboss.weld.context.SessionContext;
 
+/**
+ * <p>
+ * A session context which can be bound to the {@link HttpServletRequest}. The
+ * context is automatically attached to the map on activation, and detached when
+ * {@link #invalidate()} is called.
+ * </p>
+ * 
+ * <p>
+ * This context is not thread safe, and provides no thread safety for the
+ * underlying map.
+ * </p>
+ * 
+ * 
+ * @author Pete Muir
+ * 
+ */
 public interface HttpSessionContext extends BoundContext<HttpServletRequest>, SessionContext
 {
 
