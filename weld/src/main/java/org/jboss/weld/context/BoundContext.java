@@ -23,6 +23,11 @@ import javax.enterprise.context.spi.Context;
  * may change this behavior.
  * </p>
  * 
+ * <p>
+ * If you call {@link #associate(Object)} you must ensure that you call
+ * {@link #dissociate(Object)} in all cases, otherwise you risk memory leaks.
+ * </p>
+ * 
  * @author Pete Muir
  * 
  * @param <S> the type of the external instance storage
