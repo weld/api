@@ -21,6 +21,7 @@ import java.io.Serializable;
 import java.lang.annotation.Annotation;
 
 import javax.enterprise.context.ContextNotActiveException;
+import javax.enterprise.inject.Instance;
 import javax.enterprise.inject.spi.AnnotatedType;
 import javax.enterprise.inject.spi.Bean;
 import javax.enterprise.inject.spi.BeanManager;
@@ -121,5 +122,7 @@ public interface WeldManager extends BeanManager, Serializable
     * @return
     */
    public String getId();
+   
+   public Instance<Object> instance();
 
 }
