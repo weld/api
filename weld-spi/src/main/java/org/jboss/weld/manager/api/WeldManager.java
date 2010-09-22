@@ -101,6 +101,12 @@ public interface WeldManager extends BeanManager, Serializable
     * @return
     */
    public ServiceRegistry getServices();
+
+   /**
+    *
+    * @return the {@link WeldManager} that corresponds to the current activity
+    */
+   public WeldManager getCurrent();
    
    /**
     * Fire a ProcessInjectionTarget event for the given type.
