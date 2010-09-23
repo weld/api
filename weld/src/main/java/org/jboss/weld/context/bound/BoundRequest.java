@@ -10,7 +10,7 @@ import java.util.Map;
  * {@link BoundRequest}.
  * </p>
  * 
- * @author pmuir
+ * @author Pete Muir
  * 
  */
 public interface BoundRequest

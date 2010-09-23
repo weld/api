@@ -13,7 +13,7 @@ import javax.enterprise.context.spi.Context;
  * <p>
  * Weld provides a number of managed contexts: {@link SessionContext},
  * {@link ConversationContext}, {@link RequestContext}. All these managed
- * contexts are scoped to the thread, and propagtion of the backing store
+ * contexts are scoped to the thread, and propagation of the backing store
  * between threads is the responsibility of the managed context user.
  * </p>
  * 
@@ -25,18 +25,17 @@ public interface ManagedContext extends Context
 {
 
    /**
-    * Activate the Context
+    * Activate the Context.
     */
    public void activate();
 
    /**
-    * Deactivate the Context
+    * Deactivate the Context, destroying any instances if the context is invalid.
     */
    public void deactivate();
 
    /**
     * Mark the context as due for destruction when deactivate is called.
-    * 
     */
    public void invalidate();
 

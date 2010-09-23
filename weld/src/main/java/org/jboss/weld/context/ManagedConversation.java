@@ -3,6 +3,16 @@ package org.jboss.weld.context;
 import javax.enterprise.context.ContextNotActiveException;
 import javax.enterprise.context.Conversation;
 
+/**
+ * <p>
+ * Provides management operations for conversations, including locking, and
+ * expiration management.
+ * </p>
+ * 
+ * @author Pete Muir
+ * @see ConversationContext
+ * 
+ */
 public interface ManagedConversation extends Conversation
 {
 
