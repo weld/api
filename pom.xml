@@ -10,6 +10,10 @@
       <artifactId>weld-parent</artifactId>
       <version>17</version>
    </parent>
+   
+   <prerequisites>
+      <maven>3.0</maven>
+   </prerequisites>
 
    <name>Weld APIs Build Aggregator</name>
 
