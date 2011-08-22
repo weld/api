@@ -48,7 +48,7 @@ public class TCCLSingletonProvider extends SingletonProvider {
         // use Hashtable for concurrent access
         private final Map<ClassLoader, T> store = new Hashtable<ClassLoader, T>();
 
-        public T get() {
+        public T get(String id) {
             T instance = store.get(getClassLoader());
             if (instance == null) {
                 throw new IllegalStateException("Singleton not set for " + getClassLoader());
@@ -56,17 +56,15 @@ public class TCCLSingletonProvider extends SingletonProvider {
             return instance;
         }
 
-        public void set(T object) {
-            // TODO remove this
-            System.out.println("Adding singleton for " + getClassLoader());
+        public void set(String id, T object) {
             store.put(getClassLoader(), object);
         }
 
-        public void clear() {
+        public void clear(String id) {
             store.remove(getClassLoader());
         }
 
-        public boolean isSet() {
+        public boolean isSet(String id) {
             return store.containsKey(getClassLoader());
         }
 

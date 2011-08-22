@@ -42,23 +42,22 @@ public class IsolatedStaticSingletonProvider extends SingletonProvider {
     private static class IsolatedStaticSingleton<T> implements Singleton<T> {
         private T object;
 
-        public T get() {
+        public T get(String id) {
             if (object == null) {
-                throw new IllegalStateException(
-                        "Singleton is not set. Is your Thread.currentThread().getContextClassLoader() set correctly?");
+                throw new IllegalStateException("Singleton is not set. Is your Thread.currentThread().getContextClassLoader() set correctly?");
             }
             return object;
         }
 
-        public void set(T object) {
+        public void set(String id, T object) {
             this.object = object;
         }
 
-        public void clear() {
+        public void clear(String id) {
             this.object = null;
         }
 
-        public boolean isSet() {
+        public boolean isSet(String id) {
             return object != null;
         }
     }
