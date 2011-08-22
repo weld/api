@@ -45,7 +45,7 @@ public class IsolatedStaticSingletonProvider extends SingletonProvider
    {
       private T object;
 
-      public T get()
+      public T get(String id)
       {
          if (object == null)
          {
@@ -54,17 +54,17 @@ public class IsolatedStaticSingletonProvider extends SingletonProvider
          return object;
       }
 
-      public void set(T object)
+      public void set(String id, T object)
       {
          this.object = object;
       }
       
-      public void clear()
+      public void clear(String id)
       {
          this.object = null;
       }
       
-      public boolean isSet()
+      public boolean isSet(String id)
       {
          return object != null;
       }

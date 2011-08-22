@@ -46,24 +46,25 @@ public interface Singleton<T>
      * @return a singleton object
      * @throws IllegalStateException if the singleton is not set
      */
-    public T get();
-    
+    public T get(String id);
+
     /**
      * Check if the singleton is set
      * 
      * @return true if the singleton is set
      */
-    public boolean isSet();
+    public boolean isSet(String id);
 
     /**
      * Store a singleton
      * 
      * @param object the object to store
      */
-    public void set(T object);
-    
+    public void set(String id, T object);
+
     /**
      * Clear the singleton
      */
-    public void clear();
+    public void clear(String id);
+
 }
