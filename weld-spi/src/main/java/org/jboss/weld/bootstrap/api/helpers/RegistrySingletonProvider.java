@@ -16,20 +16,13 @@ public class RegistrySingletonProvider extends SingletonProvider
    @Override
    public <T> Singleton<T> create(Class<? extends T> type)
    {
-      return new RegistrySingleton<T>(type);
+      return new RegistrySingleton<T>();
    }
 
    private static class RegistrySingleton<T> implements Singleton<T>
    {
       // use Hashtable for concurrent access
       private final Map<String, T> store = new Hashtable<String, T>();
-      
-      private final Class<? extends T> clazz;
-
-      public RegistrySingleton(Class<? extends T> clazz) 
-      {
-          this.clazz = clazz;
-      }
       
       public T get(String id)
       {
