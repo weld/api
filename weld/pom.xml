@@ -6,7 +6,6 @@
       <relativePath>../parent/pom.xml</relativePath>
    </parent>
    <modelVersion>4.0.0</modelVersion>
-   <groupId>org.jboss.weld</groupId>
    <artifactId>weld-api</artifactId>
    <name>Weld APIs</name>
    <description>Weld specifc extensions to the CDI API</description>

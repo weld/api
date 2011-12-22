@@ -6,7 +6,6 @@
       <relativePath>../parent/pom.xml</relativePath>
    </parent>
    <modelVersion>4.0.0</modelVersion>
-   <groupId>org.jboss.weld</groupId>
    <artifactId>weld-spi</artifactId>
    <name>Weld SPIs for container integration</name>
    <url>http://www.seamframework.org/Weld</url>
