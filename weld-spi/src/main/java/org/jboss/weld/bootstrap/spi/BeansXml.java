@@ -3,6 +3,7 @@ package org.jboss.weld.bootstrap.spi;
 import static java.util.Collections.emptyList;
 import static org.jboss.weld.bootstrap.spi.Scanning.EMPTY_SCANNING;
 
+import java.net.URL;
 import java.util.List;
 
 public interface BeansXml
@@ -35,6 +36,10 @@ public interface BeansXml
       {
          return EMPTY_SCANNING;
       }
+
+      public URL getUrl() {
+          return null;
+      }
       
    };
 
@@ -47,5 +52,7 @@ public interface BeansXml
    public List<Metadata<String>> getEnabledInterceptors();
    
    public Scanning getScanning();
+
+   public URL getUrl();
 
 }
