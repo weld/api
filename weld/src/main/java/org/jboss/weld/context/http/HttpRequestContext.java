@@ -1,6 +1,7 @@
 package org.jboss.weld.context.http;
 
 import javax.servlet.ServletRequest;
+import javax.servlet.http.HttpServletRequest;
 
 import org.jboss.weld.context.BoundContext;
 import org.jboss.weld.context.RequestContext;
@@ -20,7 +21,7 @@ import org.jboss.weld.context.RequestContext;
  * @author Pete Muir
  * 
  */
-public interface HttpRequestContext extends BoundContext<ServletRequest>, RequestContext
+public interface HttpRequestContext extends BoundContext<HttpServletRequest>, RequestContext
 {
 
 }
