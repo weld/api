@@ -37,6 +37,14 @@ public interface HttpSessionContext extends BoundContext<HttpServletRequest>, Se
 
    /**
     * <p>
+    * Returns false if the session has been invalidated (using {@link #invalidate()}). Returns true otherwise.
+    * </p>
+    * @return true if {@link #invalidate()} has been called on this context
+    */
+   public boolean isValid();
+
+   /**
+    * <p>
     * Destroy the session and all conversations stored in the session.
     * </p>
     * 
