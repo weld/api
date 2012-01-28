@@ -3,7 +3,7 @@
    <parent>
       <groupId>org.jboss.weld</groupId>
       <artifactId>weld-api-bom</artifactId>
-      <version>1.2-SNAPSHOT</version>
+      <version>1.2.0-SNAPSHOT</version>
       <relativePath>../bom/pom.xml</relativePath>
    </parent>
    <groupId>org.jboss.weld</groupId>
@@ -50,9 +50,19 @@
          <id>pmuir</id>
          <organization>Red Hat Inc.</organization>
          <roles>
-            <role>Project Lead</role>
+            <role>Project Founder</role>
          </roles>
          <email>pmuir@redhat.com</email>
+      </developer>
+
+      <developer>
+         <name>Ales Justin</name>
+         <id>alesj</id>
+         <organization>Red Hat Inc.</organization>
+         <roles>
+            <role>Project Lead</role>
+         </roles>
+         <email>ajustin@redhat.com</email>
       </developer>
 
       <developer>
