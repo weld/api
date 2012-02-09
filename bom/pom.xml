@@ -51,7 +51,7 @@
       -->
       <jsf.api.version>1.2_13</jsf.api.version>
       <jaxws.api.version>2.1</jaxws.api.version>
-      <interceptor.api.version>1.0.0.Beta1</interceptor.api.version>
+      <interceptor.api.version>1.0.0.Final</interceptor.api.version>
    </properties>
 
    <dependencyManagement>
