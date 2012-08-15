@@ -26,8 +26,11 @@ import javax.naming.Context;
 import javax.naming.NamingException;
 
 import org.jboss.weld.bootstrap.api.Service;
+import org.jboss.weld.injection.spi.ResourceInjectionServices;
+import org.jboss.weld.injection.spi.ResourceReference;
+import org.jboss.weld.injection.spi.ResourceReferenceFactory;
 
-public abstract class AbstractResourceServices implements Service
+public abstract class AbstractResourceServices implements Service, ResourceInjectionServices
 {  
    private static final String RESOURCE_LOOKUP_PREFIX = "java:comp/env";
    
@@ -136,10 +139,35 @@ public abstract class AbstractResourceServices implements Service
       }
 
    }
-   
+
+   /*
+    * Trivial implementation that does *not* leverage bootstrap validation nor caching
+    */
+   @Override
+   public ResourceReferenceFactory<Object> registerResourceInjectionPoint(final InjectionPoint injectionPoint) {
+       return new ResourceReferenceFactory<Object>() {
+           @Override
+           public ResourceReference<Object> createResource() {
+               return new SimpleResourceReference<Object>(resolveResource(injectionPoint));
+           }
+       };
+   }
+
+   /*
+    * Trivial implementation that does *not* leverage bootstrap validation nor caching
+    */
+   @Override
+   public ResourceReferenceFactory<Object> registerResourceInjectionPoint(final String jndiName, final String mappedName) {
+       return new ResourceReferenceFactory<Object>() {
+           @Override
+           public ResourceReference<Object> createResource() {
+               return new SimpleResourceReference<Object>(resolveResource(jndiName, mappedName));
+           }
+       };
+   }
+
    public void cleanup()
-   {  
-      
+   {
    }
    
 }

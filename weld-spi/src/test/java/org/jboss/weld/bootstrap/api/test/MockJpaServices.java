@@ -16,30 +16,33 @@
  */
 package org.jboss.weld.bootstrap.api.test;
 
-import java.util.Collection;
-
 import javax.enterprise.inject.spi.InjectionPoint;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
 import org.jboss.weld.injection.spi.JpaInjectionServices;
+import org.jboss.weld.injection.spi.ResourceReferenceFactory;
 
 public class MockJpaServices extends MockService implements JpaInjectionServices
 {
-   
-   public Collection<Class<?>> discoverEntities()
-   {
-      return null;
-   }
-   
-   public EntityManager resolvePersistenceContext(InjectionPoint injectionPoint)
-   {
-      return null;
-   }
-   
-   public EntityManagerFactory resolvePersistenceUnit(InjectionPoint injectionPoint)
-   {
-      return null;
-   }
-   
+
+    @Override
+    public ResourceReferenceFactory<EntityManager> registerPersistenceContextInjectionPoint(InjectionPoint injectionPoint) {
+        return new MockResourceFactory<EntityManager>();
+    }
+
+    @Override
+    public ResourceReferenceFactory<EntityManagerFactory> registerPersistenceUnitInjectionPoint(InjectionPoint injectionPoint) {
+        return new MockResourceFactory<EntityManagerFactory>();
+    }
+
+    @Override
+    public EntityManager resolvePersistenceContext(InjectionPoint injectionPoint) {
+        return null;
+    }
+
+    @Override
+    public EntityManagerFactory resolvePersistenceUnit(InjectionPoint injectionPoint) {
+        return null;
+    }
 }

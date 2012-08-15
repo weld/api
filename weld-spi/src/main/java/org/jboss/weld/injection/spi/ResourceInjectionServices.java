@@ -27,13 +27,49 @@ import org.jboss.weld.bootstrap.api.Service;
  * {@link ResourceInjectionServices} is per-module service.
  * 
  * @author Pete Muir
+ * @author Jozef Hartinger
  * 
  */
 public interface ResourceInjectionServices extends Service
 {
-   
+
+   /**
+    * Register a resource injection point. The implementation validates the injection point. If the validation passes, an instance of
+    * {@link ResourceReferenceFactory} is returned which may be used at runtime for creating instances of the resource.
+    * 
+    * @param injectionPoint
+    *           the injection point metadata
+    * @return an instance of the resource
+    * @throws IllegalArgumentException
+    *            if the injection point is not annotated with @Resource, or, if
+    *            the injection point is a method that doesn't follow JavaBean
+    *            conventions
+    * @throws IllegalStateException
+    *            if no resource can be resolved
+    */
+   public ResourceReferenceFactory<Object> registerResourceInjectionPoint(InjectionPoint injectionPoint);
+
+   /**
+    * Register a resource injection point with the given JNDI name and mapped name. The implementation validates the injection point.
+    * If the validation passes, an instance of {@link ResourceReferenceFactory} is returned which may be used at runtime for creating
+    * instances of the resource.
+    * 
+    * @param injectionPoint
+    *           the injection point metadata
+    * @return an instance of the resource
+    * @throws IllegalStateException
+    *            if no resource can be resolved
+    * @throws IllegalArgumentException
+    *            if both jndiName and mappedName are null
+    */
+   public ResourceReferenceFactory<Object> registerResourceInjectionPoint(String jndiName, String mappedName);
+
    /**
     * Resolve the value for the given @Resource injection point
+    * 
+    * @deprecated Instead of calling this method at runtime, Weld should register
+    * every resource injection point at bootstrap using {@link #registerResourceInjectionPoint(InjectionPoint)}
+    * and use the returned factory for producing injectable instances at runtime.
     * 
     * @param injectionPoint
     *           the injection point metadata
@@ -45,10 +81,15 @@ public interface ResourceInjectionServices extends Service
     * @throws IllegalStateException
     *            if no resource can be resolved for injection
     */
+   @Deprecated
    public Object resolveResource(InjectionPoint injectionPoint);
    
    /**
     * Resolve the value for the given JNDI name and mapped name
+    * 
+    * @deprecated Instead of calling this method at runtime, Weld should register
+    * every resource injection point at bootstrap using {@link #registerResourceInjectionPoint(String, String)}
+    * and use the returned factory for producing injectable instances at runtime.
     * 
     * @param injectionPoint
     *           the injection point metadata
@@ -58,6 +99,7 @@ public interface ResourceInjectionServices extends Service
     * @throws IllegalArgumentException
     *            if both jndiName and mappedName are null
     */
+   @Deprecated
    public Object resolveResource(String jndiName, String mappedName);
-   
+
 }

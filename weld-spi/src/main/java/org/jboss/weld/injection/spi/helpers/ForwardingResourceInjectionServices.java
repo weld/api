@@ -18,6 +18,7 @@ package org.jboss.weld.injection.spi.helpers;
 
 import javax.enterprise.inject.spi.InjectionPoint;
 
+import org.jboss.weld.injection.spi.ResourceReferenceFactory;
 import org.jboss.weld.injection.spi.ResourceInjectionServices;
 
 public abstract class ForwardingResourceInjectionServices implements ResourceInjectionServices
@@ -25,14 +26,23 @@ public abstract class ForwardingResourceInjectionServices implements ResourceInj
    
    protected abstract ResourceInjectionServices delegate();
 
-   public Object resolveResource(InjectionPoint injectionPoint)
+   public ResourceReferenceFactory<Object> registerResourceInjectionPoint(InjectionPoint injectionPoint)
    {
-      return delegate().resolveResource(injectionPoint);
+      return delegate().registerResourceInjectionPoint(injectionPoint);
    }
 
-   public Object resolveResource(String jndiName, String mappedName)
+   public ResourceReferenceFactory<Object> registerResourceInjectionPoint(String jndiName, String mappedName)
    {
-      return delegate().resolveResource(jndiName, mappedName);
+      return delegate().registerResourceInjectionPoint(jndiName, mappedName);
    }
 
+   @Override
+   public Object resolveResource(InjectionPoint injectionPoint) {
+       return delegate().resolveResource(injectionPoint);
+   }
+
+   @Override
+   public Object resolveResource(String jndiName, String mappedName) {
+       return delegate().resolveResource(jndiName, mappedName);
+   }
 }
