@@ -49,7 +49,7 @@ public class IsolatedStaticSingletonProvider extends SingletonProvider
       {
          if (object == null)
          {
-            throw new IllegalStateException("Singleton is not set");
+            throw new IllegalStateException("Singleton is not set. Is your Thread.currentThread().getContextClassLoader() set correctly?");
          }
          return object;
       }
