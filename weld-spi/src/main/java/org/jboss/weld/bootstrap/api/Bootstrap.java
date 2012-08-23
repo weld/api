@@ -155,7 +155,17 @@ public interface Bootstrap
     * @throws IllegalArgumentException if the URL cannot be opened
     */
    public BeansXml parse(Iterable<URL> urls);
-   
+
+   /**
+    * Parse the specified URLs as a series of beans.xml file and merge the result.
+    *
+    * @param urls the urls to parse
+    * @param removeDuplicates whether duplicate entries (alternatives, interceptors, etc) are removed
+    * @return the BeansXml data structure which represents the URL
+    * @throws IllegalArgumentException if the URL cannot be opened
+    */
+   public BeansXml parse(Iterable<URL> urls, boolean removeDuplicates);
+
    /**
     * Load CDI extensions using the provided ClassLoader
     * 
