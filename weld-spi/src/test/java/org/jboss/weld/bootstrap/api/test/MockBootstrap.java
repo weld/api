@@ -83,17 +83,22 @@ public class MockBootstrap implements Bootstrap
       verifyServices(deployment.getBeanDeploymentArchives().iterator().next().getServices(), environment.getRequiredBeanDeploymentArchiveServices());
       return this;
    }
-   
+
    public BeansXml parse(URL url)
    {
       return EMPTY_BEANS_XML;
    }
-   
+
    public BeansXml parse(Iterable<URL> urls)
+   {
+      return parse(urls, false);
+   }
+
+   public BeansXml parse(Iterable<URL> urls, boolean removeDuplicates)
    {
       return EMPTY_BEANS_XML;
    }
-   
+
    public Iterable<Metadata<Extension>> loadExtensions(ClassLoader classLoader)
    {
       return emptyList();
