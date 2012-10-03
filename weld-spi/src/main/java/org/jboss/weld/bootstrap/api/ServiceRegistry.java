@@ -72,7 +72,9 @@ public interface ServiceRegistry extends Iterable<Service>
     * each registered service
     */
    public void cleanup();
-   
-   
-   
+
+   /**
+    * Clean up {@link BootstrapService}s by calling {@link BootstrapService#cleanupAfterBoot()} on each registered {@link BootstrapService}.
+    */
+   void cleanupAfterBoot();
 }

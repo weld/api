@@ -63,5 +63,9 @@ public abstract class ForwardingServiceRegistry implements ServiceRegistry
    {
       delegate().cleanup();
    }
+
+   public void cleanupAfterBoot() {
+       delegate().cleanupAfterBoot();
+   }
    
 }
