@@ -8,7 +8,7 @@
    <parent>
       <groupId>org.jboss.weld</groupId>
       <artifactId>weld-parent</artifactId>
-      <version>17</version>
+      <version>18</version>
    </parent>
    
    <prerequisites>
@@ -22,9 +22,9 @@
 
    <!-- SCM and Distribution management -->
    <scm>
-      <connection>scm:git:git://github.com/weld/api.git</connection>
-      <developerConnection>scm:git:git://github.com/weld/api.git</developerConnection>
-      <url>scm:git:git://github.com/weld/api.git</url>
+      <connection>scm:git:git@github.com:weld/api.git</connection>
+      <developerConnection>scm:git:git@github.com:weld/api.git</developerConnection>
+      <url>scm:git:git@github.com:weld/api.git</url>
    </scm>
 
    <modules>
