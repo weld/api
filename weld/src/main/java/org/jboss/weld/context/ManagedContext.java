@@ -1,6 +1,7 @@
 package org.jboss.weld.context;
 
-import javax.enterprise.context.spi.Context;
+import javax.enterprise.context.spi.AlterableContext;
+
 
 /**
  * <p>
@@ -21,7 +22,7 @@ import javax.enterprise.context.spi.Context;
  * @see BoundContext
  * 
  */
-public interface ManagedContext extends Context
+public interface ManagedContext extends AlterableContext
 {
 
    /**

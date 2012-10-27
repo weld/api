@@ -1,7 +1,7 @@
 package org.jboss.weld.context;
 
 import javax.enterprise.context.Dependent;
-import javax.enterprise.context.spi.Context;
+import javax.enterprise.context.spi.AlterableContext;
 
 /**
  * <p>
@@ -20,7 +20,7 @@ import javax.enterprise.context.spi.Context;
  * @author Pete Muir
  * 
  */
-public interface DependentContext extends Context
+public interface DependentContext extends AlterableContext
 {
 
 }

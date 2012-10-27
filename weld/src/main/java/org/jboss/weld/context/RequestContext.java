@@ -2,15 +2,12 @@ package org.jboss.weld.context;
 
 import java.util.Map;
 
-import javax.enterprise.context.ConversationScoped;
 import javax.enterprise.context.RequestScoped;
 import javax.interceptor.InvocationContext;
 import javax.servlet.ServletRequest;
 
-import org.jboss.weld.context.bound.BoundConversationContext;
 import org.jboss.weld.context.bound.BoundRequestContext;
 import org.jboss.weld.context.ejb.EjbRequestContext;
-import org.jboss.weld.context.http.HttpConversationContext;
 import org.jboss.weld.context.http.HttpRequestContext;
 
 /**

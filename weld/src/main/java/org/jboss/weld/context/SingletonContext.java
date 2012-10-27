@@ -1,7 +1,8 @@
 package org.jboss.weld.context;
 
 import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.context.spi.Context;
+import javax.enterprise.context.spi.AlterableContext;
+import javax.inject.Singleton;
 
 /**
  * <p>
@@ -23,7 +24,7 @@ import javax.enterprise.context.spi.Context;
  * @see ApplicationScoped
  * 
  */
-public interface SingletonContext extends Context
+public interface SingletonContext extends AlterableContext
 {
 
 }

@@ -1,6 +1,7 @@
 package org.jboss.weld.context;
 
-import javax.enterprise.context.spi.Context;
+import javax.enterprise.context.spi.AlterableContext;
+
 
 /**
  * <p>
@@ -33,7 +34,7 @@ import javax.enterprise.context.spi.Context;
  * @param <S> the type of the external instance storage
  * @see ManagedContext
  */
-public interface BoundContext<S> extends Context
+public interface BoundContext<S> extends AlterableContext
 {
 
    /**

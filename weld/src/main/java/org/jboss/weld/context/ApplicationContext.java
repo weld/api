@@ -1,7 +1,7 @@
 package org.jboss.weld.context;
 
 import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.context.spi.Context;
+import javax.enterprise.context.spi.AlterableContext;
 
 /**
  * <p>
@@ -23,7 +23,7 @@ import javax.enterprise.context.spi.Context;
  * @see ApplicationScoped
  * 
  */
-public interface ApplicationContext extends Context
+public interface ApplicationContext extends AlterableContext
 {
 
    /**
