@@ -22,12 +22,7 @@ public interface BeansXml
          return emptyList();
       }
       
-      public List<Metadata<BeansXmlRecord>> getEnabledAlternativeStereotypes()
-      {
-         return emptyList();
-      }
-      
-      public List<Metadata<BeansXmlRecord>> getEnabledAlternativeClasses()
+      public List<Metadata<BeansXmlRecord>> getEnabledAlternatives()
       {
          return emptyList();
       }
@@ -43,9 +38,7 @@ public interface BeansXml
       
    };
 
-   public List<Metadata<BeansXmlRecord>> getEnabledAlternativeStereotypes();
-
-   public List<Metadata<BeansXmlRecord>> getEnabledAlternativeClasses();
+   public List<Metadata<BeansXmlRecord>> getEnabledAlternatives();
 
    public List<Metadata<BeansXmlRecord>> getEnabledDecorators();
 

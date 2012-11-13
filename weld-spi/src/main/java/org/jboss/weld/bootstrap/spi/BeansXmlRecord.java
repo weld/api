@@ -38,4 +38,10 @@ public interface BeansXmlRecord {
      * Returns the record value - fully qualifier class name.
      */
     String getValue();
+
+    /**
+     * Returns true if this record was specified using the &lt;stereotype&gt; element (only applicable for alternatives), false otherwise. 
+     * @return
+     */
+    boolean isStereotype();
 }
