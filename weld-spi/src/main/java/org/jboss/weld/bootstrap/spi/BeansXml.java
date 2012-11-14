@@ -12,17 +12,17 @@ public interface BeansXml
    public static final BeansXml EMPTY_BEANS_XML = new BeansXml()
    {
       
-      public List<Metadata<BeansXmlRecord>> getEnabledInterceptors()
+      public List<Metadata<EnabledClass>> getEnabledInterceptors()
       {
          return emptyList();
       }
       
-      public List<Metadata<BeansXmlRecord>> getEnabledDecorators()
+      public List<Metadata<EnabledClass>> getEnabledDecorators()
       {
          return emptyList();
       }
       
-      public List<Metadata<BeansXmlRecord>> getEnabledAlternatives()
+      public List<Metadata<EnabledClass>> getEnabledAlternatives()
       {
          return emptyList();
       }
@@ -38,11 +38,11 @@ public interface BeansXml
       
    };
 
-   public List<Metadata<BeansXmlRecord>> getEnabledAlternatives();
+   public List<Metadata<EnabledClass>> getEnabledAlternatives();
 
-   public List<Metadata<BeansXmlRecord>> getEnabledDecorators();
+   public List<Metadata<EnabledClass>> getEnabledDecorators();
 
-   public List<Metadata<BeansXmlRecord>> getEnabledInterceptors();
+   public List<Metadata<EnabledClass>> getEnabledInterceptors();
    
    public Scanning getScanning();
 

@@ -17,12 +17,12 @@
 package org.jboss.weld.bootstrap.spi;
 
 /**
- * Represents a single record (alternative/interceptor/decorator definition) in the beans.xml file.
+ * Represents a single &lt;class&gt; record (alternative/interceptor/decorator definition) in the beans.xml file.
  *
  * @author Jozef Hartinger
  *
  */
-public interface BeansXmlRecord {
+public interface EnabledClass {
 
     /**
      * Returns the value of the enabled flag. Returns null if the flag has not been set.
@@ -38,10 +38,4 @@ public interface BeansXmlRecord {
      * Returns the record value - fully qualifier class name.
      */
     String getValue();
-
-    /**
-     * Returns true if this record was specified using the &lt;stereotype&gt; element (only applicable for alternatives), false otherwise. 
-     * @return
-     */
-    boolean isStereotype();
 }
