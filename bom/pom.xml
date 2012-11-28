@@ -228,9 +228,9 @@
    </profiles>
 
    <scm>
-      <connection>scm:git:git://github.com/weld/api.git</connection>
-      <developerConnection>scm:git:git://github.com/weld/api.git</developerConnection>
-      <url>scm:git:git://github.com/weld/api.git</url>
+      <connection>scm:git:git@github.com/weld/api.git</connection>
+      <developerConnection>scm:git:git@github.com/weld/api.git</developerConnection>
+      <url>scm:git:git@github.com/weld/api.git</url>
    </scm>
 
 </project>
