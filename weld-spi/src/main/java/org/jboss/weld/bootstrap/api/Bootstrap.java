@@ -9,7 +9,7 @@
  * You may obtain a copy of the License at
  * http://www.apache.org/licenses/LICENSE-2.0
  * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,  
+ * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
@@ -32,9 +32,9 @@ import org.jboss.weld.manager.api.WeldManager;
 
 /**
  * Application container initialization API for Weld.
- * 
+ *
  * To initialize the container you must call, in this order:
- * 
+ *
  * <ol>
  * <li>{@link #startContainer()}</li>
  * <li>{@link #startInitialization()}</li>
@@ -42,11 +42,11 @@ import org.jboss.weld.manager.api.WeldManager;
  * <li>{@link #validateBeans()}</li>
  * <li>{@link #endInitialization()}</li>
  * </ol>
- * 
+ *
  * To stop the container and clean up, you must call {@link #shutdown()}
- * 
+ *
  * @author Pete Muir
- * 
+ *
  */
 public interface Bootstrap
 {
@@ -60,20 +60,20 @@ public interface Bootstrap
     * <li>Creates and initializes the built in contexts</li>
     * <li>Creates the manager</li>
     * </ul>
-    * 
+    *
     *           context
     * @param environment the environment in use, by default
     *           {@link Environments.EE}
     * @param deployment the Deployment to be booted
     * @throws IllegalStateException if not all the services required for the
     *            given environment are available
-    * 
+    *
     */
    public Bootstrap startContainer(Environment environment, Deployment deployment);
 
    /**
     * Starts the application container initialization process:
-    * 
+    *
     * <ul>
     * <li>Reads metadata from beans.xml and the {@link Deployment} service</li>
     * <li>Starts the application context</li>
@@ -81,75 +81,75 @@ public interface Bootstrap
     * {@link #endInitialization()} is called</li>
     * <li>Discovers and creates {@link Extension} service providers</li>
     * </ul>
-    * 
+    *
     * Finally, the {@link BeforeBeanDiscovery} event is fired.
-    * 
+    *
     */
    public Bootstrap startInitialization();
 
    /**
     * Creates and deploys the application's beans:
-    * 
+    *
     * <ul>
     * <li>Creates and deploys the discovered beans</li>
     * <li>Creates and deploys the built-in beans defined by the CDI
     * specification</li>
     * </ul>
-    * 
+    *
     * Finally the {@link AfterBeanDiscovery} is event is fired
     */
    public Bootstrap deployBeans();
 
    /**
     * Validates the deployment.
-    * 
+    *
     * After validation, the {@link AfterDeploymentValidation} event is fired
     */
    public Bootstrap validateBeans();
 
    /**
     * Cleans up after the initialization
-    * 
+    *
     */
    public Bootstrap endInitialization();
 
    /**
     * Causes the container to clean up and shutdown
-    * 
+    *
     * Before the contain is shutdown the {@link BeforeShutdown} event is fired
     */
    public void shutdown();
 
    /**
     * Get the manager used for this beanDeploymentArchive.
-    * 
+    *
     * If {@link #startContainer()} has not been called, this method will return
     * null.
-    * 
+    *
     * If the beanDeploymentArchive is not known to Weld (for example, it
     * was not passed to the Weld as part of the {@link Deployment}, or has
     * not yet been requested by
     * {@link Deployment#loadBeanDeploymentArchive(Class)}), null will be
     * returned.
-    * 
+    *
     * @return the manager or null if not yet available or not found.
     */
    public WeldManager getManager(BeanDeploymentArchive beanDeploymentArchive);
-   
+
    /**
     * Parse the specified URL as a beans.xml file.
-    * 
+    *
     * @param url the url to parse
     * @return the BeansXml data structure which represents the URL
     * @throws IllegalArgumentException if the URL cannot be opened
     */
    public BeansXml parse(URL url);
-   
+
    /**
     * Parse the specified URLs as a series of beans.xml file and merge the result.
-    * 
+    *
     * Duplicate entries are not removed.
-    * 
+    *
     * @param url the url to parse
     * @return the BeansXml data structure which represents the URL
     * @throws IllegalArgumentException if the URL cannot be opened
@@ -168,7 +168,7 @@ public interface Bootstrap
 
    /**
     * Load CDI extensions using the provided ClassLoader
-    * 
+    *
     * @param classLoader the ClassLoader to use to load the extensions
     * @throws IllegalArgumentException if classLoader is null
     */
