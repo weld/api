@@ -34,6 +34,14 @@ public interface BeansXml {
             return null;
         }
 
+        public BeanDiscoveryMode getBeanDiscoveryMode() {
+            return BeanDiscoveryMode.ALL;
+        }
+
+        @Override
+        public String getVersion() {
+            return null;
+        }
     };
 
     public List<Metadata<String>> getEnabledAlternativeStereotypes();
@@ -47,5 +55,16 @@ public interface BeansXml {
     public Scanning getScanning();
 
     public URL getUrl();
+
+    /**
+     * @return The value of the <code>bean-discovery-mode</code> attribute or {@link BeanDiscoveryMode#ALL} if the file does not
+     *         contain the <code>bean-discovery-mode</code> attribute.
+     */
+    public BeanDiscoveryMode getBeanDiscoveryMode();
+
+    /**
+     * @return the value of the <code>version</code> attribute or null if the version is not explicitly specified
+     */
+    public String getVersion();
 
 }
