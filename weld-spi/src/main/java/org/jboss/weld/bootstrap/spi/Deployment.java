@@ -152,4 +152,10 @@ public interface Deployment {
      */
     Iterable<Metadata<Extension>> getExtensions();
 
+    /**
+     * Types which are not contained within explicit bean archives, do not contain bean defining annotations but contain required annotations.
+     *
+     * @see Bootstrap#startExtensions(Iterable) for more details.
+     */
+    Collection<String> getAdditionalTypes();
 }
