@@ -13,17 +13,15 @@ import static java.lang.annotation.ElementType.TYPE;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 /**
- * Qualifier used with all for all of the bound (map backed) contexts Weld
- * offers.
- * 
+ * Qualifier used with all for all of the bound (map backed) contexts Weld offers.
+ *
  * @author Pete Muir
- * 
+ *
  */
 @Qualifier
 @Target({ TYPE, METHOD, PARAMETER, FIELD })
 @Retention(RUNTIME)
 @Documented
-public @interface Bound
-{
+public @interface Bound {
 
 }

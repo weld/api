@@ -14,15 +14,14 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 /**
  * Qualifier used with all for all of the unbound contexts Weld offers.
- * 
+ *
  * @author Pete Muir
- * 
+ *
  */
 @Qualifier
 @Target({ TYPE, METHOD, PARAMETER, FIELD })
 @Retention(RUNTIME)
 @Documented
-public @interface Unbound
-{
+public @interface Unbound {
 
 }
