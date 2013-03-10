@@ -9,7 +9,7 @@
  * You may obtain a copy of the License at
  * http://www.apache.org/licenses/LICENSE-2.0
  * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,  
+ * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
@@ -22,39 +22,32 @@ import javax.servlet.http.HttpSessionEvent;
 
 import org.jboss.weld.servlet.api.ServletListener;
 
-public abstract class ForwardingServletListener implements ServletListener
-{
-   
-   protected abstract ServletListener delegate();
+public abstract class ForwardingServletListener implements ServletListener {
 
-   public void contextDestroyed(ServletContextEvent sce)
-   {
-      delegate().contextDestroyed(sce);
-   }
+    protected abstract ServletListener delegate();
 
-   public void contextInitialized(ServletContextEvent sce)
-   {
-      delegate().contextInitialized(sce);
-   }
+    public void contextDestroyed(ServletContextEvent sce) {
+        delegate().contextDestroyed(sce);
+    }
 
-   public void requestDestroyed(ServletRequestEvent sre)
-   {
-      delegate().requestDestroyed(sre);
-   }
+    public void contextInitialized(ServletContextEvent sce) {
+        delegate().contextInitialized(sce);
+    }
 
-   public void requestInitialized(ServletRequestEvent sre)
-   {
-      delegate().requestInitialized(sre);
-   }
+    public void requestDestroyed(ServletRequestEvent sre) {
+        delegate().requestDestroyed(sre);
+    }
 
-   public void sessionCreated(HttpSessionEvent se)
-   {
-      delegate().sessionCreated(se);
-   }
+    public void requestInitialized(ServletRequestEvent sre) {
+        delegate().requestInitialized(sre);
+    }
 
-   public void sessionDestroyed(HttpSessionEvent se)
-   {
-      delegate().sessionDestroyed(se);
-   }
-   
+    public void sessionCreated(HttpSessionEvent se) {
+        delegate().sessionCreated(se);
+    }
+
+    public void sessionDestroyed(HttpSessionEvent se) {
+        delegate().sessionDestroyed(se);
+    }
+
 }

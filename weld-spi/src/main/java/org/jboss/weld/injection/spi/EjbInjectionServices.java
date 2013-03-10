@@ -23,8 +23,7 @@ import javax.enterprise.inject.spi.InjectionPoint;
 import org.jboss.weld.bootstrap.api.Service;
 
 /**
- * A container should implement this interface to allow Weld to
- * resolve EJB.
+ * A container should implement this interface to allow Weld to resolve EJB.
  *
  * {@link EjbInjectionServices} is a per-module service.
  *
@@ -32,42 +31,33 @@ import org.jboss.weld.bootstrap.api.Service;
  * @author Jozef Hartinger
  *
  */
-public interface EjbInjectionServices extends Service
-{
+public interface EjbInjectionServices extends Service {
 
-   /**
-    * Register an EJB injection point. The implementation validates the injection point. If the validation passes, an instance of
-    * {@link ResourceReferenceFactory} is returned which may be used at runtime for creating instances of the resource.
-    *
-    * @param injectionPoint
-    *           the injection point metadata
-    * @return EJB instance factory
-    * @throws DefinitionException
-    *            if the injection point is not annotated with @EJB, if the
-    *            injection point is a method that doesn't follow JavaBean
-    *            conventions or if the injection point type does not match
-    *            the EJB type
-    * @throws IllegalStateException if no suitable EJB can be resolved
-    */
-   public ResourceReferenceFactory<Object> registerEjbInjectionPoint(InjectionPoint injectionPoint);
+    /**
+     * Register an EJB injection point. The implementation validates the injection point. If the validation passes, an instance
+     * of {@link ResourceReferenceFactory} is returned which may be used at runtime for creating instances of the resource.
+     *
+     * @param injectionPoint the injection point metadata
+     * @return EJB instance factory
+     * @throws DefinitionException if the injection point is not annotated with @EJB, if the injection point is a method that
+     *         doesn't follow JavaBean conventions or if the injection point type does not match the EJB type
+     * @throws IllegalStateException if no suitable EJB can be resolved
+     */
+    ResourceReferenceFactory<Object> registerEjbInjectionPoint(InjectionPoint injectionPoint);
 
-   /**
-    * Resolve the value for the given @EJB injection point.
-    *
-    * @deprecated Instead of calling this method at runtime, Weld should register
-    * every EJB injection point at bootstrap using {@link #registerEjbInjectionPoint(InjectionPoint)}
-    * and use the returned factory for producing injectable instances at runtime.
-    *
-    * @param injectionPoint
-    *           the injection point metadata
-    * @return an instance of the EJB
-    * @throws IllegalArgumentException
-    *            if the injection point is not annotated with @EJB, or, if the
-    *            injection point is a method that doesn't follow JavaBean
-    *            conventions
-
-    */
-   @Deprecated
-   public Object resolveEjb(InjectionPoint injectionPoint);
+    /**
+     * Resolve the value for the given @EJB injection point.
+     *
+     * @deprecated Instead of calling this method at runtime, Weld should register every EJB injection point at bootstrap using
+     *             {@link #registerEjbInjectionPoint(InjectionPoint)} and use the returned factory for producing injectable
+     *             instances at runtime.
+     *
+     * @param injectionPoint the injection point metadata
+     * @return an instance of the EJB
+     * @throws IllegalArgumentException if the injection point is not annotated with @EJB, or, if the injection point is a
+     *         method that doesn't follow JavaBean conventions
+     */
+    @Deprecated
+    Object resolveEjb(InjectionPoint injectionPoint);
 
 }

@@ -53,14 +53,14 @@ public interface BeanDeploymentArchive {
      *
      * @return the accessible bean deployment archives
      */
-    public Collection<BeanDeploymentArchive> getBeanDeploymentArchives();
+    Collection<BeanDeploymentArchive> getBeanDeploymentArchives();
 
     /**
      * Gets all classes in the bean deployment archive
      *
      * @return the classes, empty if no classes are present
      */
-    public Collection<String> getBeanClasses();
+    Collection<String> getBeanClasses();
 
     /**
      * Get any deployment descriptors in the bean deployment archive.
@@ -74,21 +74,21 @@ public interface BeanDeploymentArchive {
      * @see {@link Bootstrap#parse(java.net.URL)}
      * @see {@link Bootstrap#parse(Iterable)}
      */
-    public BeansXml getBeansXml();
+    BeansXml getBeansXml();
 
     /**
      * Get all the EJBs in the deployment archive
      *
      * @return the EJBs, or empty if no EJBs are present or if this is not an EJB archive
      */
-    public Collection<EjbDescriptor<?>> getEjbs();
+    Collection<EjbDescriptor<?>> getEjbs();
 
     /**
      * Get the Bean Deployment Archive scoped services
      *
      * @return
      */
-    public ServiceRegistry getServices();
+    ServiceRegistry getServices();
 
     /**
      * Get a string which uniquely identifies the {@link BeanDeploymentArchive} within the {@link Deployment}. The identifier
@@ -96,6 +96,6 @@ public interface BeanDeploymentArchive {
      *
      * @return
      */
-    public String getId();
+    String getId();
 
 }

@@ -22,16 +22,13 @@ import javax.enterprise.inject.spi.InjectionPoint;
 import org.jboss.weld.bootstrap.api.Service;
 
 /**
- * Provides callbacks to the container when Weld performs injection on an
- * InjectionTarget, managed bean or session bean
+ * Provides callbacks to the container when Weld performs injection on an InjectionTarget, managed bean or session bean
  *
  * This service may be used to provide EE-style injection.
  *
- * The container <b>must</b> respect any modifications made to type via the
- * container lifecycle events. Container lifecycle events may alter the
- * annotations placed on the type, it's members, and the formal parameters of
- * it's members. {@link InjectionContext#getAnnotatedType()} gives access to the
- * modified state of the type.
+ * The container <b>must</b> respect any modifications made to type via the container lifecycle events. Container lifecycle
+ * events may alter the annotations placed on the type, it's members, and the formal parameters of it's members.
+ * {@link InjectionContext#getAnnotatedType()} gives access to the modified state of the type.
  *
  * {@link InjectionServices} is a per-BeanDeploymentArchive service.
  *
@@ -39,18 +36,16 @@ import org.jboss.weld.bootstrap.api.Service;
  * @author Jozef Hartinger
  *
  */
-public interface InjectionServices extends Service
-{
+public interface InjectionServices extends Service {
 
-   /**
-    * Callback for injection.
-    *
-    * Call {@link InjectionContext#proceed()} to cause CDI-style injection to
-    * occur.
-    *
-    * @param injectionContext
-    */
-   public <T> void aroundInject(InjectionContext<T> injectionContext);
+    /**
+     * Callback for injection.
+     *
+     * Call {@link InjectionContext#proceed()} to cause CDI-style injection to occur.
+     *
+     * @param injectionContext
+     */
+    <T> void aroundInject(InjectionContext<T> injectionContext);
 
     /**
      * For each discovered
@@ -68,6 +63,6 @@ public interface InjectionServices extends Service
      *
      * @param injectionPoint injection point to be validated
      */
-   public void validateResourceInjectionPoint(InjectionPoint injectionPoint);
+    void validateResourceInjectionPoint(InjectionPoint injectionPoint);
 
 }

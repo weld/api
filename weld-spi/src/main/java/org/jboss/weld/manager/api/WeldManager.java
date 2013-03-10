@@ -31,119 +31,112 @@ import org.jboss.weld.bootstrap.api.ServiceRegistry;
 import org.jboss.weld.ejb.spi.EjbDescriptor;
 
 /**
- * Functionality provided by the Weld Manager over and above the JSR-299
- * Manager.
+ * Functionality provided by the Weld Manager over and above the JSR-299 Manager.
  *
  * @author Pete Muir
  *
  */
-public interface WeldManager extends BeanManager, Serializable
-{
+public interface WeldManager extends BeanManager, Serializable {
 
-   /**
-    * Create a new child activity. A child activity inherits all beans,
-    * interceptors, decorators, observers, and contexts defined by its direct
-    * and indirect parent activities.
-    *
-    * This method should not be called by the application.
-    *
-    * @return the child activity
-    */
-   public WeldManager createActivity();
+    /**
+     * Create a new child activity. A child activity inherits all beans, interceptors, decorators, observers, and contexts
+     * defined by its direct and indirect parent activities.
+     *
+     * This method should not be called by the application.
+     *
+     * @return the child activity
+     */
+    WeldManager createActivity();
 
-   /**
-    * Associate an activity with the current context for a normal scope
-    *
-    * @param scopeType
-    *           the scope to associate the activity with
-    * @return the activity
-    * @throws ContextNotActiveException
-    *            if the given scope is inactive
-    * @throws IllegalArgumentException
-    *            if the given scope is not a normal scope
-    */
-   public WeldManager setCurrent(Class<? extends Annotation> scopeType);
+    /**
+     * Associate an activity with the current context for a normal scope
+     *
+     * @param scopeType the scope to associate the activity with
+     * @return the activity
+     * @throws ContextNotActiveException if the given scope is inactive
+     * @throws IllegalArgumentException if the given scope is not a normal scope
+     */
+    WeldManager setCurrent(Class<? extends Annotation> scopeType);
 
-   /**
-    * The injection target for the given EJB, or null if Weld was not
-    * given this descriptor in the deployment.
-    *
-    * This should only be used to create an inject contextual EJBs by
-    * the EJB container. {@link #fireProcessInjectionTarget()} must be used
-    * to obtain an {@link InjectionTarget} for non-contextual EJB injection.
-    *
-    * @param <T>
-    * @param descriptor
-    * @return
-    */
-   public <T> InjectionTarget<T> createInjectionTarget(EjbDescriptor<T> descriptor);
+    /**
+     * The injection target for the given EJB, or null if Weld was not given this descriptor in the deployment.
+     *
+     * This should only be used to create an inject contextual EJBs by the EJB container. {@link #fireProcessInjectionTarget()}
+     * must be used to obtain an {@link InjectionTarget} for non-contextual EJB injection.
+     *
+     * @param <T>
+     * @param descriptor
+     * @return
+     */
+    <T> InjectionTarget<T> createInjectionTarget(EjbDescriptor<T> descriptor);
 
-   /**
-    * Get the Bean object for the given EJB, or null if Weld was not given
-    * this descriptor in the deployment.
-    *
-    * @param <T>
-    * @param descriptor
-    * @return
-    */
-   public <T> Bean<T> getBean(EjbDescriptor<T> descriptor);
+    /**
+     * Get the Bean object for the given EJB, or null if Weld was not given this descriptor in the deployment.
+     *
+     * @param <T>
+     * @param descriptor
+     * @return
+     */
+    <T> Bean<T> getBean(EjbDescriptor<T> descriptor);
 
-   /**
-    * Get the EjbDescriptor for the given ejb name
-    *
-    * @param <T>
-    * @param ejbName
-    * @return
-    */
-   public <T> EjbDescriptor<T> getEjbDescriptor(String ejbName);
+    /**
+     * Get the EjbDescriptor for the given ejb name
+     *
+     * @param <T>
+     * @param ejbName
+     * @return
+     */
+    <T> EjbDescriptor<T> getEjbDescriptor(String ejbName);
 
-   /**
-    * Get the services registered for this manager
-    * @return
-    */
-   public ServiceRegistry getServices();
+    /**
+     * Get the services registered for this manager
+     *
+     * @return
+     */
+    ServiceRegistry getServices();
 
-   /**
-    *
-    * @return the {@link WeldManager} that corresponds to the current activity
-    */
-   public WeldManager getCurrent();
+    /**
+     *
+     * @return the {@link WeldManager} that corresponds to the current activity
+     */
+    WeldManager getCurrent();
 
-   /**
-    * Fire a ProcessInjectionTarget event for the given type.
-    *
-    * A helper method to allow integration code to easily fire the ProcessInjectionTarget
-    * for Java EE component classes supporting injection
-    *
-    * The container must use the returned InjectionTarget to inject the Java EE component.
-    *
-    * @param <X>
-    * @param type
-    * @return
-    */
-   public <X> InjectionTarget<X> fireProcessInjectionTarget(AnnotatedType<X> type);
+    /**
+     * Fire a ProcessInjectionTarget event for the given type.
+     *
+     * A helper method to allow integration code to easily fire the ProcessInjectionTarget for Java EE component classes
+     * supporting injection
+     *
+     * The container must use the returned InjectionTarget to inject the Java EE component.
+     *
+     * @param <X>
+     * @param type
+     * @return
+     */
+    <X> InjectionTarget<X> fireProcessInjectionTarget(AnnotatedType<X> type);
 
-   /**
-    * Fire a ProcessInjectionTarget event for the given type.
-    *
-    * A helper method to allow integration code to easily fire the ProcessInjectionTarget
-    * for Java EE component classes supporting injection
-    *
-    * The container must use the returned InjectionTarget to inject the Java EE component.
-    *
-    * @param <X>
-    * @param type
-    * @param injectionTarget
-    * @return
-    */
-   public <X> InjectionTarget<X> fireProcessInjectionTarget(AnnotatedType<X> annotatedType, InjectionTarget<X> injectionTarget);
+    /**
+     * Fire a ProcessInjectionTarget event for the given type.
+     *
+     * A helper method to allow integration code to easily fire the ProcessInjectionTarget for Java EE component classes
+     * supporting injection
+     *
+     * The container must use the returned InjectionTarget to inject the Java EE component.
+     *
+     * @param <X>
+     * @param type
+     * @param injectionTarget
+     * @return
+     */
+    <X> InjectionTarget<X> fireProcessInjectionTarget(AnnotatedType<X> annotatedType, InjectionTarget<X> injectionTarget);
 
-   /**
-    * The ID of the manager, identical to the ID provided by the BDA
-    * @return
-    */
-   public String getId();
+    /**
+     * The ID of the manager, identical to the ID provided by the BDA
+     *
+     * @return
+     */
+    String getId();
 
-   public Instance<Object> instance();
+    Instance<Object> instance();
 
 }

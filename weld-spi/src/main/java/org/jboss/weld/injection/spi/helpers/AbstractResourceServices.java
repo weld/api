@@ -9,7 +9,7 @@
  * You may obtain a copy of the License at
  * http://www.apache.org/licenses/LICENSE-2.0
  * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,  
+ * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
@@ -30,144 +30,114 @@ import org.jboss.weld.injection.spi.ResourceInjectionServices;
 import org.jboss.weld.injection.spi.ResourceReference;
 import org.jboss.weld.injection.spi.ResourceReferenceFactory;
 
-public abstract class AbstractResourceServices implements Service, ResourceInjectionServices
-{  
-   private static final String RESOURCE_LOOKUP_PREFIX = "java:comp/env";
-   
-   public Object resolveResource(InjectionPoint injectionPoint)
-   {
-      if (!injectionPoint.getAnnotated().isAnnotationPresent(Resource.class))
-      {
-         throw new IllegalArgumentException("No @Resource annotation found on injection point " + injectionPoint);
-      }
-      if (injectionPoint.getMember() instanceof Method && ((Method) injectionPoint.getMember()).getParameterTypes().length != 1)
-      {
-         throw new IllegalArgumentException("Injection point represents a method which doesn't follow JavaBean conventions (must have exactly one parameter) " + injectionPoint);
-      }
-      String name = getResourceName(injectionPoint);
-      try
-      {
-         return getContext().lookup(name);
-      }
-      catch (NamingException e)
-      {
-         throw new RuntimeException("Error looking up " + name + " in JNDI", e);
-      }
-   }
-   
-   public Object resolveResource(String jndiName, String mappedName)
-   {
-      String name = getResourceName(jndiName, mappedName);
-      try
-      {
-         return getContext().lookup(name);
-      }
-      catch (NamingException e)
-      {
-         throw new RuntimeException("Error looking up " + name + " in JNDI", e);
-      }
-   }
-   
-   protected String getResourceName(String jndiName, String mappedName)
-   {
-      if (mappedName != null)
-      {
-         return mappedName;
-      }
-      else if (jndiName != null)
-      {
-         return jndiName;
-      }
-      else
-      {
-         throw new IllegalArgumentException("Both jndiName and mappedName are null");
-      }
-   }
-   
-   protected abstract Context getContext();
-   
-   protected String getResourceName(InjectionPoint injectionPoint)
-   {
-      Resource resource = injectionPoint.getAnnotated().getAnnotation(Resource.class);
-      String mappedName = resource.mappedName();
-      if (!mappedName.equals(""))
-      {
-         return mappedName;
-      }
-      String name = resource.name();
-      if (!name.equals(""))
-      {
-         return RESOURCE_LOOKUP_PREFIX + "/" + name;
-      }
-      String propertyName;
-      if (injectionPoint.getMember() instanceof Field)
-      {
-         propertyName = injectionPoint.getMember().getName();
-      }
-      else if (injectionPoint.getMember() instanceof Method)
-      {
-         propertyName = getPropertyName((Method) injectionPoint.getMember());
-         if (propertyName == null)
-         {
+public abstract class AbstractResourceServices implements Service, ResourceInjectionServices {
+    private static final String RESOURCE_LOOKUP_PREFIX = "java:comp/env";
+
+    public Object resolveResource(InjectionPoint injectionPoint) {
+        if (!injectionPoint.getAnnotated().isAnnotationPresent(Resource.class)) {
+            throw new IllegalArgumentException("No @Resource annotation found on injection point " + injectionPoint);
+        }
+        if (injectionPoint.getMember() instanceof Method
+                && ((Method) injectionPoint.getMember()).getParameterTypes().length != 1) {
             throw new IllegalArgumentException(
-                  "Injection point represents a method which doesn't follow " +
-                  "JavaBean conventions (unable to determine property name) " + injectionPoint);
-         }
-      }
-      else
-      {
-         throw new AssertionError("Unable to inject into " + injectionPoint);
-      }
-      String className = injectionPoint.getMember().getDeclaringClass().getName();
-      return RESOURCE_LOOKUP_PREFIX + "/" + className + "/" + propertyName;
-   }
-   
-   public static String getPropertyName(Method method)
-   {
-      String methodName = method.getName();
-      if (methodName.matches("^(get).*") && method.getParameterTypes().length == 0)
-      {
-         return Introspector.decapitalize(methodName.substring(3));
-      }
-      else if (methodName.matches("^(is).*") && method.getParameterTypes().length == 0)
-      {
-         return Introspector.decapitalize(methodName.substring(2));
-      }
-      else
-      {
-         return null;
-      }
+                    "Injection point represents a method which doesn't follow JavaBean conventions (must have exactly one parameter) "
+                            + injectionPoint);
+        }
+        String name = getResourceName(injectionPoint);
+        try {
+            return getContext().lookup(name);
+        } catch (NamingException e) {
+            throw new RuntimeException("Error looking up " + name + " in JNDI", e);
+        }
+    }
 
-   }
+    public Object resolveResource(String jndiName, String mappedName) {
+        String name = getResourceName(jndiName, mappedName);
+        try {
+            return getContext().lookup(name);
+        } catch (NamingException e) {
+            throw new RuntimeException("Error looking up " + name + " in JNDI", e);
+        }
+    }
 
-   /*
-    * Trivial implementation that does *not* leverage bootstrap validation nor caching
-    */
-   @Override
-   public ResourceReferenceFactory<Object> registerResourceInjectionPoint(final InjectionPoint injectionPoint) {
-       return new ResourceReferenceFactory<Object>() {
-           @Override
-           public ResourceReference<Object> createResource() {
-               return new SimpleResourceReference<Object>(resolveResource(injectionPoint));
-           }
-       };
-   }
+    protected String getResourceName(String jndiName, String mappedName) {
+        if (mappedName != null) {
+            return mappedName;
+        } else if (jndiName != null) {
+            return jndiName;
+        } else {
+            throw new IllegalArgumentException("Both jndiName and mappedName are null");
+        }
+    }
 
-   /*
-    * Trivial implementation that does *not* leverage bootstrap validation nor caching
-    */
-   @Override
-   public ResourceReferenceFactory<Object> registerResourceInjectionPoint(final String jndiName, final String mappedName) {
-       return new ResourceReferenceFactory<Object>() {
-           @Override
-           public ResourceReference<Object> createResource() {
-               return new SimpleResourceReference<Object>(resolveResource(jndiName, mappedName));
-           }
-       };
-   }
+    protected abstract Context getContext();
 
-   public void cleanup()
-   {
-   }
-   
+    protected String getResourceName(InjectionPoint injectionPoint) {
+        Resource resource = injectionPoint.getAnnotated().getAnnotation(Resource.class);
+        String mappedName = resource.mappedName();
+        if (!mappedName.equals("")) {
+            return mappedName;
+        }
+        String name = resource.name();
+        if (!name.equals("")) {
+            return RESOURCE_LOOKUP_PREFIX + "/" + name;
+        }
+        String propertyName;
+        if (injectionPoint.getMember() instanceof Field) {
+            propertyName = injectionPoint.getMember().getName();
+        } else if (injectionPoint.getMember() instanceof Method) {
+            propertyName = getPropertyName((Method) injectionPoint.getMember());
+            if (propertyName == null) {
+                throw new IllegalArgumentException("Injection point represents a method which doesn't follow "
+                        + "JavaBean conventions (unable to determine property name) " + injectionPoint);
+            }
+        } else {
+            throw new AssertionError("Unable to inject into " + injectionPoint);
+        }
+        String className = injectionPoint.getMember().getDeclaringClass().getName();
+        return RESOURCE_LOOKUP_PREFIX + "/" + className + "/" + propertyName;
+    }
+
+    public static String getPropertyName(Method method) {
+        String methodName = method.getName();
+        if (methodName.matches("^(get).*") && method.getParameterTypes().length == 0) {
+            return Introspector.decapitalize(methodName.substring(3));
+        } else if (methodName.matches("^(is).*") && method.getParameterTypes().length == 0) {
+            return Introspector.decapitalize(methodName.substring(2));
+        } else {
+            return null;
+        }
+
+    }
+
+    /*
+     * Trivial implementation that does *not* leverage bootstrap validation nor caching
+     */
+    @Override
+    public ResourceReferenceFactory<Object> registerResourceInjectionPoint(final InjectionPoint injectionPoint) {
+        return new ResourceReferenceFactory<Object>() {
+            @Override
+            public ResourceReference<Object> createResource() {
+                return new SimpleResourceReference<Object>(resolveResource(injectionPoint));
+            }
+        };
+    }
+
+    /*
+     * Trivial implementation that does *not* leverage bootstrap validation nor caching
+     */
+    @Override
+    public ResourceReferenceFactory<Object> registerResourceInjectionPoint(final String jndiName,
+            final String mappedName) {
+        return new ResourceReferenceFactory<Object>() {
+            @Override
+            public ResourceReference<Object> createResource() {
+                return new SimpleResourceReference<Object>(resolveResource(jndiName, mappedName));
+            }
+        };
+    }
+
+    public void cleanup() {
+    }
+
 }

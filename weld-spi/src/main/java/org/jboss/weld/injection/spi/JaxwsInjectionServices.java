@@ -22,8 +22,7 @@ import javax.enterprise.inject.spi.InjectionPoint;
 import org.jboss.weld.bootstrap.api.Service;
 
 /**
- * An integrator should implement this interface to allow Weld to
- * resolve web service references
+ * An integrator should implement this interface to allow Weld to resolve web service references
  *
  * {@link JaxwsInjectionServices} is a per-module service.
  *
@@ -33,13 +32,13 @@ import org.jboss.weld.bootstrap.api.Service;
 public interface JaxwsInjectionServices extends Service {
 
     /**
-     * Register a WebServiceRef injection point. The implementation validates the injection point. If the validation passes, an instance of
-     * {@link ResourceReferenceFactory} is returned which may be used at runtime for creating instances of the resource.
+     * Register a WebServiceRef injection point. The implementation validates the injection point. If the validation passes, an
+     * instance of {@link ResourceReferenceFactory} is returned which may be used at runtime for creating instances of the
+     * resource.
      *
-     * @param injectionPoint
-     *           the injection point metadata
+     * @param injectionPoint the injection point metadata
      * @return factory for the web service reference
      * @throws DefinitionException if there is a definition problem related to the injection point
      */
-    public <T> ResourceReferenceFactory<T> registerWebServiceRefInjectionPoint(InjectionPoint injectionPoint);
+    <T> ResourceReferenceFactory<T> registerWebServiceRefInjectionPoint(InjectionPoint injectionPoint);
 }

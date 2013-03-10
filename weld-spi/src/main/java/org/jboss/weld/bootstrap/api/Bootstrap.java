@@ -48,130 +48,122 @@ import org.jboss.weld.manager.api.WeldManager;
  * @author Pete Muir
  *
  */
-public interface Bootstrap
-{
+public interface Bootstrap {
 
-   /**
-    * Creates the application container:
-    * <ul>
-    * <li>Checks that the services required by the environment have been
-    * provided</li>
-    * <li>Adds container provided services</li>
-    * <li>Creates and initializes the built in contexts</li>
-    * <li>Creates the manager</li>
-    * </ul>
-    *
-    *           context
-    * @param environment the environment in use, by default
-    *           {@link Environments.EE}
-    * @param deployment the Deployment to be booted
-    * @throws IllegalStateException if not all the services required for the
-    *            given environment are available
-    *
-    */
-   public Bootstrap startContainer(Environment environment, Deployment deployment);
+    /**
+     * Creates the application container:
+     * <ul>
+     * <li>Checks that the services required by the environment have been provided</li>
+     * <li>Adds container provided services</li>
+     * <li>Creates and initializes the built in contexts</li>
+     * <li>Creates the manager</li>
+     * </ul>
+     *
+     * context
+     *
+     * @param environment the environment in use, by default {@link Environments.EE}
+     * @param deployment the Deployment to be booted
+     * @throws IllegalStateException if not all the services required for the given environment are available
+     *
+     */
+    Bootstrap startContainer(Environment environment, Deployment deployment);
 
-   /**
-    * Starts the application container initialization process:
-    *
-    * <ul>
-    * <li>Reads metadata from beans.xml and the {@link Deployment} service</li>
-    * <li>Starts the application context</li>
-    * <li>Starts the request context which lasts until
-    * {@link #endInitialization()} is called</li>
-    * <li>Discovers and creates {@link Extension} service providers</li>
-    * </ul>
-    *
-    * Finally, the {@link BeforeBeanDiscovery} event is fired.
-    *
-    */
-   public Bootstrap startInitialization();
+    /**
+     * Starts the application container initialization process:
+     *
+     * <ul>
+     * <li>Reads metadata from beans.xml and the {@link Deployment} service</li>
+     * <li>Starts the application context</li>
+     * <li>Starts the request context which lasts until {@link #endInitialization()} is called</li>
+     * <li>Discovers and creates {@link Extension} service providers</li>
+     * </ul>
+     *
+     * Finally, the {@link BeforeBeanDiscovery} event is fired.
+     *
+     */
+    Bootstrap startInitialization();
 
-   /**
-    * Creates and deploys the application's beans:
-    *
-    * <ul>
-    * <li>Creates and deploys the discovered beans</li>
-    * <li>Creates and deploys the built-in beans defined by the CDI
-    * specification</li>
-    * </ul>
-    *
-    * Finally the {@link AfterBeanDiscovery} is event is fired
-    */
-   public Bootstrap deployBeans();
+    /**
+     * Creates and deploys the application's beans:
+     *
+     * <ul>
+     * <li>Creates and deploys the discovered beans</li>
+     * <li>Creates and deploys the built-in beans defined by the CDI specification</li>
+     * </ul>
+     *
+     * Finally the {@link AfterBeanDiscovery} is event is fired
+     */
+    Bootstrap deployBeans();
 
-   /**
-    * Validates the deployment.
-    *
-    * After validation, the {@link AfterDeploymentValidation} event is fired
-    */
-   public Bootstrap validateBeans();
+    /**
+     * Validates the deployment.
+     *
+     * After validation, the {@link AfterDeploymentValidation} event is fired
+     */
+    Bootstrap validateBeans();
 
-   /**
-    * Cleans up after the initialization
-    *
-    */
-   public Bootstrap endInitialization();
+    /**
+     * Cleans up after the initialization
+     *
+     */
+    Bootstrap endInitialization();
 
-   /**
-    * Causes the container to clean up and shutdown
-    *
-    * Before the contain is shutdown the {@link BeforeShutdown} event is fired
-    */
-   public void shutdown();
+    /**
+     * Causes the container to clean up and shutdown
+     *
+     * Before the contain is shutdown the {@link BeforeShutdown} event is fired
+     */
+    void shutdown();
 
-   /**
-    * Get the manager used for this beanDeploymentArchive.
-    *
-    * If {@link #startContainer()} has not been called, this method will return
-    * null.
-    *
-    * If the beanDeploymentArchive is not known to Weld (for example, it
-    * was not passed to the Weld as part of the {@link Deployment}, or has
-    * not yet been requested by
-    * {@link Deployment#loadBeanDeploymentArchive(Class)}), null will be
-    * returned.
-    *
-    * @return the manager or null if not yet available or not found.
-    */
-   public WeldManager getManager(BeanDeploymentArchive beanDeploymentArchive);
+    /**
+     * Get the manager used for this beanDeploymentArchive.
+     *
+     * If {@link #startContainer()} has not been called, this method will return null.
+     *
+     * If the beanDeploymentArchive is not known to Weld (for example, it was not passed to the Weld as part of the
+     * {@link Deployment}, or has not yet been requested by {@link Deployment#loadBeanDeploymentArchive(Class)}), null will be
+     * returned.
+     *
+     * @return the manager or null if not yet available or not found.
+     */
+    WeldManager getManager(BeanDeploymentArchive beanDeploymentArchive);
 
-   /**
-    * Parse the specified URL as a beans.xml file.
-    *
-    * @param url the url to parse
-    * @return the BeansXml data structure which represents the URL
-    * @throws IllegalArgumentException if the URL cannot be opened
-    */
-   public BeansXml parse(URL url);
+    /**
+     * Parse the specified URL as a beans.xml file.
+     *
+     * @param url the url to parse
+     * @return the BeansXml data structure which represents the URL
+     * @throws IllegalArgumentException if the URL cannot be opened
+     */
+    BeansXml parse(URL url);
 
-   /**
-    * Parse the specified URLs as a series of beans.xml file and merge the result.
-    *
-    * Duplicate entries are not removed.
-    *
-    * @param url the url to parse
-    * @return the BeansXml data structure which represents the URL
-    * @throws IllegalArgumentException if the URL cannot be opened
-    */
-   public BeansXml parse(Iterable<URL> urls);
+    /**
+     * Parse the specified URLs as a series of beans.xml file and merge the result.
+     *
+     * Duplicate entries are not removed.
+     *
+     * @param url the url to parse
+     * @return the BeansXml data structure which represents the URL
+     * @throws IllegalArgumentException if the URL cannot be opened
+     */
+    BeansXml parse(Iterable<URL> urls);
 
-   /**
-    * Parse the specified URLs as a series of beans.xml file and merge the result.
-    *
-    * @param urls the urls to parse
-    * @param removeDuplicates whether duplicate entries (alternatives, interceptors, etc) are removed
-    * @return the BeansXml data structure which represents the URL
-    * @throws IllegalArgumentException if the URL cannot be opened
-    */
-   public BeansXml parse(Iterable<URL> urls, boolean removeDuplicates);
+    /**
+     * Parse the specified URLs as a series of beans.xml file and merge the result.
+     *
+     * @param urls the urls to parse
+     * @param removeDuplicates whether duplicate entries (alternatives, interceptors, etc) are removed
+     * @return the BeansXml data structure which represents the URL
+     * @throws IllegalArgumentException if the URL cannot be opened
+     */
+    BeansXml parse(Iterable<URL> urls, boolean removeDuplicates);
 
-   /**
-    * Load CDI extensions using the provided ClassLoader
-    *
-    * @param classLoader the ClassLoader to use to load the extensions
-    * @throws IllegalArgumentException if classLoader is null
-    */
-   public Iterable<Metadata<Extension>> loadExtensions(ClassLoader classLoader);
+    /**
+     * Load CDI extensions using the provided ClassLoader
+     *
+     * @param classLoader the ClassLoader to use to load the extensions
+     * @throws IllegalArgumentException if classLoader is null
+     */
+    Iterable<Metadata<Extension>> loadExtensions(ClassLoader classLoader);
 
 }

@@ -9,7 +9,7 @@
  * You may obtain a copy of the License at
  * http://www.apache.org/licenses/LICENSE-2.0
  * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,  
+ * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
@@ -20,78 +20,76 @@ package org.jboss.weld.ejb.spi;
 import java.lang.reflect.Method;
 import java.util.Collection;
 
-
 /**
  * EJB metadata from the EJB descriptor
- * 
+ *
  * @author Pete Muir
  *
  * @param <T> the bean type
  */
-public interface EjbDescriptor<T>
-{
-   
-   /**
-    * Gets the EJB type
-    * 
-    * @return The EJB Bean class
-    */
-   public Class<T> getBeanClass();
+public interface EjbDescriptor<T> {
 
-   /**
-    * Gets the local business interfaces of the EJB
-    * 
-    * @return An iterator over the local business interfaces
-    */
-   public Collection<BusinessInterfaceDescriptor<?>> getLocalBusinessInterfaces();
-   
-   /**
-    * Gets the remote business interfaces of the EJB
-    * 
-    * @return An iterator over the remote business interfaces
-    */
-   public Collection<BusinessInterfaceDescriptor<?>> getRemoteBusinessInterfaces();
-   
-   /**
-    * Get the EJB name
-    * 
-    * @return
-    */
-   public String getEjbName();
-   
-   /**
-    * Get the remove methods of the EJB
-    * 
-    * @return An iterator over the remove methods
-    */
-   public Collection<Method> getRemoveMethods();
+    /**
+     * Gets the EJB type
+     *
+     * @return The EJB Bean class
+     */
+    Class<T> getBeanClass();
 
-   /**
-    * Indicates if the bean is a stateless session bean 
-    * 
-    * @return True if stateless, false otherwise
-    */
-   public boolean isStateless();
+    /**
+     * Gets the local business interfaces of the EJB
+     *
+     * @return An iterator over the local business interfaces
+     */
+    Collection<BusinessInterfaceDescriptor<?>> getLocalBusinessInterfaces();
 
-   /**
-    * Indicates if the bean is a EJB 3.1 Singleton session bean
-    * 
-    * @return True if the bean is a singleton, false otherwise
-    */
-   public boolean isSingleton();
+    /**
+     * Gets the remote business interfaces of the EJB
+     *
+     * @return An iterator over the remote business interfaces
+     */
+    Collection<BusinessInterfaceDescriptor<?>> getRemoteBusinessInterfaces();
 
-   /**
-    * Indicates if the EJB is a stateful session bean
-    * 
-    * @return True if the bean is stateful, false otherwise
-    */
-   public boolean isStateful();
+    /**
+     * Get the EJB name
+     *
+     * @return
+     */
+    String getEjbName();
 
-   /**
-    * Indicates if the EJB is an MDB
-    * 
-    * @return True if the bean is an MDB, false otherwise
-    */
-   public boolean isMessageDriven();
-   
+    /**
+     * Get the remove methods of the EJB
+     *
+     * @return An iterator over the remove methods
+     */
+    Collection<Method> getRemoveMethods();
+
+    /**
+     * Indicates if the bean is a stateless session bean
+     *
+     * @return True if stateless, false otherwise
+     */
+    boolean isStateless();
+
+    /**
+     * Indicates if the bean is a EJB 3.1 Singleton session bean
+     *
+     * @return True if the bean is a singleton, false otherwise
+     */
+    boolean isSingleton();
+
+    /**
+     * Indicates if the EJB is a stateful session bean
+     *
+     * @return True if the bean is stateful, false otherwise
+     */
+    boolean isStateful();
+
+    /**
+     * Indicates if the EJB is an MDB
+     *
+     * @return True if the bean is an MDB, false otherwise
+     */
+    boolean isMessageDriven();
+
 }

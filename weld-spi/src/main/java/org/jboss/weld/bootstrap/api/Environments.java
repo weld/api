@@ -9,7 +9,7 @@
  * You may obtain a copy of the License at
  * http://www.apache.org/licenses/LICENSE-2.0
  * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,  
+ * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
@@ -32,124 +32,99 @@ import org.jboss.weld.validation.spi.ValidationServices;
 
 /**
  * Requirements for various well known environments.
- * 
+ *
  * @author Pete Muir
  *
  */
-public enum Environments implements Environment
-{
- 
-   /**
-    * Java EE5 or Java EE6
-    * 
-    * In this environment, Weld requires that {@link JpaInjectionServices},
-    * {@link ResourceInjectionServices} and {@link EjbInjectionServices} are
-    * present, and so will perform EE-style field injection on managed beans
-    * itself
-    */
-   EE_INJECT(new EnvironmentBuilder()
-         .addRequiredDeploymentService(TransactionServices.class)
-         .addRequiredDeploymentService(SecurityServices.class)
-         .addRequiredDeploymentService(ValidationServices.class)
-         .addRequiredDeploymentService(EjbServices.class)
-         .addRequiredDeploymentService(ScheduledExecutorServiceFactory.class)
-         .addRequiredBeanDeploymentArchiveService(ResourceLoader.class)
-         .addRequiredBeanDeploymentArchiveService(JpaInjectionServices.class)
-         .addRequiredBeanDeploymentArchiveService(ResourceInjectionServices.class)
-         .addRequiredBeanDeploymentArchiveService(EjbInjectionServices.class)
-   ),
-   
-   /**
-    * Java EE5 or Java EE6
-    * 
-    * In this environment, Weld requires that {@link InjectionServices} are
-    * present, and expects the container to use this callback to perform EE-style
-    * injection
-    * 
-    */
-   EE(new EnvironmentBuilder()
-         .addRequiredDeploymentService(TransactionServices.class)
-         .addRequiredDeploymentService(SecurityServices.class)
-         .addRequiredDeploymentService(ValidationServices.class)
-         .addRequiredDeploymentService(EjbServices.class)
-         .addRequiredBeanDeploymentArchiveService(ResourceLoader.class)
-         .addRequiredDeploymentService(ScheduledExecutorServiceFactory.class)
-         .addRequiredBeanDeploymentArchiveService(InjectionServices.class)
-   ),
-   
-   
-   
-   /**
-    * Servlet container such as Tomcat
-    */
-   SERVLET(new EnvironmentBuilder()
-         .addRequiredDeploymentService(ScheduledExecutorServiceFactory.class)
-         .addRequiredBeanDeploymentArchiveService(ResourceLoader.class)
-   ),
-   
-   /**
-    * Java SE
-    */
-   SE(new EnvironmentBuilder()
-         .addRequiredDeploymentService(ScheduledExecutorServiceFactory.class)
-         .addRequiredBeanDeploymentArchiveService(ResourceLoader.class)
-   );
-   
-   private final Set<Class<? extends Service>> requiredDeploymentServices;
-   
-   private final Set<Class<? extends Service>> requiredBeanDeploymentArchiveServices;
-   
-   private Environments(EnvironmentBuilder builder)
-   {
-      this.requiredDeploymentServices = builder.getRequiredDeploymentServices();
-      this.requiredBeanDeploymentArchiveServices = builder.getRequiredBeanDeploymentArchiveServices();
-   }
+public enum Environments implements Environment {
 
-   public Set<Class<? extends Service>> getRequiredDeploymentServices()
-   {
-      return requiredDeploymentServices;
-   }
-   
-   public Set<Class<? extends Service>> getRequiredBeanDeploymentArchiveServices()
-   {
-      return requiredBeanDeploymentArchiveServices;
-   }
-   
-   private static class EnvironmentBuilder
-   {
-      
-      private final Set<Class<? extends Service>> requiredDeploymentServices;
-      
-      private final Set<Class<? extends Service>> requiredBeanDeploymentArchiveServices;
-      
-      private EnvironmentBuilder()
-      {
-         this.requiredBeanDeploymentArchiveServices = new HashSet<Class<? extends Service>>();
-         this.requiredDeploymentServices = new HashSet<Class<? extends Service>>();
-      }
-      
-      private Set<Class<? extends Service>> getRequiredBeanDeploymentArchiveServices()
-      {
-         return requiredBeanDeploymentArchiveServices;
-      }
-      
-      private Set<Class<? extends Service>> getRequiredDeploymentServices()
-      {
-         return requiredDeploymentServices;
-      }
-      
-      private EnvironmentBuilder addRequiredDeploymentService(Class<? extends Service> service)
-      {
-         this.requiredDeploymentServices.add(service);
-         return this;
-      }
-      
-      private EnvironmentBuilder addRequiredBeanDeploymentArchiveService(Class<? extends Service> service)
-      {
-         this.requiredBeanDeploymentArchiveServices.add(service);
-         return this;
-      }
-      
-   }
-   
+    /**
+     * Java EE5 or Java EE6
+     *
+     * In this environment, Weld requires that {@link JpaInjectionServices}, {@link ResourceInjectionServices} and
+     * {@link EjbInjectionServices} are present, and so will perform EE-style field injection on managed beans itself
+     */
+    EE_INJECT(new EnvironmentBuilder().addRequiredDeploymentService(TransactionServices.class)
+            .addRequiredDeploymentService(SecurityServices.class)
+            .addRequiredDeploymentService(ValidationServices.class).addRequiredDeploymentService(EjbServices.class)
+            .addRequiredDeploymentService(ScheduledExecutorServiceFactory.class)
+            .addRequiredBeanDeploymentArchiveService(ResourceLoader.class)
+            .addRequiredBeanDeploymentArchiveService(JpaInjectionServices.class)
+            .addRequiredBeanDeploymentArchiveService(ResourceInjectionServices.class)
+            .addRequiredBeanDeploymentArchiveService(EjbInjectionServices.class)),
+
+    /**
+     * Java EE5 or Java EE6
+     *
+     * In this environment, Weld requires that {@link InjectionServices} are present, and expects the container to use this
+     * callback to perform EE-style injection
+     *
+     */
+    EE(new EnvironmentBuilder().addRequiredDeploymentService(TransactionServices.class)
+            .addRequiredDeploymentService(SecurityServices.class)
+            .addRequiredDeploymentService(ValidationServices.class).addRequiredDeploymentService(EjbServices.class)
+            .addRequiredBeanDeploymentArchiveService(ResourceLoader.class)
+            .addRequiredDeploymentService(ScheduledExecutorServiceFactory.class)
+            .addRequiredBeanDeploymentArchiveService(InjectionServices.class)),
+
+    /**
+     * Servlet container such as Tomcat
+     */
+    SERVLET(new EnvironmentBuilder().addRequiredDeploymentService(ScheduledExecutorServiceFactory.class)
+            .addRequiredBeanDeploymentArchiveService(ResourceLoader.class)),
+
+    /**
+     * Java SE
+     */
+    SE(new EnvironmentBuilder().addRequiredDeploymentService(ScheduledExecutorServiceFactory.class)
+            .addRequiredBeanDeploymentArchiveService(ResourceLoader.class));
+
+    private final Set<Class<? extends Service>> requiredDeploymentServices;
+
+    private final Set<Class<? extends Service>> requiredBeanDeploymentArchiveServices;
+
+    private Environments(EnvironmentBuilder builder) {
+        this.requiredDeploymentServices = builder.getRequiredDeploymentServices();
+        this.requiredBeanDeploymentArchiveServices = builder.getRequiredBeanDeploymentArchiveServices();
+    }
+
+    public Set<Class<? extends Service>> getRequiredDeploymentServices() {
+        return requiredDeploymentServices;
+    }
+
+    public Set<Class<? extends Service>> getRequiredBeanDeploymentArchiveServices() {
+        return requiredBeanDeploymentArchiveServices;
+    }
+
+    private static class EnvironmentBuilder {
+
+        private final Set<Class<? extends Service>> requiredDeploymentServices;
+
+        private final Set<Class<? extends Service>> requiredBeanDeploymentArchiveServices;
+
+        private EnvironmentBuilder() {
+            this.requiredBeanDeploymentArchiveServices = new HashSet<Class<? extends Service>>();
+            this.requiredDeploymentServices = new HashSet<Class<? extends Service>>();
+        }
+
+        private Set<Class<? extends Service>> getRequiredBeanDeploymentArchiveServices() {
+            return requiredBeanDeploymentArchiveServices;
+        }
+
+        private Set<Class<? extends Service>> getRequiredDeploymentServices() {
+            return requiredDeploymentServices;
+        }
+
+        private EnvironmentBuilder addRequiredDeploymentService(Class<? extends Service> service) {
+            this.requiredDeploymentServices.add(service);
+            return this;
+        }
+
+        private EnvironmentBuilder addRequiredBeanDeploymentArchiveService(Class<? extends Service> service) {
+            this.requiredBeanDeploymentArchiveServices.add(service);
+            return this;
+        }
+
+    }
+
 }

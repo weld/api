@@ -28,12 +28,14 @@ public interface ResourceReference<T> {
 
     /**
      * Get the instance of the resource
+     *
      * @return instance
      */
     T getInstance();
 
     /**
      * Release the resource instance
+     *
      * @param instance
      */
     void release();

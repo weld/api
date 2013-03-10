@@ -9,7 +9,7 @@
  * You may obtain a copy of the License at
  * http://www.apache.org/licenses/LICENSE-2.0
  * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,  
+ * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
@@ -24,65 +24,55 @@ import org.jboss.weld.manager.api.WeldManager;
 
 /**
  * Implementation of {@link Bootstrap} which supports the decorator pattern
+ *
  * @author Pete Muir
  *
  */
-public abstract class ForwardingBootstrap implements Bootstrap
-{
-   
-   protected abstract Bootstrap delegate();
-   
-   public WeldManager getManager(BeanDeploymentArchive beanDeploymentArchive)
-   {
-      return delegate().getManager(beanDeploymentArchive);
-   }
-   
-   public Bootstrap startContainer(Environment environment, Deployment deployment)
-   {
-      return delegate().startContainer(environment, deployment);
-   }
-   
-   public void shutdown()
-   {
-      delegate().shutdown();
-   }
-   
-   @Override
-   public String toString()
-   {
-      return delegate().toString();
-   }
-   
-   @Override
-   public int hashCode()
-   {
-      return delegate().hashCode();
-   }
-   
-   @Override
-   public boolean equals(Object obj)
-   {
-      return this == obj  ||delegate().equals(obj);
-   }
+public abstract class ForwardingBootstrap implements Bootstrap {
 
-   public Bootstrap deployBeans()
-   {
-      return delegate().deployBeans();
-   }
+    protected abstract Bootstrap delegate();
 
-   public Bootstrap endInitialization()
-   {
-      return delegate().endInitialization();
-   }
+    public WeldManager getManager(BeanDeploymentArchive beanDeploymentArchive) {
+        return delegate().getManager(beanDeploymentArchive);
+    }
 
-   public Bootstrap startInitialization()
-   {
-      return delegate().startInitialization();
-   }
+    public Bootstrap startContainer(Environment environment, Deployment deployment) {
+        return delegate().startContainer(environment, deployment);
+    }
 
-   public Bootstrap validateBeans()
-   {
-      return delegate().validateBeans();
-   }
-   
+    public void shutdown() {
+        delegate().shutdown();
+    }
+
+    @Override
+    public String toString() {
+        return delegate().toString();
+    }
+
+    @Override
+    public int hashCode() {
+        return delegate().hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return this == obj || delegate().equals(obj);
+    }
+
+    public Bootstrap deployBeans() {
+        return delegate().deployBeans();
+    }
+
+    public Bootstrap endInitialization() {
+        return delegate().endInitialization();
+    }
+
+    public Bootstrap startInitialization() {
+        return delegate().startInitialization();
+    }
+
+    public Bootstrap validateBeans() {
+        return delegate().validateBeans();
+    }
+
 }

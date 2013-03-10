@@ -9,7 +9,7 @@
  * You may obtain a copy of the License at
  * http://www.apache.org/licenses/LICENSE-2.0
  * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,  
+ * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
@@ -24,56 +24,48 @@ import org.jboss.weld.injection.spi.JpaInjectionServices;
 import org.jboss.weld.injection.spi.ResourceReferenceFactory;
 
 /**
- * An implementation of {@link JpaInjectionServices} which forwards all its method calls
- * to another {@link JpaInjectionServices}}. Subclasses should override one or more 
- * methods to modify the behavior of the backing {@link JpaInjectionServices} as desired
- * per the <a
- * href="http://en.wikipedia.org/wiki/Decorator_pattern">decorator pattern</a>.
- * 
+ * An implementation of {@link JpaInjectionServices} which forwards all its method calls to another {@link JpaInjectionServices}
+ * . Subclasses should override one or more methods to modify the behavior of the backing {@link JpaInjectionServices} as
+ * desired per the <a href="http://en.wikipedia.org/wiki/Decorator_pattern">decorator pattern</a>.
+ *
  * @author Pete Muir
  *
  */
-public abstract class ForwardingJpaInjectionServices implements JpaInjectionServices
-{
-   
-   protected abstract JpaInjectionServices delegate();
-   
-   public ResourceReferenceFactory<EntityManager> registerPersistenceContextInjectionPoint(InjectionPoint injectionPoint)
-   {
-      return delegate().registerPersistenceContextInjectionPoint(injectionPoint);
-   }
-   
-   public ResourceReferenceFactory<EntityManagerFactory> registerPersistenceUnitInjectionPoint(InjectionPoint injectionPoint)
-   {
-      return delegate().registerPersistenceUnitInjectionPoint(injectionPoint);
-   }
+public abstract class ForwardingJpaInjectionServices implements JpaInjectionServices {
 
-   @Override
-   public EntityManager resolvePersistenceContext(InjectionPoint injectionPoint) {
-       return delegate().resolvePersistenceContext(injectionPoint);
-   }
+    protected abstract JpaInjectionServices delegate();
 
-   @Override
-   public EntityManagerFactory resolvePersistenceUnit(InjectionPoint injectionPoint) {
-       return delegate().resolvePersistenceUnit(injectionPoint);
-   }
+    public ResourceReferenceFactory<EntityManager> registerPersistenceContextInjectionPoint(InjectionPoint injectionPoint) {
+        return delegate().registerPersistenceContextInjectionPoint(injectionPoint);
+    }
 
-   @Override
-   public String toString()
-   {
-      return delegate().toString();
-   }
-   
-   @Override
-   public int hashCode()
-   {
-      return delegate().hashCode();
-   }
-   
-   @Override
-   public boolean equals(Object obj)
-   {
-      return this == obj || delegate().equals(obj);
-   }
-   
+    public ResourceReferenceFactory<EntityManagerFactory> registerPersistenceUnitInjectionPoint(InjectionPoint injectionPoint) {
+        return delegate().registerPersistenceUnitInjectionPoint(injectionPoint);
+    }
+
+    @Override
+    public EntityManager resolvePersistenceContext(InjectionPoint injectionPoint) {
+        return delegate().resolvePersistenceContext(injectionPoint);
+    }
+
+    @Override
+    public EntityManagerFactory resolvePersistenceUnit(InjectionPoint injectionPoint) {
+        return delegate().resolvePersistenceUnit(injectionPoint);
+    }
+
+    @Override
+    public String toString() {
+        return delegate().toString();
+    }
+
+    @Override
+    public int hashCode() {
+        return delegate().hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return this == obj || delegate().equals(obj);
+    }
+
 }

@@ -9,7 +9,7 @@
  * You may obtain a copy of the License at
  * http://www.apache.org/licenses/LICENSE-2.0
  * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,  
+ * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
@@ -26,60 +26,59 @@ import java.util.concurrent.Future;
 import org.jboss.weld.bootstrap.api.Service;
 
 /**
- * Allows a custom TaskExecutor to be provided by the container. By default,
- * {@link Executors#newSingleThreadExecutor()} is used.
- * 
+ * Allows a custom TaskExecutor to be provided by the container. By default, {@link Executors#newSingleThreadExecutor()} is
+ * used.
+ *
  * This is a per-deployment service.
- * 
+ *
  * @author Pete Muir
  * @author Jozef Hartinger
  *
  */
-public interface ExecutorServices extends Service
-{
-   
-   public ExecutorService getTaskExecutor();
-   
-   /**
-    * Executes the given tasks and blocks until they all finish. If a task throws an exception, the exception is rethrown by
-    * this method. If multiple tasks throw exceptions, there is no guarantee about which of the exceptions is rethrown by this
-    * method.
-    *
-    * @param tasks the collection of tasks
-    * @return A list of Futures representing the tasks, in the same sequential order as produced by the iterator for the given
-    *         task list, each of which has completed.
-    */
-   <T> List<Future<T>> invokeAllAndCheckForExceptions(Collection<? extends Callable<T>> tasks);
+public interface ExecutorServices extends Service {
 
-   /**
-    * Executes all the tasks returned from calling {@link TaskFactory#createTasks(int)} method. The method is called exactly
-    * once.If a task throws an exception, the exception is rethrown by this method. If multiple tasks throw exceptions, there
-    * is no guarantee about which of the exceptions is rethrown by this method.
-    *
-    * @param factory factory capable of creating tasks
-    * @return A list of Futures representing the tasks, in the same sequential order as produced by the iterator for the given
-    *         task list, each of which has completed.
-    */
-   <T> List<Future<T>> invokeAllAndCheckForExceptions(TaskFactory<T> factory);
+    ExecutorService getTaskExecutor();
 
-   /**
-    * Instead of submitting a list of tasks to be executed a caller may submit a factory object capable of creating the list of
-    * tasks. The size of the underlying thread pool is passed as a parameter. An implementation may or may not consider this
-    * parameter when creating the task list.
-    *
-    * @author Jozef Hartinger
-    *
-    * @param <T> the type of the result of created tasks
-    */
-   public static interface TaskFactory<T> {
+    /**
+     * Executes the given tasks and blocks until they all finish. If a task throws an exception, the exception is rethrown by
+     * this method. If multiple tasks throw exceptions, there is no guarantee about which of the exceptions is rethrown by this
+     * method.
+     *
+     * @param tasks the collection of tasks
+     * @return A list of Futures representing the tasks, in the same sequential order as produced by the iterator for the given
+     *         task list, each of which has completed.
+     */
+    <T> List<Future<T>> invokeAllAndCheckForExceptions(Collection<? extends Callable<T>> tasks);
 
-       /**
-        * Creates a list of tasks to be executed in a thread pool.
-        *
-        * @param threadPoolSize the size of the underlying thread pool
-        * @return a list of tasks to be executed in a thread pool
-        */
-       List<Callable<T>> createTasks(int threadPoolSize);
-   }
+    /**
+     * Executes all the tasks returned from calling {@link TaskFactory#createTasks(int)} method. The method is called exactly
+     * once.If a task throws an exception, the exception is rethrown by this method. If multiple tasks throw exceptions, there
+     * is no guarantee about which of the exceptions is rethrown by this method.
+     *
+     * @param factory factory capable of creating tasks
+     * @return A list of Futures representing the tasks, in the same sequential order as produced by the iterator for the given
+     *         task list, each of which has completed.
+     */
+    <T> List<Future<T>> invokeAllAndCheckForExceptions(TaskFactory<T> factory);
+
+    /**
+     * Instead of submitting a list of tasks to be executed a caller may submit a factory object capable of creating the list of
+     * tasks. The size of the underlying thread pool is passed as a parameter. An implementation may or may not consider this
+     * parameter when creating the task list.
+     *
+     * @author Jozef Hartinger
+     *
+     * @param <T> the type of the result of created tasks
+     */
+    public interface TaskFactory<T> {
+
+        /**
+         * Creates a list of tasks to be executed in a thread pool.
+         *
+         * @param threadPoolSize the size of the underlying thread pool
+         * @return a list of tasks to be executed in a thread pool
+         */
+        List<Callable<T>> createTasks(int threadPoolSize);
+    }
 
 }

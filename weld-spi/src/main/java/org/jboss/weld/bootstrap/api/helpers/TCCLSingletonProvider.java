@@ -32,70 +32,55 @@ import org.jboss.weld.bootstrap.api.Singleton;
 import org.jboss.weld.bootstrap.api.SingletonProvider;
 
 /**
- * Singleton provider that uses the Thread Context ClassLoader to differentiate
- * between applications
- * 
+ * Singleton provider that uses the Thread Context ClassLoader to differentiate between applications
+ *
  * @author Sanjeeb.Sahoo@Sun.COM
  * @author Pete Muir
  */
-public class TCCLSingletonProvider extends SingletonProvider
-{
-   
-   @Override
-   public <T> Singleton<T> create(Class<? extends T> type)
-   {
-      return new TCCLSingleton<T>();
-   }
+public class TCCLSingletonProvider extends SingletonProvider {
 
-   private static class TCCLSingleton<T> implements Singleton<T>
-   {
-      // use Hashtable for concurrent access
-      private final Map<ClassLoader, T> store = new Hashtable<ClassLoader, T>();
+    @Override
+    public <T> Singleton<T> create(Class<? extends T> type) {
+        return new TCCLSingleton<T>();
+    }
 
-      public T get()
-      {
-         T instance = store.get(getClassLoader());
-         if (instance == null)
-         {
-            throw new IllegalStateException("Singleton not set for " + getClassLoader());
-         }
-         return instance;
-      }
+    private static class TCCLSingleton<T> implements Singleton<T> {
+        // use Hashtable for concurrent access
+        private final Map<ClassLoader, T> store = new Hashtable<ClassLoader, T>();
 
-      public void set(T object)
-      {
-         // TODO remove this
-         System.out.println("Adding singleton for " + getClassLoader());
-         store.put(getClassLoader(), object);
-      }
-      
-      public void clear()
-      {
-         store.remove(getClassLoader());
-      }
-      
-      public boolean isSet()
-      {
-         return store.containsKey(getClassLoader());
-      }
+        public T get() {
+            T instance = store.get(getClassLoader());
+            if (instance == null) {
+                throw new IllegalStateException("Singleton not set for " + getClassLoader());
+            }
+            return instance;
+        }
 
-      private ClassLoader getClassLoader()
-      {
-         SecurityManager sm = System.getSecurityManager();
-         if (sm != null)
-         {
-            return AccessController.doPrivileged(new PrivilegedAction<ClassLoader>()
-            {
-               public ClassLoader run()
-               {
-                  return Thread.currentThread().getContextClassLoader();
-               }
-            });
-         }
-         else
-         {
-            return Thread.currentThread().getContextClassLoader();
-         }
-      }
-   }
+        public void set(T object) {
+            // TODO remove this
+            System.out.println("Adding singleton for " + getClassLoader());
+            store.put(getClassLoader(), object);
+        }
+
+        public void clear() {
+            store.remove(getClassLoader());
+        }
+
+        public boolean isSet() {
+            return store.containsKey(getClassLoader());
+        }
+
+        private ClassLoader getClassLoader() {
+            SecurityManager sm = System.getSecurityManager();
+            if (sm != null) {
+                return AccessController.doPrivileged(new PrivilegedAction<ClassLoader>() {
+                    public ClassLoader run() {
+                        return Thread.currentThread().getContextClassLoader();
+                    }
+                });
+            } else {
+                return Thread.currentThread().getContextClassLoader();
+            }
+        }
+    }
 }

@@ -28,96 +28,77 @@ import org.jboss.weld.bootstrap.api.helpers.TCCLSingletonProvider;
 
 /**
  * A provider of {@link Singleton}s
- * 
+ *
  * @see IsolatedStaticSingletonProvider
  * @see TCCLSingletonProvider
- * 
+ *
  * @author Sanjeeb.Sahoo@Sun.COM
  * @author Pete Muir
  */
-public abstract class SingletonProvider
-{
-   /*
-    * Singleton pattern. Upon first access (see instance()), it initializes
-    * itself by a default implementation. Containers are free to explicitly
-    * initialize it by calling initialize() method.
-    */
-   private static volatile SingletonProvider INSTANCE;
+public abstract class SingletonProvider {
+    /*
+     * Singleton pattern. Upon first access (see instance()), it initializes itself by a default implementation. Containers are
+     * free to explicitly initialize it by calling initialize() method.
+     */
+    private static volatile SingletonProvider INSTANCE;
 
-   private static final String DEFAULT_SCOPE_FACTORY = IsolatedStaticSingletonProvider.class.getName();
+    private static final String DEFAULT_SCOPE_FACTORY = IsolatedStaticSingletonProvider.class.getName();
 
-   public static SingletonProvider instance()
-   {
-      if (INSTANCE == null)
-      {
-         synchronized (SingletonProvider.class)
-         {
-            if (INSTANCE == null)
-            {
-               /*
-                * TODO: We should discover ScopeFactory implementation using
-                * Service Provider Mechanism. In the absence of any explicitly
-                * configured service, should we default to the default
-                * implementation.
-                */
-               initializeWithDefaultScope();
+    public static SingletonProvider instance() {
+        if (INSTANCE == null) {
+            synchronized (SingletonProvider.class) {
+                if (INSTANCE == null) {
+                    /*
+                     * TODO: We should discover ScopeFactory implementation using Service Provider Mechanism. In the absence of
+                     * any explicitly configured service, should we default to the default implementation.
+                     */
+                    initializeWithDefaultScope();
+                }
             }
-         }
-      }
-      return INSTANCE;
-   }
+        }
+        return INSTANCE;
+    }
 
-   protected SingletonProvider()
-   {
-   }
+    protected SingletonProvider() {
+    }
 
-   /**
-    * Create a new singleton
-    * 
-    * @param expectedType represents the type of Java object stored in the singleton
-    * @return a singelton
-    */
-   public abstract <T> Singleton<T> create(Class<? extends T> expectedType);
+    /**
+     * Create a new singleton
+     *
+     * @param expectedType represents the type of Java object stored in the singleton
+     * @return a singelton
+     */
+    public abstract <T> Singleton<T> create(Class<? extends T> expectedType);
 
-   /**
-    * Initialize with the default instance
-    */
-   private static void initializeWithDefaultScope()
-   {
-      try
-      {
-         Class<?> aClass = Class.forName(DEFAULT_SCOPE_FACTORY);
-         INSTANCE = (SingletonProvider) aClass.newInstance();
-      }
-      catch (Exception e)
-      {
-         throw new RuntimeException(e);
-      }
-   }
+    /**
+     * Initialize with the default instance
+     */
+    private static void initializeWithDefaultScope() {
+        try {
+            Class<?> aClass = Class.forName(DEFAULT_SCOPE_FACTORY);
+            INSTANCE = (SingletonProvider) aClass.newInstance();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 
-   /**
-    * Initialize with an explicit instance
-    * 
-    * @param instance
-    */
-   public static void initialize(SingletonProvider instance)
-   {
-      synchronized (SingletonProvider.class)
-      {
-         if (INSTANCE == null)
-         {
-            INSTANCE = instance;
-         }
-         else
-         {
-            throw new RuntimeException("SingletonProvider is already initialized with " + INSTANCE);
-         }
-      }
-   }
-   
-   public static void reset()
-   {
-      INSTANCE = null;
-   }
+    /**
+     * Initialize with an explicit instance
+     *
+     * @param instance
+     */
+    public static void initialize(SingletonProvider instance) {
+        synchronized (SingletonProvider.class) {
+            if (INSTANCE == null) {
+                INSTANCE = instance;
+            } else {
+                throw new RuntimeException("SingletonProvider is already initialized with " + INSTANCE);
+            }
+        }
+    }
+
+    public static void reset() {
+        INSTANCE = null;
+    }
 
 }

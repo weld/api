@@ -111,7 +111,7 @@ public interface Deployment {
      * @return the accessible bean deployment archives
      *
      */
-    public Collection<BeanDeploymentArchive> getBeanDeploymentArchives();
+    Collection<BeanDeploymentArchive> getBeanDeploymentArchives();
 
     /**
      * Load the {@link BeanDeploymentArchive} containing the given class.
@@ -127,14 +127,14 @@ public interface Deployment {
      * @return the {@link BeanDeploymentArchive} containing the bean class
      * @throws IllegalArgumentException if the beanClass is not visisble to the current deployment
      */
-    public BeanDeploymentArchive loadBeanDeploymentArchive(Class<?> beanClass);
+    BeanDeploymentArchive loadBeanDeploymentArchive(Class<?> beanClass);
 
     /**
      * Get the services available to this deployment
      *
      * @return the services available
      */
-    public ServiceRegistry getServices();
+    ServiceRegistry getServices();
 
     /**
      * Specifies the extensions this deployment should call observer methods on.
@@ -150,6 +150,6 @@ public interface Deployment {
      *
      * @return the extensions to call observer methods on, or an empty list if there are no observers
      */
-    public Iterable<Metadata<Extension>> getExtensions();
+    Iterable<Metadata<Extension>> getExtensions();
 
 }

@@ -23,8 +23,7 @@ import javax.persistence.EntityManagerFactory;
 import org.jboss.weld.bootstrap.api.Service;
 
 /**
- * A container should implement this interface to allow the Weld RI to
- * resolve JPA persistence units and discover entities
+ * A container should implement this interface to allow the Weld RI to resolve JPA persistence units and discover entities
  *
  * {@link JpaInjectionServices} is a per-module service.
  *
@@ -32,79 +31,64 @@ import org.jboss.weld.bootstrap.api.Service;
  * @author Jozef Hartinger
  *
  */
-public interface JpaInjectionServices extends Service
-{
+public interface JpaInjectionServices extends Service {
 
-   /**
-    * Register a persistence context injection point. The implementation validates the injection point. If the validation passes, an instance of
-    * {@link ResourceReferenceFactory} is returned which may be used at runtime for creating instances of the resource.
-    *
-    * @param injectionPoint
-    *           the injection point metadata
-    * @return factory for obtaining {@link EntityManager} instances
-    * @throws IllegalArgumentException
-    *            if the injection point is not annotated with
-    *            @PersistenceContext, if the injection point is a method
-    *            that doesn't follow JavaBean conventions or if the injection
-    * @throws IllegalStateException
-    *            if no suitable persistence units can be resolved
-    */
-   public ResourceReferenceFactory<EntityManager> registerPersistenceContextInjectionPoint(InjectionPoint injectionPoint);
+    /**
+     * Register a persistence context injection point. The implementation validates the injection point. If the validation
+     * passes, an instance of {@link ResourceReferenceFactory} is returned which may be used at runtime for creating instances
+     * of the resource.
+     *
+     * @param injectionPoint the injection point metadata
+     * @return factory for obtaining {@link EntityManager} instances
+     * @throws IllegalArgumentException if the injection point is not annotated with
+     * @PersistenceContext, if the injection point is a method that doesn't follow JavaBean conventions or if the injection
+     * @throws IllegalStateException if no suitable persistence units can be resolved
+     */
+    ResourceReferenceFactory<EntityManager> registerPersistenceContextInjectionPoint(InjectionPoint injectionPoint);
 
-   /**
-    * Register a persistence unit injection point. The implementation validates the injection point. If the validation passes, an instance of
-    * {@link ResourceReferenceFactory} is returned which may be used at runtime for creating instances of the resource.
-    *
-    * @param injectionPoint
-    *           the injection point metadata
-    * @return factory for obtaining {@link EntityManagerFactory} instances
-    * @throws IllegalArgumentException
-    *            if the injection point is not annotated with
-    *            @PersistenceUnit, or, if the injection point is a method
-    *            that doesn't follow JavaBean conventions
-    * @throws IllegalStateException
-    *            if no suitable persistence units can be resolved
-    */
-   public ResourceReferenceFactory<EntityManagerFactory> registerPersistenceUnitInjectionPoint(InjectionPoint injectionPoint);
+    /**
+     * Register a persistence unit injection point. The implementation validates the injection point. If the validation passes,
+     * an instance of {@link ResourceReferenceFactory} is returned which may be used at runtime for creating instances of the
+     * resource.
+     *
+     * @param injectionPoint the injection point metadata
+     * @return factory for obtaining {@link EntityManagerFactory} instances
+     * @throws IllegalArgumentException if the injection point is not annotated with
+     * @PersistenceUnit, or, if the injection point is a method that doesn't follow JavaBean conventions
+     * @throws IllegalStateException if no suitable persistence units can be resolved
+     */
+    ResourceReferenceFactory<EntityManagerFactory> registerPersistenceUnitInjectionPoint(InjectionPoint injectionPoint);
 
-   /**
-    * Resolve the value for the given @PersistenceContext injection point
-    *
-    * @deprecated Instead of calling this method at runtime, Weld should register
-    * every persistence context injection point at bootstrap using {@link #registerPersistenceContextInjectionPoint(InjectionPoint)}
-    * and use the returned factory for producing injectable instances at runtime.
-    *
-    * @param injectionPoint
-    *           the injection point metadata
-    * @return an instance of the entity manager
-    * @throws IllegalArgumentException
-    *            if the injection point is not annotated with
-    *            @PersistenceContext, or, if the injection point is a method
-    *            that doesn't follow JavaBean conventions
-    * @throws IllegalStateException
-    *            if no suitable persistence units can be resolved for injection
-    */
-   @Deprecated
-   public EntityManager resolvePersistenceContext(InjectionPoint injectionPoint);
+    /**
+     * Resolve the value for the given @PersistenceContext injection point
+     *
+     * @deprecated Instead of calling this method at runtime, Weld should register every persistence context injection point at
+     *             bootstrap using {@link #registerPersistenceContextInjectionPoint(InjectionPoint)} and use the returned
+     *             factory for producing injectable instances at runtime.
+     *
+     * @param injectionPoint the injection point metadata
+     * @return an instance of the entity manager
+     * @throws IllegalArgumentException if the injection point is not annotated with
+     * @PersistenceContext, or, if the injection point is a method that doesn't follow JavaBean conventions
+     * @throws IllegalStateException if no suitable persistence units can be resolved for injection
+     */
+    @Deprecated
+    EntityManager resolvePersistenceContext(InjectionPoint injectionPoint);
 
-   /**
-    * Resolve the value for the given @PersistenceUnit injection point
-    *
-    * @deprecated Instead of calling this method at runtime, Weld should register
-    * every persistence unit injection point at bootstrap using {@link #registerPersistenceUnitInjectionPoint(InjectionPoint)}
-    * and use the returned factory for producing injectable instances at runtime.
-    *
-    * @param injectionPoint
-    *           the injection point metadata
-    * @return an instance of the entity manager
-    * @throws IllegalArgumentException
-    *            if the injection point is not annotated with
-    *            @PersistenceUnit, or, if the injection point is a method
-    *            that doesn't follow JavaBean conventions
-    * @throws IllegalStateException
-    *            if no suitable persistence units can be resolved for injection
-    */
-   @Deprecated
-   public EntityManagerFactory resolvePersistenceUnit(InjectionPoint injectionPoint);
+    /**
+     * Resolve the value for the given @PersistenceUnit injection point
+     *
+     * @deprecated Instead of calling this method at runtime, Weld should register every persistence unit injection point at
+     *             bootstrap using {@link #registerPersistenceUnitInjectionPoint(InjectionPoint)} and use the returned factory
+     *             for producing injectable instances at runtime.
+     *
+     * @param injectionPoint the injection point metadata
+     * @return an instance of the entity manager
+     * @throws IllegalArgumentException if the injection point is not annotated with
+     * @PersistenceUnit, or, if the injection point is a method that doesn't follow JavaBean conventions
+     * @throws IllegalStateException if no suitable persistence units can be resolved for injection
+     */
+    @Deprecated
+    EntityManagerFactory resolvePersistenceUnit(InjectionPoint injectionPoint);
 
 }

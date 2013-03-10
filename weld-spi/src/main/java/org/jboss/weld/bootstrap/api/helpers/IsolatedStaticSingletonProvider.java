@@ -26,47 +26,40 @@ import org.jboss.weld.bootstrap.api.Singleton;
 import org.jboss.weld.bootstrap.api.SingletonProvider;
 
 /**
- * 
+ *
  * A singleton provider that assumes an isolated classloder per application
- * 
+ *
  * @author Sanjeeb.Sahoo@Sun.COM
  * @author Pete Muir
  */
-public class IsolatedStaticSingletonProvider extends SingletonProvider
-{
+public class IsolatedStaticSingletonProvider extends SingletonProvider {
 
-   @Override
-   public <T> Singleton<T> create(Class<? extends T> type)
-   {
-      return new IsolatedStaticSingleton<T>();
-   }
+    @Override
+    public <T> Singleton<T> create(Class<? extends T> type) {
+        return new IsolatedStaticSingleton<T>();
+    }
 
-   private static class IsolatedStaticSingleton<T> implements Singleton<T>
-   {
-      private T object;
+    private static class IsolatedStaticSingleton<T> implements Singleton<T> {
+        private T object;
 
-      public T get()
-      {
-         if (object == null)
-         {
-            throw new IllegalStateException("Singleton is not set. Is your Thread.currentThread().getContextClassLoader() set correctly?");
-         }
-         return object;
-      }
+        public T get() {
+            if (object == null) {
+                throw new IllegalStateException(
+                        "Singleton is not set. Is your Thread.currentThread().getContextClassLoader() set correctly?");
+            }
+            return object;
+        }
 
-      public void set(T object)
-      {
-         this.object = object;
-      }
-      
-      public void clear()
-      {
-         this.object = null;
-      }
-      
-      public boolean isSet()
-      {
-         return object != null;
-      }
-   }
+        public void set(T object) {
+            this.object = object;
+        }
+
+        public void clear() {
+            this.object = null;
+        }
+
+        public boolean isSet() {
+            return object != null;
+        }
+    }
 }

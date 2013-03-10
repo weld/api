@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface BeansXml {
 
-    public static final BeansXml EMPTY_BEANS_XML = new BeansXml() {
+    BeansXml EMPTY_BEANS_XML = new BeansXml() {
 
         public List<Metadata<String>> getEnabledInterceptors() {
             return emptyList();
@@ -44,27 +44,27 @@ public interface BeansXml {
         }
     };
 
-    public List<Metadata<String>> getEnabledAlternativeStereotypes();
+    List<Metadata<String>> getEnabledAlternativeStereotypes();
 
-    public List<Metadata<String>> getEnabledAlternativeClasses();
+    List<Metadata<String>> getEnabledAlternativeClasses();
 
-    public List<Metadata<String>> getEnabledDecorators();
+    List<Metadata<String>> getEnabledDecorators();
 
-    public List<Metadata<String>> getEnabledInterceptors();
+    List<Metadata<String>> getEnabledInterceptors();
 
-    public Scanning getScanning();
+    Scanning getScanning();
 
-    public URL getUrl();
+    URL getUrl();
 
     /**
      * @return The value of the <code>bean-discovery-mode</code> attribute or {@link BeanDiscoveryMode#ALL} if the file does not
      *         contain the <code>bean-discovery-mode</code> attribute.
      */
-    public BeanDiscoveryMode getBeanDiscoveryMode();
+    BeanDiscoveryMode getBeanDiscoveryMode();
 
     /**
      * @return the value of the <code>version</code> attribute or null if the version is not explicitly specified
      */
-    public String getVersion();
+    String getVersion();
 
 }

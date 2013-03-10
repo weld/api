@@ -9,7 +9,7 @@
  * You may obtain a copy of the License at
  * http://www.apache.org/licenses/LICENSE-2.0
  * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,  
+ * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
@@ -20,20 +20,19 @@ import java.util.Set;
 
 /**
  * Represents an environment. Specifies the services Weld requires
- * 
+ *
  * @author Pete Muir
  *
  */
-public interface Environment
-{
-   
-   /**
-    * The deployment scoped services required for this environment
-    * 
-    * @return the services to require
-    */
-   public Set<Class<? extends Service>> getRequiredDeploymentServices();
-   
-   public Set<Class<? extends Service>> getRequiredBeanDeploymentArchiveServices();
- 
+public interface Environment {
+
+    /**
+     * The deployment scoped services required for this environment
+     *
+     * @return the services to require
+     */
+    Set<Class<? extends Service>> getRequiredDeploymentServices();
+
+    Set<Class<? extends Service>> getRequiredBeanDeploymentArchiveServices();
+
 }

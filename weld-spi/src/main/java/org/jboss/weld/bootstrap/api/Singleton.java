@@ -24,46 +24,44 @@
 package org.jboss.weld.bootstrap.api;
 
 /**
- * Holds a reference to an application singleton. This singleton is used 
- * internally by Weld to store various application scoped objects.
- * 
- * This allows Weld to operate as a shared library. In a shared mode, the 
- * same instance of Weld implementation is used by all the applications in 
- * a server environment. In the exclusive  mode, each application loads a 
- * separate copy of Weld implementation at the application level. 
- * 
+ * Holds a reference to an application singleton. This singleton is used internally by Weld to store various application scoped
+ * objects.
+ *
+ * This allows Weld to operate as a shared library. In a shared mode, the same instance of Weld implementation is used by all
+ * the applications in a server environment. In the exclusive mode, each application loads a separate copy of Weld
+ * implementation at the application level.
+ *
  * Alternative implementations of Singleton can be used as required
  *
  * @see SingletonProvider
  * @author Sanjeeb.Sahoo@Sun.COM
  * @author Pete Muir
  */
-public interface Singleton<T>
-{
+public interface Singleton<T> {
     /**
      * Access the singleton
-     * 
+     *
      * @return a singleton object
      * @throws IllegalStateException if the singleton is not set
      */
-    public T get();
-    
+    T get();
+
     /**
      * Check if the singleton is set
-     * 
+     *
      * @return true if the singleton is set
      */
-    public boolean isSet();
+    boolean isSet();
 
     /**
      * Store a singleton
-     * 
+     *
      * @param object the object to store
      */
-    public void set(T object);
-    
+    void set(T object);
+
     /**
      * Clear the singleton
      */
-    public void clear();
+    void clear();
 }

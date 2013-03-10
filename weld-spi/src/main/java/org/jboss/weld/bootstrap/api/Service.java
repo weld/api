@@ -9,7 +9,7 @@
  * You may obtain a copy of the License at
  * http://www.apache.org/licenses/LICENSE-2.0
  * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,  
+ * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
@@ -18,16 +18,15 @@ package org.jboss.weld.bootstrap.api;
 
 /**
  * Marks a Service which is used by Weld to interact with it's environment
+ *
  * @author Pete Muir
  *
  */
-public interface Service
-{
-   
-   /**
-    * Called by Weld when it is shutting down, allowing the service to
-    * perform any cleanup needed.
-    */
-   public void cleanup();
-   
+public interface Service {
+
+    /**
+     * Called by Weld when it is shutting down, allowing the service to perform any cleanup needed.
+     */
+    void cleanup();
+
 }
