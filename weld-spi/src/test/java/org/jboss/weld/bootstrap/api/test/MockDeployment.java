@@ -9,7 +9,7 @@
  * You may obtain a copy of the License at
  * http://www.apache.org/licenses/LICENSE-2.0
  * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,  
+ * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
@@ -37,78 +37,68 @@ import org.jboss.weld.ejb.spi.EjbDescriptor;
  * @author pmuir
  *
  */
-public class MockDeployment implements Deployment
-{
-   
-   static class MockBeanDeploymentArchive implements BeanDeploymentArchive
-   {
+public class MockDeployment implements Deployment {
 
-      private final ServiceRegistry services; 
-      
-      public MockBeanDeploymentArchive(ServiceRegistry services)
-      {
-         this.services = services;
-      }
+    static class MockBeanDeploymentArchive implements BeanDeploymentArchive {
 
-      public Collection<String> getBeanClasses()
-      {
-         return emptySet();
-      }
+        private final ServiceRegistry services;
 
-      public Collection<BeanDeploymentArchive> getBeanDeploymentArchives()
-      {
-         return emptySet();
-      }
+        public MockBeanDeploymentArchive(ServiceRegistry services) {
+            this.services = services;
+        }
 
-      public BeansXml getBeansXml()
-      {
-         return EMPTY_BEANS_XML;
-      }
+        public Collection<String> getBeanClasses() {
+            return emptySet();
+        }
 
-      public Collection<EjbDescriptor<?>> getEjbs()
-      {
-         return emptySet();
-      }
+        public Collection<BeanDeploymentArchive> getBeanDeploymentArchives() {
+            return emptySet();
+        }
 
-      public ServiceRegistry getServices()
-      {
-         return services;
-      }
-      
-      public String getId()
-      {
-         return "test";
-      }
-      
-   }
-   
-   private final ServiceRegistry services;
-   private final BeanDeploymentArchive beanDeploymentArchive;
+        public BeansXml getBeansXml() {
+            return EMPTY_BEANS_XML;
+        }
 
-   public MockDeployment(ServiceRegistry services, MockBeanDeploymentArchive beanDeploymentArchive)
-   {
-      this.services = services;
-      this.beanDeploymentArchive = beanDeploymentArchive;
-   }
+        public Collection<EjbDescriptor<?>> getEjbs() {
+            return emptySet();
+        }
 
-   public List<BeanDeploymentArchive> getBeanDeploymentArchives()
-   {
-      return Collections.singletonList(beanDeploymentArchive);
-   }
+        public ServiceRegistry getServices() {
+            return services;
+        }
 
-   public BeanDeploymentArchive loadBeanDeploymentArchive(Class<?> beanClass)
-   {
-      return null;
-   }
+        public String getId() {
+            return "test";
+        }
 
-   public ServiceRegistry getServices()
-   {
-      return services;
-   }
-   
-   public Iterable<Metadata<Extension>> getExtensions()
-   {
-      return emptyList();
-   }
+        @Override
+        public Collection<String> getAdditionalTypes() {
+            return emptySet();
+        }
+    }
+
+    private final ServiceRegistry services;
+    private final BeanDeploymentArchive beanDeploymentArchive;
+
+    public MockDeployment(ServiceRegistry services, MockBeanDeploymentArchive beanDeploymentArchive) {
+        this.services = services;
+        this.beanDeploymentArchive = beanDeploymentArchive;
+    }
+
+    public List<BeanDeploymentArchive> getBeanDeploymentArchives() {
+        return Collections.singletonList(beanDeploymentArchive);
+    }
+
+    public BeanDeploymentArchive loadBeanDeploymentArchive(Class<?> beanClass) {
+        return null;
+    }
+
+    public ServiceRegistry getServices() {
+        return services;
+    }
+
+    public Iterable<Metadata<Extension>> getExtensions() {
+        return emptyList();
+    }
 
 }
