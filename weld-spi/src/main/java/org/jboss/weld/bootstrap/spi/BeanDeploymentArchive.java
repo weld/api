@@ -18,6 +18,9 @@ package org.jboss.weld.bootstrap.spi;
 
 import java.util.Collection;
 
+import javax.enterprise.inject.spi.ProcessAnnotatedType;
+import javax.enterprise.inject.spi.WithAnnotations;
+
 import org.jboss.weld.bootstrap.api.Bootstrap;
 import org.jboss.weld.bootstrap.api.ServiceRegistry;
 import org.jboss.weld.ejb.spi.EjbDescriptor;
@@ -98,4 +101,12 @@ public interface BeanDeploymentArchive {
      */
     String getId();
 
+    /**
+     * Types which are not discovered by the container as defined in the CDI specification but are required because they match a
+     * {@link ProcessAnnotatedType} observer method that requires certain annotations expressed by applying the
+     * {@link WithAnnotations} annotation on the observed type.
+     *
+     * @see Bootstrap#startExtensions(Iterable) for more details.
+     */
+    Collection<String> getAdditionalTypes();
 }
