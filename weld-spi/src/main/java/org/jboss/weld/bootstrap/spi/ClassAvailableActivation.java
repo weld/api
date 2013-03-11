@@ -17,4 +17,6 @@ public interface ClassAvailableActivation {
      */
     String getClassName();
 
+    boolean isInverted();
+
 }
