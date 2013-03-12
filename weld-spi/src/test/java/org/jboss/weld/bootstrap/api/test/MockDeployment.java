@@ -47,33 +47,34 @@ public class MockDeployment implements Deployment {
             this.services = services;
         }
 
+        @Override
         public Collection<String> getBeanClasses() {
             return emptySet();
         }
 
+        @Override
         public Collection<BeanDeploymentArchive> getBeanDeploymentArchives() {
             return emptySet();
         }
 
+        @Override
         public BeansXml getBeansXml() {
             return EMPTY_BEANS_XML;
         }
 
+        @Override
         public Collection<EjbDescriptor<?>> getEjbs() {
             return emptySet();
         }
 
+        @Override
         public ServiceRegistry getServices() {
             return services;
         }
 
+        @Override
         public String getId() {
             return "test";
-        }
-
-        @Override
-        public Collection<String> getAdditionalTypes() {
-            return emptySet();
         }
     }
 
@@ -85,18 +86,22 @@ public class MockDeployment implements Deployment {
         this.beanDeploymentArchive = beanDeploymentArchive;
     }
 
+    @Override
     public List<BeanDeploymentArchive> getBeanDeploymentArchives() {
         return Collections.singletonList(beanDeploymentArchive);
     }
 
+    @Override
     public BeanDeploymentArchive loadBeanDeploymentArchive(Class<?> beanClass) {
         return null;
     }
 
+    @Override
     public ServiceRegistry getServices() {
         return services;
     }
 
+    @Override
     public Iterable<Metadata<Extension>> getExtensions() {
         return emptyList();
     }
