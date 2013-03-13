@@ -9,7 +9,7 @@
  * You may obtain a copy of the License at
  * http://www.apache.org/licenses/LICENSE-2.0
  * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,  
+ * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
@@ -44,18 +44,17 @@ public class BootstrapTest
       ServiceRegistry bdaServices = new SimpleServiceRegistry();
       deploymentServices.add(TransactionServices.class, new MockTransactionServices());
       deploymentServices.add(SecurityServices.class, new MockSecurityServices());
-      deploymentServices.add(ValidationServices.class, new MockValidationServices());
       deploymentServices.add(ScheduledExecutorServiceFactory.class, new MockScheduledExecutorServiceFactory());
-      
+
       bdaServices.add(JpaInjectionServices.class, new MockJpaServices());
       bdaServices.add(ResourceInjectionServices.class, new MockResourceServices());
       bdaServices.add(EjbInjectionServices.class, new MockEjbInjectionServices());
       bdaServices.add(ResourceLoader.class, new MockResourceLoader());
-      
+
       Deployment deployment = new MockDeployment(deploymentServices, new MockBeanDeploymentArchive(bdaServices));
       bootstrap.startContainer(Environments.EE_INJECT, deployment);
    }
-   
+
    @Test(expectedExceptions = IllegalStateException.class)
    public void testMissingEjbInjectionServices()
    {
@@ -64,9 +63,8 @@ public class BootstrapTest
       ServiceRegistry bdaServices = new SimpleServiceRegistry();
       deploymentServices.add(TransactionServices.class, new MockTransactionServices());
       deploymentServices.add(SecurityServices.class, new MockSecurityServices());
-      deploymentServices.add(ValidationServices.class, new MockValidationServices());
-      deploymentServices.add(ScheduledExecutorServiceFactory.class, new MockScheduledExecutorServiceFactory());    
-      
+      deploymentServices.add(ScheduledExecutorServiceFactory.class, new MockScheduledExecutorServiceFactory());
+
       bdaServices.add(JpaInjectionServices.class, new MockJpaServices());
       bdaServices.add(ResourceInjectionServices.class, new MockResourceServices());
       bdaServices.add(ResourceLoader.class, new MockResourceLoader());
@@ -82,12 +80,11 @@ public class BootstrapTest
       ServiceRegistry deploymentServices = new SimpleServiceRegistry();
       deploymentServices.add(TransactionServices.class, new MockTransactionServices());
       deploymentServices.add(SecurityServices.class, new MockSecurityServices());
-      deploymentServices.add(ValidationServices.class, new MockValidationServices());
       deploymentServices.add(EjbServices.class, new MockEjbServices());
       deploymentServices.add(ScheduledExecutorServiceFactory.class, new MockScheduledExecutorServiceFactory());
-      
+
       ServiceRegistry bdaServices = new SimpleServiceRegistry();
-      
+
       bdaServices.add(EjbInjectionServices.class, new MockEjbInjectionServices());
       bdaServices.add(ResourceInjectionServices.class, new MockResourceServices());
       bdaServices.add(EjbInjectionServices.class, new MockEjbInjectionServices());
@@ -103,12 +100,11 @@ public class BootstrapTest
       Bootstrap bootstrap = new MockBootstrap();
       ServiceRegistry deploymentServices = new SimpleServiceRegistry();
       deploymentServices.add(TransactionServices.class, new MockTransactionServices());
-      deploymentServices.add(ValidationServices.class, new MockValidationServices());
       deploymentServices.add(EjbServices.class, new MockEjbServices());
       deploymentServices.add(ScheduledExecutorServiceFactory.class, new MockScheduledExecutorServiceFactory());
-      
+
       ServiceRegistry bdaServices = new SimpleServiceRegistry();
-      
+
       bdaServices.add(JpaInjectionServices.class, new MockJpaServices());
       bdaServices.add(ResourceInjectionServices.class, new MockResourceServices());
       bdaServices.add(EjbInjectionServices.class, new MockEjbInjectionServices());
@@ -118,7 +114,7 @@ public class BootstrapTest
       bootstrap.startContainer(Environments.EE_INJECT, deployment);
    }
 
-   @Test(expectedExceptions = IllegalStateException.class)
+   @Test // no exception should be thrown as ValidationServices are no longer required
    public void testMissingValidationServices()
    {
       Bootstrap bootstrap = new MockBootstrap();
@@ -127,7 +123,7 @@ public class BootstrapTest
       deploymentServices.add(SecurityServices.class, new MockSecurityServices());
       deploymentServices.add(EjbServices.class, new MockEjbServices());
       deploymentServices.add(ScheduledExecutorServiceFactory.class, new MockScheduledExecutorServiceFactory());
-      
+
       ServiceRegistry bdaServices = new SimpleServiceRegistry();
       bdaServices.add(EjbInjectionServices.class, new MockEjbInjectionServices());
       bdaServices.add(JpaInjectionServices.class, new MockJpaServices());
@@ -145,11 +141,10 @@ public class BootstrapTest
       ServiceRegistry deploymentServices = new SimpleServiceRegistry();
       deploymentServices.add(TransactionServices.class, new MockTransactionServices());
       deploymentServices.add(SecurityServices.class, new MockSecurityServices());
-      deploymentServices.add(ValidationServices.class, new MockValidationServices());
       deploymentServices.add(EjbServices.class, new MockEjbServices());
       deploymentServices.add(ScheduledExecutorServiceFactory.class, new MockScheduledExecutorServiceFactory());
-      
-      
+
+
       ServiceRegistry bdaServices = new SimpleServiceRegistry();
       bdaServices.add(EjbInjectionServices.class, new MockEjbInjectionServices());
       bdaServices.add(JpaInjectionServices.class, new MockJpaServices());
@@ -166,10 +161,9 @@ public class BootstrapTest
       Bootstrap bootstrap = new MockBootstrap();
       ServiceRegistry deploymentServices = new SimpleServiceRegistry();
       deploymentServices.add(SecurityServices.class, new MockSecurityServices());
-      deploymentServices.add(ValidationServices.class, new MockValidationServices());
       deploymentServices.add(EjbServices.class, new MockEjbServices());
       deploymentServices.add(ScheduledExecutorServiceFactory.class, new MockScheduledExecutorServiceFactory());
-      
+
       ServiceRegistry bdaServices = new SimpleServiceRegistry();
       bdaServices.add(EjbInjectionServices.class, new MockEjbInjectionServices());
       bdaServices.add(JpaInjectionServices.class, new MockJpaServices());
@@ -187,10 +181,9 @@ public class BootstrapTest
       ServiceRegistry deploymentServices = new SimpleServiceRegistry();
       deploymentServices.add(TransactionServices.class, new MockTransactionServices());
       deploymentServices.add(SecurityServices.class, new MockSecurityServices());
-      deploymentServices.add(ValidationServices.class, new MockValidationServices());
       deploymentServices.add(EjbServices.class, new MockEjbServices());
       deploymentServices.add(ScheduledExecutorServiceFactory.class, new MockScheduledExecutorServiceFactory());
-      
+
       ServiceRegistry bdaServices = new SimpleServiceRegistry();
       bdaServices.add(EjbInjectionServices.class, new MockEjbInjectionServices());
       bdaServices.add(JpaInjectionServices.class, new MockJpaServices());
@@ -207,9 +200,8 @@ public class BootstrapTest
       ServiceRegistry deploymentServices = new SimpleServiceRegistry();
       deploymentServices.add(TransactionServices.class, new MockTransactionServices());
       deploymentServices.add(SecurityServices.class, new MockSecurityServices());
-      deploymentServices.add(ValidationServices.class, new MockValidationServices());
-      deploymentServices.add(EjbServices.class, new MockEjbServices()); 
-      
+      deploymentServices.add(EjbServices.class, new MockEjbServices());
+
       ServiceRegistry bdaServices = new SimpleServiceRegistry();
       bdaServices.add(EjbInjectionServices.class, new MockEjbInjectionServices());
       bdaServices.add(JpaInjectionServices.class, new MockJpaServices());
@@ -225,7 +217,7 @@ public class BootstrapTest
       Bootstrap bootstrap = new MockBootstrap();
       ServiceRegistry deploymentServices = new SimpleServiceRegistry();
       deploymentServices.add(ScheduledExecutorServiceFactory.class, new MockScheduledExecutorServiceFactory());
-      
+
       ServiceRegistry bdaServices = new SimpleServiceRegistry();
       bdaServices.add(ResourceLoader.class, new MockResourceLoader());
       Deployment deployment = new MockDeployment(deploymentServices, new MockBeanDeploymentArchive(bdaServices));

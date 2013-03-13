@@ -16,6 +16,7 @@
  */
 package org.jboss.weld.validation.spi;
 
+import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 
 import org.jboss.weld.bootstrap.api.Service;
@@ -26,7 +27,8 @@ import org.jboss.weld.bootstrap.api.Service;
  * </p>
  *
  * <p>
- * Required in a Java EE environment.
+ * This interface is deprecated since Java EE 7. A Bean Validation implementation should provide built-in CDI beans for
+ * {@link Validator} and {@link ValidatorFactory}.
  * </p>
  *
  * <p>
@@ -34,8 +36,11 @@ import org.jboss.weld.bootstrap.api.Service;
  * </p>
  *
  * @author pmuir
+ * @deprecated this interface is deprecated since Java EE 7. A Bean Validation implementation should provide built-in CDI beans
+ *             for {@link Validator} and {@link ValidatorFactory}.
  *
  */
+@Deprecated
 public interface ValidationServices extends Service {
 
     /**

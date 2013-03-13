@@ -28,7 +28,6 @@ import org.jboss.weld.resources.spi.ResourceLoader;
 import org.jboss.weld.resources.spi.ScheduledExecutorServiceFactory;
 import org.jboss.weld.security.spi.SecurityServices;
 import org.jboss.weld.transaction.spi.TransactionServices;
-import org.jboss.weld.validation.spi.ValidationServices;
 
 /**
  * Requirements for various well known environments.
@@ -46,7 +45,7 @@ public enum Environments implements Environment {
      */
     EE_INJECT(new EnvironmentBuilder().addRequiredDeploymentService(TransactionServices.class)
             .addRequiredDeploymentService(SecurityServices.class)
-            .addRequiredDeploymentService(ValidationServices.class).addRequiredDeploymentService(EjbServices.class)
+            .addRequiredDeploymentService(EjbServices.class)
             .addRequiredDeploymentService(ScheduledExecutorServiceFactory.class)
             .addRequiredBeanDeploymentArchiveService(ResourceLoader.class)
             .addRequiredBeanDeploymentArchiveService(JpaInjectionServices.class)
@@ -62,7 +61,7 @@ public enum Environments implements Environment {
      */
     EE(new EnvironmentBuilder().addRequiredDeploymentService(TransactionServices.class)
             .addRequiredDeploymentService(SecurityServices.class)
-            .addRequiredDeploymentService(ValidationServices.class).addRequiredDeploymentService(EjbServices.class)
+            .addRequiredDeploymentService(EjbServices.class)
             .addRequiredBeanDeploymentArchiveService(ResourceLoader.class)
             .addRequiredDeploymentService(ScheduledExecutorServiceFactory.class)
             .addRequiredBeanDeploymentArchiveService(InjectionServices.class)),
