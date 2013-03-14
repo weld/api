@@ -16,8 +16,10 @@
  */
 package org.jboss.weld.injection.spi;
 
+import javax.enterprise.inject.spi.AnnotatedType;
 import javax.enterprise.inject.spi.DefinitionException;
-import javax.enterprise.inject.spi.InjectionPoint;
+import javax.enterprise.inject.spi.InjectionTarget;
+import javax.enterprise.inject.spi.InjectionTargetFactory;
 
 import org.jboss.weld.bootstrap.api.Service;
 
@@ -48,21 +50,41 @@ public interface InjectionServices extends Service {
     <T> void aroundInject(InjectionContext<T> injectionContext);
 
     /**
-     * For each discovered
+     * <p>
+     * This method is invoked during Weld bootstrap and allows an integrator to process an {@link InjectionTarget} that may be
+     * injected at runtime. The implementation may want to read the metadata on resource injection point and cache it so that it
+     * does not need to repeat metadata parsing on each {@link #aroundInject(InjectionContext)} invocation.
+     * </p>
+     *
+     * <p>
+     * Furthermore, the integrator is responsible for validating resource injection points (as defined in CDI 1.1 3.7.1).
+     * </p>
+     *
+     * <p>
+     * For each resource injection of a type:
+     * </p>
+     *
      * <ul>
-     * <li>@Resource injection point</li>
-     * <li>@PersistenceContext injection point</li>
-     * <li>@PersistenceUnit injection point</li>
-     * <li>@EJB injection point</li>
-     * <li>@WebServiceRef injection point</li>
+     * <li>@Resource</li>
+     * <li>@PersistenceContext</li>
+     * <li>@PersistenceUnit</li>
+     * <li>@EJB injection</li>
+     * <li>@WebServiceRef</li>
      * </ul>
      *
-     * Weld calls this method to validate the injection point type. The implementation is responsible for validation of the
-     * injection point type. If the injection point type differs from the type of the matching object in the Java EE component
-     * environment, the implementation throws {@link DefinitionException}.
+     * <p>
+     * the implementation must validate the type of the injection point. If the injection point type differs from the type of
+     * the matching object in the Java EE component environment, the implementation throws {@link DefinitionException}.
+     * </p>
      *
-     * @param injectionPoint injection point to be validated
+     * <p>
+     * Note that this method may be called at runtime if the application uses an {@link InjectionTargetFactory} to create
+     * injection target instances at runtime.
+     * </p>
+     *
+     * @param injectionTarget
+     * @param annotatedType
      */
-    void validateResourceInjectionPoint(InjectionPoint injectionPoint);
+    <T> void registerInjectionTarget(InjectionTarget<T> injectionTarget, AnnotatedType<T> annotatedType);
 
 }
