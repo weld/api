@@ -71,6 +71,11 @@ public abstract class ForwardingEjbDescriptor<T> implements EjbDescriptor<T> {
     }
 
     @Override
+    public boolean isPassivationCapable() {
+        return delegate().isPassivationCapable();
+    }
+
+    @Override
     public boolean equals(Object obj) {
         return this == obj || delegate().equals(obj);
     }

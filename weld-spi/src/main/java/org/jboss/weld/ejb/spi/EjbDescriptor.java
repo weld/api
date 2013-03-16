@@ -20,6 +20,8 @@ package org.jboss.weld.ejb.spi;
 import java.lang.reflect.Method;
 import java.util.Collection;
 
+import javax.ejb.Stateful;
+
 /**
  * EJB metadata from the EJB descriptor
  *
@@ -91,5 +93,21 @@ public interface EjbDescriptor<T> {
      * @return True if the bean is an MDB, false otherwise
      */
     boolean isMessageDriven();
+
+    /**
+     * <p>
+     * Indicates if the EJB is passivation capable.
+     * </p>
+     * <ul>
+     * <li>Stateless session beans, singleton session beans and MDBs are not passivation capable.</li>
+     * <li>A stateful session bean is passivation capable unless the <code>passivationCapable</code> element of the
+     * {@link Stateful} annotation is set to <em>false</em> or the <code>passivation-capable</code> element of the session
+     * deployment descriptor element is set to <em>false</em></li>
+     * </ul>
+     * <p>
+     *
+     * @return true if the EJB is passivation capable
+     */
+    boolean isPassivationCapable();
 
 }
