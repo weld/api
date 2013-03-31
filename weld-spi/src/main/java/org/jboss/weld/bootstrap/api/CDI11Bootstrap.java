@@ -19,13 +19,11 @@ package org.jboss.weld.bootstrap.api;
 import javax.enterprise.context.NormalScope;
 import javax.enterprise.inject.spi.BeforeBeanDiscovery;
 import javax.enterprise.inject.spi.Extension;
-import javax.enterprise.inject.spi.ProcessAnnotatedType;
-import javax.enterprise.inject.spi.WithAnnotations;
 import javax.inject.Scope;
 
 import org.jboss.weld.bootstrap.spi.BeanDeploymentArchive;
 import org.jboss.weld.bootstrap.spi.BeansXml;
-import org.jboss.weld.bootstrap.spi.CDI11BeanDeploymentArchive;
+import org.jboss.weld.bootstrap.spi.Deployment;
 import org.jboss.weld.bootstrap.spi.Metadata;
 
 /**
@@ -58,15 +56,11 @@ public interface CDI11Bootstrap extends Bootstrap {
      * The container bootstrap sequence begins with initializing extensions. The container performs the following actions:
      * </p>
      *
-     * <ol>
-     * <li>The container discovers {@link ProcessAnnotatedType} observer methods defined on the extensions and enumerates the
-     * set of annotations which these observer methods require using the {@link WithAnnotations} annotation. This final set is
-     * available through {@link TypeDiscoveryConfiguration#getAdditionalTypeMarkerAnnotations()}</li> and referred to as
-     * <em>required annotations</em> hereafter.
-     * <li>The container fires the {@link BeforeBeanDiscovery} event which allows extensions to register scopes. The container
+     * <p>
+     * The container fires the {@link BeforeBeanDiscovery} event which allows extensions to register scopes. The container
      * combines the registered scopes with scopes associated with the built-in contexts and makes the resulting set available
-     * through {@link TypeDiscoveryConfiguration#getKnownBeanDefiningAnnotations()}</li>
-     * </ol>
+     * through {@link TypeDiscoveryConfiguration#getKnownBeanDefiningAnnotations()}
+     * </p>
      *
      * <p>
      * Afterwards, an EE7-compatible integrator performs type discovery in the following locations:
@@ -93,36 +87,73 @@ public interface CDI11Bootstrap extends Bootstrap {
      * Secondly, the integrator processes available archives according to these rules. The rules are exclusive.
      * </p>
      *
-     * <ol>
-     * <li>If the archive contains the <code>beans.xml</code> file and the file either does not contain the
-     * <code>bean-discovery-mode</code> attribute or its value is set to <code>all</code>, this archive is an <em>explicit bean
-     * archive</em>. For each explicit bean archive the integrator creates an instance of {@link BeanDeploymentArchive}
-     * representing this archive. The {@link BeanDeploymentArchive#getBeanClasses()} method returns a collection of all types
-     * present within the archive. Filtering rules defined in {@link BeansXml#getScanning()} are not required to be applied by
-     * the integrator and are applied later on by Weld. The {@link BeanDeploymentArchive#getEjbs()} method returns a collection
-     * of EJB descriptors for EJBs present in the archive. The {@link CDI11BeanDeploymentArchive#getAdditionalTypes()} method returns
-     * an empty collection for an explicit bean archive.</li>
+     * <p>
+     * If an archive:
+     * </p>
+     * <ul>
+     * <li>contains the <code>beans.xml</code> file and the file does not contain the <code>bean-discovery-mode</code>
+     * attribute, or</li>
+     * <li>contains the <code>beans.xml</code> file and the value of the <code>bean-discovery-mode</code> attribute is set to
+     * <code>all</code></li>
+     * </ul>
+     * <p>
+     * this archive is an <em>explicit bean archive</em>.
+     * </p>
      *
-     * <li>If the archive contains the <code>beans.xml</code> file and the <code>bean-discovery-mode</code> attribute is set to
-     * <code>annotated</code> or if the archive does not contain the <code>beans.xml</code> file but the archive contains types
-     * annotated with a bean defining annotation or session beans or types annotated with a required annotation, this archive is
-     * an <em>implicit bean archive</em>. For each implicit bean archive the integrator creates an instance of
-     * {@link BeanDeploymentArchive} representing this archive. The {@link BeanDeploymentArchive#getBeanClasses()} of the bean
-     * archive returns all the types found in the archive which are annotated with a bean defining annotations or are Session
-     * bean definitions. Filtering rules ({@link BeansXml#getScanning()}) are not required to be applied by the integrator. The
+     *
+     * <p>
+     * If an archive:
+     * </p>
+     * <ul>
+     * <li>contains the <code>beans.xml</code> file and the <code>bean-discovery-mode</code> attribute is set to
+     * <code>annotated</code>, or</li>
+     * <li>does not contain the <code>beans.xml</code> file nor any implementation of the {@link Extension} interface but the
+     * archive contains types annotated with a bean defining annotation or session beans</li>
+     * </ul>
+     * <p>
+     * this archive is an <em>implicit bean archive</em>.
+     * </p>
+     *
+     *
+     * <p>
+     * If an archive:
+     * </p>
+     * <ul>
+     * <li>contains the <code>beans.xml</code> file and the <code>bean-discovery-mode</code> attribute is set to
+     * <code>none</code>, or</li>
+     * <li>does not contain the <code>beans.xml</code> file and contains an implementation of the {@link Extension} interface,
+     * or</li>
+     * <li>does not contain the <code>beans.xml</code> file and does not contain any types annotated with a bean defining
+     * annotation nor session bean</li>
+     * </ul>
+     * <p>
+     * this archive is not a bean archive.
+     * </p>
+     *
+     * <p>
+     * For each explicit bean archive the integrator creates an instance of {@link BeanDeploymentArchive} representing this
+     * archive. The {@link BeanDeploymentArchive#getBeanClasses()} method returns a collection of all types present within the
+     * archive. Filtering rules defined in {@link BeansXml#getScanning()} are not required to be applied by the integrator and
+     * are applied later on by Weld. The {@link BeanDeploymentArchive#getEjbs()} method returns a collection of EJB descriptors
+     * for EJBs present in the archive.
+     * </p>
+     *
+     * <p>
+     * For each implicit bean archive the integrator creates an instance of {@link BeanDeploymentArchive} representing this
+     * archive. The {@link BeanDeploymentArchive#getBeanClasses()} of the bean archive returns all the types found in the
+     * archive which are annotated with a bean defining annotations or are Session bean definitions. Filtering rules (
+     * {@link BeansXml#getScanning()}) are not required to be applied by the integrator. The
      * {@link BeanDeploymentArchive#getEjbs()} method returns a collection of EJB descriptors for Session beans present in the
-     * archive. The {@link CDI11BeanDeploymentArchive#getAdditionalTypes()} method returns a collection of types present in the
-     * archive which are not contained within {@link BeanDeploymentArchive#getBeanClasses()} (are not annotated with a
-     * bean-defining annotation nor define a Sesion bean) but contain a required annotation.</li>
+     * archive.
+     * </p>
      *
-     * <li>If the archive does not contain the <code>beans.xml</code> file and does not contain a type annotated with a bean
-     * defining annotation and does not contain a type containing a required annotation, this archive is not a bean archive and
-     * the integrator does not need to create a {@link BeanDeploymentArchive} instance for this archive.</li>
-     *
-     * <li>If the archive contains the <code>beans.xml</code> file and the <code>bean-discovery-mode</code> attribute is set to
-     * <code>none</code>, the archive is not a bean archive. The integrator does not need to create a
-     * {@link BeanDeploymentArchive} instance for this archive.</li>
-     * </ol>
+     * <p>
+     * Initially, the integrator does not need to create a {@link BeanDeploymentArchive} instance for an archive which is not a
+     * bean archive. Note that although these archives are ignored when building the initial collection of bean archives, the
+     * integrator may be required to create a {@link BeanDeploymentArchive} later upon a call to
+     * {@link Deployment#loadBeanDeploymentArchive(Class)}. For example, when the method is called for a extension class that is
+     * deployed in an archive that is not a bean archive.
+     * </p>
      *
      * @param extensions discovered CDI extensions
      * @return
