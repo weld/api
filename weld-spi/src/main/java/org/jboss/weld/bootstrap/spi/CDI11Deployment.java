@@ -19,14 +19,24 @@ package org.jboss.weld.bootstrap.spi;
 public interface CDI11Deployment extends Deployment {
 
     /**
+     * <p>
      * Returns the {@link BeanDeploymentArchive} containing the given class.
+     * </p>
      *
+     * <p>
      * If the deployment archive containing the given class is not currently a bean deployment archive, null is returned. Unlike
      * {@link #loadBeanDeploymentArchive(Class)}, invocation of this method never results in a new {@link BeanDeploymentArchive}
      * instance to be created. This method may be called at runtime.
+     * </p>
+     *
+     * <p>
+     * Alternatively, this method may return some kind of a "root" BDA instead of returning null if the class does not come from
+     * a known bean archive.
+     * </p>
      *
      * @param beanClass
-     * @return the {@link BeanDeploymentArchive} containing the bean class or null if no such {@link BeanDeploymentArchive} exists
+     * @return the {@link BeanDeploymentArchive} containing the bean class or null if no such {@link BeanDeploymentArchive}
+     *         exists
      */
     BeanDeploymentArchive getBeanDeploymentArchive(Class<?> beanClass);
 }
