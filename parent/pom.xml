@@ -16,7 +16,7 @@
    <url>http://www.seamframework.org/Weld</url>
    
    <description>
-      APIs for Weld, the reference implementation of JSR 299: Contexts and Dependency Injection for Java EE
+      APIs for Weld, the reference implementation of Contexts and Dependency Injection for Java EE
    </description>
 
    <ciManagement>
@@ -65,6 +65,16 @@
       
       <developer>
          <name>Nicklas Karlsson</name>
+      </developer>
+
+      <developer>
+         <name>Jozef Hartinger</name>
+         <id>jharting</id>
+         <organization>Red Hat Inc.</organization>
+         <roles>
+            <role>Project Lead</role>
+         </roles>
+         <email>jharting@redhat.com</email>
       </developer>
    </developers>
 
