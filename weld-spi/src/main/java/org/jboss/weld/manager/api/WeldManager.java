@@ -139,4 +139,7 @@ public interface WeldManager extends BeanManager, Serializable {
 
     Instance<Object> instance();
 
+    @Override
+    <T> WeldInjectionTargetFactory<T> getInjectionTargetFactory(AnnotatedType<T> type);
+
 }
