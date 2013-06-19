@@ -21,6 +21,7 @@ import java.io.Serializable;
 import java.lang.annotation.Annotation;
 
 import javax.enterprise.context.ContextNotActiveException;
+import javax.enterprise.context.spi.Contextual;
 import javax.enterprise.inject.Instance;
 import javax.enterprise.inject.spi.AnnotatedType;
 import javax.enterprise.inject.spi.Bean;
@@ -28,6 +29,7 @@ import javax.enterprise.inject.spi.BeanManager;
 import javax.enterprise.inject.spi.InjectionTarget;
 
 import org.jboss.weld.bootstrap.api.ServiceRegistry;
+import org.jboss.weld.construction.api.WeldCreationalContext;
 import org.jboss.weld.ejb.spi.EjbDescriptor;
 
 /**
@@ -141,5 +143,8 @@ public interface WeldManager extends BeanManager, Serializable {
 
     @Override
     <T> WeldInjectionTargetFactory<T> getInjectionTargetFactory(AnnotatedType<T> type);
+
+    @Override
+    <T> WeldCreationalContext<T> createCreationalContext(Contextual<T> contextual);
 
 }
