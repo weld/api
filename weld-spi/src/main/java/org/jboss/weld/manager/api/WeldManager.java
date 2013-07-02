@@ -31,6 +31,7 @@ import javax.enterprise.inject.spi.InjectionTarget;
 import org.jboss.weld.bootstrap.api.ServiceRegistry;
 import org.jboss.weld.construction.api.WeldCreationalContext;
 import org.jboss.weld.ejb.spi.EjbDescriptor;
+import org.jboss.weld.serialization.spi.BeanIdentifier;
 
 /**
  * Functionality provided by the Weld Manager over and above the JSR-299 Manager.
@@ -146,5 +147,7 @@ public interface WeldManager extends BeanManager, Serializable {
 
     @Override
     <T> WeldCreationalContext<T> createCreationalContext(Contextual<T> contextual);
+
+    Bean<?> getPassivationCapableBean(BeanIdentifier identifier);
 
 }

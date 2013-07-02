@@ -47,6 +47,8 @@ public interface ContextualStore extends Service {
 
     <C extends Contextual<I>, I> C getContextual(String id);
 
+    <C extends Contextual<I>, I> C getContextual(BeanIdentifier identifier);
+
     /**
      * Add a contextual (if not already present) to the store, and return it's id. If the contextual is passivation capable,
      * it's id will be used, otherwise an id will be generated
@@ -54,7 +56,7 @@ public interface ContextualStore extends Service {
      * @param contextual the contexutal to add
      * @return the current id for the contextual
      */
-    String putIfAbsent(Contextual<?> contextual);
+    BeanIdentifier putIfAbsent(Contextual<?> contextual);
 
     /**
      * Returns a {@link SerializableContextual} that corresponds to the given {@link Contextual}
