@@ -27,6 +27,7 @@ import org.jboss.weld.resources.spi.ResourceLoadingException;
 public class FileBasedBootstrapConfiguration implements BootstrapConfiguration {
 
     private static final String CONFIGURATION_FILE = "org.jboss.weld.bootstrap.properties";
+    private static final String SYSTEM_PROPERTY_PREFIX = CONFIGURATION_FILE + ".";
 
     private static final String CONCURRENT_DEPLOYMENT = "concurrentDeployment";
     private static final String PRELOADER_THREAD_POOL_SIZE = "preloaderThreadPoolSize";
@@ -56,10 +57,10 @@ public class FileBasedBootstrapConfiguration implements BootstrapConfiguration {
     }
 
     private static int initIntValue(Properties properties, String property, int defaultValue) {
-        if (properties == null || properties.get(property) == null) {
+        String value = getSystemOrFileProperty(properties, property);
+        if (value == null) {
             return defaultValue;
         }
-        String value = properties.getProperty(property);
         try {
             return Integer.valueOf(value);
         } catch (NumberFormatException e) {
@@ -68,10 +69,17 @@ public class FileBasedBootstrapConfiguration implements BootstrapConfiguration {
     }
 
     private static boolean initBooleanValue(Properties properties, String property, boolean defaultValue) {
-        if (properties == null || properties.get(property) == null) {
-            return defaultValue;
+        String value = getSystemOrFileProperty(properties, property);
+        return value == null ? defaultValue : Boolean.valueOf(value);
+    }
+
+    private static String getSystemOrFileProperty(Properties properties, String property) {
+        String value = System.getProperty(SYSTEM_PROPERTY_PREFIX + property);
+        if (value == null && properties != null) {
+            return properties.getProperty(property);
+        } else {
+            return value;
         }
-        return Boolean.valueOf(properties.getProperty(property));
     }
 
     public boolean isConcurrentDeploymentEnabled() {
