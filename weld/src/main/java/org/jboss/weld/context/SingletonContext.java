@@ -25,4 +25,9 @@ import javax.inject.Singleton;
  */
 public interface SingletonContext extends AlterableContext {
 
+    /**
+     * Invalidate the context, causing all bean instances to be destroyed.
+     */
+    void invalidate();
+
 }
