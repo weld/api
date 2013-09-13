@@ -82,15 +82,22 @@ public class FileBasedBootstrapConfiguration implements BootstrapConfiguration {
         }
     }
 
+    @Override
     public boolean isConcurrentDeploymentEnabled() {
         return concurrentDeployment;
     }
 
+    @Override
     public int getPreloaderThreadPoolSize() {
         return preloaderThreadPoolSize;
     }
 
     @Override
     public void cleanup() {
+    }
+
+    @Override
+    public boolean isNonPortableModeEnabled() {
+        return false;
     }
 }

@@ -44,4 +44,15 @@ public interface BootstrapConfiguration extends Service {
      *
      */
     int getPreloaderThreadPoolSize();
+
+    /**
+     * Allows an integrator to enable the non-portable mode. Non-portable mode is suggested by the specification to overcome
+     * problems with legacy applications not using CDI SPI properly.
+     *
+     * The non-portable mode is disabled by default.
+     *
+     * @see http://docs.jboss.org/cdi/api/1.1/javax/enterprise/inject/spi/BeanManager.html
+     * @return true if non-portable mode should be enabled.
+     */
+    boolean isNonPortableModeEnabled();
 }
