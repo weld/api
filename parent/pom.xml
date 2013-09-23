@@ -13,7 +13,7 @@
    
 
    <!-- Full project metadata -->
-   <url>http://www.seamframework.org/Weld</url>
+   <url>http://weld.cdi-spec.org</url>
    
    <description>
       APIs for Weld, the reference implementation of Contexts and Dependency Injection for Java EE
@@ -28,11 +28,6 @@
       <system>JIRA</system>
       <url>http://jira.jboss.org/browse/WELD</url>
    </issueManagement>
-   
-   <organization>
-      <name>Seam Framework</name>
-      <url>http://seamframework.org</url>
-   </organization>
    
    <inceptionYear>2008</inceptionYear>
 

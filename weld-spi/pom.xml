@@ -8,7 +8,7 @@
    <modelVersion>4.0.0</modelVersion>
    <artifactId>weld-spi</artifactId>
    <name>Weld SPIs for container integration</name>
-   <url>http://www.seamframework.org/Weld</url>
+   <url>http://weld.cdi-spec.org</url>
    <licenses>
       <license>
          <name>Apache License, Version 2.0</name>
