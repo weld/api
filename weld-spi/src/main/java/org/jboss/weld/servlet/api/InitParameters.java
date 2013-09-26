@@ -24,7 +24,7 @@ package org.jboss.weld.servlet.api;
  */
 public interface InitParameters {
 
-    String CONTEXT_FORWARD_IGNORE = "org.jboss.weld.context.ignore.forward";
-    String CONTEXT_INCLUDE_IGNORE = "org.jboss.weld.context.ignore.include";
+    String CONTEXT_IGNORE_FORWARD = "org.jboss.weld.context.ignore.forward";
+    String CONTEXT_IGNORE_INCLUDE = "org.jboss.weld.context.ignore.include";
     String CONTEXT_MAPPING = "org.jboss.weld.context.mapping";
 }
