@@ -34,7 +34,7 @@ public interface SessionObjectReference extends Serializable {
      * @param businessInterfaceType the type of the business interface
      * @return a reference
      *
-     * @throws IllegalStateException if the business interface is not a local business interface of the session bean
+     * @throws IllegalStateException if the business interface is not a business interface of the session bean
      * @throws NoSuchEJBException if the session object has already been removed
      */
     <S> S getBusinessObject(Class<S> businessInterfaceType);
