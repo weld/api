@@ -159,4 +159,25 @@ public interface CDI11Bootstrap extends Bootstrap {
      * @return
      */
     TypeDiscoveryConfiguration startExtensions(Iterable<Metadata<Extension>> extensions);
+
+    /**
+     * Creates the application container:
+     * <ul>
+     * <li>Checks that the services required by the environment have been provided</li>
+     * <li>Adds container provided services</li>
+     * <li>Creates and initializes the built in contexts</li>
+     * <li>Creates the manager</li>
+     * </ul>
+     *
+     * <p>
+     * In addition to {@link Bootstrap#startContainer(Environment, Deployment)}, this method allows an identifier (contextId) to
+     * be assigned to the container. This identifier will be used to identify this application when invoking {@link Singleton} methods.
+     *
+     * @param contextId the identifier of this application container instance
+     * @param environment the environment in use, by default {@link Environments.EE}
+     * @param deployment the Deployment to be booted
+     * @throws IllegalStateException if not all the services required for the given environment are available
+     *
+     */
+    Bootstrap startContainer(String contextId, Environment environment, Deployment deployment);
 }
