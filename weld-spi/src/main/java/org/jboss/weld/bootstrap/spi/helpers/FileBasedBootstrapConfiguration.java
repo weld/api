@@ -41,9 +41,25 @@ public class FileBasedBootstrapConfiguration implements BootstrapConfiguration {
         if (configuration != null) {
             properties = loadProperties(configuration);
         }
-        this.concurrentDeployment = initBooleanValue(properties, CONCURRENT_DEPLOYMENT, true);
-        this.preloaderThreadPoolSize = initIntValue(properties, PRELOADER_THREAD_POOL_SIZE,
-                Math.max(1, Runtime.getRuntime().availableProcessors() - 1));
+
+        // concurrent deployment CANNOT be enabled if we do not have the "modifyThreadGroup" permission
+        boolean hasModifyThreadGroupPermission = false;
+        SecurityManager security = System.getSecurityManager();
+        if (security != null) {
+            try {
+                security.checkPermission(new java.lang.RuntimePermission("modifyThreadGroup"));
+                hasModifyThreadGroupPermission = true;
+            } catch (java.security.AccessControlException e) {
+            }
+        }
+        if (hasModifyThreadGroupPermission) {
+            this.concurrentDeployment = initBooleanValue(properties, CONCURRENT_DEPLOYMENT, true);
+            this.preloaderThreadPoolSize = initIntValue(properties, PRELOADER_THREAD_POOL_SIZE,
+                    Math.max(1, Runtime.getRuntime().availableProcessors() - 1));
+        } else {
+            this.concurrentDeployment = false;
+            this.preloaderThreadPoolSize = 0;
+        }
     }
 
     private static Properties loadProperties(URL url) {
