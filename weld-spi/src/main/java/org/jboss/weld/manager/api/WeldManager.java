@@ -150,4 +150,11 @@ public interface WeldManager extends BeanManager, Serializable {
 
     Bean<?> getPassivationCapableBean(BeanIdentifier identifier);
 
+    /**
+     * Returns a new instance of {@link WeldInjectionTargetBuilder} which can be used to create a new {@link WeldInjectionTarget} for the specified type.
+     * @param type the specified type
+     * @return a new {@link WeldInjectionTargetBuilder} instance for the specified type
+     */
+    <T> WeldInjectionTargetBuilder<T> createInjectionTargetBuilder(AnnotatedType<T> type);
+
 }
