@@ -30,6 +30,7 @@ import org.jboss.weld.bootstrap.api.Service;
  * @author Jozef Hartinger
  *
  */
+@Deprecated
 public interface AnnotationDiscovery extends Service {
 
     /**
