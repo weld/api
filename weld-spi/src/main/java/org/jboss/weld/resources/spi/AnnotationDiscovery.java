@@ -27,6 +27,8 @@ import org.jboss.weld.bootstrap.api.Service;
  * service is optional. If provided, Weld will use this service to avoid expensive Java Reflection calls.
  * </p>
  *
+ * @deprecated This service is deprecated. Implement {@link ClassFileServices} instead.
+ *
  * @author Jozef Hartinger
  *
  */
