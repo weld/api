@@ -117,8 +117,8 @@
             <version>${cdi.api.version}</version>
             <exclusions>
                 <exclusion>
-                    <groupId>org.jboss.spec.javax.interceptor</groupId>
-                    <artifactId>jboss-interceptors-api_1.1_spec</artifactId>
+                    <groupId>javax.interceptor</groupId>
+                    <artifactId>javax.interceptor-api</artifactId>
                 </exclusion>
                 <exclusion>
                     <groupId>javax.annotation</groupId>
@@ -126,7 +126,7 @@
                 </exclusion>
                 <exclusion>
                     <groupId>javax.el</groupId>
-                    <artifactId>el-api</artifactId>
+                    <artifactId>javax.el-api</artifactId>
                 </exclusion>
             </exclusions>
          </dependency>
