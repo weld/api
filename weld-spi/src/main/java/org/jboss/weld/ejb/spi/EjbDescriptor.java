@@ -23,7 +23,8 @@ import java.util.Collection;
 import javax.ejb.Stateful;
 
 /**
- * EJB metadata from the EJB descriptor
+ * EJB metadata from the EJB descriptor. The implementation may optionally implement {@link SubclassedComponentDescriptor}
+ * if it uses an enhances subclass to implement EJB functionality.
  *
  * @author Pete Muir
  *
