@@ -2,7 +2,7 @@
    <modelVersion>4.0.0</modelVersion>
    <artifactId>weld-api-bom</artifactId>
    <packaging>pom</packaging>
-   <version>2.3-SNAPSHOT</version>
+   <version>2.2.SP1-SNAPSHOT</version>
 
    <parent>
       <groupId>org.jboss.weld</groupId>
