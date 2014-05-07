@@ -17,9 +17,9 @@
 package org.jboss.weld.bootstrap.api;
 
 import javax.enterprise.context.NormalScope;
+import javax.enterprise.inject.Stereotype;
 import javax.enterprise.inject.spi.BeforeBeanDiscovery;
 import javax.enterprise.inject.spi.Extension;
-import javax.inject.Scope;
 
 import org.jboss.weld.bootstrap.spi.BeanDeploymentArchive;
 import org.jboss.weld.bootstrap.spi.BeansXml;
@@ -27,7 +27,7 @@ import org.jboss.weld.bootstrap.spi.Deployment;
 import org.jboss.weld.bootstrap.spi.Metadata;
 
 /**
- * An extension to {@link Bootstrap} which allows weld to perform type discovery as required by CDI 1.1. Each EE7-compatible
+ * An extension to {@link Bootstrap} which allows weld to perform type discovery as required by CDI 1.2. Each CDI 1.2 compatible
  * integrator should use this interface.
  *
  * Application container initialization API for Weld.
@@ -57,9 +57,9 @@ public interface CDI11Bootstrap extends Bootstrap {
      * </p>
      *
      * <p>
-     * The container fires the {@link BeforeBeanDiscovery} event which allows extensions to register scopes. The container
-     * combines the registered scopes with scopes associated with the built-in contexts and makes the resulting set available
-     * through {@link TypeDiscoveryConfiguration#getKnownBeanDefiningAnnotations()}
+     * The container fires the {@link BeforeBeanDiscovery} event which allows extensions to register scopes and stereotypes.
+     * The container combines the registered scopes and stereotypes with scopes associated with the built-in contexts and built-in
+     * stereotypes and makes the resulting set available through {@link TypeDiscoveryConfiguration#getKnownBeanDefiningAnnotations()}
      * </p>
      *
      * <p>
@@ -78,13 +78,18 @@ public interface CDI11Bootstrap extends Bootstrap {
      * </p>
      *
      * <p>
-     * Firstly, the integrator discovers every Java annotation annotated with {@link Scope} or {@link NormalScope} and combines
-     * these annotations with the annotations returned from {@link TypeDiscoveryConfiguration#getKnownBeanDefiningAnnotations()}
-     * . The resulting set is referred to as <em>bean defining annotations</em> hereafter.
+     * Next, the integrator builds the set of <em>bean defining annotations</em>. The set contains:
      * </p>
      *
+     * <ul>
+     * <li>The set of annotations returned from {@link TypeDiscoveryConfiguration#getKnownBeanDefiningAnnotations()}</li>
+     * <li>Every Java annotation discovered by the integrator that is annotated with {@link NormalScope} or {@link Stereotype}</li>
+     * </ul>
+     *
+     * <p>The resulting set is referred to as <em>bean defining annotations</em> hereafter.</p>
+     *
      * <p>
-     * Secondly, the integrator processes available archives according to these rules. The rules are exclusive.
+     * Next, the integrator processes available archives according to these rules. The rules are exclusive.
      * </p>
      *
      * <p>
