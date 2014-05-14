@@ -34,38 +34,47 @@ public abstract class ForwardingEjbDescriptor<T> implements EjbDescriptor<T> {
 
     protected abstract EjbDescriptor<T> delegate();
 
+    @Override
     public Collection<BusinessInterfaceDescriptor<?>> getLocalBusinessInterfaces() {
         return delegate().getLocalBusinessInterfaces();
     }
 
+    @Override
     public Collection<BusinessInterfaceDescriptor<?>> getRemoteBusinessInterfaces() {
         return delegate().getRemoteBusinessInterfaces();
     }
 
+    @Override
     public Collection<Method> getRemoveMethods() {
         return delegate().getRemoveMethods();
     }
 
+    @Override
     public Class<T> getBeanClass() {
         return delegate().getBeanClass();
     }
 
+    @Override
     public String getEjbName() {
         return delegate().getEjbName();
     }
 
+    @Override
     public boolean isMessageDriven() {
         return delegate().isMessageDriven();
     }
 
+    @Override
     public boolean isSingleton() {
         return delegate().isSingleton();
     }
 
+    @Override
     public boolean isStateful() {
         return delegate().isStateful();
     }
 
+    @Override
     public boolean isStateless() {
         return delegate().isStateless();
     }
@@ -77,7 +86,13 @@ public abstract class ForwardingEjbDescriptor<T> implements EjbDescriptor<T> {
 
     @Override
     public boolean equals(Object obj) {
-        return this == obj || delegate().equals(obj);
+        if (this == obj) {
+            return true;
+        }
+        if (obj instanceof ForwardingEjbDescriptor<?>) {
+            return delegate().equals(ForwardingEjbDescriptor.class.cast(obj).delegate());
+        }
+        return delegate().equals(obj);
     }
 
     @Override
@@ -89,5 +104,4 @@ public abstract class ForwardingEjbDescriptor<T> implements EjbDescriptor<T> {
     public int hashCode() {
         return delegate().hashCode();
     }
-
 }
