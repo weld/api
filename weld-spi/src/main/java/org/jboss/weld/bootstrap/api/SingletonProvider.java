@@ -24,6 +24,7 @@
 package org.jboss.weld.bootstrap.api;
 
 import org.jboss.weld.bootstrap.api.helpers.IsolatedStaticSingletonProvider;
+import org.jboss.weld.bootstrap.api.helpers.RegistrySingletonProvider;
 import org.jboss.weld.bootstrap.api.helpers.TCCLSingletonProvider;
 
 /**
@@ -31,6 +32,7 @@ import org.jboss.weld.bootstrap.api.helpers.TCCLSingletonProvider;
  *
  * @see IsolatedStaticSingletonProvider
  * @see TCCLSingletonProvider
+ * @see RegistrySingletonProvider
  *
  * @author Sanjeeb.Sahoo@Sun.COM
  * @author Pete Muir
@@ -42,7 +44,7 @@ public abstract class SingletonProvider {
      */
     private static volatile SingletonProvider INSTANCE;
 
-    private static final String DEFAULT_SCOPE_FACTORY = IsolatedStaticSingletonProvider.class.getName();
+    private static final String DEFAULT_SCOPE_FACTORY = RegistrySingletonProvider.class.getName();
 
     public static SingletonProvider instance() {
         if (INSTANCE == null) {

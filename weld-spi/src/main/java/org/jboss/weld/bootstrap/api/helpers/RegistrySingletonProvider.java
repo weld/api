@@ -1,7 +1,7 @@
 package org.jboss.weld.bootstrap.api.helpers;
 
-import java.util.Hashtable;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 import org.jboss.weld.bootstrap.api.Singleton;
 import org.jboss.weld.bootstrap.api.SingletonProvider;
@@ -19,8 +19,8 @@ public class RegistrySingletonProvider extends SingletonProvider {
     }
 
     private static class RegistrySingleton<T> implements Singleton<T> {
-        // use Hashtable for concurrent access
-        private final Map<String, T> store = new Hashtable<String, T>();
+
+        private final Map<String, T> store = new ConcurrentHashMap<String, T>();
 
         public T get(String id) {
             T instance = store.get(id);
