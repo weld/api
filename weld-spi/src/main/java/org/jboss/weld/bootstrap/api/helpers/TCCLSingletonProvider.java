@@ -25,8 +25,8 @@ package org.jboss.weld.bootstrap.api.helpers;
 
 import java.security.AccessController;
 import java.security.PrivilegedAction;
-import java.util.Hashtable;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 import org.jboss.weld.bootstrap.api.Singleton;
 import org.jboss.weld.bootstrap.api.SingletonProvider;
@@ -45,8 +45,8 @@ public class TCCLSingletonProvider extends SingletonProvider {
     }
 
     private static class TCCLSingleton<T> implements Singleton<T> {
-        // use Hashtable for concurrent access
-        private final Map<ClassLoader, T> store = new Hashtable<ClassLoader, T>();
+
+        private final Map<ClassLoader, T> store = new ConcurrentHashMap<ClassLoader, T>();
 
         public T get(String id) {
             T instance = store.get(getClassLoader());
