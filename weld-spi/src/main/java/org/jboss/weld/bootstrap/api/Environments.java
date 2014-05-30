@@ -19,7 +19,6 @@ package org.jboss.weld.bootstrap.api;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.jboss.weld.ejb.spi.EjbServices;
 import org.jboss.weld.injection.spi.EjbInjectionServices;
 import org.jboss.weld.injection.spi.InjectionServices;
 import org.jboss.weld.injection.spi.JpaInjectionServices;
@@ -45,8 +44,15 @@ public enum Environments implements Environment {
      */
     EE_INJECT(new EnvironmentBuilder().addRequiredDeploymentService(TransactionServices.class)
             .addRequiredDeploymentService(SecurityServices.class)
-            .addRequiredDeploymentService(EjbServices.class)
             .addRequiredDeploymentService(ScheduledExecutorServiceFactory.class)
+            /*
+             * EjbServices is a required bean deployment archive service in this environment.
+             * For backwards compatibility with older integrators that register EjbServices
+             * as a deployment service, this check is suppressed.
+             *
+             * @see WELD-1685
+             */
+            // .addRequiredBeanDeploymentArchiveService(EjbServices.class)
             .addRequiredBeanDeploymentArchiveService(ResourceLoader.class)
             .addRequiredBeanDeploymentArchiveService(JpaInjectionServices.class)
             .addRequiredBeanDeploymentArchiveService(ResourceInjectionServices.class)
@@ -61,9 +67,16 @@ public enum Environments implements Environment {
      */
     EE(new EnvironmentBuilder().addRequiredDeploymentService(TransactionServices.class)
             .addRequiredDeploymentService(SecurityServices.class)
-            .addRequiredDeploymentService(EjbServices.class)
-            .addRequiredBeanDeploymentArchiveService(ResourceLoader.class)
             .addRequiredDeploymentService(ScheduledExecutorServiceFactory.class)
+            /*
+             * EjbServices is a required bean deployment archive service in this environment.
+             * For backwards compatibility with older integrators that register EjbServices
+             * as a deployment service, this check is suppressed.
+             *
+             * @see WELD-1685
+             */
+            // .addRequiredBeanDeploymentArchiveService(EjbServices.class)
+            .addRequiredBeanDeploymentArchiveService(ResourceLoader.class)
             .addRequiredBeanDeploymentArchiveService(InjectionServices.class)),
 
     /**
