@@ -23,7 +23,7 @@ import org.jboss.weld.ejb.api.SessionObjectReference;
 /**
  * A container should implement this interface to allow Weld to resolve EJB and discover EJBs
  *
- * {@link EjbServices} is a per-deployment service.
+ * {@link EjbServices} is is a per-BeanDeploymentArchive service.
  *
  * @author Pete Muir
  * @author Marius Bogoevici

@@ -45,8 +45,8 @@ public enum Environments implements Environment {
      */
     EE_INJECT(new EnvironmentBuilder().addRequiredDeploymentService(TransactionServices.class)
             .addRequiredDeploymentService(SecurityServices.class)
-            .addRequiredDeploymentService(EjbServices.class)
             .addRequiredDeploymentService(ScheduledExecutorServiceFactory.class)
+            .addRequiredBeanDeploymentArchiveService(EjbServices.class)
             .addRequiredBeanDeploymentArchiveService(ResourceLoader.class)
             .addRequiredBeanDeploymentArchiveService(JpaInjectionServices.class)
             .addRequiredBeanDeploymentArchiveService(ResourceInjectionServices.class)
@@ -61,9 +61,9 @@ public enum Environments implements Environment {
      */
     EE(new EnvironmentBuilder().addRequiredDeploymentService(TransactionServices.class)
             .addRequiredDeploymentService(SecurityServices.class)
-            .addRequiredDeploymentService(EjbServices.class)
-            .addRequiredBeanDeploymentArchiveService(ResourceLoader.class)
             .addRequiredDeploymentService(ScheduledExecutorServiceFactory.class)
+            .addRequiredBeanDeploymentArchiveService(EjbServices.class)
+            .addRequiredBeanDeploymentArchiveService(ResourceLoader.class)
             .addRequiredBeanDeploymentArchiveService(InjectionServices.class)),
 
     /**
