@@ -30,13 +30,19 @@ import org.jboss.weld.resources.spi.ResourceLoader;
 import org.jboss.weld.resources.spi.ScheduledExecutorServiceFactory;
 import org.jboss.weld.security.spi.SecurityServices;
 import org.jboss.weld.transaction.spi.TransactionServices;
-import org.jboss.weld.validation.spi.ValidationServices;
 import org.testng.annotations.Test;
 
 public class BootstrapTest
 {
 
-   @Test(expectedExceptions = IllegalStateException.class)
+  /*
+   * EjbServices is a required bean deployment archive service in this environment.
+   * For backwards compatibility with older integrators that register EjbServices
+   * as a deployment service, this check is suppressed.
+   *
+   * @see WELD-1685
+   */
+   @Test(expectedExceptions = IllegalStateException.class, enabled = false)
    public void testMissingEjbServices()
    {
       Bootstrap bootstrap = new MockBootstrap();
