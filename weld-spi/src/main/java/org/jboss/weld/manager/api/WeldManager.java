@@ -157,4 +157,10 @@ public interface WeldManager extends BeanManager, Serializable {
      */
     <T> WeldInjectionTargetBuilder<T> createInjectionTargetBuilder(AnnotatedType<T> type);
 
+    /**
+     *
+     * @return an unwrapped instance (e.g. the delegate in the case of forwarding implementation)
+     */
+    WeldManager unwrap();
+
 }
