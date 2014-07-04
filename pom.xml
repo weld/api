@@ -2,7 +2,7 @@
    <modelVersion>4.0.0</modelVersion>
    <artifactId>weld-api-build-aggregator</artifactId>
    <packaging>pom</packaging>
-   <version>2.2.SP3-SNAPSHOT</version>
+   <version>2.2.SP3</version>
 
    <parent>
       <groupId>org.jboss.weld</groupId>
@@ -24,7 +24,7 @@
       <connection>scm:git:git@github.com:weld/api.git</connection>
       <developerConnection>scm:git:git@github.com:weld/api.git</developerConnection>
       <url>scm:git:git@github.com:weld/api.git</url>
-     <tag>HEAD</tag>
+     <tag>2.2.SP3</tag>
   </scm>
 
    <modules>
