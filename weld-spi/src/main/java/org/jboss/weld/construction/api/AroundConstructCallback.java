@@ -19,7 +19,6 @@ package org.jboss.weld.construction.api;
 import java.util.Map;
 
 import javax.enterprise.inject.spi.AnnotatedConstructor;
-import javax.interceptor.AroundConstruct;
 import javax.interceptor.InvocationContext;
 
 /**
@@ -41,10 +40,10 @@ public interface AroundConstructCallback<T> {
      *
      * @param handle the handle for controlling the component creation process and retrieving the created instance
      * @param constructor a representation of the component constructor used for component creation
-     * @param parameters the parameters that will be passed to the component constructor. These parameters should be made available to {@link AroundConstruct}
+     * @param parameters the parameters that will be passed to the component constructor. These parameters should be made available to {@link javax.interceptor.AroundConstruct}
      *        interceptors through the {@link InvocationContext#getParameters()} method. An implementation is free to modify the parameters or provide a
      *        different parameter array to the {@link ConstructionHandle}.
-     * @param data the context data associated with this {@link AroundConstruct} interception. The data should be made available to {@link AroundConstruct}
+     * @param data the context data associated with this {@link javax.interceptor.AroundConstruct} interception. The data should be made available to {@link javax.interceptor.AroundConstruct}
      *        interceptors through {@link InvocationContext#getContextData()}. An implementation is free to modify the map or to provide a different one to the
      *        {@link ConstructionHandle}.
      * @return the created instance

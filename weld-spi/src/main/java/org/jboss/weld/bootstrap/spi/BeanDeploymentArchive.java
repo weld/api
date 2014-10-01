@@ -18,7 +18,6 @@ package org.jboss.weld.bootstrap.spi;
 
 import java.util.Collection;
 
-import org.jboss.weld.bootstrap.api.Bootstrap;
 import org.jboss.weld.bootstrap.api.ServiceRegistry;
 import org.jboss.weld.ejb.spi.EjbDescriptor;
 
@@ -71,8 +70,8 @@ public interface BeanDeploymentArchive {
      * The container may choose to parse beans.xml itself, or it may use Weld to parse beans.xml
      *
      * @return the parsed beans.xml
-     * @see {@link Bootstrap#parse(java.net.URL)}
-     * @see {@link Bootstrap#parse(Iterable)}
+     * @see {@link org.jboss.weld.bootstrap.api.Bootstrap#parse(java.net.URL)}
+     * @see {@link org.jboss.weld.bootstrap.api.Bootstrap#parse(Iterable)}
      */
     BeansXml getBeansXml();
 
