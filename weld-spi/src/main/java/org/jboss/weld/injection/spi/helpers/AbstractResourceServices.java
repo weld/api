@@ -33,6 +33,9 @@ import org.jboss.weld.injection.spi.ResourceReferenceFactory;
 public abstract class AbstractResourceServices implements Service, ResourceInjectionServices {
     private static final String RESOURCE_LOOKUP_PREFIX = "java:comp/env";
 
+    // because checkstyle magic numbers
+    private static final int GET_PREFIX_LENGTH = "get".length();
+
     public Object resolveResource(InjectionPoint injectionPoint) {
         if (!injectionPoint.getAnnotated().isAnnotationPresent(Resource.class)) {
             throw new IllegalArgumentException("No @Resource annotation found on injection point " + injectionPoint);
@@ -47,7 +50,7 @@ public abstract class AbstractResourceServices implements Service, ResourceInjec
         try {
             return getContext().lookup(name);
         } catch (NamingException e) {
-            throw new RuntimeException("Error looking up " + name + " in JNDI", e);
+            return handleNamingException(e, name);
         }
     }
 
@@ -56,8 +59,12 @@ public abstract class AbstractResourceServices implements Service, ResourceInjec
         try {
             return getContext().lookup(name);
         } catch (NamingException e) {
-            throw new RuntimeException("Error looking up " + name + " in JNDI", e);
+            return handleNamingException(e, name);
         }
+    }
+
+    private Object handleNamingException(NamingException e, String name) {
+        throw new RuntimeException("Error looking up " + name + " in JNDI", e);
     }
 
     protected String getResourceName(String jndiName, String mappedName) {
@@ -101,7 +108,7 @@ public abstract class AbstractResourceServices implements Service, ResourceInjec
     public static String getPropertyName(Method method) {
         String methodName = method.getName();
         if (methodName.matches("^(get).*") && method.getParameterTypes().length == 0) {
-            return Introspector.decapitalize(methodName.substring(3));
+            return Introspector.decapitalize(methodName.substring(GET_PREFIX_LENGTH));
         } else if (methodName.matches("^(is).*") && method.getParameterTypes().length == 0) {
             return Introspector.decapitalize(methodName.substring(2));
         } else {

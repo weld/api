@@ -19,9 +19,6 @@ package org.jboss.weld.resources.spi;
 import java.lang.annotation.Annotation;
 import java.lang.annotation.Inherited;
 
-import javax.enterprise.inject.Vetoed;
-import javax.inject.Inject;
-
 /**
  * Represents metadata of a Java class. Weld uses this metadata to decide whether the class should be processed by Weld or not without loading the class.
  *
@@ -82,7 +79,7 @@ public interface ClassFileInfo {
     /**
      * Indicates whether this class has a CDI constructor.
      *
-     * @return true if this class has a constructor annotated with {@link Inject} or a no-arg constructor, false otherwise
+     * @return true if this class has a constructor annotated with {@link javax.inject.Inject} or a no-arg constructor, false otherwise
      */
     boolean hasCdiConstructor();
 
@@ -105,7 +102,7 @@ public interface ClassFileInfo {
     /**
      * Indicates whether this class is vetoed from CDI processing.
      *
-     * @return true if the {@link Vetoed} annotation is present on this class or the class's package, false otherwise
+     * @return true if the {@link javax.enterprise.inject.Vetoed} annotation is present on this class or the class's package, false otherwise
      */
     boolean isVetoed();
 
