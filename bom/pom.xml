@@ -7,7 +7,7 @@
    <parent>
       <groupId>org.jboss.weld</groupId>
       <artifactId>weld-parent</artifactId>
-      <version>22</version>
+      <version>30</version>
    </parent>
 
    <name>Weld APIs BOM</name>
@@ -32,6 +32,9 @@
    </developers>
 
    <properties>
+      <maven.compiler.source>1.8</maven.compiler.source>
+      <maven.compiler.target>1.8</maven.compiler.target>
+
       <atinject.api.version>1</atinject.api.version>
       <cdi.api.version>1.2</cdi.api.version>
       <ejb.api.version>1.0.0.Alpha2</ejb.api.version>
