@@ -39,6 +39,7 @@ public interface Singleton<T> {
     /**
      * Access the singleton
      *
+     * @param id singleton identifier
      * @return a singleton object
      * @throws IllegalStateException if the singleton is not set
      */
@@ -47,6 +48,7 @@ public interface Singleton<T> {
     /**
      * Check if the singleton is set
      *
+     * @param id singleton identifier
      * @return true if the singleton is set
      */
     boolean isSet(String id);
@@ -54,12 +56,15 @@ public interface Singleton<T> {
     /**
      * Store a singleton
      *
+     * @param id singleton identifier
      * @param object the object to store
      */
     void set(String id, T object);
 
     /**
      * Clear the singleton
+     *
+     * @param id singleton identifier
      */
     void clear(String id);
 

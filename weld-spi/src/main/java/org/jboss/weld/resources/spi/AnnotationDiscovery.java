@@ -64,7 +64,7 @@ public interface AnnotationDiscovery extends Service {
      *
      * @param javaClass the given class
      * @param annotation the given annotation type
-     * @return
+     * @return whether the given class contains an annotation of the given annotation type
      */
     boolean containsAnnotation(Class<?> javaClass, Class<? extends Annotation> annotation);
 }

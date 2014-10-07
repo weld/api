@@ -36,7 +36,7 @@ import org.jboss.weld.manager.api.WeldManager;
  * To initialize the container you must call, in this order:
  *
  * <ol>
- * <li>{@link #startContainer()}</li>
+ * <li>{@link #startContainer(Environment, Deployment)}</li>
  * <li>{@link #startInitialization()}</li>
  * <li>{@link #deployBeans()}</li>
  * <li>{@link #validateBeans()}</li>
@@ -61,10 +61,11 @@ public interface Bootstrap {
      *
      * context
      *
-     * @param environment the environment in use, by default {@link Environments.EE}
+     * @param environment the environment in use, by default {@link Environments#EE}
      * @param deployment the Deployment to be booted
      * @throws IllegalStateException if not all the services required for the given environment are available
      *
+     * @return self
      */
     Bootstrap startContainer(Environment environment, Deployment deployment);
 
@@ -80,6 +81,7 @@ public interface Bootstrap {
      *
      * Finally, the {@link BeforeBeanDiscovery} event is fired.
      *
+     * @return self
      */
     Bootstrap startInitialization();
 
@@ -92,6 +94,8 @@ public interface Bootstrap {
      * </ul>
      *
      * Finally the {@link AfterBeanDiscovery} is event is fired
+     *
+     * @return self
      */
     Bootstrap deployBeans();
 
@@ -99,12 +103,15 @@ public interface Bootstrap {
      * Validates the deployment.
      *
      * After validation, the {@link AfterDeploymentValidation} event is fired
+     *
+     * @return self
      */
     Bootstrap validateBeans();
 
     /**
      * Cleans up after the initialization
      *
+     * @return self
      */
     Bootstrap endInitialization();
 
@@ -118,12 +125,13 @@ public interface Bootstrap {
     /**
      * Get the manager used for this beanDeploymentArchive.
      *
-     * If {@link #startContainer()} has not been called, this method will return null.
+     * If {@link #startContainer(Environment, Deployment)} has not been called, this method will return null.
      *
      * If the beanDeploymentArchive is not known to Weld (for example, it was not passed to the Weld as part of the
      * {@link Deployment}, or has not yet been requested by {@link Deployment#loadBeanDeploymentArchive(Class)}), null will be
      * returned.
      *
+     * @param beanDeploymentArchive
      * @return the manager or null if not yet available or not found.
      */
     WeldManager getManager(BeanDeploymentArchive beanDeploymentArchive);
@@ -134,6 +142,7 @@ public interface Bootstrap {
      * @param url the url to parse
      * @return the BeansXml data structure which represents the URL
      * @throws IllegalArgumentException if the URL cannot be opened
+     *
      */
     BeansXml parse(URL url);
 
@@ -142,7 +151,7 @@ public interface Bootstrap {
      *
      * Duplicate entries are not removed.
      *
-     * @param url the url to parse
+     * @param urls the urls to parse
      * @return the BeansXml data structure which represents the URL
      * @throws IllegalArgumentException if the URL cannot be opened
      */
@@ -163,6 +172,7 @@ public interface Bootstrap {
      *
      * @param classLoader the ClassLoader to use to load the extensions
      * @throws IllegalArgumentException if classLoader is null
+     * @return
      */
     Iterable<Metadata<Extension>> loadExtensions(ClassLoader classLoader);
 

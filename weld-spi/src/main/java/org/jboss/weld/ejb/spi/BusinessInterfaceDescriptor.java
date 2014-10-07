@@ -28,6 +28,8 @@ public interface BusinessInterfaceDescriptor<T> {
 
     /**
      * Gets the business interface class
+     *
+     * @return the business interface class
      */
     Class<T> getInterface();
 

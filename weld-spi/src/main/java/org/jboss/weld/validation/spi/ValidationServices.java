@@ -46,7 +46,7 @@ public interface ValidationServices extends Service {
     /**
      * Obtain a reference to the default ValidatorFactory
      *
-     * @return
+     * @return reference to the default ValidatorFactory
      */
     ValidatorFactory getDefaultValidatorFactory();
 

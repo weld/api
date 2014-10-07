@@ -16,7 +16,7 @@ public interface BoundRequest {
     /**
      * Get the current request map.
      *
-     * @return
+     * @return the request map.
      */
     Map<String, Object> getRequestMap();
 

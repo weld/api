@@ -37,18 +37,21 @@ public interface WeldInjectionTargetBuilder<T> {
 
     /**
      * Enables/disables resource injection in the resulting {@link WeldInjectionTargetBuilder}. By default, this feature is enabled.
+     * @param value enables/disables resource injection
      * @return the builder
      */
     WeldInjectionTargetBuilder<T> setResourceInjectionEnabled(boolean value);
 
     /**
      * Enables/disables target class lifecycle callback in the resulting {@link WeldInjectionTargetBuilder}. By default, this feature is enabled.
+     * @param value enables/disables target class lifecycle callback
      * @return the builder
      */
     WeldInjectionTargetBuilder<T> setTargetClassLifecycleCallbacksEnabled(boolean value);
 
     /**
      * Enables/disables interception support in the resulting {@link WeldInjectionTargetBuilder}. By default, this feature is enabled.
+     * @param value enables/disables interception support
      * @return the builder
      */
     WeldInjectionTargetBuilder<T> setInterceptionEnabled(boolean value);
@@ -56,6 +59,7 @@ public interface WeldInjectionTargetBuilder<T> {
     /**
      * Enables/disables decoration support in the resulting {@link WeldInjectionTargetBuilder}. By default, this feature is enabled as long
      * as the bean is set.
+     * @param value enables/disables decoration support
      * @return the builder
      */
     WeldInjectionTargetBuilder<T> setDecorationEnabled(boolean value);
@@ -70,6 +74,7 @@ public interface WeldInjectionTargetBuilder<T> {
 
     /**
      * Returns a newly-created {@code WeldInjectionTarget} based on the contents of this builder.
+     * @return newly-created {@code WeldInjectionTarget}
      */
     WeldInjectionTarget<T> build();
 }
