@@ -44,6 +44,7 @@ public interface ExecutorServices extends Service {
      * this method. If multiple tasks throw exceptions, there is no guarantee about which of the exceptions is rethrown by this
      * method.
      *
+     * @param <T>
      * @param tasks the collection of tasks
      * @return A list of Futures representing the tasks, in the same sequential order as produced by the iterator for the given
      *         task list, each of which has completed.
@@ -55,6 +56,7 @@ public interface ExecutorServices extends Service {
      * once.If a task throws an exception, the exception is rethrown by this method. If multiple tasks throw exceptions, there
      * is no guarantee about which of the exceptions is rethrown by this method.
      *
+     * @param <T>
      * @param factory factory capable of creating tasks
      * @return A list of Futures representing the tasks, in the same sequential order as produced by the iterator for the given
      *         task list, each of which has completed.

@@ -41,18 +41,21 @@ public interface InjectionContext<T> {
      * Get the underlying instance to be injected. If the instance being injected is an EJB this will be whatever is returned by
      * {@link SessionObjectReference#getBusinessObject(Class)}
      *
+     * @return the underlying instance to be injected
      */
     T getTarget();
 
     /**
      * Get the {@link InjectionTarget} for the instance being injected
      *
+     * @return the {@link InjectionTarget} for the instance being injected
      */
     InjectionTarget<T> getInjectionTarget();
 
     /**
      * Get the {@link AnnotatedType} for the instance being injected
      *
+     * @return the {@link AnnotatedType} for the instance being injected
      */
     AnnotatedType<T> getAnnotatedType();
 

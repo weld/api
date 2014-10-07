@@ -30,14 +30,14 @@ public interface Scanning {
     /**
      * The &lt;include&gt; element
      *
-     * @return
+     * @return the include element
      */
     Collection<Metadata<Filter>> getIncludes();
 
     /**
      * The &lt;exclude&gt; element
      *
-     * @return
+     * @return the exclude element
      */
     Collection<Metadata<Filter>> getExcludes();
 

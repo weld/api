@@ -31,17 +31,18 @@ import javax.enterprise.inject.spi.Annotated;
 /**
  * This API is experimental and will change! All the methods declared by this interface are supposed to be moved to {@link Annotated}.
  *
+ * See also WELD-1743.
+ *
  * @author Jozef Hartinger
+ * @seeJira WELD-1743
  *
- * @see WELD-1743
- *
- * @param <X>
  */
 public interface ExperimentalAnnotated extends Annotated {
 
     /**
      * Equivalent of {@link AnnotatedElement#getAnnotationsByType(Class)}.
      *
+     * @param <T> subclass of {@link Annotation}
      * @param annotationClass the Class object corresponding to the annotation type
      * @return all this element's annotations for the specified annotation type if associated with this element, else an array of length zero
      */

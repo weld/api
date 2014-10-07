@@ -15,7 +15,7 @@ import javax.inject.Singleton;
  * </p>
  *
  * <pre>
- * &#064Inject SingletonContext singletonContext;
+ * &#064; Inject SingletonContext singletonContext;
  * </pre>
  *
  * @author Pete Muir

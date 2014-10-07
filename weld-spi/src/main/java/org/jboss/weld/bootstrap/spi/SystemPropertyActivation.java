@@ -14,11 +14,13 @@ public interface SystemPropertyActivation {
 
     /**
      * The name attribute
+     * @return the name attribute
      */
     String getName();
 
     /**
      * The value attribute
+     * @return the name attribute
      */
     String getValue();
 

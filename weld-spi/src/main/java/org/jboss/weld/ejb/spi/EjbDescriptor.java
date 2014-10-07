@@ -56,7 +56,7 @@ public interface EjbDescriptor<T> {
     /**
      * Get the EJB name
      *
-     * @return
+     * @return the EJB name
      */
     String getEjbName();
 

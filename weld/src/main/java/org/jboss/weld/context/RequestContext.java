@@ -22,7 +22,7 @@ import org.jboss.weld.context.http.HttpRequestContext;
  * </p>
  *
  * <pre>
- * &#064Inject &#064Http RequestContext requestContext;
+ * &#064; Inject &#064; Http RequestContext requestContext;
  * </pre>
  *
  * <p>
@@ -30,7 +30,7 @@ import org.jboss.weld.context.http.HttpRequestContext;
  * </p>
  *
  * <pre>
- * &#064Inject &#064Bound RequestContext requestContext;
+ * &#064; Inject &#064; Bound RequestContext requestContext;
  * </pre>
  *
  * <p>
@@ -38,7 +38,7 @@ import org.jboss.weld.context.http.HttpRequestContext;
  * </p>
  *
  * <pre>
- * &#064Inject &#064Unbound RequestContext requestContext;
+ * &#064; Inject &#064; Unbound RequestContext requestContext;
  * </pre>
  *
  * <p>
@@ -47,7 +47,7 @@ import org.jboss.weld.context.http.HttpRequestContext;
  *
  *
  * <pre>
- * &#064Inject &#064Ejb RequestContext requestContext;
+ * &#064; Inject &#064; Ejb RequestContext requestContext;
  * </pre>
  *
  * @author Pete Muir

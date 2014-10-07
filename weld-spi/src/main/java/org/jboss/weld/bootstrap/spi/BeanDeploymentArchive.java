@@ -70,8 +70,8 @@ public interface BeanDeploymentArchive {
      * The container may choose to parse beans.xml itself, or it may use Weld to parse beans.xml
      *
      * @return the parsed beans.xml
-     * @see {@link org.jboss.weld.bootstrap.api.Bootstrap#parse(java.net.URL)}
-     * @see {@link org.jboss.weld.bootstrap.api.Bootstrap#parse(Iterable)}
+     * @see org.jboss.weld.bootstrap.api.Bootstrap#parse(java.net.URL)
+     * @see org.jboss.weld.bootstrap.api.Bootstrap#parse(Iterable)
      */
     BeansXml getBeansXml();
 
@@ -85,7 +85,7 @@ public interface BeanDeploymentArchive {
     /**
      * Get the Bean Deployment Archive scoped services
      *
-     * @return
+     * @return bean deployment archive scoped services
      */
     ServiceRegistry getServices();
 
@@ -93,7 +93,7 @@ public interface BeanDeploymentArchive {
      * Get a string which uniquely identifies the {@link BeanDeploymentArchive} within the {@link Deployment}. The identifier
      * must be consistent between multiple occurrences of this deployment.
      *
-     * @return
+     * @return identifier of BeanDeploymentArchive
      */
     String getId();
 }
