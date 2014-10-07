@@ -23,7 +23,7 @@ import javax.enterprise.inject.spi.ProcessObserverMethod;
  * This API is experimental and will change! All the methods declared by this interface are supposed to be moved to {@link ProcessObserverMethod}.
  *
  * @author Jozef Hartinger
- * @see WELD-1749
+ * @seeJira WELD-1749
  *
  * @param <T> The type of the event being observed
  * @param <X> The bean type containing the observer method
@@ -33,7 +33,7 @@ public interface ExperimentalProcessObserverMethod<T, X> extends ProcessObserver
     /**
      * Replaces the observer method.
      *
-     * @param observer
+     * @param observerMethod target observer method.
      */
     void setObserverMethod(ObserverMethod<T> observerMethod);
 

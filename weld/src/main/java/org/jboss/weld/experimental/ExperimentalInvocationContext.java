@@ -26,7 +26,7 @@ import javax.interceptor.InvocationContext;
  * This API is experimental and will change! All the methods declared by this interface are supposed to be moved to {@link InvocationContext}.
  *
  * @author Martin Kouba
- * @see CDI-468
+ * @seeJira CDI-468
  *
  */
 public interface ExperimentalInvocationContext extends InvocationContext {
@@ -34,6 +34,8 @@ public interface ExperimentalInvocationContext extends InvocationContext {
     /**
      * The returning set may be empty if only interceptors using the {@link Interceptors} annotation are associated.
      *
+     * @param <T> subclass of {@link Annotation}
+     * @param annotationType type of annotation
      * @return a set of interceptor bindings
      */
     <T extends Annotation> Set<T> getInterceptorBindingsByType(Class<T> annotationType);

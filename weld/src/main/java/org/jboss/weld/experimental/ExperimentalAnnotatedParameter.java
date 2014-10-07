@@ -28,9 +28,9 @@ import javax.enterprise.inject.spi.AnnotatedParameter;
  * All the methods declared by this interface should be moved to AnnotatedParameter.
  *
  * @author Jozef Hartinger
- * @see CDI-481
+ * @seeJira CDI-481
  *
- * @param <X>
+ * @param <X> the type that declares the method or constructor.
  */
 public interface ExperimentalAnnotatedParameter<X> extends AnnotatedParameter<X> {
 

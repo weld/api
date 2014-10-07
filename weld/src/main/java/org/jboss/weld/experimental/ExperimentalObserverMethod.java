@@ -17,13 +17,12 @@
 package org.jboss.weld.experimental;
 
 import javax.enterprise.inject.spi.ObserverMethod;
-import javax.interceptor.Interceptor;
 
 /**
  * This API is experimental and will change! All the methods declared by this interface are supposed to be moved to {@link ObserverMethod}.
  *
  * @author Jozef Hartinger
- * @see WELD-1728
+ * @seeJira WELD-1728
  *
  * @param <T> the event type
  */
@@ -31,7 +30,7 @@ public interface ExperimentalObserverMethod<T> extends ObserverMethod<T>, Priori
 
     /**
      * Default priority for observer methods that do not define priority. Currently the default priority is set to be in the middle
-     * of the "APPLICATION" range (see {@link Interceptor.Priority} for details).
+     * of the "APPLICATION" range (see {@link javax.interceptor.Interceptor.Priority} for details).
      *
      * WARNING: This concept of default priority of an observer method is preliminary and subject to change.
      */

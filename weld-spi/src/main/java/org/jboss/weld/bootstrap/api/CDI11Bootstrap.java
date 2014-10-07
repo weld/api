@@ -35,8 +35,8 @@ import org.jboss.weld.bootstrap.spi.Metadata;
  * To initialize the container you must call, in this order:
  *
  * <ol>
- * <li>{@link #startExtensions()}</li>
- * <li>{@link #startContainer()}</li>
+ * <li>{@link #startExtensions(Iterable)}</li>
+ * <li>{@link #startContainer(String, Environment, Deployment)}</li>
  * <li>{@link #startInitialization()}</li>
  * <li>{@link #deployBeans()}</li>
  * <li>{@link #validateBeans()}</li>
@@ -161,7 +161,7 @@ public interface CDI11Bootstrap extends Bootstrap {
      * </p>
      *
      * @param extensions discovered CDI extensions
-     * @return
+     * @return TypeDiscoveryConfiguration type discovery configuration including known bean defining annotations
      */
     TypeDiscoveryConfiguration startExtensions(Iterable<Metadata<Extension>> extensions);
 
@@ -179,9 +179,10 @@ public interface CDI11Bootstrap extends Bootstrap {
      * be assigned to the container. This identifier will be used to identify this application when invoking {@link Singleton} methods.
      *
      * @param contextId the identifier of this application container instance
-     * @param environment the environment in use, by default {@link Environments.EE}
+     * @param environment the environment in use, by default {@link Environments#EE}
      * @param deployment the Deployment to be booted
      * @throws IllegalStateException if not all the services required for the given environment are available
+     * @return
      *
      */
     Bootstrap startContainer(String contextId, Environment environment, Deployment deployment);

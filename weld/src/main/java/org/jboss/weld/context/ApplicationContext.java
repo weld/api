@@ -14,7 +14,7 @@ import javax.enterprise.context.spi.AlterableContext;
  * </p>
  *
  * <pre>
- * &#064Inject ApplicationContext applicationContext;
+ * &#064; Inject ApplicationContext applicationContext;
  * </pre>
  *
  * @author Pete Muir

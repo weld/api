@@ -11,11 +11,13 @@ public interface Metadata<T> {
 
     /**
      * The metadata value
+     * @return the metadata value
      */
     T getValue();
 
     /**
      * The location of the metadata, used in error and log messages
+     * @return location of the metadata, used in error and log messages
      */
     String getLocation();
 

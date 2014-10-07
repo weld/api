@@ -67,6 +67,7 @@ public abstract class SingletonProvider {
     /**
      * Create a new singleton
      *
+     * @param <T> type of Java object stored in the singleton
      * @param expectedType represents the type of Java object stored in the singleton
      * @return a singelton
      */

@@ -32,6 +32,7 @@ public interface WeldFilter extends Filter {
 
     /**
      * The pattern attribute
+     * @return the pattern attribute
      */
     String getPattern();
 }

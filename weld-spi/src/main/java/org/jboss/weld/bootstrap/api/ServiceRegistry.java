@@ -17,8 +17,8 @@
 package org.jboss.weld.bootstrap.api;
 
 import java.util.Collection;
-import java.util.Set;
 import java.util.Map.Entry;
+import java.util.Set;
 
 /**
  * A service registry
@@ -34,7 +34,7 @@ public interface ServiceRegistry extends Iterable<Service> {
      * @see Service
      *
      * @param <S> the service type to add
-     * @param serviceType the service type to add
+     * @param type the service type to add
      * @param service the service implementation
      */
     <S extends Service> void add(Class<S> type, S service);
@@ -52,7 +52,7 @@ public interface ServiceRegistry extends Iterable<Service> {
      * Retrieve a service implementation
      *
      * @param <S> the service type
-     * @param serviceType the service type
+     * @param type the service type
      * @return the service implementation, or null if none is registered
      */
     <S extends Service> S get(Class<S> type);
@@ -61,7 +61,7 @@ public interface ServiceRegistry extends Iterable<Service> {
      * Check if a service is registered
      *
      * @param <S> the service type
-     * @param serviceType the service type
+     * @param type the service type
      * @return true if a service is registered, otherwise false
      */
     <S extends Service> boolean contains(Class<S> type);

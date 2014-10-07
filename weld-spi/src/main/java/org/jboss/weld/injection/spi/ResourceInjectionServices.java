@@ -50,7 +50,8 @@ public interface ResourceInjectionServices extends Service {
      * point. If the validation passes, an instance of {@link ResourceReferenceFactory} is returned which may be used at runtime
      * for creating instances of the resource.
      *
-     * @param injectionPoint the injection point metadata
+     * @param jndiName JNDI name
+     * @param mappedName mapped name
      * @return resource factory
      * @throws IllegalStateException if no resource can be resolved
      * @throws IllegalArgumentException if both jndiName and mappedName are null
@@ -80,7 +81,8 @@ public interface ResourceInjectionServices extends Service {
      *             using {@link #registerResourceInjectionPoint(String, String)} and use the returned factory for producing
      *             injectable instances at runtime.
      *
-     * @param injectionPoint the injection point metadata
+     * @param jndiName JNDI name
+     * @param mappedName mapped name
      * @return an instance of the resource
      * @throws IllegalStateException if no resource can be resolved for injection
      * @throws IllegalArgumentException if both jndiName and mappedName are null

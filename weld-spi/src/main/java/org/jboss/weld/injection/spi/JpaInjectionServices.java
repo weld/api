@@ -19,6 +19,8 @@ package org.jboss.weld.injection.spi;
 import javax.enterprise.inject.spi.InjectionPoint;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceUnit;
 
 import org.jboss.weld.bootstrap.api.Service;
 
@@ -40,8 +42,8 @@ public interface JpaInjectionServices extends Service {
      *
      * @param injectionPoint the injection point metadata
      * @return factory for obtaining {@link EntityManager} instances
-     * @throws IllegalArgumentException if the injection point is not annotated with
-     * @PersistenceContext, if the injection point is a method that doesn't follow JavaBean conventions or if the injection
+     * @throws IllegalArgumentException if the injection point is not annotated with {@link PersistenceContext},
+     * if the injection point is a method that doesn't follow JavaBean conventions or if the injection
      * @throws IllegalStateException if no suitable persistence units can be resolved
      */
     ResourceReferenceFactory<EntityManager> registerPersistenceContextInjectionPoint(InjectionPoint injectionPoint);
@@ -53,14 +55,14 @@ public interface JpaInjectionServices extends Service {
      *
      * @param injectionPoint the injection point metadata
      * @return factory for obtaining {@link EntityManagerFactory} instances
-     * @throws IllegalArgumentException if the injection point is not annotated with
-     * @PersistenceUnit, or, if the injection point is a method that doesn't follow JavaBean conventions
+     * @throws IllegalArgumentException if the injection point is not annotated with {@link PersistenceUnit}, or,
+     * if the injection point is a method that doesn't follow JavaBean conventions
      * @throws IllegalStateException if no suitable persistence units can be resolved
      */
     ResourceReferenceFactory<EntityManagerFactory> registerPersistenceUnitInjectionPoint(InjectionPoint injectionPoint);
 
     /**
-     * Resolve the value for the given @PersistenceContext injection point
+     * Resolve the value for the given {@link PersistenceContext} injection point
      *
      * @deprecated Instead of calling this method at runtime, Weld should register every persistence context injection point at
      *             bootstrap using {@link #registerPersistenceContextInjectionPoint(InjectionPoint)} and use the returned
@@ -68,15 +70,15 @@ public interface JpaInjectionServices extends Service {
      *
      * @param injectionPoint the injection point metadata
      * @return an instance of the entity manager
-     * @throws IllegalArgumentException if the injection point is not annotated with
-     * @PersistenceContext, or, if the injection point is a method that doesn't follow JavaBean conventions
+     * @throws IllegalArgumentException if the injection point is not annotated with {@link javax.persistence.PersistenceContext}, or,
+     * if the injection point is a method that doesn't follow JavaBean conventions
      * @throws IllegalStateException if no suitable persistence units can be resolved for injection
      */
     @Deprecated
     EntityManager resolvePersistenceContext(InjectionPoint injectionPoint);
 
     /**
-     * Resolve the value for the given @PersistenceUnit injection point
+     * Resolve the value for the given {@link PersistenceUnit} injection point
      *
      * @deprecated Instead of calling this method at runtime, Weld should register every persistence unit injection point at
      *             bootstrap using {@link #registerPersistenceUnitInjectionPoint(InjectionPoint)} and use the returned factory
@@ -84,8 +86,8 @@ public interface JpaInjectionServices extends Service {
      *
      * @param injectionPoint the injection point metadata
      * @return an instance of the entity manager
-     * @throws IllegalArgumentException if the injection point is not annotated with
-     * @PersistenceUnit, or, if the injection point is a method that doesn't follow JavaBean conventions
+     * @throws IllegalArgumentException if the injection point is not annotated with {@link PersistenceUnit}, or, if the injection
+     * point is a method that doesn't follow JavaBean conventions
      * @throws IllegalStateException if no suitable persistence units can be resolved for injection
      */
     @Deprecated

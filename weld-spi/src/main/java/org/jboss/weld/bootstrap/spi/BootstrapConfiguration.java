@@ -28,6 +28,7 @@ public interface BootstrapConfiguration extends Service {
      * Otherwise, single-threaded version of Deployer and Validator are used.
      *
      * By default, concurrent deployment is enabled.
+     * @return whether ConcurrentDeployer and ConcurrentValidator should be enabled.
      */
     boolean isConcurrentDeploymentEnabled();
 
@@ -42,6 +43,7 @@ public interface BootstrapConfiguration extends Service {
      *
      * If not specified, the value is set to Math.max(1, Runtime.getRuntime().availableProcessors() - 1)).
      *
+     * @return the number of threads used by ContainerLifecycleEventPreloader.
      */
     int getPreloaderThreadPoolSize();
 
@@ -51,7 +53,7 @@ public interface BootstrapConfiguration extends Service {
      *
      * The non-portable mode is disabled by default.
      *
-     * @see http://docs.jboss.org/cdi/api/1.1/javax/enterprise/inject/spi/BeanManager.html
+     * @see <a href="http://docs.jboss.org/cdi/api/1.1/javax/enterprise/inject/spi/BeanManager.html">BeanManager</a>
      * @return true if non-portable mode should be enabled.
      */
     boolean isNonPortableModeEnabled();

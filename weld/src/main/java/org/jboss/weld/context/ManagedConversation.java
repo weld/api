@@ -27,10 +27,10 @@ public interface ManagedConversation extends Conversation {
      *
      * @param timeout The time in milliseconds to wait on the lock
      * @return True if lock was successful, false otherwise
-     * @throws InterruptedException if the lock operation was unsuccessful * @throws
+     * @throws InterruptedException if the lock operation was unsuccessful
      * @throws ContextNotActiveException if the conversation context is not active
      */
-    boolean lock(long timeout);
+    boolean lock(long timeout) throws InterruptedException;
 
     /**
      * Gets the last time the conversation was used (for data access)
