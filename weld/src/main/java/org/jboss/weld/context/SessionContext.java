@@ -19,7 +19,7 @@ import org.jboss.weld.context.http.HttpSessionContext;
  * </p>
  *
  * <pre>
- * &#064Inject &#064Http SessionContext sessionContext;
+ * &#064; Inject &#064; Http SessionContext sessionContext;
  * </pre>
  *
  * <p>
@@ -27,13 +27,13 @@ import org.jboss.weld.context.http.HttpSessionContext;
  * </p>
  *
  * <pre>
- * &#064Inject &#064Bound SessionContext sessionContext;
+ * &#064; Inject &#064; Bound SessionContext sessionContext;
  * </pre>
  *
  * @author Pete Muir
- * @see BoundSessionContext
- * @see HttpSessionContext
- * @sees {@link SessionScoped}
+ * @see org.jboss.weld.context.bound.BoundSessionContext
+ * @see javax.servlet.http.HttpSession
+ * @see javax.enterprise.context.SessionScoped
  *
  */
 public interface SessionContext extends ManagedContext {

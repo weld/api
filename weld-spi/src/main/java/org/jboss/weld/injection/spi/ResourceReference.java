@@ -35,8 +35,6 @@ public interface ResourceReference<T> {
 
     /**
      * Release the resource instance
-     *
-     * @param instance
      */
     void release();
 }

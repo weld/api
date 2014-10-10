@@ -8,7 +8,7 @@ import java.util.Collection;
  * details of the semantics of &lt;exclude&gt;.
  * </p>
  *
- * @see https://github.com/jboss/cdi/blob/master/api/src/main/resources/beans_1_1.xsd
+ * @see <a href="https://github.com/jboss/cdi/blob/master/api/src/main/resources/beans_1_1.xsd">Beans 1.1</a>
  *
  * @author Pete Muir
  * @see Scanning
@@ -17,16 +17,19 @@ public interface Filter {
 
     /**
      * The name attribute
+     * @return the name attribute
      */
     String getName();
 
     /**
      * Nested &lt;if-system-property&gt; elements
+     * @return
      */
     Collection<Metadata<SystemPropertyActivation>> getSystemPropertyActivations();
 
     /**
      * Nested &lt;if-class-available&gt; elements
+     * @return
      */
     Collection<Metadata<ClassAvailableActivation>> getClassAvailableActivations();
 

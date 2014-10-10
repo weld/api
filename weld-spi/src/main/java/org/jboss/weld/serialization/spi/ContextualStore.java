@@ -24,14 +24,18 @@ import org.jboss.weld.serialization.spi.helpers.SerializableContextual;
 import org.jboss.weld.serialization.spi.helpers.SerializableContextualInstance;
 
 /**
+ * <p>
  * Application wide contextual identifier service which allows a serializable reference to a contextual to be obtained, and the
  * contextual to be returned for a given id.
- * <p/>
+ * </p>
+ * <p>
  * If the contextual implements PassivationCapable, the id will be obtained from it, in which case the Contextual can be
  * activated in any container. If not, the Contextual can only be activated in this container.
- * <p/>
+ * </p>
+ * <p>
  * Note that this allows a Bean object to be loaded regardless of the bean's accessiblity from the current module, and should
  * not be abused as a way to ignore accessibility rules enforced during resolution.
+ * </p>
  *
  * @author Pete Muir
  * @author Marius Bogoevici
@@ -41,6 +45,8 @@ public interface ContextualStore extends Service {
      * Given a particular id, return the correct contextual. For contextuals which aren't passivation capable, the contextual
      * can't be found in another container, and null will be returned.
      *
+     * @param <C>
+     * @param <I>
      * @param id An identifier for the contextual
      * @return the contextual
      */
@@ -61,6 +67,8 @@ public interface ContextualStore extends Service {
     /**
      * Returns a {@link SerializableContextual} that corresponds to the given {@link Contextual}
      *
+     * @param <C>
+     * @param <I>
      * @param contextual the contextual for which the serializable contextual is created
      * @return a serializable contextual
      */
@@ -70,6 +78,8 @@ public interface ContextualStore extends Service {
      * Returns a {@link org.jboss.weld.serialization.spi.helpers.SerializableContextualInstance} that corresponds to the given
      * instance and {@link Contextual}
      *
+     * @param <C>
+     * @param <I>
      * @param contextual the contextual for which the serializable contextual instance is returned
      * @param instance the instance
      * @param creationalContext the creational context of the instance

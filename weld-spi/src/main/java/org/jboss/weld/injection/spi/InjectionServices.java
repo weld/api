@@ -45,6 +45,7 @@ public interface InjectionServices extends Service {
      *
      * Call {@link InjectionContext#proceed()} to cause CDI-style injection to occur.
      *
+     * @param <T>
      * @param injectionContext
      */
     <T> void aroundInject(InjectionContext<T> injectionContext);
@@ -82,6 +83,7 @@ public interface InjectionServices extends Service {
      * injection target instances at runtime.
      * </p>
      *
+     * @param <T>
      * @param injectionTarget
      * @param annotatedType
      */

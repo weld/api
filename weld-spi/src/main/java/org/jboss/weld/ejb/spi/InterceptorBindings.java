@@ -17,12 +17,12 @@
 
 package org.jboss.weld.ejb.spi;
 
-import java.util.List;
-import java.util.Collection;
 import java.lang.reflect.Method;
+import java.util.Collection;
+import java.util.List;
 
-import javax.enterprise.inject.spi.Interceptor;
 import javax.enterprise.inject.spi.InterceptionType;
+import javax.enterprise.inject.spi.Interceptor;
 import javax.interceptor.InterceptorBinding;
 
 /**
@@ -38,6 +38,9 @@ public interface InterceptorBindings {
      *
      * Note: in the case of an EJB, the expectation is that the interpretation of {link @javax.interceptor.Interceptors} is left
      * to the container, and the interceptors provided by the binding are complementary
+     *
+     * @return all interceptors that are bound to an EJB object through the {@link InterceptorBinding} mechanism and are enabled
+     * through the beans.xml file.
      */
     Collection<Interceptor<?>> getAllInterceptors();
 
@@ -50,8 +53,8 @@ public interface InterceptorBindings {
      * @param interceptionType - the interception type (non-lifecycle)
      * @param method - the method that is to be intercepted
      * @return - an immutable list of interceptors applicable to the method (empty if no such interceptors exist)
-     * @throw IllegalArgumentException if interceptionType is not {@link InterceptionType.AROUND_INVOKE} or
-     *        {@link InterceptionType.AROUND_TIMEOUT}
+     * @throws IllegalArgumentException if interceptionType is not {@link InterceptionType#AROUND_INVOKE} or
+     *        {@link InterceptionType#AROUND_TIMEOUT}
      */
     List<Interceptor<?>> getMethodInterceptors(InterceptionType interceptionType, Method method);
 
@@ -62,10 +65,9 @@ public interface InterceptorBindings {
      * This includes class and method-bound interceptors, but no interceptors bound by EJB-specific mechanisms.
      *
      * @param interceptionType - the interception type (lifecycle)
-     * @param method - the method that is to be intercepted
      * @return - an immutable list of interceptors applicable to the method (empty if no such interceptors exist)
-     * @throw IllegalArgumentException if interceptionType not {@link InterceptionType.AROUND_INVOKE} or
-     *        {@link InterceptionType.AROUND_TIMEOUT}
+     * @throws IllegalArgumentException if interceptionType not {@link InterceptionType#AROUND_INVOKE} or
+     *        {@link InterceptionType#AROUND_TIMEOUT}
      */
     List<Interceptor<?>> getLifecycleInterceptors(InterceptionType interceptionType);
 

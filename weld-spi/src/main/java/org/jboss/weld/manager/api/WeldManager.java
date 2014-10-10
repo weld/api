@@ -64,12 +64,14 @@ public interface WeldManager extends BeanManager, Serializable {
     /**
      * The injection target for the given EJB, or null if Weld was not given this descriptor in the deployment.
      *
-     * This should only be used to create an inject contextual EJBs by the EJB container. {@link #fireProcessInjectionTarget()}
+     * This should only be used to create an inject contextual EJBs by the EJB container.
+     * {@link #fireProcessInjectionTarget(AnnotatedType)} and
+     * {@link #fireProcessInjectionTarget(AnnotatedType, InjectionTarget)}
      * must be used to obtain an {@link InjectionTarget} for non-contextual EJB injection.
      *
      * @param <T>
      * @param descriptor
-     * @return
+     * @return the injection target for the given EJB
      */
     <T> InjectionTarget<T> createInjectionTarget(EjbDescriptor<T> descriptor);
 
@@ -78,7 +80,7 @@ public interface WeldManager extends BeanManager, Serializable {
      *
      * @param <T>
      * @param descriptor
-     * @return
+     * @return the Bean object for the given EJB
      */
     <T> Bean<T> getBean(EjbDescriptor<T> descriptor);
 
@@ -87,14 +89,14 @@ public interface WeldManager extends BeanManager, Serializable {
      *
      * @param <T>
      * @param ejbName
-     * @return
+     * @return the EjbDescriptor for the given ejb name
      */
     <T> EjbDescriptor<T> getEjbDescriptor(String ejbName);
 
     /**
      * Get the services registered for this manager
      *
-     * @return
+     * @return the services registered for this manager
      */
     ServiceRegistry getServices();
 
@@ -114,7 +116,7 @@ public interface WeldManager extends BeanManager, Serializable {
      *
      * @param <X>
      * @param type
-     * @return
+     * @return InjectionTarget
      */
     <X> InjectionTarget<X> fireProcessInjectionTarget(AnnotatedType<X> type);
 
@@ -127,16 +129,16 @@ public interface WeldManager extends BeanManager, Serializable {
      * The container must use the returned InjectionTarget to inject the Java EE component.
      *
      * @param <X>
-     * @param type
+     * @param annotatedType
      * @param injectionTarget
-     * @return
+     * @return InjectionTarget
      */
     <X> InjectionTarget<X> fireProcessInjectionTarget(AnnotatedType<X> annotatedType, InjectionTarget<X> injectionTarget);
 
     /**
      * The ID of the manager, identical to the ID provided by the BDA
      *
-     * @return
+     * @return the ID of the manager
      */
     String getId();
 
@@ -152,6 +154,7 @@ public interface WeldManager extends BeanManager, Serializable {
 
     /**
      * Returns a new instance of {@link WeldInjectionTargetBuilder} which can be used to create a new {@link WeldInjectionTarget} for the specified type.
+     * @param <T>
      * @param type the specified type
      * @return a new {@link WeldInjectionTargetBuilder} instance for the specified type
      */
