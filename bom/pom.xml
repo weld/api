@@ -34,6 +34,7 @@
    <properties>
       <maven.compiler.source>1.8</maven.compiler.source>
       <maven.compiler.target>1.8</maven.compiler.target>
+      <javadoc.doclint>-Xdoclint</javadoc.doclint>
 
       <atinject.api.version>1</atinject.api.version>
       <cdi.api.version>1.2</cdi.api.version>

@@ -42,7 +42,7 @@ public interface ServiceRegistry extends Iterable<Service> {
     /**
      * Add services
      *
-     * @param services
+     * @param services services to be added
      */
     void addAll(Collection<Entry<Class<? extends Service>, Service>> services);
 

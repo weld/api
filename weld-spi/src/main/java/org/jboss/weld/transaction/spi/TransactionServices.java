@@ -49,7 +49,7 @@ public interface TransactionServices extends Service {
      * Registers a synchronization object with the currently executing transaction.
      *
      * @see javax.transaction.Synchronization
-     * @param synchronizedObserver
+     * @param synchronizedObserver the synchronization
      */
     void registerSynchronization(Synchronization synchronizedObserver);
 

@@ -26,7 +26,7 @@ import javax.interceptor.InvocationContext;
  * This API is experimental and will change! All the methods declared by this interface are supposed to be moved to {@link InvocationContext}.
  *
  * @author Martin Kouba
- * @seeJira CDI-468
+ * @see <a href="https://issues.jboss.org/browse/CDI-468">CDI-468</a>
  *
  */
 public interface ExperimentalInvocationContext extends InvocationContext {

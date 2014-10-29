@@ -45,8 +45,8 @@ public interface ContextualStore extends Service {
      * Given a particular id, return the correct contextual. For contextuals which aren't passivation capable, the contextual
      * can't be found in another container, and null will be returned.
      *
-     * @param <C>
-     * @param <I>
+     * @param <C> the contextual
+     * @param <I> the type of the contextual
      * @param id An identifier for the contextual
      * @return the contextual
      */
@@ -67,8 +67,8 @@ public interface ContextualStore extends Service {
     /**
      * Returns a {@link SerializableContextual} that corresponds to the given {@link Contextual}
      *
-     * @param <C>
-     * @param <I>
+     * @param <C> the contextual
+     * @param <I> the type of the contextual
      * @param contextual the contextual for which the serializable contextual is created
      * @return a serializable contextual
      */
@@ -78,8 +78,8 @@ public interface ContextualStore extends Service {
      * Returns a {@link org.jboss.weld.serialization.spi.helpers.SerializableContextualInstance} that corresponds to the given
      * instance and {@link Contextual}
      *
-     * @param <C>
-     * @param <I>
+     * @param <C> the contextual
+     * @param <I> the type of the contextual
      * @param contextual the contextual for which the serializable contextual instance is returned
      * @param instance the instance
      * @param creationalContext the creational context of the instance

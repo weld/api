@@ -88,7 +88,7 @@ public abstract class SingletonProvider {
     /**
      * Initialize with an explicit instance
      *
-     * @param instance
+     * @param instance the explicit instance
      */
     public static void initialize(SingletonProvider instance) {
         synchronized (SingletonProvider.class) {

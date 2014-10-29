@@ -182,7 +182,7 @@ public interface CDI11Bootstrap extends Bootstrap {
      * @param environment the environment in use, by default {@link Environments#EE}
      * @param deployment the Deployment to be booted
      * @throws IllegalStateException if not all the services required for the given environment are available
-     * @return
+     * @return self
      *
      */
     Bootstrap startContainer(String contextId, Environment environment, Deployment deployment);

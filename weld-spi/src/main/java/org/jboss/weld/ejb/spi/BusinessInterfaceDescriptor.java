@@ -22,7 +22,7 @@ package org.jboss.weld.ejb.spi;
  *
  * @author Pete Muir
  *
- * @param <T>
+ * @param <T> the type of the business interface
  */
 public interface BusinessInterfaceDescriptor<T> {
 

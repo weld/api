@@ -34,7 +34,7 @@ import javax.enterprise.inject.spi.Annotated;
  * See also WELD-1743.
  *
  * @author Jozef Hartinger
- * @seeJira WELD-1743
+ * @see <a href="https://issues.jboss.org/browse/WELD-1743">WELD-1743</a>
  *
  */
 public interface ExperimentalAnnotated extends Annotated {

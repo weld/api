@@ -34,7 +34,7 @@ public interface CDI11Deployment extends Deployment {
      * a known bean archive.
      * </p>
      *
-     * @param beanClass
+     * @param beanClass the given class
      * @return the {@link BeanDeploymentArchive} containing the bean class or null if no such {@link BeanDeploymentArchive}
      *         exists
      */

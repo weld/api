@@ -40,7 +40,6 @@ public interface InterceptorBindings {
      * to the container, and the interceptors provided by the binding are complementary
      *
      * @return all interceptors that are bound to an EJB object through the {@link InterceptorBinding} mechanism and are enabled
-     * through the beans.xml file.
      */
     Collection<Interceptor<?>> getAllInterceptors();
 

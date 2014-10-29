@@ -36,7 +36,7 @@ public interface JaxwsInjectionServices extends Service {
      * instance of {@link ResourceReferenceFactory} is returned which may be used at runtime for creating instances of the
      * resource.
      *
-     * @param <T>
+     * @param <T> the type of the injected instance
      * @param injectionPoint the injection point metadata
      * @return factory for the web service reference
      * @throws DefinitionException if there is a definition problem related to the injection point
