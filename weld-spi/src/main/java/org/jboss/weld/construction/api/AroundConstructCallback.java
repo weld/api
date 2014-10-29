@@ -48,7 +48,7 @@ public interface AroundConstructCallback<T> {
      *        interceptors through {@link InvocationContext#getContextData()}. An implementation is free to modify the map or to provide a different one to the
      *        {@link ConstructionHandle}.
      * @return the created instance
-     * @throws Exception
+     * @throws Exception any underlying exception is propagated directly
      */
     T aroundConstruct(ConstructionHandle<T> handle, AnnotatedConstructor<T> constructor, Object[] parameters, Map<String, Object> data) throws Exception;
 }

@@ -33,7 +33,7 @@ public interface ClassFileServices extends BootstrapService {
     /**
      * Obtains Java class metadata for a class identified with the specified class name.
      *
-     * @param className
+     * @param className the specified class name
      * @return the class metadata
      * @throws ClassFileInfoException if the service implementation is not able to obtain metadata of a class with the specified name
      */

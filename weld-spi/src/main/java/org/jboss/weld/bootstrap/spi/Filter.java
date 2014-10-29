@@ -23,13 +23,13 @@ public interface Filter {
 
     /**
      * Nested &lt;if-system-property&gt; elements
-     * @return
+     * @return nested &lt;if-system-property&gt; elements
      */
     Collection<Metadata<SystemPropertyActivation>> getSystemPropertyActivations();
 
     /**
      * Nested &lt;if-class-available&gt; elements
-     * @return
+     * @return nested &lt;if-class-available&gt; elements
      */
     Collection<Metadata<ClassAvailableActivation>> getClassAvailableActivations();
 

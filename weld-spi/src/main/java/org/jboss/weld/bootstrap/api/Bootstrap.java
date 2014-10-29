@@ -123,7 +123,7 @@ public interface Bootstrap {
     void shutdown();
 
     /**
-     * Get the manager used for this beanDeploymentArchive.
+     * Get the manager used for the given beanDeploymentArchive.
      *
      * If {@link #startContainer(Environment, Deployment)} has not been called, this method will return null.
      *
@@ -131,7 +131,7 @@ public interface Bootstrap {
      * {@link Deployment}, or has not yet been requested by {@link Deployment#loadBeanDeploymentArchive(Class)}), null will be
      * returned.
      *
-     * @param beanDeploymentArchive
+     * @param beanDeploymentArchive the given beanDeploymentArchive
      * @return the manager or null if not yet available or not found.
      */
     WeldManager getManager(BeanDeploymentArchive beanDeploymentArchive);
@@ -172,7 +172,7 @@ public interface Bootstrap {
      *
      * @param classLoader the ClassLoader to use to load the extensions
      * @throws IllegalArgumentException if classLoader is null
-     * @return
+     * @return loaded extensions
      */
     Iterable<Metadata<Extension>> loadExtensions(ClassLoader classLoader);
 

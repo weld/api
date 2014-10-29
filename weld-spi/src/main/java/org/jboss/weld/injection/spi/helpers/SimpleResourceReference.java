@@ -27,7 +27,7 @@ import org.jboss.weld.injection.spi.ResourceReference;
  *
  * @author Jozef Hartinger
  *
- * @param <T>
+ * @param <T> the type of the instance
  */
 public class SimpleResourceReference<T> implements ResourceReference<T>, Serializable {
 

@@ -30,7 +30,7 @@ public interface BoundConversationContext extends ConversationContext, BoundCont
      * Destroy all conversations in the session.
      *
      * @param session the session for which to destroy all conversations
-     * @return is all conversations in the session destroyed.
+     * @return true if all conversations in the session have been destroyed
      */
     boolean destroy(Map<String, Object> session);
 

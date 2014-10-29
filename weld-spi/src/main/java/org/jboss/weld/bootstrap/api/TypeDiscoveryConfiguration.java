@@ -32,7 +32,7 @@ public interface TypeDiscoveryConfiguration {
      * Returns a set of bean defining annotations. This set is used in combination with bean defining annotations discovered by
      * the integrator for discovering beans. See {@link CDI11Bootstrap#startExtensions(Iterable)} for details.
      *
-     * @return
+     * @return the set of bean defining annotations
      */
     Set<Class<? extends Annotation>> getKnownBeanDefiningAnnotations();
 }

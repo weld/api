@@ -32,6 +32,8 @@
    </developers>
 
    <properties>
+      <javadoc.doclint>-Xdoclint</javadoc.doclint>
+
       <atinject.api.version>1</atinject.api.version>
       <cdi.api.version>1.2</cdi.api.version>
       <ejb.api.version>1.0.0.Alpha2</ejb.api.version>
