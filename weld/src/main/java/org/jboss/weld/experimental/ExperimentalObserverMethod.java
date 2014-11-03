@@ -22,7 +22,7 @@ import javax.enterprise.inject.spi.ObserverMethod;
  * This API is experimental and will change! All the methods declared by this interface are supposed to be moved to {@link ObserverMethod}.
  *
  * @author Jozef Hartinger
- * @see <a href="https://issues.jboss.org/browse/WELD-1728">WELD-1728</a>
+ * @seeIssue WELD-1728
  *
  * @param <T> the event type
  */
