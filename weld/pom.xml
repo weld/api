@@ -50,20 +50,6 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
             </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <version>2.10.1</version>
-                <configuration>
-                    <taglet>org.jboss.weld.taglets.SeeJiraTaglet</taglet>
-                    <tagletArtifact>
-                        <groupId>org.jboss.weld</groupId>
-                        <artifactId>weld-common-build-config</artifactId>
-                        <version>8-SNAPSHOT</version>
-                    </tagletArtifact>
-              </configuration>
-          </plugin>
         </plugins>
     </build>
 

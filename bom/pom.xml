@@ -33,6 +33,7 @@
 
    <properties>
       <javadoc.doclint>-Xdoclint</javadoc.doclint>
+      <build.config.version>8</build.config.version>
 
       <atinject.api.version>1</atinject.api.version>
       <cdi.api.version>1.2</cdi.api.version>
