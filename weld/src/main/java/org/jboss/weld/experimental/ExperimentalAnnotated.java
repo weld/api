@@ -46,7 +46,8 @@ public interface ExperimentalAnnotated extends Annotated {
      * @param annotationClass the Class object corresponding to the annotation type
      * @return all this element's annotations for the specified annotation type if associated with this element, else an array of length zero
      */
-    @SuppressWarnings("unchecked")
+    // https://github.com/checkstyle/checkstyle/issues/364
+    @SuppressWarnings({ "unchecked", "checkstyle:redundantmodifier" })
     default <T extends Annotation> Set<T> getAnnotationsByType(Class<T> annotationClass) {
         Objects.requireNonNull(annotationClass, "annotationClass");
         // first, delegate to getAnnotation()
