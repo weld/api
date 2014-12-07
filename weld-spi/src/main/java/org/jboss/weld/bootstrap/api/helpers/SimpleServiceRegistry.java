@@ -21,8 +21,9 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.Set;
 import java.util.Map.Entry;
+import java.util.Optional;
+import java.util.Set;
 
 import org.jboss.weld.bootstrap.api.BootstrapService;
 import org.jboss.weld.bootstrap.api.Service;
@@ -69,6 +70,11 @@ public class SimpleServiceRegistry implements ServiceRegistry {
     @SuppressWarnings("unchecked")
     public <S extends Service> S get(Class<S> type) {
         return (S) services.get(type);
+    }
+
+    @Override
+    public <S extends Service> Optional<S> getOptional(Class<S> type) {
+        return Optional.ofNullable(get(type));
     }
 
     public <S extends Service> boolean contains(Class<S> type) {
@@ -135,5 +141,4 @@ public class SimpleServiceRegistry implements ServiceRegistry {
         }
 
     }
-
 }

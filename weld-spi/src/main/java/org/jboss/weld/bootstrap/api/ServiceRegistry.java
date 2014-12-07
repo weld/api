@@ -18,6 +18,7 @@ package org.jboss.weld.bootstrap.api;
 
 import java.util.Collection;
 import java.util.Map.Entry;
+import java.util.Optional;
 import java.util.Set;
 
 /**
@@ -56,6 +57,15 @@ public interface ServiceRegistry extends Iterable<Service> {
      * @return the service implementation, or null if none is registered
      */
     <S extends Service> S get(Class<S> type);
+
+    /**
+     * Retrieve a service implementation wrapped in {@link Optional}.
+     *
+     * @param <S> the service type
+     * @param type the service type
+     * @return the service implementation wrapped within {@link Optional}
+     */
+    <S extends Service> Optional<S> getOptional(Class<S> type);
 
     /**
      * Check if a service is registered

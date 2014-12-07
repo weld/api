@@ -18,8 +18,9 @@ package org.jboss.weld.bootstrap.api.helpers;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.Set;
 import java.util.Map.Entry;
+import java.util.Optional;
+import java.util.Set;
 
 import org.jboss.weld.bootstrap.api.Service;
 import org.jboss.weld.bootstrap.api.ServiceRegistry;
@@ -38,6 +39,11 @@ public abstract class ForwardingServiceRegistry implements ServiceRegistry {
 
     public <S extends Service> S get(Class<S> type) {
         return delegate().get(type);
+    }
+
+    @Override
+    public <S extends Service> Optional<S> getOptional(Class<S> type) {
+        return delegate().getOptional(type);
     }
 
     public Iterator<Service> iterator() {
