@@ -14,18 +14,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.jboss.weld.bootstrap.spi;
+package org.jboss.weld.configuration.spi;
 
 import java.util.Map;
+
+import org.jboss.weld.bootstrap.api.Service;
 
 /**
  * An integrator may provide a map of configuration properties. This map is considered the source with the lowest priority (i.e. it may be overriden by other
  * sources such as system properties). The supported keys are declared in the documentation. Entries with unsupported keys are ignored. Invalid property value
  * is a deployment problem - initialization will be aborted by the container.
  *
+ * @seeIssue WELD-1791
  * @author Martin Kouba
  */
-public interface ExternalConfiguration extends BootstrapConfiguration {
+public interface ExternalConfiguration extends Service {
 
     /**
      * @return the map of configuration properties
