@@ -16,11 +16,13 @@
  */
 package org.jboss.weld.experimental;
 
+import java.lang.annotation.Annotation;
 import java.util.concurrent.CompletionStage;
 import java.util.concurrent.Executor;
 
 import javax.enterprise.event.Event;
 import javax.enterprise.event.TransactionPhase;
+import javax.enterprise.util.TypeLiteral;
 
 /**
  * This API is experimental and will change! All the methods declared by this interface are supposed to be moved to {@link Event}.
@@ -69,4 +71,9 @@ public interface ExperimentalEvent<T> extends Event<T> {
      * @return completion stage which allows additional actions to be bound to the asynchronous event dispatch
      */
     <U extends T> CompletionStage<U> fireAsync(U event, Executor executor);
+
+    // override return type
+    ExperimentalEvent<T> select(Annotation... qualifiers);
+    <U extends T> ExperimentalEvent<U> select(Class<U> subtype, Annotation... qualifiers);
+    <U extends T> ExperimentalEvent<U> select(TypeLiteral<U> subtype, Annotation... qualifiers);
 }
