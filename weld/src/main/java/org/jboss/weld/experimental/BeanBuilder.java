@@ -136,6 +136,14 @@ public interface BeanBuilder<T> {
     BeanBuilder<T> name(String name);
 
     /**
+    * The bean is an alternative.
+    *
+    * @return self
+    * @see #alternative(boolean)
+    */
+   BeanBuilder<T> alternative();
+
+    /**
      *
      * @param value
      * @return self
