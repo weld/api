@@ -29,6 +29,7 @@ import javax.enterprise.inject.Default;
 import javax.enterprise.inject.Instance;
 import javax.enterprise.inject.spi.AnnotatedType;
 import javax.enterprise.inject.spi.Bean;
+import javax.enterprise.inject.spi.BeanAttributes;
 import javax.enterprise.inject.spi.InjectionPoint;
 import javax.enterprise.inject.spi.PassivationCapable;
 
@@ -48,6 +49,14 @@ public interface BeanBuilder<T> {
      * @return self
      */
     BeanBuilder<T> read(AnnotatedType<T> type);
+
+    /**
+     * Read the information from the given bean attributes.
+     *
+     * @param beanAttributes
+     * @return self
+     */
+    BeanBuilder<T> read(BeanAttributes<T> beanAttributes);
 
     /**
      * If not set, the extension class is used.
