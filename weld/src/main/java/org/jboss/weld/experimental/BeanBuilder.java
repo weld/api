@@ -48,7 +48,7 @@ public interface BeanBuilder<T> {
      * @param type
      * @return self
      */
-    BeanBuilder<T> read(AnnotatedType<T> type);
+    <U extends T> BeanBuilder<U> read(AnnotatedType<U> type);
 
     /**
      * Read the information from the given bean attributes.
@@ -56,7 +56,7 @@ public interface BeanBuilder<T> {
      * @param beanAttributes
      * @return self
      */
-    BeanBuilder<T> read(BeanAttributes<T> beanAttributes);
+    BeanBuilder<T> read(BeanAttributes<?> beanAttributes);
 
     /**
      * If not set, the extension class is used.
@@ -193,7 +193,7 @@ public interface BeanBuilder<T> {
      * @param callback
      * @return self
      */
-    BeanBuilder<T> createWith(Function<CreationalContext<T>, T> callback);
+    <U extends T> BeanBuilder<U> createWith(Function<CreationalContext<U>, U> callback);
 
     /**
      * If no destroy callback is specified, a NOOP dispose callback is automatically set.
@@ -201,7 +201,7 @@ public interface BeanBuilder<T> {
      * @param callback
      * @return self
      */
-    BeanBuilder<T> produceWith(Supplier<T> callback);
+    <U extends T> BeanBuilder<U> produceWith(Supplier<U> callback);
 
     /**
      * If no destroy callback is specified, a NOOP dispose callback is automatically set.
@@ -209,7 +209,7 @@ public interface BeanBuilder<T> {
      * @param callback
      * @return self
      */
-    BeanBuilder<T> produceWith(Function<Instance<Object>, T> callback);
+    <U extends T> BeanBuilder<U> produceWith(Function<Instance<Object>, U> callback);
 
     /**
      *
