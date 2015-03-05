@@ -7,7 +7,7 @@
    <parent>
       <groupId>org.jboss.weld</groupId>
       <artifactId>weld-parent</artifactId>
-      <version>31</version>
+      <version>32</version>
    </parent>
 
    <name>Weld APIs BOM</name>
@@ -33,7 +33,7 @@
 
    <properties>
       <javadoc.doclint>-Xdoclint</javadoc.doclint>
-      <build.config.version>8</build.config.version>
+      <build.config.version>9</build.config.version>
 
       <atinject.api.version>1</atinject.api.version>
       <cdi.api.version>1.2</cdi.api.version>
