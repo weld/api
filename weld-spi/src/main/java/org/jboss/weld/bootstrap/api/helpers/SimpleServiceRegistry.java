@@ -141,4 +141,13 @@ public class SimpleServiceRegistry implements ServiceRegistry {
         }
 
     }
+
+    @Override
+    public <S extends Service> S getRequired(Class<S> type) {
+        final S result = get(type);
+        if (result == null) {
+            throw new IllegalStateException("Required service " + type.getName() + " not available.");
+        }
+        return result;
+    }
 }

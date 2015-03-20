@@ -68,6 +68,16 @@ public interface ServiceRegistry extends Iterable<Service> {
     <S extends Service> Optional<S> getOptional(Class<S> type);
 
     /**
+     * Retrieve a required service implementation. Throws an exception if the service is not available
+     *
+     * @param <S> the service type
+     * @param type the service type
+     * @return the service implementation
+     * @throws IllegalStateException if the service is not available
+     */
+    <S extends Service> S getRequired(Class<S> type);
+
+    /**
      * Check if a service is registered
      *
      * @param <S> the service type
