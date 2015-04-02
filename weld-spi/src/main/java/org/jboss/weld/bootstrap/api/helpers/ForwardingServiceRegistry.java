@@ -71,4 +71,9 @@ public abstract class ForwardingServiceRegistry implements ServiceRegistry {
         return delegate().getRequired(type);
     }
 
+    @Override
+    public <S extends Service> S addIfAbsent(Class<S> type, S service) {
+        return delegate().addIfAbsent(type, service);
+    }
+
 }

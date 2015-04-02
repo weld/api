@@ -150,4 +150,14 @@ public class SimpleServiceRegistry implements ServiceRegistry {
         }
         return result;
     }
+
+    @Override
+    public <S extends Service> S addIfAbsent(Class<S> type, S service) {
+        @SuppressWarnings("unchecked")
+        final S previous = (S) services.putIfAbsent(type, service);
+        if (previous == null && service instanceof BootstrapService) {
+            bootstrapServices.add((BootstrapService) service);
+        }
+        return previous;
+    }
 }
