@@ -66,4 +66,9 @@ public abstract class ForwardingServiceRegistry implements ServiceRegistry {
         delegate().cleanupAfterBoot();
     }
 
+    @Override
+    public <S extends Service> S getRequired(Class<S> type) {
+        return delegate().getRequired(type);
+    }
+
 }
