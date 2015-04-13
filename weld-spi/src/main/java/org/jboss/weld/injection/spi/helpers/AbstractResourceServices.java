@@ -21,6 +21,8 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 import javax.annotation.Resource;
+import javax.enterprise.inject.spi.Annotated;
+import javax.enterprise.inject.spi.AnnotatedParameter;
 import javax.enterprise.inject.spi.InjectionPoint;
 import javax.naming.Context;
 import javax.naming.NamingException;
@@ -37,7 +39,7 @@ public abstract class AbstractResourceServices implements Service, ResourceInjec
     private static final int GET_PREFIX_LENGTH = "get".length();
 
     public Object resolveResource(InjectionPoint injectionPoint) {
-        if (!injectionPoint.getAnnotated().isAnnotationPresent(Resource.class)) {
+        if (getResourceAnnotation(injectionPoint) == null) {
             throw new IllegalArgumentException("No @Resource annotation found on injection point " + injectionPoint);
         }
         if (injectionPoint.getMember() instanceof Method
@@ -80,7 +82,7 @@ public abstract class AbstractResourceServices implements Service, ResourceInjec
     protected abstract Context getContext();
 
     protected String getResourceName(InjectionPoint injectionPoint) {
-        Resource resource = injectionPoint.getAnnotated().getAnnotation(Resource.class);
+        Resource resource = getResourceAnnotation(injectionPoint);
         String mappedName = resource.mappedName();
         if (!mappedName.equals("")) {
             return mappedName;
@@ -142,6 +144,14 @@ public abstract class AbstractResourceServices implements Service, ResourceInjec
                 return new SimpleResourceReference<Object>(resolveResource(jndiName, mappedName));
             }
         };
+    }
+
+    protected Resource getResourceAnnotation(InjectionPoint injectionPoint) {
+        Annotated annotated = injectionPoint.getAnnotated();
+        if (annotated instanceof AnnotatedParameter<?>) {
+            annotated = ((AnnotatedParameter<?>) annotated).getDeclaringCallable();
+        }
+        return annotated.getAnnotation(Resource.class);
     }
 
     public void cleanup() {
