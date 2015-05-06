@@ -34,7 +34,9 @@ import javax.enterprise.inject.spi.InjectionPoint;
 import javax.enterprise.inject.spi.PassivationCapable;
 
 /**
- * This API is experimental and will change!
+ * This API is experimental and may be subject of incompatible changes.
+ *
+ * TODO Clarify reusability
  *
  * @seeIssue WELD-1795
  * @author Martin Kouba
@@ -43,7 +45,8 @@ import javax.enterprise.inject.spi.PassivationCapable;
 public interface BeanBuilder<T> {
 
     /**
-     * Read the information from the given annotated type.
+     * Read the information from the given annotated type. This operation is deferred until {@link #build()} is invoked. At that time, the information is merged
+     * with existing values. Values set manually have higher priority than read values.
      *
      * @param type
      * @return self
@@ -51,7 +54,7 @@ public interface BeanBuilder<T> {
     <U extends T> BeanBuilder<U> read(AnnotatedType<U> type);
 
     /**
-     * Read the information from the given bean attributes.
+     * Read the information from the given bean attributes. All relevant information is overwritten.
      *
      * @param beanAttributes
      * @return self
@@ -78,6 +81,20 @@ public interface BeanBuilder<T> {
      * @param types
      * @return self
      */
+    BeanBuilder<T> addTypes(Type... types);
+
+    /**
+     *
+     * @param types
+     * @return self
+     */
+    BeanBuilder<T> addTypes(Set<Type> types);
+
+    /**
+     *
+     * @param types
+     * @return self
+     */
     BeanBuilder<T> types(Type... types);
 
     /**
@@ -95,7 +112,7 @@ public interface BeanBuilder<T> {
     BeanBuilder<T> scope(Class<? extends Annotation> scope);
 
     /**
-     * If the set contains {@link Default}, it's automatically removed.
+     * If the builder declares the {@link Default} qualifier, it's automatically removed.
      *
      * @param qualifier
      * @return self
@@ -103,6 +120,23 @@ public interface BeanBuilder<T> {
     BeanBuilder<T> addQualifier(Annotation qualifier);
 
     /**
+     * If the builder declares the {@link Default} qualifier, it's automatically removed.
+     *
+     * @param qualifiers
+     * @return self
+     */
+    BeanBuilder<T> addQualifiers(Annotation... qualifiers);
+
+    /**
+     * If the builder declares the {@link Default} qualifier, it's automatically removed.
+     *
+     * @param qualifiers
+     * @return self
+     */
+    BeanBuilder<T> addQualifiers(Set<Annotation> qualifiers);
+
+    /**
+     * Replace all qualifiers.
      *
      * @param qualifiers
      * @return self
@@ -110,6 +144,7 @@ public interface BeanBuilder<T> {
     BeanBuilder<T> qualifiers(Annotation... qualifiers);
 
     /**
+     * Replace all qualifiers.
      *
      * @param qualifiers
      * @return self
@@ -128,7 +163,7 @@ public interface BeanBuilder<T> {
      * @param stereotypes
      * @return self
      */
-    BeanBuilder<T> stereotypes(@SuppressWarnings("unchecked") Class<? extends Annotation>... stereotypes);
+    BeanBuilder<T> addStereotypes(Set<Class<? extends Annotation>> stereotypes);
 
     /**
      *
@@ -145,12 +180,12 @@ public interface BeanBuilder<T> {
     BeanBuilder<T> name(String name);
 
     /**
-    * The bean is an alternative.
-    *
-    * @return self
-    * @see #alternative(boolean)
-    */
-   BeanBuilder<T> alternative();
+     * The bean is an alternative.
+     *
+     * @return self
+     * @see #alternative(boolean)
+     */
+    BeanBuilder<T> alternative();
 
     /**
      *
@@ -165,6 +200,20 @@ public interface BeanBuilder<T> {
      * @return self
      */
     BeanBuilder<T> addInjectionPoint(InjectionPoint injectionPoint);
+
+    /**
+     *
+     * @param injectionPoints
+     * @return self
+     */
+    BeanBuilder<T> addInjectionPoints(InjectionPoint... injectionPoints);
+
+    /**
+     *
+     * @param injectionPoints
+     * @return
+     */
+    BeanBuilder<T> addInjectionPoints(Set<InjectionPoint> injectionPoints);
 
     /**
      *
