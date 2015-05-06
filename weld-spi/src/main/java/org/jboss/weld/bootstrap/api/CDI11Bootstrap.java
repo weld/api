@@ -137,7 +137,7 @@ public interface CDI11Bootstrap extends Bootstrap {
      *
      * <p>
      * For each explicit bean archive the integrator creates an instance of {@link BeanDeploymentArchive} representing this
-     * archive. The {@link BeanDeploymentArchive#getBeanClasses()} method returns a collection of all types present within the
+     * archive. The {@link BeanDeploymentArchive#getBeanClasses()} or {@link BeanDeploymentArchive#getLoadedBeanClasses()} method returns a collection of all types present within the
      * archive. Filtering rules defined in {@link BeansXml#getScanning()} are not required to be applied by the integrator and
      * are applied later on by Weld. The {@link BeanDeploymentArchive#getEjbs()} method returns a collection of EJB descriptors
      * for EJBs present in the archive.
@@ -145,7 +145,7 @@ public interface CDI11Bootstrap extends Bootstrap {
      *
      * <p>
      * For each implicit bean archive the integrator creates an instance of {@link BeanDeploymentArchive} representing this
-     * archive. The {@link BeanDeploymentArchive#getBeanClasses()} of the bean archive returns all the types found in the
+     * archive. The {@link BeanDeploymentArchive#getBeanClasses()} or {@link BeanDeploymentArchive#getLoadedBeanClasses()} method of the bean archive returns all the types found in the
      * archive which are annotated with a bean defining annotations or are Session bean definitions. Filtering rules (
      * {@link BeansXml#getScanning()}) are not required to be applied by the integrator. The
      * {@link BeanDeploymentArchive#getEjbs()} method returns a collection of EJB descriptors for Session beans present in the

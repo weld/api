@@ -18,6 +18,7 @@ package org.jboss.weld.bootstrap.spi.helpers;
 
 import java.util.Collection;
 
+import org.jboss.weld.bootstrap.api.ServiceRegistry;
 import org.jboss.weld.bootstrap.spi.BeanDeploymentArchive;
 import org.jboss.weld.bootstrap.spi.BeansXml;
 import org.jboss.weld.ejb.spi.EjbDescriptor;
@@ -32,6 +33,21 @@ public abstract class ForwardingBeanDeploymentArchive implements BeanDeploymentA
 
     public Collection<String> getBeanClasses() {
         return delegate().getBeanClasses();
+    }
+
+    @Override
+    public Collection<Class<?>> getLoadedBeanClasses() {
+        return delegate().getLoadedBeanClasses();
+    }
+
+    @Override
+    public ServiceRegistry getServices() {
+        return delegate().getServices();
+    }
+
+    @Override
+    public String getId() {
+        return delegate().getId();
     }
 
     public Collection<BeanDeploymentArchive> getBeanDeploymentArchives() {
