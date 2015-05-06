@@ -17,6 +17,7 @@
 package org.jboss.weld.bootstrap.spi;
 
 import java.util.Collection;
+import java.util.Collections;
 
 import org.jboss.weld.bootstrap.api.ServiceRegistry;
 import org.jboss.weld.ejb.spi.EjbDescriptor;
@@ -60,6 +61,18 @@ public interface BeanDeploymentArchive {
      * @return the classes, empty if no classes are present
      */
     Collection<String> getBeanClasses();
+
+    /**
+     * Get all pre-loaded classes for the bean deployment archive.
+     *
+     * Weld checks if there is an overlap of FQCNs between the classes returned from this method and class names returned from {@link #getBeanClasses()}.
+     * If two names overlap the class object returned from this method is used.
+     *
+     * @return the classes, empty if no pre-loaded classes are available
+     */
+    default Collection<Class<?>> getLoadedBeanClasses() {
+        return Collections.emptySet();
+    }
 
     /**
      * Get any deployment descriptors in the bean deployment archive.
