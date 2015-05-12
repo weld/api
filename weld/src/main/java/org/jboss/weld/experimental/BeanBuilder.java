@@ -278,6 +278,14 @@ public interface BeanBuilder<T> {
     <U extends T> BeanBuilder<U> produceWith(Function<Instance<Object>, U> callback);
 
     /**
+     * A shortcut for <code>produceWith(() -> existing)</code> where <code>existing</code> represents an instance whose lifecycle is not managed by CDI.
+     *
+     * @param instance
+     * @return self
+     */
+    <U extends T> BeanBuilder<U> producing(U instance);
+
+    /**
      *
      * @param callback
      * @return self
