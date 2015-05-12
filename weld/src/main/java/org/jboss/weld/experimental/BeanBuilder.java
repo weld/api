@@ -32,6 +32,7 @@ import javax.enterprise.inject.spi.Bean;
 import javax.enterprise.inject.spi.BeanAttributes;
 import javax.enterprise.inject.spi.InjectionPoint;
 import javax.enterprise.inject.spi.PassivationCapable;
+import javax.enterprise.util.TypeLiteral;
 
 /**
  * This API is experimental and may be subject of incompatible changes.
@@ -78,6 +79,13 @@ public interface BeanBuilder<T> {
 
     /**
      *
+     * @param typeLiteral
+     * @return self
+     */
+    BeanBuilder<T> addType(TypeLiteral<?> typeLiteral);
+
+    /**
+     *
      * @param types
      * @return self
      */
@@ -89,6 +97,15 @@ public interface BeanBuilder<T> {
      * @return self
      */
     BeanBuilder<T> addTypes(Set<Type> types);
+
+    /**
+     * Adds an unrestricted set of bean types for the given type as if it represented a bean class of a managed bean. Illegal bean types are omitted. See also
+     * <a href="http://docs.jboss.org/cdi/spec/1.2/cdi-spec.html#managed_bean_types">3.1.2. Bean types of a managed bean</a>.
+     *
+     * @param type
+     * @return self
+     */
+    BeanBuilder<T> addTransitiveTypeClosure(Type type);
 
     /**
      *
