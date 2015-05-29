@@ -43,7 +43,7 @@
       <jpa.api.version>1.0.2</jpa.api.version>
       <validation.api.version>1.0.0.GA</validation.api.version>
       <jboss.spec.annotation.version>1.0.0.Alpha1</jboss.spec.annotation.version>
-      <jboss.spec.servlet.version>1.0.2.Final</jboss.spec.servlet.version>
+      <jboss.spec.servlet.version>1.0.0.Final</jboss.spec.servlet.version>
       <jboss.spec.jaxrs.version>1.0.0.Final</jboss.spec.jaxrs.version>
       <jta.api.version>1.1</jta.api.version>
       <interceptor.api.version>1.0.0.Alpha3</interceptor.api.version>
@@ -72,7 +72,7 @@
 
          <dependency>
             <groupId>org.jboss.spec.javax.servlet</groupId>
-            <artifactId>jboss-servlet-api_3.0_spec</artifactId>
+            <artifactId>jboss-servlet-api_3.1_spec</artifactId>
             <version>${jboss.spec.servlet.version}</version>
          </dependency>
 
