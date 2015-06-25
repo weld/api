@@ -28,6 +28,7 @@ import org.jboss.weld.bootstrap.api.Service;
  * {@link SecurityServices} is a per-deployment service.
  *
  * @author pmuir
+ * @author Jozef Hartinger
  *
  */
 public interface SecurityServices extends Service {
@@ -38,5 +39,18 @@ public interface SecurityServices extends Service {
      * @return the Principal representing the current caller identity
      */
     Principal getPrincipal();
+
+    /**
+     * Obtain the security context associated with the current thread.
+     * This method is used by Weld to propagate the security context of the current thread
+     * to different threads.
+     *
+     * TODO: this method is temporarily default with noop fallback implementation to make migration easier. Make the implementation required later.
+     *
+     * @return the security context associated with the current thread
+     */
+    default SecurityContext getSecurityContext() {
+        return SecurityContext.NOOP_SECURITY_CONTEXT;
+    }
 
 }
