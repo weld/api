@@ -1,6 +1,6 @@
 /*
  * JBoss, Home of Professional Open Source
- * Copyright 2010, Red Hat, Inc., and individual contributors
+ * Copyright 2015, Red Hat, Inc., and individual contributors
  * by the @authors tag. See the copyright.txt in the distribution for a
  * full listing of individual contributors.
  *
@@ -14,32 +14,28 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.jboss.weld.bootstrap.api.test;
-
-import java.security.Principal;
-
-import org.jboss.weld.security.spi.SecurityContext;
-import org.jboss.weld.security.spi.SecurityServices;
+package org.jboss.weld.security.spi;
 
 /**
- * @author pmuir
+ * Encapsulation of security information that can be associated with a thread.
+ *
+ * @author Jozef Hartinger
  *
  */
-public class MockSecurityServices extends MockService implements SecurityServices
-{
+public interface SecurityContext extends AutoCloseable {
 
-   /* (non-Javadoc)
-    * @see org.jboss.weld.security.spi.SecurityServices#getPrincipal()
-    */
-   public Principal getPrincipal()
-   {
-      // TODO Auto-generated method stub
-      return null;
-   }
+    /**
+     * Associate this security context with the current thread.
+     */
+    void associate();
 
-   @Override
-   public SecurityContext getSecurityContext() {
-      return null;
-   }
+    /**
+     * Clear the security context associated with the current thread.
+     */
+    void dissociate();
 
+    /**
+     * Signals to the integrator that this instance will no longer be used by Weld.
+     */
+    void close();
 }
