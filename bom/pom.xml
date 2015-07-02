@@ -38,7 +38,7 @@
       <build.config.version>9</build.config.version>
 
       <atinject.api.version>1</atinject.api.version>
-      <cdi.api.version>1.2</cdi.api.version>
+      <cdi.api.version>2.0-EDR1</cdi.api.version>
       <ejb.api.version>1.0.0.Final</ejb.api.version>
       <jpa.api.version>1.0.0.Final</jpa.api.version>
       <validation.api.version>1.1.0.Final</validation.api.version>
