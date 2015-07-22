@@ -41,10 +41,4 @@ public interface ExperimentalProcessObserverMethod<T, X> extends ProcessObserver
      * Forces the container to ignore the observer method.
      */
     void veto();
-
-    /**
-     * Temporarilly overriden return type
-     */
-    @Override
-    ExperimentalObserverMethod<T> getObserverMethod();
 }
