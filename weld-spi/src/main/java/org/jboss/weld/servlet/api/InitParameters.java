@@ -32,4 +32,9 @@ public interface InitParameters {
      * Enable / disable lazy initialization of the conversation context.
      */
     String CONVERSATION_CONTEXT_LAZY_PARAM = "org.jboss.weld.context.conversation.lazy";
+
+    /**
+     * Enable / disable lazy loading of attributes from backing store (e.g. HttpSession) for some of the contexts.
+     */
+    String CONTEXT_ATTRIBUTES_LAZY_LOADING_PARAM = "org.jboss.weld.context.attributes.lazy.loading";
 }
