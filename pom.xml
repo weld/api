@@ -7,9 +7,9 @@
    <parent>
       <groupId>org.jboss.weld</groupId>
       <artifactId>weld-parent</artifactId>
-      <version>31</version>
+      <version>33</version>
    </parent>
-   
+
    <prerequisites>
       <maven>3.0</maven>
    </prerequisites>

@@ -7,7 +7,7 @@
    <parent>
       <groupId>org.jboss.weld</groupId>
       <artifactId>weld-parent</artifactId>
-      <version>32</version>
+      <version>33</version>
    </parent>
 
    <name>Weld APIs BOM</name>
@@ -99,7 +99,7 @@
             <artifactId>jboss-interceptors-api_1.2_spec</artifactId>
             <version>${interceptor.api.version}</version>
          </dependency>
-         
+
          <dependency>
              <groupId>org.jboss.spec.javax.ws.rs</groupId>
              <artifactId>jboss-jaxrs-api_2.0_spec</artifactId>
