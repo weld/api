@@ -24,7 +24,6 @@ import org.jboss.weld.injection.spi.InjectionServices;
 import org.jboss.weld.injection.spi.JpaInjectionServices;
 import org.jboss.weld.injection.spi.ResourceInjectionServices;
 import org.jboss.weld.resources.spi.ResourceLoader;
-import org.jboss.weld.resources.spi.ScheduledExecutorServiceFactory;
 import org.jboss.weld.security.spi.SecurityServices;
 import org.jboss.weld.transaction.spi.TransactionServices;
 
@@ -44,7 +43,6 @@ public enum Environments implements Environment {
      */
     EE_INJECT(new EnvironmentBuilder().addRequiredDeploymentService(TransactionServices.class)
             .addRequiredDeploymentService(SecurityServices.class)
-            .addRequiredDeploymentService(ScheduledExecutorServiceFactory.class)
             /*
              * EjbServices is a required bean deployment archive service in this environment.
              * For backwards compatibility with older integrators that register EjbServices
@@ -67,7 +65,6 @@ public enum Environments implements Environment {
      */
     EE(new EnvironmentBuilder().addRequiredDeploymentService(TransactionServices.class)
             .addRequiredDeploymentService(SecurityServices.class)
-            .addRequiredDeploymentService(ScheduledExecutorServiceFactory.class)
             /*
              * EjbServices is a required bean deployment archive service in this environment.
              * For backwards compatibility with older integrators that register EjbServices
@@ -82,13 +79,13 @@ public enum Environments implements Environment {
     /**
      * Servlet container such as Tomcat
      */
-    SERVLET(new EnvironmentBuilder().addRequiredDeploymentService(ScheduledExecutorServiceFactory.class)
+    SERVLET(new EnvironmentBuilder()
             .addRequiredBeanDeploymentArchiveService(ResourceLoader.class)),
 
     /**
      * Java SE
      */
-    SE(new EnvironmentBuilder().addRequiredDeploymentService(ScheduledExecutorServiceFactory.class)
+    SE(new EnvironmentBuilder()
             .addRequiredBeanDeploymentArchiveService(ResourceLoader.class));
 
     private final Set<Class<? extends Service>> requiredDeploymentServices;
