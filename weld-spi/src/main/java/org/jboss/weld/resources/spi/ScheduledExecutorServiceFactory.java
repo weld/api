@@ -20,6 +20,11 @@ import java.util.concurrent.ScheduledExecutorService;
 
 import org.jboss.weld.bootstrap.api.Service;
 
+/**
+ *
+ * @deprecated This service is deprecated as it seems it was never used in the Weld codebase.
+ */
+@Deprecated
 public interface ScheduledExecutorServiceFactory extends Service {
 
     ScheduledExecutorService get();
