@@ -22,7 +22,7 @@ import org.jboss.weld.bootstrap.api.Service;
 
 /**
  *
- * @deprecated This service is deprecated as it seems it was never used in the Weld codebase.
+ * @deprecated This service has not been used by Weld internals at least since version 1.1.0.Final.
  */
 @Deprecated
 public interface ScheduledExecutorServiceFactory extends Service {
