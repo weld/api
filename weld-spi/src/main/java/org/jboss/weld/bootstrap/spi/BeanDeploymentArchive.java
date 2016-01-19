@@ -84,6 +84,17 @@ public interface BeanDeploymentArchive {
     }
 
     /**
+     * If possible, return all the classes found in the archive. For explicit bean archive the result of this method should be the same as for
+     * {@link #getBeanClasses()}. For implicit bean archive this method should also return types which are neither annotated with bean defining annotations nor
+     * are Session bean definitions.
+     *
+     * @return all classes found in the bean deployment archive, empty if no classes are present
+     */
+    default Collection<String> getKnownClasses() {
+        return getBeanClasses();
+    }
+
+    /**
      * Get any deployment descriptors in the bean deployment archive.
      *
      * The container will return a a merged view of the beans.xml per bean deployment archive. This will normally represent a
