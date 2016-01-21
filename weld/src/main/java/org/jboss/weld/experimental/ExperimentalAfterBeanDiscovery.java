@@ -39,4 +39,16 @@ public interface ExperimentalAfterBeanDiscovery extends AfterBeanDiscovery {
      */
     <T> BeanBuilder<T> beanBuilder();
 
+    /**
+     *
+     * @return a builder for a custom interceptor
+     */
+    <T> InterceptorBuilder addInterceptor();
+
+    /**
+     *
+     * @return a builder for interceptor
+     */
+    <T> InterceptorBuilder interceptorBuilder();
+
 }
