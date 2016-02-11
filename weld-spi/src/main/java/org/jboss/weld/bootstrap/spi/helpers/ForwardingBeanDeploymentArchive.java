@@ -36,6 +36,11 @@ public abstract class ForwardingBeanDeploymentArchive implements BeanDeploymentA
     }
 
     @Override
+    public Collection<String> getKnownClasses() {
+        return delegate().getKnownClasses();
+    }
+
+    @Override
     public Collection<Class<?>> getLoadedBeanClasses() {
         return delegate().getLoadedBeanClasses();
     }
