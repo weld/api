@@ -1,49 +1,229 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-   <modelVersion>4.0.0</modelVersion>
-   <artifactId>weld-api-build-aggregator</artifactId>
-   <packaging>pom</packaging>
-   <version>3.0-SNAPSHOT</version>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>weld-api-parent</artifactId>
+    <packaging>pom</packaging>
+    <version>3.0-SNAPSHOT</version>
 
-   <parent>
-      <groupId>org.jboss.weld</groupId>
-      <artifactId>weld-parent</artifactId>
-      <version>33</version>
-   </parent>
+    <parent>
+        <groupId>org.jboss.weld</groupId>
+        <artifactId>weld-parent</artifactId>
+        <version>33</version>
+    </parent>
 
-   <prerequisites>
-      <maven>3.0</maven>
-   </prerequisites>
+    <prerequisites>
+        <maven>3.0</maven>
+    </prerequisites>
 
-   <name>Weld APIs Build Aggregator</name>
+    <name>Weld APIs Parent</name>
 
-   <!-- Minimal project metadata, for more see parent/pom.xml -->
-   <description>The build aggregator for Weld APIs, which takes care of calling the modules which make up Weld APIs</description>
+    <modules>
+        <module>bom</module>
+        <module>weld</module>
+        <module>weld-spi</module>
+    </modules>
+    
+    <!-- Full project metadata -->
+    <url>http://weld.cdi-spec.org</url>
+   
+    <description>
+        APIs for Weld, the reference implementation of Contexts and Dependency Injection for Java EE
+    </description>
 
-   <!-- SCM and Distribution management -->
-   <scm>
-      <connection>scm:git:git@github.com:weld/api.git</connection>
-      <developerConnection>scm:git:git@github.com:weld/api.git</developerConnection>
-      <url>scm:git:git@github.com:weld/api.git</url>
-     <tag>HEAD</tag>
-  </scm>
+    <ciManagement>
+        <system>Hudson</system>
+        <url>http://hudson.jboss.org</url>
+    </ciManagement>
 
-   <modules>
-      <module>bom</module>
-      <module>parent</module>
-      <module>weld</module>
-      <module>weld-spi</module>
-   </modules>
+    <issueManagement>
+        <system>JIRA</system>
+        <url>http://jira.jboss.org/browse/WELD</url>
+    </issueManagement>
+   
+    <inceptionYear>2008</inceptionYear>
 
-   <!-- Minimal build configuration -->
-   <build>
-      <plugins>
-         <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-deploy-plugin</artifactId>
-            <configuration>
-               <skip>true</skip>
-            </configuration>
-         </plugin>
-      </plugins>
-   </build>
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Pete Muir</name>
+            <id>pmuir</id>
+            <organization>Red Hat Inc.</organization>
+            <roles>
+                <role>Project Lead</role>
+            </roles>
+            <email>pmuir@redhat.com</email>
+        </developer>
+
+        <developer>
+            <name>Shane Bryzak</name>
+            <organization>Red Hat Inc.</organization>
+        </developer>
+
+        <developer>
+            <name>David Allen</name>
+        </developer>
+      
+        <developer>
+            <name>Nicklas Karlsson</name>
+        </developer>
+
+        <developer>
+            <name>Jozef Hartinger</name>
+            <id>jharting</id>
+            <organization>Red Hat Inc.</organization>
+            <roles>
+                <role>Project Lead</role>
+            </roles>
+            <email>jharting@redhat.com</email>
+        </developer>
+    </developers>
+
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <javadoc.doclint>-Xdoclint</javadoc.doclint>
+        <build.config.version>9</build.config.version>
+
+        <atinject.api.version>1</atinject.api.version>
+        <cdi.api.version>2.0-EDR1</cdi.api.version>
+        <ejb.api.version>1.0.0.Final</ejb.api.version>
+        <jpa.api.version>1.0.0.Final</jpa.api.version>
+        <validation.api.version>1.1.0.Final</validation.api.version>
+        <jboss.spec.annotation.version>1.0.0.Final</jboss.spec.annotation.version>
+        <jboss.spec.servlet.version>1.0.0.Final</jboss.spec.servlet.version>
+        <jboss.spec.jaxrs.version>1.0.0.Final</jboss.spec.jaxrs.version>
+        <jta.api.version>1.0.0.Final</jta.api.version>
+        <interceptor.api.version>1.0.0.Final</interceptor.api.version>
+    </properties>
+   
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.hibernate.javax.persistence</groupId>
+                <artifactId>hibernate-jpa-2.1-api</artifactId>
+                <version>${jpa.api.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>javax.validation</groupId>
+                <artifactId>validation-api</artifactId>
+                <version>${validation.api.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>javax.inject</groupId>
+                <artifactId>javax.inject</artifactId>
+                <version>${atinject.api.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss.spec.javax.servlet</groupId>
+                <artifactId>jboss-servlet-api_3.1_spec</artifactId>
+                <version>${jboss.spec.servlet.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss.spec.javax.transaction</groupId>
+                <artifactId>jboss-transaction-api_1.2_spec</artifactId>
+                <version>${jta.api.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss.spec.javax.ejb</groupId>
+                <artifactId>jboss-ejb-api_3.2_spec</artifactId>
+                <version>${ejb.api.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>*</artifactId>
+                        <groupId>*</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss.spec.javax.interceptor</groupId>
+                <artifactId>jboss-interceptors-api_1.2_spec</artifactId>
+                <version>${interceptor.api.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss.spec.javax.ws.rs</groupId>
+                <artifactId>jboss-jaxrs-api_2.0_spec</artifactId>
+                <version>${jboss.spec.jaxrs.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss.spec.javax.annotation</groupId>
+                <artifactId>jboss-annotations-api_1.2_spec</artifactId>
+                <version>${jboss.spec.annotation.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>javax.enterprise</groupId>
+                <artifactId>cdi-api</artifactId>
+                <version>${cdi.api.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>javax.el</groupId>
+                        <artifactId>javax.el-api</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>javax.interceptor</groupId>
+                        <artifactId>javax.interceptor-api</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            
+            <!-- Configure non-API dependencies (e.g. testing)-->
+            <dependency>
+                <groupId>org.testng</groupId>
+                <artifactId>testng</artifactId>
+                <version>5.10</version>
+                <classifier>jdk15</classifier>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <!-- Build configuration -->
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <configuration>
+                        <taglet>org.jboss.weld.taglets.SeeIssueTaglet</taglet>
+                        <tagletArtifact>
+                            <groupId>org.jboss.weld</groupId>
+                            <artifactId>weld-common-build-config</artifactId>
+                            <version>${build.config.version}</version>
+                        </tagletArtifact>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    
+    <!-- SCM and Distribution management -->
+    <scm>
+        <connection>scm:git:git@github.com:weld/api.git</connection>
+        <developerConnection>scm:git:git@github.com:weld/api.git</developerConnection>
+        <url>scm:git:git@github.com:weld/api.git</url>
+        <tag>HEAD</tag>
+    </scm>
 </project>
