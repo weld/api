@@ -21,10 +21,10 @@
         <module>weld</module>
         <module>weld-spi</module>
     </modules>
-    
+
     <!-- Full project metadata -->
     <url>http://weld.cdi-spec.org</url>
-   
+
     <description>
         APIs for Weld, the reference implementation of Contexts and Dependency Injection for Java EE
     </description>
@@ -38,7 +38,7 @@
         <system>JIRA</system>
         <url>http://jira.jboss.org/browse/WELD</url>
     </issueManagement>
-   
+
     <inceptionYear>2008</inceptionYear>
 
     <licenses>
@@ -67,7 +67,7 @@
         <developer>
             <name>David Allen</name>
         </developer>
-      
+
         <developer>
             <name>Nicklas Karlsson</name>
         </developer>
@@ -100,7 +100,7 @@
         <jta.api.version>1.0.0.Final</jta.api.version>
         <interceptor.api.version>1.0.0.Final</interceptor.api.version>
     </properties>
-   
+
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -178,7 +178,7 @@
                     </exclusion>
                 </exclusions>
             </dependency>
-            
+
             <!-- Configure non-API dependencies (e.g. testing)-->
             <dependency>
                 <groupId>org.testng</groupId>
@@ -207,18 +207,8 @@
                 </plugin>
             </plugins>
         </pluginManagement>
-        
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-deploy-plugin</artifactId>
-                <configuration>
-                    <skip>true</skip>
-                </configuration>
-            </plugin>
-        </plugins>
     </build>
-    
+
     <!-- SCM and Distribution management -->
     <scm>
         <connection>scm:git:git@github.com:weld/api.git</connection>
