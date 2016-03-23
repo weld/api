@@ -21,23 +21,10 @@ import javax.enterprise.inject.spi.AfterBeanDiscovery;
 /**
  * This API is experimental and will change! All the methods declared by this interface are supposed to be moved to {@link AfterBeanDiscovery}.
  *
- * @seeIssue WELD-1795
+ * @seeIssue WELD-2008
  * @author Martin Kouba
  */
 public interface ExperimentalAfterBeanDiscovery extends AfterBeanDiscovery {
-
-    /**
-     * The {@link BeanBuilder#build()} is invoked automatically and the resulting bean is registered after all observers are notified.
-     *
-     * @return a builder for a custom bean
-     */
-    <T> BeanBuilder<T> addBean();
-
-    /**
-     *
-     * @return a builder for a custom bean
-     */
-    <T> BeanBuilder<T> beanBuilder();
 
     /**
      *
