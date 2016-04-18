@@ -3,7 +3,7 @@
     <groupId>org.jboss.weld</groupId>
     <artifactId>weld-api-bom</artifactId>
     <packaging>pom</packaging>
-    <version>2.3-SNAPSHOT</version>
+    <version>2.3.SP2</version>
 
     <name>Weld APIs BOM</name>
 
@@ -51,7 +51,7 @@
         <connection>scm:git:git@github.com:weld/api.git</connection>
         <developerConnection>scm:git:git@github.com:weld/api.git</developerConnection>
         <url>scm:git:git@github.com:weld/api.git</url>
-        <tag>HEAD</tag>
+        <tag>2.3.SP2</tag>
     </scm>
 
     <distributionManagement>
