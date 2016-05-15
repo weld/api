@@ -7,7 +7,7 @@
     <parent>
         <groupId>org.jboss.weld</groupId>
         <artifactId>weld-parent</artifactId>
-        <version>33</version>
+        <version>34-SNAPSHOT</version>
     </parent>
 
     <prerequisites>
@@ -87,7 +87,7 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <javadoc.doclint>-Xdoclint</javadoc.doclint>
-        <build.config.version>9</build.config.version>
+        <build.config.version>10-SNAPSHOT</build.config.version>
 
         <atinject.api.version>1</atinject.api.version>
         <cdi.api.version>2.0.Alpha4</cdi.api.version>
