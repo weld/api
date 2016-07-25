@@ -53,8 +53,10 @@ public interface WeldInstance<T> extends Instance<T> {
     boolean isResolvable();
 
     /**
-     * Returns an iterable to iterate over all contextual reference handlers for the beans that have the required type and required qualifiers and are eligible
-     * for injection.
+     * Allows to iterate over contextual reference handlers for all the beans that have the required type and required qualifiers and are eligible for
+     * injection.
+     * <p>
+     * Note that the returned {@link Iterable} is stateless and so each {@link Iterable#iterator()} produces a new set of handlers.
      *
      * @return an iterable to iterate over the handlers
      */
