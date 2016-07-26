@@ -20,9 +20,23 @@ import org.jboss.weld.bootstrap.spi.Metadata;
 
 public class MetadataImpl<T> implements Metadata<T> {
 
+    public static final String LOCATION_NOT_AVAILABLE = "n/a";
+
+    public static <T> MetadataImpl<T> from(T value) {
+        return new MetadataImpl<T>(value);
+    }
+
     private final String location;
 
     private final T value;
+
+    /**
+     *
+     * @param value
+     */
+    public MetadataImpl(T value) {
+        this(value, LOCATION_NOT_AVAILABLE);
+    }
 
     /**
      *
