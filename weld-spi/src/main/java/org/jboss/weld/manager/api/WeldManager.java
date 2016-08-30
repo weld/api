@@ -166,4 +166,34 @@ public interface WeldManager extends BeanManager, Serializable {
      */
     WeldManager unwrap();
 
+    /**
+     * Obtain an {@link AnnotatedType} that may be used to read the annotations of the given class or interface.
+     * <p>
+     * Allows multiple annotated types, based on the same underlying type, to be created. {@link AnnotatedType}s discovered by the container use the fully
+     * qualified class name to identify the type.
+     * <p>
+     * This method must only be used when creating non-contextual instances, such as Java EE components. It's not designed to work with contextual instances.
+     * <p>
+     * If called after the container bootstrap finished, the client code is required to explicitly call {@link #disposeAnnotatedType(Class, String)}
+     * as soon as the specified type should be garbage-collected (to avoid memory leaks).
+     *
+     * @param type
+     * @param id
+     * @return the {@link AnnotatedType}
+     */
+    <T> AnnotatedType<T> createAnnotatedType(Class<T> type, String id);
+
+    /**
+     * Dispose the {@link AnnotatedType} created for the identified type.
+     * <p>
+     * This method should be explicitly called for each result of {@link #createAnnotatedType(Class, String)} created after the container bootstrap finished.
+     * <p>
+     * It's not necessary to call this method unless the identified type should be a subject of garbage collection.
+     *
+     * @param type
+     * @param id
+     * @see #createAnnotatedType(Class, String)
+     */
+    <T> void disposeAnnotatedType(Class<T> type, String id);
+
 }
