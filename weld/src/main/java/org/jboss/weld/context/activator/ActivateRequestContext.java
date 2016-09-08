@@ -28,9 +28,9 @@ import javax.enterprise.util.AnnotationLiteral;
 import javax.interceptor.InterceptorBinding;
 
 /**
- * This interceptor binding can be used to activate the request scope within a business method invocation.
+ * This interceptor binding can be used to activate the request context within a business method invocation.
  * <p>
- * If the request scope is already active then the associated interceptor does nothing.
+ * If the request context is already active then the associated interceptor does nothing.
  *
  * @author Tomas Remes
  * @author Martin Kouba
@@ -39,9 +39,9 @@ import javax.interceptor.InterceptorBinding;
 @InterceptorBinding
 @Retention(RUNTIME)
 @Target({ METHOD, TYPE })
-public @interface ActivateRequestScope {
+public @interface ActivateRequestContext {
 
-    public static class Literal extends AnnotationLiteral<ActivateRequestScope> implements ActivateRequestScope {
+    public static class Literal extends AnnotationLiteral<ActivateRequestContext> implements ActivateRequestContext {
 
         public static final Literal INSTANCE = new Literal();
 
