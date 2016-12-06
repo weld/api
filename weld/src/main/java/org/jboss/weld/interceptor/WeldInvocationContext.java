@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.jboss.weld.experimental;
+package org.jboss.weld.interceptor;
 
 import java.lang.annotation.Annotation;
 import java.util.Set;
@@ -23,28 +23,32 @@ import javax.interceptor.Interceptors;
 import javax.interceptor.InvocationContext;
 
 /**
- * This API is experimental and will change! All the methods declared by this interface are supposed to be moved to {@link InvocationContext}.
+ * Represents an enhanced version of {@link InvocationContext}.
  *
  * @author Martin Kouba
  * @seeIssue CDI-468
- *
  */
-public interface ExperimentalInvocationContext extends InvocationContext {
+public interface WeldInvocationContext extends InvocationContext {
 
     /**
-     * The returning set may be empty if only interceptors using the {@link Interceptors} annotation are associated.
+     * Return the set of interceptor bindings for a lifecycle callback, business method, timeout method, or constructor.
      *
-     * @param <T> subclass of {@link Annotation}
-     * @param annotationType type of annotation
-     * @return a set of interceptor bindings
-     */
-    <T extends Annotation> Set<T> getInterceptorBindingsByType(Class<T> annotationType);
-
-    /**
-     * The returning set may be empty if only interceptors using the {@link Interceptors} annotation are associated.
+     * <p>
+     * The returned set may be empty if only interceptors using the {@link Interceptors} annotation are associated.
+     * </p>
      *
      * @return a set of interceptor bindings
      */
     Set<Annotation> getInterceptorBindings();
+
+    /**
+     * Return the set of interceptor bindings with the specified annotation type.
+     *
+     * @param <T> subclass of {@link Annotation}
+     * @param annotationType type of annotation
+     * @return a set of interceptor bindings with the specified annotation type
+     * @see #getInterceptorBindings()
+     */
+    <T extends Annotation> Set<T> getInterceptorBindingsByType(Class<T> annotationType);
 
 }
