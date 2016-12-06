@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.jboss.weld.experimental;
+package org.jboss.weld.bootstrap.event;
 
 import java.lang.annotation.Annotation;
 import java.util.Set;
@@ -27,26 +27,26 @@ import javax.enterprise.inject.spi.Interceptor;
 import javax.interceptor.InvocationContext;
 
 /**
- * This API is experimental and may be subject of incompatible changes.
+ * Allows to configure a new {@link Interceptor} instance.
  *
  * @author Tomas Remes
  * @seeIssue WELD-2008
  */
-public interface InterceptorBuilder {
+public interface InterceptorConfigurator {
 
     /**
      * @param interceptionType
      * @param interceptorFunction
      * @return self
      */
-    InterceptorBuilder intercept(InterceptionType interceptionType, Function<InvocationContext, Object> interceptorFunction);
+    InterceptorConfigurator intercept(InterceptionType interceptionType, Function<InvocationContext, Object> interceptorFunction);
 
     /**
      * @param interceptionType
      * @param interceptorFunction
      * @return self
      */
-    InterceptorBuilder interceptWithMetadata(InterceptionType interceptionType, BiFunction<InvocationContext, Bean<?>, Object> interceptorFunction);
+    InterceptorConfigurator interceptWithMetadata(InterceptionType interceptionType, BiFunction<InvocationContext, Bean<?>, Object> interceptorFunction);
 
     /**
      * Adds interceptor binding annotation.
@@ -54,7 +54,7 @@ public interface InterceptorBuilder {
      * @param binding
      * @return self
      */
-    InterceptorBuilder addBinding(Annotation binding);
+    InterceptorConfigurator addBinding(Annotation binding);
 
     /**
      * Adds interceptor binding annotations.
@@ -62,7 +62,7 @@ public interface InterceptorBuilder {
      * @param bindings
      * @return self
      */
-    InterceptorBuilder addBindings(Annotation... bindings);
+    InterceptorConfigurator addBindings(Annotation... bindings);
 
     /**
      * Adds set of interceptor binding annotations.
@@ -70,7 +70,7 @@ public interface InterceptorBuilder {
      * @param bindings
      * @return self
      */
-    InterceptorBuilder addBindings(Set<Annotation> bindings);
+    InterceptorConfigurator addBindings(Set<Annotation> bindings);
 
     /**
      * Replace all bindings
@@ -78,7 +78,7 @@ public interface InterceptorBuilder {
      * @param bindings - new bindings to be set
      * @return self
      */
-    InterceptorBuilder bindings(Annotation... bindings);
+    InterceptorConfigurator bindings(Annotation... bindings);
 
     /**
      * Adds priority annotation.
@@ -86,7 +86,7 @@ public interface InterceptorBuilder {
      * @param priority value
      * @return self
      */
-    InterceptorBuilder priority(int priority);
+    InterceptorConfigurator priority(int priority);
 
     /**
      * @return interceptor

@@ -14,28 +14,30 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.jboss.weld.experimental;
+package org.jboss.weld.bootstrap.event;
 
 import javax.enterprise.inject.spi.AfterBeanDiscovery;
+import javax.enterprise.inject.spi.Interceptor;
 
 /**
- * This API is experimental and will change! All the methods declared by this interface are supposed to be moved to {@link AfterBeanDiscovery}.
+ * Represents an enhanced version of {@link AfterBeanDiscovery}.
  *
  * @seeIssue WELD-2008
  * @author Martin Kouba
  */
-public interface ExperimentalAfterBeanDiscovery extends AfterBeanDiscovery {
+public interface WeldAfterBeanDiscovery extends AfterBeanDiscovery {
 
     /**
+     * Obtain a {@link InterceptorConfigurator} to configure a new {@link Interceptor}.
+     * <p>
+     * The configured interceptor is automatically added at the end of the observer invocation.
+     * </p>
+     * <p>
+     * Each call returns a new configurator instance.
+     * </p>
      *
      * @return a builder for a custom interceptor
      */
-    InterceptorBuilder addInterceptor();
-
-    /**
-     *
-     * @return a builder for interceptor
-     */
-    InterceptorBuilder interceptorBuilder();
+    InterceptorConfigurator addInterceptor();
 
 }
