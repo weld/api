@@ -42,6 +42,10 @@ public interface BeansXml {
         public String getVersion() {
             return null;
         }
+
+        public boolean isTrimmed(){
+            return false;
+        }
     };
 
     List<Metadata<String>> getEnabledAlternativeStereotypes();
@@ -66,5 +70,11 @@ public interface BeansXml {
      * @return the value of the <code>version</code> attribute or null if the version is not explicitly specified
      */
     String getVersion();
+
+    /**
+     *
+     * @return true if the <code>trim</code> element is specified
+     */
+    boolean isTrimmed();
 
 }
