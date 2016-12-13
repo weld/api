@@ -18,9 +18,7 @@
 package org.jboss.weld.manager.api;
 
 import java.io.Serializable;
-import java.lang.annotation.Annotation;
 
-import javax.enterprise.context.ContextNotActiveException;
 import javax.enterprise.context.spi.Contextual;
 import javax.enterprise.inject.Instance;
 import javax.enterprise.inject.spi.AnnotatedType;
@@ -34,32 +32,11 @@ import org.jboss.weld.ejb.spi.EjbDescriptor;
 import org.jboss.weld.serialization.spi.BeanIdentifier;
 
 /**
- * Functionality provided by the Weld Manager over and above the JSR-299 Manager.
+ * Functionality provided by the Weld Manager over and above the {@link BeanManager}.
  *
  * @author Pete Muir
- *
  */
 public interface WeldManager extends BeanManager, Serializable {
-
-    /**
-     * Create a new child activity. A child activity inherits all beans, interceptors, decorators, observers, and contexts
-     * defined by its direct and indirect parent activities.
-     *
-     * This method should not be called by the application.
-     *
-     * @return the child activity
-     */
-    WeldManager createActivity();
-
-    /**
-     * Associate an activity with the current context for a normal scope
-     *
-     * @param scopeType the scope to associate the activity with
-     * @return the activity
-     * @throws ContextNotActiveException if the given scope is inactive
-     * @throws IllegalArgumentException if the given scope is not a normal scope
-     */
-    WeldManager setCurrent(Class<? extends Annotation> scopeType);
 
     /**
      * The injection target for the given EJB, or null if Weld was not given this descriptor in the deployment.
@@ -99,12 +76,6 @@ public interface WeldManager extends BeanManager, Serializable {
      * @return the services registered for this manager
      */
     ServiceRegistry getServices();
-
-    /**
-     *
-     * @return the {@link WeldManager} that corresponds to the current activity
-     */
-    WeldManager getCurrent();
 
     /**
      * Fire a ProcessInjectionTarget event for the given type.
