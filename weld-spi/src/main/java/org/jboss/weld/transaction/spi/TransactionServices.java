@@ -16,9 +16,7 @@
  */
 package org.jboss.weld.transaction.spi;
 
-import javax.transaction.RollbackException;
 import javax.transaction.Synchronization;
-import javax.transaction.SystemException;
 import javax.transaction.UserTransaction;
 
 import org.jboss.weld.bootstrap.api.Service;
@@ -47,13 +45,16 @@ import org.jboss.weld.bootstrap.api.Service;
  *
  */
 public interface TransactionServices extends Service {
+
     /**
      * Registers a synchronization object with the currently executing transaction.
      *
      * @see javax.transaction.Synchronization
      * @param synchronizedObserver the synchronization
+     * @throws RuntimeException if a problem occurs during registration, the {@link RuntimeException#getCause()} should return the original exception so that
+     *         Weld could easily distinguish possible registration problems
      */
-    void registerSynchronization(Synchronization synchronizedObserver) throws RollbackException, IllegalStateException, SystemException;
+    void registerSynchronization(Synchronization synchronizedObserver);
 
     /**
      * Queries the status of the current execution to see if a transaction is currently active.
