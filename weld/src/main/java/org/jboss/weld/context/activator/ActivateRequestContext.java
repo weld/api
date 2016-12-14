@@ -25,7 +25,6 @@ import java.lang.annotation.Target;
 
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.util.AnnotationLiteral;
-import javax.interceptor.Interceptor;
 import javax.interceptor.InterceptorBinding;
 
 /**
@@ -33,7 +32,7 @@ import javax.interceptor.InterceptorBinding;
  * <p>
  * If the request context is already active then the associated interceptor does nothing.
  * <p>
- * The interceptor is registered with a priority of {@link Interceptor.Priority#PLATFORM_BEFORE} + 100. The same value is used for
+ * The interceptor is registered with a priority of {@link javax.interceptor.Interceptor.Priority#PLATFORM_BEFORE} + 100. The same value is used for
  * {@link javax.enterprise.context.control.ActivateRequestContext}.
  *
  * @author Tomas Remes
