@@ -50,10 +50,6 @@ public abstract class SingletonProvider {
         if (INSTANCE == null) {
             synchronized (SingletonProvider.class) {
                 if (INSTANCE == null) {
-                    /*
-                     * TODO: We should discover ScopeFactory implementation using Service Provider Mechanism. In the absence of
-                     * any explicitly configured service, should we default to the default implementation.
-                     */
                     initializeWithDefaultScope();
                 }
             }

@@ -29,8 +29,6 @@ import org.jboss.weld.ejb.spi.EjbDescriptor;
  * contained in the Java EE deployment (as defined in the Java Platform, Enterprise Edition (Java EE) Specification, v6, Section
  * 8.1.2).
  *
- * TODO Java SE definition of a deployment archive
- *
  * A bean deployment archive is any deployment archive with a META-INF/beans.xml file, or for a war, with a WEB-INF/beans.xml.
  *
  * The container is allowed to specify a deployment archive as {@link BeanDeploymentArchive} even if no beans.xml is present
