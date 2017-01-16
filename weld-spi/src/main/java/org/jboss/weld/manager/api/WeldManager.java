@@ -114,9 +114,6 @@ public interface WeldManager extends BeanManager, Serializable {
     String getId();
 
     /**
-     * TODO There is an open clarification issue CDI-671 which might affect the API design. I.e. this method might be changed in a way that breaks backward
-     * compatibility in a final version of API.
-     *
      * @seeIssue CDI-671
      * @return a new {@link Instance} with required type {@link Object} and no required qualifiers ({@link javax.enterprise.inject.Default} is added automatically during resolution if
      *         no qualifiers are selected)

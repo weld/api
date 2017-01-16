@@ -25,21 +25,15 @@ import org.jboss.weld.security.spi.SecurityServices;
  * @author pmuir
  *
  */
-public class MockSecurityServices extends MockService implements SecurityServices
-{
+public class MockSecurityServices extends MockService implements SecurityServices {
 
-   /* (non-Javadoc)
-    * @see org.jboss.weld.security.spi.SecurityServices#getPrincipal()
-    */
-   public Principal getPrincipal()
-   {
-      // TODO Auto-generated method stub
-      return null;
-   }
+    public Principal getPrincipal() {
+        return null;
+    }
 
-   @Override
-   public SecurityContext getSecurityContext() {
-      return null;
-   }
+    @Override
+    public SecurityContext getSecurityContext() {
+        return SecurityContext.NOOP_SECURITY_CONTEXT;
+    }
 
 }
