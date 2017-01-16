@@ -44,8 +44,14 @@ public interface SecurityServices extends Service {
      * Obtain the security context associated with the current thread. This method is used by Weld to propagate the security context of the current thread to
      * different threads.
      *
+     * <p>
+     * By default, a noop fallback implementation is returned.
+     * </p>
+     *
      * @return the security context associated with the current thread
      */
-    SecurityContext getSecurityContext();
+    default SecurityContext getSecurityContext() {
+        return SecurityContext.NOOP_SECURITY_CONTEXT;
+    }
 
 }

@@ -18,7 +18,6 @@ package org.jboss.weld.bootstrap.api.test;
 
 import java.security.Principal;
 
-import org.jboss.weld.security.spi.SecurityContext;
 import org.jboss.weld.security.spi.SecurityServices;
 
 /**
@@ -29,11 +28,6 @@ public class MockSecurityServices extends MockService implements SecurityService
 
     public Principal getPrincipal() {
         return null;
-    }
-
-    @Override
-    public SecurityContext getSecurityContext() {
-        return SecurityContext.NOOP_SECURITY_CONTEXT;
     }
 
 }
