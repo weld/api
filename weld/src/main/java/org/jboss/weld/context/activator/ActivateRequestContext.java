@@ -32,7 +32,7 @@ import javax.interceptor.InterceptorBinding;
  * <p>
  * If the request context is already active then the associated interceptor does nothing.
  * <p>
- * The interceptor is registered with a priority of {@link Interceptor.Priority#PLATFORM_BEFORE} + 100.
+ * The interceptor is registered with a priority of {@link javax.interceptor.Interceptor.Priority#PLATFORM_BEFORE} + 100.
  *
  * @author Tomas Remes
  * @author Martin Kouba
