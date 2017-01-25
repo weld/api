@@ -3,7 +3,7 @@
     <groupId>org.jboss.weld</groupId>
     <artifactId>weld-api-parent</artifactId>
     <packaging>pom</packaging>
-    <version>2.4-SNAPSHOT</version>
+    <version>2.4.SP1</version>
 
     <parent>
         <groupId>org.jboss.weld</groupId>
@@ -188,7 +188,7 @@
         <connection>scm:git:git@github.com:weld/api.git</connection>
         <developerConnection>scm:git:git@github.com:weld/api.git</developerConnection>
         <url>scm:git:git@github.com:weld/api.git</url>
-        <tag>HEAD</tag>
+        <tag>2.4.SP1</tag>
     </scm>
 
     <modules>
