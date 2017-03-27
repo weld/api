@@ -22,6 +22,7 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
+import java.util.concurrent.ScheduledExecutorService;
 
 import org.jboss.weld.bootstrap.api.Service;
 
@@ -38,6 +39,15 @@ import org.jboss.weld.bootstrap.api.Service;
 public interface ExecutorServices extends Service {
 
     ExecutorService getTaskExecutor();
+
+    /**
+     * Returns a new ScheduledExecutorService instance which will be used for asynchronous observer notification timeout.
+     * Can return null in which case the observer notification timeout feature throws an exception.
+     * @return ScheduledExecutorService instance or null
+     */
+    default ScheduledExecutorService getTimerExecutor() {
+        return null;
+    }
 
     /**
      * Executes the given tasks and blocks until they all finish. If a task throws an exception, the exception is rethrown by
