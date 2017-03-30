@@ -40,9 +40,10 @@ public interface WeldNotificationOptions extends NotificationOptions {
     String MODE = "weld.async.notification.mode";
 
     /**
-     * Makes it possible to specify a timeout in milliseconds after which the returned completion stage must be complete.
+     * Makes it possible to specify a timeout (in milliseconds) after which the returned completion stage must be completed.
      * <p>
-     * Time expiration does not abort the notification of the observers.
+     * If the time expires the stage is completed exceptionally with a {@link java.util.concurrent.CompletionException} holding the
+     * {@link java.util.concurrent.TimeoutException} as its cause. The expiration does not abort the notification of the observers.
      * </p>
      */
     String TIMEOUT = "weld.async.notification.timeout";
@@ -64,7 +65,7 @@ public interface WeldNotificationOptions extends NotificationOptions {
         return NotificationOptions.builder().set(TIMEOUT, timeout).build();
     }
 
-   /**
+    /**
      *
      * @see WeldNotificationOptions#MODE
      */
