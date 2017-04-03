@@ -76,6 +76,7 @@ public interface BeanDeploymentArchive {
      * If two names overlap the class object returned from this method is used.
      *
      * @return the classes, empty if no pre-loaded classes are available
+     * @since 3.0
      */
     default Collection<Class<?>> getLoadedBeanClasses() {
         return Collections.emptySet();
@@ -87,6 +88,7 @@ public interface BeanDeploymentArchive {
      * are Session bean definitions.
      *
      * @return all classes found in the bean deployment archive, empty if no classes are present
+     * @since 3.0
      */
     default Collection<String> getKnownClasses() {
         return getBeanClasses();

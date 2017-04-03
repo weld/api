@@ -49,6 +49,7 @@ public interface SecurityServices extends Service {
      * </p>
      *
      * @return the security context associated with the current thread
+     * @since 3.0
      */
     default SecurityContext getSecurityContext() {
         return SecurityContext.NOOP_SECURITY_CONTEXT;

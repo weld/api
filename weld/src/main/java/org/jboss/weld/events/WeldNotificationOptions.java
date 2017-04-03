@@ -29,6 +29,7 @@ import javax.enterprise.event.NotificationOptions;
  *
  * @author Martin Kouba
  * @see javax.enterprise.event.Event#fireAsync(Object, NotificationOptions)
+ * @since 3.0
  */
 public interface WeldNotificationOptions extends NotificationOptions {
 

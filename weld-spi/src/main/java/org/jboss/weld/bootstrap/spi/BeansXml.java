@@ -74,6 +74,7 @@ public interface BeansXml {
     /**
      *
      * @return true if the <code>trim</code> element is specified
+     * @since 3.0
      */
     boolean isTrimmed();
 

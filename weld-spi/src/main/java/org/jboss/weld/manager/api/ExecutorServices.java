@@ -43,7 +43,9 @@ public interface ExecutorServices extends Service {
     /**
      * Returns a new ScheduledExecutorService instance which will be used for asynchronous observer notification timeout.
      * Can return null in which case the observer notification timeout feature throws an exception.
+     *
      * @return ScheduledExecutorService instance or null
+     * @since 3.0
      */
     default ScheduledExecutorService getTimerExecutor() {
         return null;

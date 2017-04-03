@@ -20,7 +20,7 @@ package org.jboss.weld.security.spi;
  * Encapsulation of security information that can be associated with a thread.
  *
  * @author Jozef Hartinger
- *
+ * @since 3.0
  */
 public interface SecurityContext extends AutoCloseable {
 
