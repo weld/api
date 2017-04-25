@@ -17,15 +17,22 @@
 package org.jboss.weld.security.spi;
 
 import java.security.Principal;
+import java.util.function.Consumer;
 
 import org.jboss.weld.bootstrap.api.Service;
 
 /**
  * Responsible for accessing security related functionality the environment can provide.
  *
- * Required in a Java EE environment.
+ * <p>
+ * Required in a Java EE environment. {@link SecurityServices} is a per-deployment service.
+ * </p>
  *
- * {@link SecurityServices} is a per-deployment service.
+ * <p>
+ * An integrator should either implement {@link #getSecurityContext()} or {@link #getSecurityContextAssociator()}. By default, the
+ * {@link #getSecurityContextAssociator()} method delegates to {@link #getSecurityContext()}. The container always calls the
+ * {@link #getSecurityContextAssociator()} method.
+ * </p>
  *
  * @author pmuir
  * @author Jozef Hartinger
@@ -52,6 +59,29 @@ public interface SecurityServices extends Service {
      */
     default SecurityContext getSecurityContext() {
         return SecurityContext.NOOP_SECURITY_CONTEXT;
+    }
+
+    /**
+     * Obtain the security context associated with the current thread and associate this context when an action is performed. This method is used by Weld to propagate the security context of the current thread to
+     * different threads.
+     *
+     * <p>
+     * By default, the consumer is using {@link #getSecurityContext()} to associate the security context.
+     * </p>
+     *
+     * @return a consumer that accepts an action to be performed with the security context associated with the current thread
+     */
+    default Consumer<Runnable> getSecurityContextAssociator() {
+        final SecurityContext securityContext = getSecurityContext();
+        return (action) -> {
+            try {
+                securityContext.associate();
+                action.run();
+            } finally {
+                securityContext.dissociate();
+                securityContext.close();
+            }
+        };
     }
 
 }
