@@ -30,8 +30,8 @@
    <properties>
       <jboss.releases.repo.url>https://repository.jboss.org/nexus/service/local/staging/deploy/maven2/</jboss.releases.repo.url>
       <jboss.snapshots.repo.url>https://repository.jboss.org/nexus/content/repositories/snapshots/</jboss.snapshots.repo.url>
-      <osshr.releases.repo.url>https://oss.sonatype.org/service/local/staging/deploy/maven2</osshr.releases.repo.url>
-      <osshr.snapshots.repo.url>https://oss.sonatype.org/content/repositories/snapshots</osshr.snapshots.repo.url>
+      <ossrh.releases.repo.url>https://oss.sonatype.org/service/local/staging/deploy/maven2</ossrh.releases.repo.url>
+      <ossrh.snapshots.repo.url>https://oss.sonatype.org/content/repositories/snapshots</ossrh.snapshots.repo.url>
    </properties>
 
    <dependencyManagement>
@@ -94,12 +94,12 @@
             <snapshotRepository>
                <id>sonatype-nexus-snapshots</id>
                <name>Sonatype Nexus Snapshots</name>
-               <url>${osshr.snapshots.repo.url}</url>
+               <url>${ossrh.snapshots.repo.url}</url>
             </snapshotRepository>
             <repository>
                <id>sonatype-nexus-staging</id>
                <name>Nexus Release Repository</name>
-               <url>${osshr.releases.repo.url}</url>
+               <url>${ossrh.releases.repo.url}</url>
             </repository>
          </distributionManagement>
       </profile>
