@@ -83,7 +83,7 @@
       </profile>
       <!-- OSSRH release repository - selected by default -->
       <profile>
-         <id>osshr-release-repo</id>
+         <id>ossrh-release-repo</id>
          <activation>
             <activeByDefault>false</activeByDefault>
             <property>
