@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
    <modelVersion>4.0.0</modelVersion>
    <groupId>org.jboss.weld</groupId>
    <artifactId>weld-api-bom</artifactId>
@@ -29,6 +30,8 @@
    <properties>
       <jboss.releases.repo.url>https://repository.jboss.org/nexus/service/local/staging/deploy/maven2/</jboss.releases.repo.url>
       <jboss.snapshots.repo.url>https://repository.jboss.org/nexus/content/repositories/snapshots/</jboss.snapshots.repo.url>
+      <osshr.releases.repo.url>https://oss.sonatype.org/service/local/staging/deploy/maven2</osshr.releases.repo.url>
+      <osshr.snapshots.repo.url>https://oss.sonatype.org/content/repositories/snapshots</osshr.snapshots.repo.url>
    </properties>
 
    <dependencyManagement>
@@ -54,17 +57,52 @@
       <tag>HEAD</tag>
    </scm>
 
-   <distributionManagement>
-      <repository>
-         <id>jboss-releases-repository</id>
-         <name>JBoss Releases Repository</name>
-         <url>${jboss.releases.repo.url}</url>
-      </repository>
-      <snapshotRepository>
-         <id>jboss-snapshots-repository</id>
-         <name>JBoss Snapshots Repository</name>
-         <url>${jboss.snapshots.repo.url}</url>
-      </snapshotRepository>
-   </distributionManagement>
+   <profiles>
+      <!-- JBoss release repository -->
+      <profile>
+         <id>jboss-release-repo</id>
+         <activation>
+            <activeByDefault>false</activeByDefault>
+            <property>
+               <name>jboss-release-repo</name>
+               <value>true</value>
+            </property>
+         </activation>
+         <distributionManagement>
+            <repository>
+               <id>jboss-releases-repository</id>
+               <name>JBoss Releases Repository</name>
+               <url>${jboss.releases.repo.url}</url>
+            </repository>
+            <snapshotRepository>
+               <id>jboss-snapshots-repository</id>
+               <name>JBoss Snapshots Repository</name>
+               <url>${jboss.snapshots.repo.url}</url>
+            </snapshotRepository>
+         </distributionManagement>
+      </profile>
+      <!-- OSSRH release repository - selected by default -->
+      <profile>
+         <id>osshr-release-repo</id>
+         <activation>
+            <activeByDefault>false</activeByDefault>
+            <property>
+               <name>!jboss-release-repo</name>
+            </property>
+         </activation>
+         <distributionManagement>
+            <snapshotRepository>
+               <id>sonatype-nexus-snapshots</id>
+               <name>Sonatype Nexus Snapshots</name>
+               <url>${osshr.snapshots.repo.url}</url>
+            </snapshotRepository>
+            <repository>
+               <id>sonatype-nexus-staging</id>
+               <name>Nexus Release Repository</name>
+               <url>${osshr.releases.repo.url}</url>
+            </repository>
+         </distributionManagement>
+      </profile>
+   </profiles>
 
 </project>
