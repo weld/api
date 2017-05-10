@@ -88,9 +88,4 @@ public interface InterceptorConfigurator {
      */
     InterceptorConfigurator priority(int priority);
 
-    /**
-     * @return interceptor
-     */
-    Interceptor<?> build();
-
 }

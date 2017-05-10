@@ -36,7 +36,7 @@ public interface WeldAfterBeanDiscovery extends AfterBeanDiscovery {
      * Each call returns a new configurator instance.
      * </p>
      *
-     * @return a builder for a custom interceptor
+     * @return a configurator to configure a new interceptor
      */
     InterceptorConfigurator addInterceptor();
 
