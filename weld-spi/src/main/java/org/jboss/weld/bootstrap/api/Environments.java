@@ -86,15 +86,19 @@ public enum Environments implements Environment {
      * Java SE
      */
     SE(new EnvironmentBuilder()
-            .addRequiredBeanDeploymentArchiveService(ResourceLoader.class));
+            .addRequiredBeanDeploymentArchiveService(ResourceLoader.class)
+            .setEEModulesAware(false));
 
     private final Set<Class<? extends Service>> requiredDeploymentServices;
 
     private final Set<Class<? extends Service>> requiredBeanDeploymentArchiveServices;
 
+    private boolean eeModuleAware = true;
+
     private Environments(EnvironmentBuilder builder) {
         this.requiredDeploymentServices = builder.getRequiredDeploymentServices();
         this.requiredBeanDeploymentArchiveServices = builder.getRequiredBeanDeploymentArchiveServices();
+        this.eeModuleAware = builder.isEEModuleAware();
     }
 
     public Set<Class<? extends Service>> getRequiredDeploymentServices() {
@@ -105,11 +109,18 @@ public enum Environments implements Environment {
         return requiredBeanDeploymentArchiveServices;
     }
 
+    @Override
+    public boolean isEEModulesAware() {
+        return eeModuleAware;
+    }
+
     private static class EnvironmentBuilder {
 
         private final Set<Class<? extends Service>> requiredDeploymentServices;
 
         private final Set<Class<? extends Service>> requiredBeanDeploymentArchiveServices;
+
+        private boolean eeModuleAware = true;
 
         private EnvironmentBuilder() {
             this.requiredBeanDeploymentArchiveServices = new HashSet<Class<? extends Service>>();
@@ -132,6 +143,15 @@ public enum Environments implements Environment {
         private EnvironmentBuilder addRequiredBeanDeploymentArchiveService(Class<? extends Service> service) {
             this.requiredBeanDeploymentArchiveServices.add(service);
             return this;
+        }
+
+        private EnvironmentBuilder setEEModulesAware(boolean aware) {
+            this.eeModuleAware = aware;
+            return this;
+        }
+
+        public boolean isEEModuleAware() {
+            return eeModuleAware;
         }
 
     }
