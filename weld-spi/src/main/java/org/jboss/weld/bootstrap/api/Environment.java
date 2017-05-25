@@ -18,11 +18,12 @@ package org.jboss.weld.bootstrap.api;
 
 import java.util.Set;
 
+import org.jboss.weld.bootstrap.spi.EEModuleDescriptor;
+
 /**
  * Represents an environment. Specifies the services Weld requires
  *
  * @author Pete Muir
- *
  */
 public interface Environment {
 
@@ -34,5 +35,14 @@ public interface Environment {
     Set<Class<? extends Service>> getRequiredDeploymentServices();
 
     Set<Class<? extends Service>> getRequiredBeanDeploymentArchiveServices();
+
+    /**
+     * Environment aware of EE modules. In such environment each bean archive which belongs to a module should register {@link EEModuleDescriptor}
+     *
+     * @return true by default
+     */
+    default boolean isEEModulesAware() {
+        return true;
+    }
 
 }
