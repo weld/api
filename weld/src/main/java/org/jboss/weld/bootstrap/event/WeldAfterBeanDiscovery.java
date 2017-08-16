@@ -18,6 +18,7 @@ package org.jboss.weld.bootstrap.event;
 
 import javax.enterprise.inject.spi.AfterBeanDiscovery;
 import javax.enterprise.inject.spi.Interceptor;
+import javax.enterprise.inject.spi.configurator.BeanConfigurator;
 
 /**
  * Represents an enhanced version of {@link AfterBeanDiscovery}.
@@ -39,5 +40,20 @@ public interface WeldAfterBeanDiscovery extends AfterBeanDiscovery {
      * @return a configurator to configure a new interceptor
      */
     InterceptorConfigurator addInterceptor();
+
+    /**
+     * Obtain a {@link WeldBeanConfigurator}, an extended version of {@link BeanConfigurator}.
+     * <p>
+     * The configurator behaves in the same manner as {@link BeanConfigurator}.
+     * Configured bean is added automatically at the end of the observer invocation.
+     * </p>
+     * <p>
+     * Each call returns new configurator instance.
+     * </p>
+     *
+     * @return a configurator to configure custom new bean
+     */
+    @Override
+    public <T> WeldBeanConfigurator<T> addBean();
 
 }
