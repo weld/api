@@ -30,9 +30,10 @@ import javax.enterprise.inject.spi.InjectionPoint;
 import javax.enterprise.inject.spi.Prioritized;
 import javax.enterprise.inject.spi.configurator.BeanConfigurator;
 import javax.enterprise.util.TypeLiteral;
+import javax.interceptor.Interceptor.Priority;
 
 /**
- * Represents an enhanced version of {@link BeanConfigurator<T>}
+ * Represents an enhanced version of {@link BeanConfigurator}
  *
  * @author <a href="mailto:manovotn@redhat.com">Matej Novotny</a>
  */
