@@ -41,7 +41,8 @@ public interface WeldManager extends BeanManager, Serializable {
     /**
      * The injection target for the given EJB, or null if Weld was not given this descriptor in the deployment.
      *
-     * This should only be used to create an inject contextual EJBs by the EJB container.
+     * This should be used to create and inject contextual EJBs by the EJB container.
+     * Can also be used for message driven beans, even though they are non-contextual.
      * {@link #fireProcessInjectionTarget(AnnotatedType)} and
      * {@link #fireProcessInjectionTarget(AnnotatedType, InjectionTarget)}
      * must be used to obtain an {@link InjectionTarget} for non-contextual EJB injection.
