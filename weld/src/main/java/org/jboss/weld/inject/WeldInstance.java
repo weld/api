@@ -18,15 +18,43 @@ package org.jboss.weld.inject;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
+import java.util.Comparator;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
+import javax.enterprise.context.Dependent;
 import javax.enterprise.inject.AmbiguousResolutionException;
 import javax.enterprise.inject.Instance;
 import javax.enterprise.inject.UnsatisfiedResolutionException;
 import javax.enterprise.inject.spi.Bean;
+import javax.enterprise.inject.spi.Prioritized;
 import javax.enterprise.util.TypeLiteral;
 
 /**
- * An enhanced version of {@link Instance}.
+ * Represents an enhanced version of {@link Instance}.
+ *
+ * <p>
+ * In the following example we filter out beans which are not {@link Dependent} then sort the beans by priority and use the handler whose bean has the highest
+ * priority (according to {@link #getPriorityComparator()}) to obtain the hello string. Note that contextual references for beans with lower priority are not
+ * created at all.
+ * </p>
+ *
+ * <pre>
+ * &#64;ApplicationScoped
+ * class Hello {
+ *
+ *     &#64;Inject
+ *     WeldInstance&lt;HelloProvider&gt; instance;
+ *
+ *     String hello() {
+ *         HelloProvider helloProvider = instance.handlersStream().filter(h -> h.getBean().getScope().equals(Dependent.class))
+ *                 .sorted(instance.getPriorityComparator()).findFirst().map(Handler::get).orElse(null);
+ *         if (helloProvider != null)
+ *             return helloProvider.getHello();
+ *         return "No hello provider found!";
+ *     }
+ * }
+ * </pre>
  *
  * @author Martin Kouba
  * @seeIssue WELD-2204
@@ -35,9 +63,11 @@ import javax.enterprise.util.TypeLiteral;
 public interface WeldInstance<T> extends Instance<T> {
 
     /**
-     * Obtains a contextual reference handler for the bean that has the required type and required qualifiers and is eligible for injection.
+     * Obtains an initialized contextual reference handler for the bean that has the required type and required qualifiers and is eligible for injection.
+     *
      * <p>
-     * Note that each invocation of this method results in a separate {@link Instance#get()} invocation.
+     * The contextual reference is obtained lazily, i.e. when first needed.
+     * </p>
      *
      * @return a new handler
      * @throws UnsatisfiedResolutionException
@@ -46,14 +76,36 @@ public interface WeldInstance<T> extends Instance<T> {
     Handler<T> getHandler();
 
     /**
-     * Allows to iterate over contextual reference handlers for all the beans that have the required type and required qualifiers and are eligible for
-     * injection.
+     * Allows to iterate over initialized contextual reference handlers for all the beans that have the required type and required qualifiers and are eligible
+     * for injection.
+     *
      * <p>
      * Note that the returned {@link Iterable} is stateless and so each {@link Iterable#iterator()} produces a new set of handlers.
+     * </p>
      *
-     * @return an iterable to iterate over the handlers
+     * @return a new iterable
      */
     Iterable<Handler<T>> handlers();
+
+    /**
+     *
+     * @return a new stream of contextual reference handlers
+     */
+    default Stream<Handler<T>> handlersStream() {
+        return StreamSupport.stream(handlers().spliterator(), false);
+    }
+
+    /**
+     * The returned comparator sorts handlers by priority in descending order.
+     * <ul>
+     * <li>A class-based bean whose annotated type has {@link javax.annotation.Priority} has the priority of value {@link javax.annotation.Priority#value()}</li>
+     * <li>A custom bean which implements {@link Prioritized} has the priority of value {@link Prioritized#getPriority()}</li>
+     * <li>Any other bean has the priority of value 0</li>
+     * </ul>
+     *
+     * @return a comparator instance
+     */
+    Comparator<Handler<?>> getPriorityComparator();
 
     @Override
     WeldInstance<T> select(Annotation... qualifiers);
@@ -82,20 +134,22 @@ public interface WeldInstance<T> extends Instance<T> {
     <X> WeldInstance<X> select(Type subtype, Annotation... qualifiers);
 
     /**
-     * A contextual reference handler. Not suitable for sharing between threads.
+     * This interface represents a contextual reference handler.
      * <p>
-     * Holds the contextual reference, allows to inspect the metadata of the relevant bean and also to destroy the underlying contextual instance.
+     * Allows to inspect the metadata of the relevant bean and also to destroy the underlying contextual instance.
+     * </p>
      *
      * @author Martin Kouba
-     *
      * @param <T>
      */
-    public interface Handler<T> extends AutoCloseable {
+    interface Handler<T> extends AutoCloseable {
 
         /**
+         * The contextual reference is obtained lazily, i.e. when first needed.
          *
          * @return the contextual reference
          * @see Instance#get()
+         * @throws IllegalStateException If the producing {@link WeldInstance} does not exist
          */
         T get();
 
@@ -107,8 +161,13 @@ public interface WeldInstance<T> extends Instance<T> {
 
         /**
          * Destroy the contextual instance.
-         * <p>
-         * It's a no-op if called multiple times or if the producing {@link WeldInstance} is destroyed already.
+         *
+         * It's a no-op if:
+         * <ul>
+         * <li>called multiple times</li>
+         * <li>if the producing {@link WeldInstance} does not exist</li>
+         * <li>if the handler does not hold a contextual reference, i.e. {@link #get()} was never called</li>
+         * </ul>
          *
          * @see Instance#destroy(Object)
          */
