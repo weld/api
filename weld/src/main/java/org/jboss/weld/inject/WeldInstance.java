@@ -17,6 +17,7 @@
 package org.jboss.weld.inject;
 
 import java.lang.annotation.Annotation;
+import java.lang.reflect.Type;
 import java.util.Comparator;
 
 import javax.enterprise.context.Dependent;
@@ -109,6 +110,23 @@ public interface WeldInstance<T> extends Instance<T> {
 
     @Override
     <U extends T> WeldInstance<U> select(TypeLiteral<U> subtype, Annotation... qualifiers);
+
+     /**
+     * <p>
+     * Obtains a child {@code Instance} for the given required type and additional required qualifiers.
+     * Must be invoked on {@code Instance<T>} where T is {@link java.lang.Object}.
+     * </p>
+     *
+     * @param <X> the required type
+     * @param subtype    a {@link java.lang.reflect.Type} representing the required type
+     * @param qualifiers the additional required qualifiers
+     * @return the child <tt>Instance</tt>
+     * @throws IllegalArgumentException if passed two instances of the same non repeating qualifier type, or an instance of an
+     *                                  annotation that is not a qualifier type
+     * @throws IllegalStateException    if the container is already shutdown
+     * @throws IllegalStateException    if invoked on {@code Instance<T>} where T is of any other type than {@link java.lang.Object}
+     */
+    <X> WeldInstance<X> select(Type subtype, Annotation... qualifiers);
 
     /**
      * This interface represents a contextual reference handler.
