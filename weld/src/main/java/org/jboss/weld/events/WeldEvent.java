@@ -30,7 +30,7 @@ public interface WeldEvent<T> extends Event<T> {
 
     /**
      * <p>
-     * Obtains a child {@code Event} for the given required type and additional required qualifiers. 
+     * Obtains a child {@code Event} for the given required type and additional required qualifiers.
      * Must be invoked on {@code Event<T>} where T is {@link java.lang.Object}.
      * </p>
      *
