@@ -76,7 +76,7 @@ public interface WeldInstance<T> extends Instance<T> {
     Handler<T> getHandler();
 
     /**
-     * Allows to iterate over initialized contextual reference handlers for all the beans that have the required type and required qualifiers and are eligible
+     * Allows to iterate over contextual reference handlers for all the beans that have the required type and required qualifiers and are eligible
      * for injection.
      *
      * <p>
