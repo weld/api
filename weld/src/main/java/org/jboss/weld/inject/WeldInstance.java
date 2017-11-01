@@ -47,7 +47,7 @@ import javax.enterprise.util.TypeLiteral;
  *     WeldInstance&lt;HelloProvider&gt; instance;
  *
  *     String hello() {
- *         HelloProvider helloProvider = instance.handlersStream().filter(h -> h.getBean().getScope().equals(Dependent.class))
+ *         HelloProvider helloProvider = instance.handlersStream().filter(h -&gt; h.getBean().getScope().equals(Dependent.class))
  *                 .sorted(instance.getPriorityComparator()).findFirst().map(Handler::get).orElse(null);
  *         if (helloProvider != null)
  *             return helloProvider.getHello();
@@ -98,7 +98,7 @@ public interface WeldInstance<T> extends Instance<T> {
     /**
      * The returned comparator sorts handlers by priority in descending order.
      * <ul>
-     * <li>A class-based bean whose annotated type has {@link javax.annotation.Priority} has the priority of value {@link javax.annotation.Priority#value()}</li>
+     * <li>A class-based bean whose annotated type has {@code javax.annotation.Priority} has the priority of value {@code javax.annotation.Priority#value()}</li>
      * <li>A custom bean which implements {@link Prioritized} has the priority of value {@link Prioritized#getPriority()}</li>
      * <li>Any other bean has the priority of value 0</li>
      * </ul>
