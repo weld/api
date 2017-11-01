@@ -28,6 +28,11 @@ import javax.interceptor.InvocationContext;
  */
 public interface WeldInvocationContext extends InvocationContext {
 
+     /**
+     * A key value under which we store interceptor bindings in {@link InvocationContext}
+     */
+    public static final String INTERCEPTOR_BINDINGS_KEY = "org.jboss.weld.interceptor.bindings";
+
     /**
      * Return the set of interceptor bindings for a lifecycle callback, business method, timeout method, or constructor.
      *
