@@ -55,7 +55,16 @@ public interface BeanDeploymentArchive {
     Collection<BeanDeploymentArchive> getBeanDeploymentArchives();
 
     /**
-     * Gets all classes in the bean deployment archive
+     * Gets all classes in the bean deployment archive.
+     *
+     * <p>
+     * For an explicit bean archive this method returns a collection of all types present within the archive.
+     * </p>
+     *
+     * <p>
+     * For an implicit bean archive this method returns all the types found in the archive which are annotated with a bean defining annotation or are Session
+     * bean definitions.
+     * </p>
      *
      * @return the classes, empty if no classes are present
      */
