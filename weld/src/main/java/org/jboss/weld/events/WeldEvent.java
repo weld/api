@@ -20,6 +20,7 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
 
 import javax.enterprise.event.Event;
+import javax.enterprise.util.TypeLiteral;
 
 /**
  * Enriched version of {@link javax.enterprise.event.Event}.
@@ -30,17 +31,27 @@ public interface WeldEvent<T> extends Event<T> {
 
     /**
      * <p>
-     * Obtains a child {@code Event} for the given required type and additional required qualifiers.
-     * Must be invoked on {@code Event<T>} where T is {@link java.lang.Object}.
+     * Obtains a child {@code Event} for the given required type and additional required qualifiers. Must be invoked on
+     * {@code Event<T>} where T is {@link java.lang.Object}.
      * </p>
      *
      * @param <X>        the required type
-     * @param type    a {@link java.lang.reflect.Type} representing the required type
+     * @param type       a {@link java.lang.reflect.Type} representing the required type
      * @param qualifiers the additional required qualifiers
      * @return the child <tt>Event</tt>
      * @throws IllegalArgumentException if passed two instances of the same non repeating qualifier type, or an instance of an
      *                                  annotation that is not a qualifier type
-     * @throws IllegalStateException    if invoked on {@code Event<T>} where T is of any other type than {@link java.lang.Object}
+     * @throws IllegalStateException    if invoked on {@code Event<T>} where T is of any other type than
+     *                                  {@link java.lang.Object}
      */
     <X> WeldEvent<X> select(Type type, Annotation... qualifiers);
+
+    @Override
+    public WeldEvent<T> select(Annotation... qualifiers);
+
+    @Override
+    public <U extends T> WeldEvent<U> select(Class<U> subtype, Annotation... qualifiers);
+
+    @Override
+    public <U extends T> WeldEvent<U> select(TypeLiteral<U> subtype, Annotation... qualifiers);
 }
