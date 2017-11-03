@@ -1,69 +1,139 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    <groupId>org.jboss.weld</groupId>
-    <artifactId>weld-api-bom</artifactId>
-    <packaging>pom</packaging>
-    <version>2.4-SNAPSHOT</version>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+   <modelVersion>4.0.0</modelVersion>
+   <groupId>org.jboss.weld</groupId>
+   <artifactId>weld-api-bom</artifactId>
+   <packaging>pom</packaging>
+   <version>2.4-SNAPSHOT</version>
 
-    <name>Weld APIs BOM</name>
+   <name>Weld APIs BOM</name>
 
-    <!-- Minimal project metadata, for more see parent/pom.xml -->
+   <!-- Minimal project metadata, for more see parent/pom.xml -->
 
-    <description>Weld APIs "bill of materials" which can be imported by any project using the Weld implementation of CDI. It provides dependency management for the developer APIs and SPIs, as well as container integrator SPIs</description>
+   <description>Weld APIs "bill of materials" which can be imported by any project using the Weld implementation of CDI. It provides dependency management for the developer APIs and SPIs, as well as container integrator SPIs</description>
 
-    <url>http://weld.cdi-spec.org</url>
-    <licenses>
-        <license>
-            <name>Apache License, Version 2.0</name>
-            <distribution>repo</distribution>
-            <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
-        </license>
-    </licenses>
+   <url>http://weld.cdi-spec.org</url>
+   <licenses>
+      <license>
+         <name>Apache License, Version 2.0</name>
+         <distribution>repo</distribution>
+         <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
+      </license>
+   </licenses>
 
-    <developers>
-        <developer>
-            <name>Weld committers</name>
-        </developer>
-    </developers>
+   <developers>
+      <developer>
+         <name>Weld committers</name>
+      </developer>
+   </developers>
 
-    <properties>
-        <jboss.releases.repo.url>https://repository.jboss.org/nexus/service/local/staging/deploy/maven2/</jboss.releases.repo.url>
-        <jboss.snapshots.repo.url>https://repository.jboss.org/nexus/content/repositories/snapshots/</jboss.snapshots.repo.url>
-    </properties>
-   
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.jboss.weld</groupId>
-                <artifactId>weld-api</artifactId>
-                <version>${project.version}</version>
-            </dependency>
+   <properties>
+      <gpg.plugin.version>1.6</gpg.plugin.version>
+      <jboss.releases.repo.url>https://repository.jboss.org/nexus/service/local/staging/deploy/maven2/</jboss.releases.repo.url>
+      <jboss.snapshots.repo.url>https://repository.jboss.org/nexus/content/repositories/snapshots/</jboss.snapshots.repo.url>
+      <ossrh.releases.repo.url>https://oss.sonatype.org/service/local/staging/deploy/maven2</ossrh.releases.repo.url>
+      <ossrh.snapshots.repo.url>https://oss.sonatype.org/content/repositories/snapshots</ossrh.snapshots.repo.url>
+   </properties>
 
-            <dependency>
-                <groupId>org.jboss.weld</groupId>
-                <artifactId>weld-spi</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
+   <dependencyManagement>
+      <dependencies>
+         <dependency>
+            <groupId>org.jboss.weld</groupId>
+            <artifactId>weld-api</artifactId>
+            <version>${project.version}</version>
+         </dependency>
 
-    <scm>
-        <connection>scm:git:git@github.com:weld/api.git</connection>
-        <developerConnection>scm:git:git@github.com:weld/api.git</developerConnection>
-        <url>scm:git:git@github.com:weld/api.git</url>
-        <tag>2.4.SP1</tag>
-    </scm>
+         <dependency>
+            <groupId>org.jboss.weld</groupId>
+            <artifactId>weld-spi</artifactId>
+            <version>${project.version}</version>
+         </dependency>
+      </dependencies>
+   </dependencyManagement>
 
-    <distributionManagement>
-        <repository>
-            <id>jboss-releases-repository</id>
-            <name>JBoss Releases Repository</name>
-            <url>${jboss.releases.repo.url}</url>
-        </repository>
-        <snapshotRepository>
-            <id>jboss-snapshots-repository</id>
-            <name>JBoss Snapshots Repository</name>
-            <url>${jboss.snapshots.repo.url}</url>
-        </snapshotRepository>
-    </distributionManagement>
+   <scm>
+      <connection>scm:git:git@github.com:weld/api.git</connection>
+      <developerConnection>scm:git:git@github.com:weld/api.git</developerConnection>
+      <url>scm:git:git@github.com:weld/api.git</url>
+      <tag>2.4.SP1</tag>
+   </scm>
+
+   <profiles>
+      <profile>
+         <id>release</id>
+         <activation>
+            <property>
+               <name>release</name>
+            </property>
+         </activation>
+         <build>
+            <plugins>
+               <plugin>
+                  <groupId>org.apache.maven.plugins</groupId>
+                  <artifactId>maven-gpg-plugin</artifactId>
+                  <version>${gpg.plugin.version}</version>
+                  <configuration>
+                     <passphrase>${gpg.passphrase}</passphrase>
+                     <useAgent>${gpg.useAgent}</useAgent>
+                  </configuration>
+                  <executions>
+                     <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                           <goal>sign</goal>
+                        </goals>
+                     </execution>
+                  </executions>
+               </plugin>
+            </plugins>
+         </build>
+      </profile>
+      <!-- JBoss release repository -->
+      <profile>
+         <id>jboss-release-repo</id>
+         <activation>
+            <activeByDefault>false</activeByDefault>
+            <property>
+               <name>jboss-release-repo</name>
+               <value>true</value>
+            </property>
+         </activation>
+         <distributionManagement>
+            <repository>
+               <id>jboss-releases-repository</id>
+               <name>JBoss Releases Repository</name>
+               <url>${jboss.releases.repo.url}</url>
+            </repository>
+            <snapshotRepository>
+               <id>jboss-snapshots-repository</id>
+               <name>JBoss Snapshots Repository</name>
+               <url>${jboss.snapshots.repo.url}</url>
+            </snapshotRepository>
+         </distributionManagement>
+      </profile>
+      <!-- OSSRH release repository - selected by default -->
+      <profile>
+         <id>ossrh-release-repo</id>
+         <activation>
+            <activeByDefault>false</activeByDefault>
+            <property>
+               <name>!jboss-release-repo</name>
+            </property>
+         </activation>
+         <distributionManagement>
+            <snapshotRepository>
+               <id>sonatype-nexus-snapshots</id>
+               <name>Sonatype Nexus Snapshots</name>
+               <url>${ossrh.snapshots.repo.url}</url>
+            </snapshotRepository>
+            <repository>
+               <id>sonatype-nexus-staging</id>
+               <name>Nexus Release Repository</name>
+               <url>${ossrh.releases.repo.url}</url>
+            </repository>
+         </distributionManagement>
+      </profile>
+   </profiles>
+
 </project>

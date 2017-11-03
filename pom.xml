@@ -8,19 +8,19 @@
     <parent>
         <groupId>org.jboss.weld</groupId>
         <artifactId>weld-parent</artifactId>
-        <version>35</version>
+        <version>37</version>
     </parent>
-   
+
     <prerequisites>
         <maven>3.0</maven>
     </prerequisites>
 
     <name>Weld APIs Parent</name>
-   
+
 
     <!-- Full project metadata -->
     <url>http://weld.cdi-spec.org</url>
-   
+
     <description>
         APIs for Weld, the reference implementation of Contexts and Dependency Injection for Java EE
     </description>
@@ -34,7 +34,7 @@
         <system>JIRA</system>
         <url>http://jira.jboss.org/browse/WELD</url>
     </issueManagement>
-   
+
     <inceptionYear>2008</inceptionYear>
 
     <licenses>
@@ -63,7 +63,7 @@
         <developer>
             <name>David Allen</name>
         </developer>
-      
+
         <developer>
             <name>Nicklas Karlsson</name>
         </developer>
@@ -76,6 +76,16 @@
                 <role>Project Lead</role>
             </roles>
             <email>jharting@redhat.com</email>
+        </developer>
+
+        <developer>
+            <name>Martin Kouba</name>
+            <id>mkouba</id>
+            <organization>Red Hat Inc.</organization>
+            <roles>
+                <role>Project Lead</role>
+            </roles>
+            <email>mkouba@redhat.com</email>
         </developer>
     </developers>
 
@@ -94,7 +104,7 @@
         <jta.api.version>1.0.0.Final</jta.api.version>
         <interceptor.api.version>1.0.0.Final</interceptor.api.version>
     </properties>
-   
+
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -172,7 +182,7 @@
                     </exclusion>
                 </exclusions>
             </dependency>
-            
+
             <!-- Configure non-API dependencies (e.g. testing)-->
             <dependency>
                 <groupId>org.testng</groupId>
@@ -182,7 +192,7 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-    
+
     <!-- SCM and Distribution management -->
     <scm>
         <connection>scm:git:git@github.com:weld/api.git</connection>
