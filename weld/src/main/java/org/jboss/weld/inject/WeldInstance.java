@@ -94,7 +94,6 @@ public interface WeldInstance<T> extends Instance<T> {
      * The returned comparator sorts handlers by priority in descending order.
      * <ul>
      * <li>A class-based bean whose annotated type has {@code javax.annotation.Priority} has the priority of value {@code javax.annotation.Priority#value()}</li>
-     * <li>A custom bean which implements {@link Prioritized} has the priority of value {@link Prioritized#getPriority()}</li>
      * <li>Any other bean has the priority of value 0</li>
      * </ul>
      *

@@ -19,6 +19,7 @@ package org.jboss.weld.interceptor;
 import java.lang.annotation.Annotation;
 import java.util.Set;
 
+import javax.interceptor.Interceptors;
 import javax.interceptor.InvocationContext;
 
 /**
