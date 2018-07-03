@@ -107,9 +107,32 @@ public interface ClassFileInfo {
     boolean isVetoed();
 
     /**
+     * <b>Deprecated</b> - use {@code getClassNestingType()} instead.
+     *
      * Indicates whether this class is a top-level class or an inner class.
      *
      * @return true if this class is a top-level class, false otherwise
      */
-    boolean isTopLevelClass();
+    default boolean isTopLevelClass() {
+        return getNestingType().equals(NestingType.TOP_LEVEL);
+    }
+
+    /**
+     * Returns the nesting type of the class using {@link NestingType} enum.
+     * A class can be either top level, nested inner, nested local, nested anonymous or nested static.
+     *
+     * @return Class {@link NestingType}
+     */
+    NestingType getNestingType();
+
+    /**
+     * Helper enum which lists all possible nesting types of a class.
+     */
+    public enum NestingType {
+        TOP_LEVEL,
+        NESTED_INNER,
+        NESTED_LOCAL,
+        NESTED_ANONYMOUS,
+        NESTED_STATIC
+    }
 }
