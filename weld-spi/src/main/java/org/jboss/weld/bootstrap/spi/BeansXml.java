@@ -56,6 +56,9 @@ public interface BeansXml {
 
     List<Metadata<String>> getEnabledInterceptors();
 
+    /**
+     * @return Initialized {@link Scanning} instance or {@code Scanning.EMPTY_SCANNING} if empty. Never null.
+     */
     Scanning getScanning();
 
     URL getUrl();
