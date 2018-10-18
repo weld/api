@@ -18,6 +18,7 @@
 package org.jboss.weld.manager.api;
 
 import java.io.Serializable;
+import java.lang.annotation.Annotation;
 
 import javax.enterprise.context.spi.Contextual;
 import javax.enterprise.inject.Instance;
@@ -173,4 +174,12 @@ public interface WeldManager extends BeanManager, Serializable {
      */
     <T> void disposeAnnotatedType(Class<T> type, String id);
 
+    /**
+     * Indicates whether there is an active context for a given scope.
+     *
+     * @throws IllegalStateException if there are multiple active contexts for a given scope
+     * @param scopeType
+     * @return true if there is an active context for a given scope, false otherwise
+     */
+    boolean isContextActive(Class<? extends Annotation> scopeType);
 }
