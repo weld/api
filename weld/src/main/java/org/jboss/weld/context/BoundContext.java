@@ -1,7 +1,5 @@
 package org.jboss.weld.context;
 
-import javax.enterprise.context.spi.AlterableContext;
-
 /**
  * <p>
  * Allows a thread-based context to be bound to some external instance storage (such as an HttpSession).
@@ -29,7 +27,7 @@ import javax.enterprise.context.spi.AlterableContext;
  * @param <S> the type of the external instance storage
  * @see ManagedContext
  */
-public interface BoundContext<S> extends AlterableContext {
+public interface BoundContext<S> extends WeldAlterableContext {
 
     /**
      * Associate the context with the storage (for this thread). Once {@link #associate(Object)} has been called, further calls

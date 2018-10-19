@@ -19,7 +19,11 @@ package org.jboss.weld.manager.api;
 
 import java.io.Serializable;
 import java.lang.annotation.Annotation;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.stream.Collectors;
 
+import javax.enterprise.context.spi.Context;
 import javax.enterprise.context.spi.Contextual;
 import javax.enterprise.inject.Instance;
 import javax.enterprise.inject.spi.AnnotatedType;
@@ -29,6 +33,7 @@ import javax.enterprise.inject.spi.InjectionTarget;
 
 import org.jboss.weld.bootstrap.api.ServiceRegistry;
 import org.jboss.weld.construction.api.WeldCreationalContext;
+import org.jboss.weld.context.WeldAlterableContext;
 import org.jboss.weld.ejb.spi.EjbDescriptor;
 import org.jboss.weld.serialization.spi.BeanIdentifier;
 
@@ -182,4 +187,45 @@ public interface WeldManager extends BeanManager, Serializable {
      * @return true if there is an active context for a given scope, false otherwise
      */
     boolean isContextActive(Class<? extends Annotation> scopeType);
+
+    /**
+     * Returns an unmodifiable collection of all registered scopes, both built-in and custom. You can then use {@code BeanManager#getContext()}
+     * to retrieve the {@link Context}.
+     * The method returns scopes regardless of whether their respective contexts are active or otherwise.
+     *
+     * @return All scopes present in the application
+     */
+    Collection<Class<? extends Annotation>> getScopes();
+
+    /**
+     * Returns an unmodifiable collection of all currently active {@link Context}s. This is just a convenient method.
+     *
+     * Note that for each scope, there might be more than one {@link Context}, but there can be at most one active at a time.
+     *
+     * @return Collection of all currently active {@link Context}s
+     */
+    default Collection<Context> getActiveContexts() {
+        return getScopes().stream()
+            .filter(this::isContextActive)
+            .map(this::getContext)
+            .collect(Collectors.toSet());
+    }
+
+    /**
+     * Returns an unmodifiable collection of all currently active {@link Context}s that implement {@link WeldAlterableContext}.
+     * This is just a convenient method.
+     *
+     * Note that for each scope, there might be more than one {@link Context}, but there can be at most one active at a time.
+     * This method can therefore return an incomplete view of all active contexts as not every context implements {@link WeldAlterableContext}.
+     *
+     * @return Collection of all active contexts implementing {@link WeldAlterableContext}
+     */
+    default Collection<WeldAlterableContext> getActiveWeldAlterableContexts() {
+        return getScopes().stream()
+            .filter(this::isContextActive)
+            .map(this::getContext)
+            .filter(t -> t instanceof WeldAlterableContext)
+            .map(t -> (WeldAlterableContext) t)
+            .collect(Collectors.toSet());
+    }
 }
