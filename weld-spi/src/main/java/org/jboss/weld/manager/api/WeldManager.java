@@ -20,7 +20,6 @@ package org.jboss.weld.manager.api;
 import java.io.Serializable;
 import java.lang.annotation.Annotation;
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.stream.Collectors;
 
 import javax.enterprise.context.spi.Context;
