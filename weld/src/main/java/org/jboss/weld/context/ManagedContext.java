@@ -1,7 +1,5 @@
 package org.jboss.weld.context;
 
-import javax.enterprise.context.spi.AlterableContext;
-
 /**
  * <p>
  * Lifecycle management for built in contexts. {@link ManagedContext} only allows a context to be activated, deactivated and
@@ -19,7 +17,7 @@ import javax.enterprise.context.spi.AlterableContext;
  * @see BoundContext
  *
  */
-public interface ManagedContext extends AlterableContext {
+public interface ManagedContext extends WeldAlterableContext {
 
     /**
      * Activate the Context.

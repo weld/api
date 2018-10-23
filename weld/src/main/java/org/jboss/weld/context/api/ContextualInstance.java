@@ -1,6 +1,6 @@
 /*
  * JBoss, Home of Professional Open Source
- * Copyright 2010, Red Hat, Inc., and individual contributors
+ * Copyright 2018, Red Hat, Inc., and individual contributors
  * by the @authors tag. See the copyright.txt in the distribution for a
  * full listing of individual contributors.
  *
@@ -19,6 +19,12 @@ package org.jboss.weld.context.api;
 import javax.enterprise.context.spi.Contextual;
 import javax.enterprise.context.spi.CreationalContext;
 
+/**
+ * Represents a contextual instance of a given type. This is an abstraction on top of the actual bean instance stored in each
+ * context. It glues together the actual instance with its {@link CreationalContext} and {@link Contextual}
+ *
+ * @author <a href="mailto:manovotn@redhat.com">Matej Novotny</a>
+ */
 public interface ContextualInstance<T> {
 
     T getInstance();
