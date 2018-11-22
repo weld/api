@@ -39,7 +39,7 @@ public interface WeldAlterableContext extends AlterableContext {
      *
      * @return Set of all {@link ContextualInstance} existing in this context
      */
-    default <T> Collection<ContextualInstance<T>> getAllContextualInstances() {
+    default Collection<ContextualInstance<?>> getAllContextualInstances() {
         throw new UnsupportedOperationException("getAll() is not implemented for context " + this.getClass());
     }
 
@@ -51,7 +51,7 @@ public interface WeldAlterableContext extends AlterableContext {
      * @param setOfInstances set of {@link ContextualInstance} which are to become the new bean store for this context
      * @throws IllegalArgumentException if {@link ContextualInstance}s belong to different scope than this context
      */
-    default <T> void clearAndSet(Collection<ContextualInstance<T>> setOfInstances) {
+    default void clearAndSet(Collection<ContextualInstance<?>> setOfInstances) {
         throw new UnsupportedOperationException("reset() is not implemented for context " + this.getClass());
     }
 }
