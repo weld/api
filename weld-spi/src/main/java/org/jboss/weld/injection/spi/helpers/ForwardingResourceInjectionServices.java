@@ -32,14 +32,4 @@ public abstract class ForwardingResourceInjectionServices implements ResourceInj
     public ResourceReferenceFactory<Object> registerResourceInjectionPoint(String jndiName, String mappedName) {
         return delegate().registerResourceInjectionPoint(jndiName, mappedName);
     }
-
-    @Override
-    public Object resolveResource(InjectionPoint injectionPoint) {
-        return delegate().resolveResource(injectionPoint);
-    }
-
-    @Override
-    public Object resolveResource(String jndiName, String mappedName) {
-        return delegate().resolveResource(jndiName, mappedName);
-    }
 }

@@ -32,9 +32,4 @@ public class MockEjbInjectionServices extends MockService implements EjbInjectio
         return new MockResourceFactory<Object>();
     }
 
-    @Override
-    public Object resolveEjb(InjectionPoint injectionPoint) {
-        return null;
-    }
-
 }

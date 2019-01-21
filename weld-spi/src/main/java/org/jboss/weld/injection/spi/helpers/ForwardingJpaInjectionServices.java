@@ -44,16 +44,6 @@ public abstract class ForwardingJpaInjectionServices implements JpaInjectionServ
     }
 
     @Override
-    public EntityManager resolvePersistenceContext(InjectionPoint injectionPoint) {
-        return delegate().resolvePersistenceContext(injectionPoint);
-    }
-
-    @Override
-    public EntityManagerFactory resolvePersistenceUnit(InjectionPoint injectionPoint) {
-        return delegate().resolvePersistenceUnit(injectionPoint);
-    }
-
-    @Override
     public String toString() {
         return delegate().toString();
     }

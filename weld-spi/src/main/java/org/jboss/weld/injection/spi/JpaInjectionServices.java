@@ -61,36 +61,4 @@ public interface JpaInjectionServices extends Service {
      */
     ResourceReferenceFactory<EntityManagerFactory> registerPersistenceUnitInjectionPoint(InjectionPoint injectionPoint);
 
-    /**
-     * Resolve the value for the given {@link PersistenceContext} injection point
-     *
-     * @deprecated Instead of calling this method at runtime, Weld should register every persistence context injection point at
-     *             bootstrap using {@link #registerPersistenceContextInjectionPoint(InjectionPoint)} and use the returned
-     *             factory for producing injectable instances at runtime.
-     *
-     * @param injectionPoint the injection point metadata
-     * @return an instance of the entity manager
-     * @throws IllegalArgumentException if the injection point is not annotated with {@link javax.persistence.PersistenceContext}, or,
-     * if the injection point is a method that doesn't follow JavaBean conventions
-     * @throws IllegalStateException if no suitable persistence units can be resolved for injection
-     */
-    @Deprecated
-    EntityManager resolvePersistenceContext(InjectionPoint injectionPoint);
-
-    /**
-     * Resolve the value for the given {@link PersistenceUnit} injection point
-     *
-     * @deprecated Instead of calling this method at runtime, Weld should register every persistence unit injection point at
-     *             bootstrap using {@link #registerPersistenceUnitInjectionPoint(InjectionPoint)} and use the returned factory
-     *             for producing injectable instances at runtime.
-     *
-     * @param injectionPoint the injection point metadata
-     * @return an instance of the entity manager
-     * @throws IllegalArgumentException if the injection point is not annotated with {@link PersistenceUnit}, or, if the injection
-     * point is a method that doesn't follow JavaBean conventions
-     * @throws IllegalStateException if no suitable persistence units can be resolved for injection
-     */
-    @Deprecated
-    EntityManagerFactory resolvePersistenceUnit(InjectionPoint injectionPoint);
-
 }

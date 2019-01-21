@@ -45,19 +45,4 @@ public interface EjbInjectionServices extends Service {
      */
     ResourceReferenceFactory<Object> registerEjbInjectionPoint(InjectionPoint injectionPoint);
 
-    /**
-     * Resolve the value for the given @EJB injection point.
-     *
-     * @deprecated Instead of calling this method at runtime, Weld should register every EJB injection point at bootstrap using
-     *             {@link #registerEjbInjectionPoint(InjectionPoint)} and use the returned factory for producing injectable
-     *             instances at runtime.
-     *
-     * @param injectionPoint the injection point metadata
-     * @return an instance of the EJB
-     * @throws IllegalArgumentException if the injection point is not annotated with @EJB, or, if the injection point is a
-     *         method that doesn't follow JavaBean conventions
-     */
-    @Deprecated
-    Object resolveEjb(InjectionPoint injectionPoint);
-
 }

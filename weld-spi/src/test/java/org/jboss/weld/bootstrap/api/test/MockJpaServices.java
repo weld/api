@@ -35,14 +35,4 @@ public class MockJpaServices extends MockService implements JpaInjectionServices
     public ResourceReferenceFactory<EntityManagerFactory> registerPersistenceUnitInjectionPoint(InjectionPoint injectionPoint) {
         return new MockResourceFactory<EntityManagerFactory>();
     }
-
-    @Override
-    public EntityManager resolvePersistenceContext(InjectionPoint injectionPoint) {
-        return null;
-    }
-
-    @Override
-    public EntityManagerFactory resolvePersistenceUnit(InjectionPoint injectionPoint) {
-        return null;
-    }
 }

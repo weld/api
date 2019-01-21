@@ -115,25 +115,6 @@ public class BootstrapTest
       bootstrap.startContainer(Environments.EE_INJECT, deployment);
    }
 
-   @Test // no exception should be thrown as ValidationServices are no longer required
-   public void testMissingValidationServices()
-   {
-      Bootstrap bootstrap = new MockBootstrap();
-      ServiceRegistry deploymentServices = new SimpleServiceRegistry();
-      deploymentServices.add(TransactionServices.class, new MockTransactionServices());
-      deploymentServices.add(SecurityServices.class, new MockSecurityServices());
-      deploymentServices.add(EjbServices.class, new MockEjbServices());
-
-      ServiceRegistry bdaServices = new SimpleServiceRegistry();
-      bdaServices.add(EjbInjectionServices.class, new MockEjbInjectionServices());
-      bdaServices.add(JpaInjectionServices.class, new MockJpaServices());
-      bdaServices.add(ResourceInjectionServices.class, new MockResourceServices());
-      bdaServices.add(ResourceLoader.class, new MockResourceLoader());
-
-      Deployment deployment = new MockDeployment(deploymentServices, new MockBeanDeploymentArchive(bdaServices));
-      bootstrap.startContainer(Environments.EE_INJECT, deployment);
-   }
-
    @Test
    public void testEEEnv()
    {
