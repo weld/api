@@ -60,6 +60,8 @@ public interface ClassFileInfo {
      * superclass of the given class</li>
      * <li>The annotation or an annotation annotated with the annotation is present on a parameter of a method declared by the given class or any direct or
      * indirect superclass of the given class</li>
+     * <li>The annotation or an annotation annotated with the annotation is present on a default method or a parameter of a default method declared by an interface directly or
+     * indirectly implemented by the given class</li>
      * <li>The annotation or an annotation annotated with the annotation is present on a constructor declared by the given class</li>
      * <li>The annotation or an annotation annotated with the annotation is present on a parameter of a constructor declared by the given class</li>
      * </ul>
