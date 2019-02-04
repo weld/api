@@ -103,11 +103,11 @@
         <atinject.api.version>1</atinject.api.version>
         <cdi.api.version>2.0.SP1</cdi.api.version>
         <ejb.api.version>1.0.0.Final</ejb.api.version>
-        <jpa.api.version>1.0.0.Final</jpa.api.version>
-        <validation.api.version>1.1.0.Final</validation.api.version>
+        <jpa.api.version>2.2</jpa.api.version>
+        <validation.api.version>2.0.1.Final</validation.api.version>
         <jboss.spec.annotation.version>1.0.0.Final</jboss.spec.annotation.version>
         <jboss.spec.servlet.version>1.0.0.Final</jboss.spec.servlet.version>
-        <jboss.spec.jaxrs.version>1.0.0.Final</jboss.spec.jaxrs.version>
+        <jboss.spec.jaxrs.version>1.0.2.Final</jboss.spec.jaxrs.version>
         <jta.api.version>1.0.0.Final</jta.api.version>
         <interceptor.api.version>1.0.0.Final</interceptor.api.version>
     </properties>
@@ -115,8 +115,8 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>org.hibernate.javax.persistence</groupId>
-                <artifactId>hibernate-jpa-2.1-api</artifactId>
+                <groupId>javax.persistence</groupId>
+                <artifactId>javax.persistence-api</artifactId>
                 <version>${jpa.api.version}</version>
             </dependency>
 
@@ -134,7 +134,7 @@
 
             <dependency>
                 <groupId>org.jboss.spec.javax.servlet</groupId>
-                <artifactId>jboss-servlet-api_3.1_spec</artifactId>
+                <artifactId>jboss-servlet-api_4.0_spec</artifactId>
                 <version>${jboss.spec.servlet.version}</version>
             </dependency>
 
@@ -164,7 +164,7 @@
 
             <dependency>
                 <groupId>org.jboss.spec.javax.ws.rs</groupId>
-                <artifactId>jboss-jaxrs-api_2.0_spec</artifactId>
+                <artifactId>jboss-jaxrs-api_2.1_spec</artifactId>
                 <version>${jboss.spec.jaxrs.version}</version>
             </dependency>
 
