@@ -26,8 +26,8 @@
       </dependency>
 
       <dependency>
-          <groupId>javax.persistence</groupId>
-          <artifactId>javax.persistence-api</artifactId>
+          <groupId>jakarta.persistence</groupId>
+          <artifactId>jakarta.persistence-api</artifactId>
           <optional>true</optional>
       </dependency>
 
@@ -40,7 +40,7 @@
 
       <dependency>
          <groupId>org.jboss.spec.javax.transaction</groupId>
-         <artifactId>jboss-transaction-api_1.2_spec</artifactId>
+         <artifactId>jboss-transaction-api_1.3_spec</artifactId>
          <optional>true</optional>
       </dependency>
 
@@ -51,8 +51,8 @@
       </dependency>
 
       <dependency>
-         <groupId>javax.validation</groupId>
-         <artifactId>validation-api</artifactId>
+         <groupId>jakarta.validation</groupId>
+         <artifactId>jakarta.validation-api</artifactId>
          <optional>true</optional>
       </dependency>
 
