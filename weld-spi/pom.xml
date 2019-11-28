@@ -24,6 +24,12 @@
          <artifactId>weld-api</artifactId>
          <version>${project.version}</version>
       </dependency>
+      
+      <dependency>
+         <groupId>org.jboss.spec.javax.annotation</groupId>
+         <artifactId>jboss-annotations-api_1.3_spec</artifactId>
+         <optional>true</optional>
+      </dependency>
 
       <dependency>
           <groupId>jakarta.persistence</groupId>
