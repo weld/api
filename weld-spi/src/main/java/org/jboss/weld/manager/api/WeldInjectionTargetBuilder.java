@@ -16,7 +16,7 @@
  */
 package org.jboss.weld.manager.api;
 
-import javax.enterprise.inject.spi.Bean;
+import jakarta.enterprise.inject.spi.Bean;
 
 /**
  * A builder that allows a customized {@link WeldInjectionTarget} instance to be created.

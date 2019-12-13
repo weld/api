@@ -16,8 +16,8 @@
  */
 package org.jboss.weld.injection.spi;
 
-import javax.enterprise.inject.spi.DefinitionException;
-import javax.enterprise.inject.spi.InjectionPoint;
+import jakarta.enterprise.inject.spi.DefinitionException;
+import jakarta.enterprise.inject.spi.InjectionPoint;
 
 import org.jboss.weld.bootstrap.api.Service;
 

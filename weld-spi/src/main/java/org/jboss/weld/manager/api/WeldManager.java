@@ -22,13 +22,13 @@ import java.lang.annotation.Annotation;
 import java.util.Collection;
 import java.util.stream.Collectors;
 
-import javax.enterprise.context.spi.Context;
-import javax.enterprise.context.spi.Contextual;
-import javax.enterprise.inject.Instance;
-import javax.enterprise.inject.spi.AnnotatedType;
-import javax.enterprise.inject.spi.Bean;
-import javax.enterprise.inject.spi.BeanManager;
-import javax.enterprise.inject.spi.InjectionTarget;
+import jakarta.enterprise.context.spi.Context;
+import jakarta.enterprise.context.spi.Contextual;
+import jakarta.enterprise.inject.Instance;
+import jakarta.enterprise.inject.spi.AnnotatedType;
+import jakarta.enterprise.inject.spi.Bean;
+import jakarta.enterprise.inject.spi.BeanManager;
+import jakarta.enterprise.inject.spi.InjectionTarget;
 
 import org.jboss.weld.bootstrap.api.ServiceRegistry;
 import org.jboss.weld.construction.api.WeldCreationalContext;
@@ -121,7 +121,7 @@ public interface WeldManager extends BeanManager, Serializable {
 
     /**
      * @see <a href="https://issues.jboss.org/browse/CDI-671">CDI-671</a>
-     * @return a new {@link Instance} with required type {@link Object} and no required qualifiers ({@link javax.enterprise.inject.Default} is added automatically during resolution if
+     * @return a new {@link Instance} with required type {@link Object} and no required qualifiers ({@link jakarta.enterprise.inject.Default} is added automatically during resolution if
      *         no qualifiers are selected)
      */
     Instance<Object> instance();

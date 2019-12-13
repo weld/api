@@ -22,15 +22,15 @@ import java.util.Set;
 import java.util.function.BiConsumer;
 import java.util.function.Function;
 
-import javax.enterprise.context.spi.CreationalContext;
-import javax.enterprise.inject.Instance;
-import javax.enterprise.inject.spi.AnnotatedType;
-import javax.enterprise.inject.spi.BeanAttributes;
-import javax.enterprise.inject.spi.InjectionPoint;
-import javax.enterprise.inject.spi.Prioritized;
-import javax.enterprise.inject.spi.configurator.BeanConfigurator;
-import javax.enterprise.util.TypeLiteral;
-import javax.interceptor.Interceptor.Priority;
+import jakarta.enterprise.context.spi.CreationalContext;
+import jakarta.enterprise.inject.Instance;
+import jakarta.enterprise.inject.spi.AnnotatedType;
+import jakarta.enterprise.inject.spi.BeanAttributes;
+import jakarta.enterprise.inject.spi.InjectionPoint;
+import jakarta.enterprise.inject.spi.Prioritized;
+import jakarta.enterprise.inject.spi.configurator.BeanConfigurator;
+import jakarta.enterprise.util.TypeLiteral;
+import jakarta.interceptor.Interceptor.Priority;
 
 /**
  * Represents an enhanced version of {@link BeanConfigurator}

@@ -16,7 +16,7 @@
  */
 package org.jboss.weld.proxy;
 
-import javax.enterprise.inject.spi.Bean;
+import jakarta.enterprise.inject.spi.Bean;
 
 /**
  * An extension to {@link WeldConstruct} interface which denotes a client proxy object. All Weld client proxies implement this

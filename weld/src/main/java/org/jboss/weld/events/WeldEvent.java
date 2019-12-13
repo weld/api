@@ -19,11 +19,11 @@ package org.jboss.weld.events;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
 
-import javax.enterprise.event.Event;
-import javax.enterprise.util.TypeLiteral;
+import jakarta.enterprise.event.Event;
+import jakarta.enterprise.util.TypeLiteral;
 
 /**
- * Enriched version of {@link javax.enterprise.event.Event}.
+ * Enriched version of {@link jakarta.enterprise.event.Event}.
  *
  * @author <a href="mailto:manovotn@redhat.com">Matej Novotny</a>
  */

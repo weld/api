@@ -19,8 +19,8 @@ package org.jboss.weld.interceptor;
 import java.lang.annotation.Annotation;
 import java.util.Set;
 
-import javax.interceptor.Interceptors;
-import javax.interceptor.InvocationContext;
+import jakarta.interceptor.Interceptors;
+import jakarta.interceptor.InvocationContext;
 
 /**
  * Represents an enhanced version of {@link InvocationContext}.

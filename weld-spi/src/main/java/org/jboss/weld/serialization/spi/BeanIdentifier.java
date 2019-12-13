@@ -18,7 +18,7 @@ package org.jboss.weld.serialization.spi;
 
 import java.io.Serializable;
 
-import javax.enterprise.inject.spi.PassivationCapable;
+import jakarta.enterprise.inject.spi.PassivationCapable;
 
 public interface BeanIdentifier extends Serializable {
 

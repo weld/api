@@ -16,8 +16,8 @@
  */
 package org.jboss.weld.context.api;
 
-import javax.enterprise.context.spi.Contextual;
-import javax.enterprise.context.spi.CreationalContext;
+import jakarta.enterprise.context.spi.Contextual;
+import jakarta.enterprise.context.spi.CreationalContext;
 
 /**
  * Represents a contextual instance of a given type. This is an abstraction on top of the actual bean instance stored in each

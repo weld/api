@@ -16,9 +16,9 @@
  */
 package org.jboss.weld.injection.spi;
 
-import javax.enterprise.inject.spi.AnnotatedType;
-import javax.enterprise.inject.spi.InjectionTarget;
-import javax.inject.Inject;
+import jakarta.enterprise.inject.spi.AnnotatedType;
+import jakarta.enterprise.inject.spi.InjectionTarget;
+import jakarta.inject.Inject;
 
 import org.jboss.weld.ejb.api.SessionObjectReference;
 

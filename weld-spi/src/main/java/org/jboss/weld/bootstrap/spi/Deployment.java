@@ -19,7 +19,7 @@ package org.jboss.weld.bootstrap.spi;
 import java.util.Collection;
 import java.util.ServiceLoader;
 
-import javax.enterprise.inject.spi.Extension;
+import jakarta.enterprise.inject.spi.Extension;
 
 import org.jboss.weld.bootstrap.api.ServiceRegistry;
 import org.jboss.weld.ejb.spi.EjbDescriptor;

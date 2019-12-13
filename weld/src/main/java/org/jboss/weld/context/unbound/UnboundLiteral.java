@@ -16,7 +16,7 @@
  */
 package org.jboss.weld.context.unbound;
 
-import javax.enterprise.util.AnnotationLiteral;
+import jakarta.enterprise.util.AnnotationLiteral;
 
 import org.jboss.weld.context.bound.Bound;
 

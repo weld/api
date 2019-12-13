@@ -21,9 +21,9 @@ import java.lang.reflect.Method;
 import java.util.Collection;
 import java.util.List;
 
-import javax.enterprise.inject.spi.InterceptionType;
-import javax.enterprise.inject.spi.Interceptor;
-import javax.interceptor.InterceptorBinding;
+import jakarta.enterprise.inject.spi.InterceptionType;
+import jakarta.enterprise.inject.spi.Interceptor;
+import jakarta.interceptor.InterceptorBinding;
 
 /**
  * @author Marius Bogoevici
@@ -36,7 +36,7 @@ public interface InterceptorBindings {
      * This includes class and method-bound interceptors.The purpose of this method is to indicate what interceptors does the
      * container need to interact with, for a given EJB.
      *
-     * Note: in the case of an EJB, the expectation is that the interpretation of {link @javax.interceptor.Interceptors} is left
+     * Note: in the case of an EJB, the expectation is that the interpretation of {link @jakarta.interceptor.Interceptors} is left
      * to the container, and the interceptors provided by the binding are complementary
      *
      * @return all interceptors that are bound to an EJB object through the {@link InterceptorBinding} mechanism and are enabled

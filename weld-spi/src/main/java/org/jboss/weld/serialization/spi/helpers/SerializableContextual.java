@@ -17,7 +17,7 @@
 
 package org.jboss.weld.serialization.spi.helpers;
 
-import javax.enterprise.context.spi.Contextual;
+import jakarta.enterprise.context.spi.Contextual;
 import java.io.Serializable;
 
 /**
