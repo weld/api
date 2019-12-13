@@ -1,7 +1,7 @@
 package org.jboss.weld.context;
 
-import javax.enterprise.context.ContextNotActiveException;
-import javax.enterprise.context.Conversation;
+import jakarta.enterprise.context.ContextNotActiveException;
+import jakarta.enterprise.context.Conversation;
 
 /**
  * <p>

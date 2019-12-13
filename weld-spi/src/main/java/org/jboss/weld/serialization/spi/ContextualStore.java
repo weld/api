@@ -16,8 +16,8 @@
  */
 package org.jboss.weld.serialization.spi;
 
-import javax.enterprise.context.spi.Contextual;
-import javax.enterprise.context.spi.CreationalContext;
+import jakarta.enterprise.context.spi.Contextual;
+import jakarta.enterprise.context.spi.CreationalContext;
 
 import org.jboss.weld.bootstrap.api.Service;
 import org.jboss.weld.serialization.spi.helpers.SerializableContextual;

@@ -2,7 +2,7 @@ package org.jboss.weld.context;
 
 import java.util.Map;
 
-import javax.enterprise.context.SessionScoped;
+import jakarta.enterprise.context.SessionScoped;
 import javax.servlet.http.HttpSession;
 
 import org.jboss.weld.context.bound.BoundSessionContext;
@@ -33,7 +33,7 @@ import org.jboss.weld.context.http.HttpSessionContext;
  * @author Pete Muir
  * @see org.jboss.weld.context.bound.BoundSessionContext
  * @see javax.servlet.http.HttpSession
- * @see javax.enterprise.context.SessionScoped
+ * @see jakarta.enterprise.context.SessionScoped
  *
  */
 public interface SessionContext extends ManagedContext {

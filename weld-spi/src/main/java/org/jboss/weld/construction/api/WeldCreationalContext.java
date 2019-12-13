@@ -16,9 +16,9 @@
  */
 package org.jboss.weld.construction.api;
 
-import javax.enterprise.context.spi.CreationalContext;
-import javax.interceptor.AroundConstruct;
-import javax.interceptor.Interceptors;
+import jakarta.enterprise.context.spi.CreationalContext;
+import jakarta.interceptor.AroundConstruct;
+import jakarta.interceptor.Interceptors;
 
 /**
  * Extended version of {@link CreationalContext} which gives the integrator additional control over the process of constructing an instance.

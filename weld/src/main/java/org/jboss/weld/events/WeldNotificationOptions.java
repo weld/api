@@ -16,10 +16,10 @@
  */
 package org.jboss.weld.events;
 
-import javax.enterprise.event.NotificationOptions;
+import jakarta.enterprise.event.NotificationOptions;
 
 /**
- * The {@link javax.enterprise.event.Event#fireAsync(Object, NotificationOptions)} method allows to configure the notification of asynchronous observer methods.
+ * The {@link jakarta.enterprise.event.Event#fireAsync(Object, NotificationOptions)} method allows to configure the notification of asynchronous observer methods.
  * <p>
  * Weld defines the following non-portable options:
  * <ul>
@@ -28,7 +28,7 @@ import javax.enterprise.event.NotificationOptions;
  * </ul>
  *
  * @author Martin Kouba
- * @see javax.enterprise.event.Event#fireAsync(Object, NotificationOptions)
+ * @see jakarta.enterprise.event.Event#fireAsync(Object, NotificationOptions)
  * @since 3.0
  */
 public interface WeldNotificationOptions extends NotificationOptions {

@@ -16,7 +16,7 @@
  */
 package org.jboss.weld.context.bound;
 
-import javax.enterprise.util.AnnotationLiteral;
+import jakarta.enterprise.util.AnnotationLiteral;
 
 /**
  * Annotation literal for {@link Bound}

@@ -18,7 +18,7 @@ package org.jboss.weld.context;
 
 import java.util.Collection;
 
-import javax.enterprise.context.spi.AlterableContext;
+import jakarta.enterprise.context.spi.AlterableContext;
 
 import org.jboss.weld.context.api.ContextualInstance;
 

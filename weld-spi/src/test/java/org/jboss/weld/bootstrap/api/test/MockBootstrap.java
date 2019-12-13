@@ -22,7 +22,7 @@ import static org.jboss.weld.bootstrap.spi.BeansXml.EMPTY_BEANS_XML;
 import java.net.URL;
 import java.util.Set;
 
-import javax.enterprise.inject.spi.Extension;
+import jakarta.enterprise.inject.spi.Extension;
 
 import org.jboss.weld.bootstrap.api.Bootstrap;
 import org.jboss.weld.bootstrap.api.Environment;

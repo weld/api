@@ -23,17 +23,17 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
-import javax.enterprise.context.RequestScoped;
-import javax.enterprise.util.AnnotationLiteral;
-import javax.interceptor.InterceptorBinding;
+import jakarta.enterprise.context.RequestScoped;
+import jakarta.enterprise.util.AnnotationLiteral;
+import jakarta.interceptor.InterceptorBinding;
 
 /**
  * This interceptor binding can be used to activate the request context within a business method invocation.
  * <p>
  * If the request context is already active then the associated interceptor does nothing.
  * <p>
- * The interceptor is registered with a priority of {@link javax.interceptor.Interceptor.Priority#PLATFORM_BEFORE} + 100. The same value is used for
- * {@link javax.enterprise.context.control.ActivateRequestContext}.
+ * The interceptor is registered with a priority of {@link jakarta.interceptor.Interceptor.Priority#PLATFORM_BEFORE} + 100. The same value is used for
+ * {@link jakarta.enterprise.context.control.ActivateRequestContext}.
  *
  * @author Tomas Remes
  * @author Martin Kouba

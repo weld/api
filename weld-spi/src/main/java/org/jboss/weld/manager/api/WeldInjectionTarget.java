@@ -16,8 +16,8 @@
  */
 package org.jboss.weld.manager.api;
 
-import javax.enterprise.inject.spi.AnnotatedType;
-import javax.enterprise.inject.spi.InjectionTarget;
+import jakarta.enterprise.inject.spi.AnnotatedType;
+import jakarta.enterprise.inject.spi.InjectionTarget;
 
 /**
  * Specialized version of {@link InjectionTarget} that exposes additional information.

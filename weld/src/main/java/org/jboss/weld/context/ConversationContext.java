@@ -2,8 +2,8 @@ package org.jboss.weld.context;
 
 import java.util.Collection;
 
-import javax.enterprise.context.Conversation;
-import javax.enterprise.context.ConversationScoped;
+import jakarta.enterprise.context.Conversation;
+import jakarta.enterprise.context.ConversationScoped;
 import javax.servlet.http.HttpSession;
 
 import org.jboss.weld.context.bound.BoundConversationContext;

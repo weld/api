@@ -1,7 +1,7 @@
 package org.jboss.weld.context;
 
-import javax.enterprise.context.Dependent;
-import javax.enterprise.context.spi.AlterableContext;
+import jakarta.enterprise.context.Dependent;
+import jakarta.enterprise.context.spi.AlterableContext;
 
 /**
  * <p>

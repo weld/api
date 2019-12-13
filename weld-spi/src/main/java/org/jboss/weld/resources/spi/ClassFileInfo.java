@@ -81,7 +81,7 @@ public interface ClassFileInfo {
     /**
      * Indicates whether this class has a CDI constructor.
      *
-     * @return true if this class has a constructor annotated with {@link javax.inject.Inject} or a no-arg constructor, false otherwise
+     * @return true if this class has a constructor annotated with {@link jakarta.inject.Inject} or a no-arg constructor, false otherwise
      */
     boolean hasCdiConstructor();
 
@@ -104,7 +104,7 @@ public interface ClassFileInfo {
     /**
      * Indicates whether this class is vetoed from CDI processing.
      *
-     * @return true if the {@link javax.enterprise.inject.Vetoed} annotation is present on this class or the class's package, false otherwise
+     * @return true if the {@link jakarta.enterprise.inject.Vetoed} annotation is present on this class or the class's package, false otherwise
      */
     boolean isVetoed();
 

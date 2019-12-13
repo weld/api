@@ -16,7 +16,7 @@
  */
 package org.jboss.weld.context.ejb;
 
-import javax.enterprise.util.AnnotationLiteral;
+import jakarta.enterprise.util.AnnotationLiteral;
 
 /**
  * Annotation literal for {@link Ejb}

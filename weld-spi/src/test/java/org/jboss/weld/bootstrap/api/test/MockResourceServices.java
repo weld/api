@@ -16,7 +16,7 @@
  */
 package org.jboss.weld.bootstrap.api.test;
 
-import javax.enterprise.inject.spi.InjectionPoint;
+import jakarta.enterprise.inject.spi.InjectionPoint;
 
 import org.jboss.weld.injection.spi.ResourceReferenceFactory;
 import org.jboss.weld.injection.spi.ResourceInjectionServices;

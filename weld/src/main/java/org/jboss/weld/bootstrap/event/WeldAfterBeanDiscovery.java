@@ -16,9 +16,9 @@
  */
 package org.jboss.weld.bootstrap.event;
 
-import javax.enterprise.inject.spi.AfterBeanDiscovery;
-import javax.enterprise.inject.spi.Interceptor;
-import javax.enterprise.inject.spi.configurator.BeanConfigurator;
+import jakarta.enterprise.inject.spi.AfterBeanDiscovery;
+import jakarta.enterprise.inject.spi.Interceptor;
+import jakarta.enterprise.inject.spi.configurator.BeanConfigurator;
 
 /**
  * Represents an enhanced version of {@link AfterBeanDiscovery}.
