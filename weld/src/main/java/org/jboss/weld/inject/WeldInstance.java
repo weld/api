@@ -57,7 +57,7 @@ import javax.enterprise.util.TypeLiteral;
  * </pre>
  *
  * @author Martin Kouba
- * @seeIssue WELD-2204
+ * @see <a href="https://issues.jboss.org/browse/WELD-2204">WELD-2204</a>
  * @param <T>
  */
 public interface WeldInstance<T> extends Instance<T> {

@@ -25,7 +25,7 @@ import org.jboss.weld.bootstrap.api.Service;
  * sources such as system properties). The supported keys are declared in the documentation. Entries with unsupported keys are ignored. Invalid property value
  * is a deployment problem - initialization will be aborted by the container.
  *
- * @seeIssue WELD-1791
+ * @see <a href="https://issues.jboss.org/browse/WELD-1791">WELD-1791</a>
  * @author Martin Kouba
  */
 public interface ExternalConfiguration extends Service {
