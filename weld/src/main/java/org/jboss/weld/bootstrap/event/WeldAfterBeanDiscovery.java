@@ -23,8 +23,8 @@ import javax.enterprise.inject.spi.configurator.BeanConfigurator;
 /**
  * Represents an enhanced version of {@link AfterBeanDiscovery}.
  *
- * @seeIssue WELD-2008
  * @author Martin Kouba
+ * @see <a href="https://issues.jboss.org/browse/WELD-2008">WELD-2008</a>
  */
 public interface WeldAfterBeanDiscovery extends AfterBeanDiscovery {
 

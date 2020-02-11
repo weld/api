@@ -30,7 +30,7 @@ import javax.interceptor.InvocationContext;
  * Allows to configure a new {@link Interceptor} instance.
  *
  * @author Tomas Remes
- * @seeIssue WELD-2008
+ * @see <a href="https://issues.jboss.org/browse/WELD-2008">WELD-2008</a>
  */
 public interface InterceptorConfigurator {
 

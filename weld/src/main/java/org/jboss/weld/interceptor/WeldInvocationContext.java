@@ -26,7 +26,7 @@ import javax.interceptor.InvocationContext;
  * Represents an enhanced version of {@link InvocationContext}.
  *
  * @author Martin Kouba
- * @seeIssue CDI-468
+ * @see <a href="https://issues.jboss.org/browse/CDI-468">CDI-468</a>
  */
 public interface WeldInvocationContext extends InvocationContext {
 

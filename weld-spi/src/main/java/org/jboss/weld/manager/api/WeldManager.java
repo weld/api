@@ -120,7 +120,7 @@ public interface WeldManager extends BeanManager, Serializable {
     String getId();
 
     /**
-     * @seeIssue CDI-671
+     * @see <a href="https://issues.jboss.org/browse/CDI-671">CDI-671</a>
      * @return a new {@link Instance} with required type {@link Object} and no required qualifiers ({@link javax.enterprise.inject.Default} is added automatically during resolution if
      *         no qualifiers are selected)
      */
