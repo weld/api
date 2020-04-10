@@ -1,6 +1,6 @@
 package org.jboss.weld.servlet.spi;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.jboss.weld.bootstrap.api.Service;
 

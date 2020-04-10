@@ -4,7 +4,7 @@ import java.util.Map;
 
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.interceptor.InvocationContext;
-import javax.servlet.ServletRequest;
+import jakarta.servlet.ServletRequest;
 
 import org.jboss.weld.context.bound.BoundRequestContext;
 import org.jboss.weld.context.ejb.EjbRequestContext;

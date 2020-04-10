@@ -16,8 +16,8 @@
  */
 package org.jboss.weld.transaction.spi;
 
-import javax.transaction.Synchronization;
-import javax.transaction.UserTransaction;
+import jakarta.transaction.Synchronization;
+import jakarta.transaction.UserTransaction;
 
 import org.jboss.weld.bootstrap.api.Service;
 
@@ -49,7 +49,7 @@ public interface TransactionServices extends Service {
     /**
      * Registers a synchronization object with the currently executing transaction.
      *
-     * @see javax.transaction.Synchronization
+     * @see jakarta.transaction.Synchronization
      * @param synchronizedObserver the synchronization
      * @throws RuntimeException if a problem occurs during registration, the {@link RuntimeException#getCause()} should return the original exception so that
      *         Weld could easily distinguish possible registration problems

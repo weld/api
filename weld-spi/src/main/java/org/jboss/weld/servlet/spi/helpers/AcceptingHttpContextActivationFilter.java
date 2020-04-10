@@ -1,6 +1,6 @@
 package org.jboss.weld.servlet.spi.helpers;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.jboss.weld.servlet.spi.HttpContextActivationFilter;
 

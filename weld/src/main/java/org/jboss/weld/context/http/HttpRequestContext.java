@@ -1,7 +1,7 @@
 package org.jboss.weld.context.http;
 
-import javax.servlet.ServletRequest;
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.ServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.jboss.weld.context.BoundContext;
 import org.jboss.weld.context.RequestContext;
