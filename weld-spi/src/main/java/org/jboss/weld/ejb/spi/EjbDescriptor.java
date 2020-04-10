@@ -20,7 +20,7 @@ package org.jboss.weld.ejb.spi;
 import java.lang.reflect.Method;
 import java.util.Collection;
 
-import javax.ejb.Stateful;
+import jakarta.ejb.Stateful;
 
 /**
  * EJB metadata from the EJB descriptor. The implementation may optionally implement {@link SubclassedComponentDescriptor}

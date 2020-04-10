@@ -18,7 +18,7 @@ package org.jboss.weld.ejb.api;
 
 import java.io.Serializable;
 
-import javax.ejb.NoSuchEJBException;
+import jakarta.ejb.NoSuchEJBException;
 
 /**
  * A serializable reference to a session object in the EJB container

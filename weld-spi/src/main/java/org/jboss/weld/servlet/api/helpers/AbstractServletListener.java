@@ -16,9 +16,9 @@
  */
 package org.jboss.weld.servlet.api.helpers;
 
-import javax.servlet.ServletContextEvent;
-import javax.servlet.ServletRequestEvent;
-import javax.servlet.http.HttpSessionEvent;
+import jakarta.servlet.ServletContextEvent;
+import jakarta.servlet.ServletRequestEvent;
+import jakarta.servlet.http.HttpSessionEvent;
 
 import org.jboss.weld.servlet.api.ServletListener;
 

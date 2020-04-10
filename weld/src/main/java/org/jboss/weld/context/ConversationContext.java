@@ -4,7 +4,7 @@ import java.util.Collection;
 
 import jakarta.enterprise.context.Conversation;
 import jakarta.enterprise.context.ConversationScoped;
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.http.HttpSession;
 
 import org.jboss.weld.context.bound.BoundConversationContext;
 import org.jboss.weld.context.bound.BoundRequest;

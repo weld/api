@@ -2,7 +2,7 @@ package org.jboss.weld.servlet.spi.helpers;
 
 import java.util.regex.Pattern;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.jboss.weld.servlet.spi.HttpContextActivationFilter;
 
