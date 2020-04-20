@@ -200,26 +200,6 @@
         </dependencies>
     </dependencyManagement>
 
-    <!-- Build configuration -->
-    <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-javadoc-plugin</artifactId>
-                    <configuration>
-                        <taglet>org.jboss.weld.taglets.SeeIssueTaglet</taglet>
-                        <tagletArtifact>
-                            <groupId>org.jboss.weld</groupId>
-                            <artifactId>weld-common-build-config</artifactId>
-                            <version>${build.config.version}</version>
-                        </tagletArtifact>
-                    </configuration>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-    </build>
-
     <!-- SCM and Distribution management -->
     <scm>
         <connection>scm:git:git@github.com:weld/api.git</connection>
