@@ -32,7 +32,7 @@ public class MetadataImpl<T> implements Metadata<T> {
 
     /**
      *
-     * @param value
+     * @param value type of metadata that this class holds
      */
     public MetadataImpl(T value) {
         this(value, LOCATION_NOT_AVAILABLE);
@@ -40,8 +40,8 @@ public class MetadataImpl<T> implements Metadata<T> {
 
     /**
      *
-     * @param value
-     * @param location
+     * @param value type of metadata that this class holds
+     * @param location String representation of where is this metadata stored
      */
     public MetadataImpl(T value, String location) {
         this.location = location;

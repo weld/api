@@ -159,8 +159,9 @@ public interface WeldManager extends BeanManager, Serializable {
      * If called after the container bootstrap finished, the client code is required to explicitly call {@link #disposeAnnotatedType(Class, String)}
      * as soon as the specified type should be garbage-collected (to avoid memory leaks).
      *
-     * @param type
-     * @param id
+     * @param type underlying class for the {@code AnnotatedType}
+     * @param id unique ID of this newly created {@code AnnotatedType}
+     * @param <T> holds information about the class type
      * @return the {@link AnnotatedType}
      */
     <T> AnnotatedType<T> createAnnotatedType(Class<T> type, String id);
@@ -172,8 +173,9 @@ public interface WeldManager extends BeanManager, Serializable {
      * <p>
      * It's not necessary to call this method unless the identified type should be a subject of garbage collection.
      *
-     * @param type
-     * @param id
+     * @param type underlying class for the {@code AnnotatedType}
+     * @param id unique ID of the {@code AnnotatedType} that is to be destroyed
+     * @param <T> holds information about the class type
      * @see #createAnnotatedType(Class, String)
      */
     <T> void disposeAnnotatedType(Class<T> type, String id);
@@ -182,7 +184,7 @@ public interface WeldManager extends BeanManager, Serializable {
      * Indicates whether there is an active context for a given scope.
      *
      * @throws IllegalStateException if there are multiple active contexts for a given scope
-     * @param scopeType
+     * @param scopeType an annotation representing the scope
      * @return true if there is an active context for a given scope, false otherwise
      */
     boolean isContextActive(Class<? extends Annotation> scopeType);
