@@ -46,7 +46,7 @@ public interface HttpConversationContext extends BoundContext<HttpServletRequest
      * implementation must throw a {@link RuntimeException} if the lazy initialization is not supported.
      * </p>
      *
-     * @param transientConversationInitializationCallback
+     * @param transientConversationInitializationCallback the callback which is invoked during initialization of a transient conversation
      */
     default void activateLazily(Consumer<HttpServletRequest> transientConversationInitializationCallback) {
         throw new UnsupportedOperationException();

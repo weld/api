@@ -58,7 +58,7 @@ import javax.enterprise.util.TypeLiteral;
  *
  * @author Martin Kouba
  * @see <a href="https://issues.jboss.org/browse/WELD-2204">WELD-2204</a>
- * @param <T>
+ * @param <T> the required bean type
  */
 public interface WeldInstance<T> extends Instance<T> {
 
@@ -70,8 +70,8 @@ public interface WeldInstance<T> extends Instance<T> {
      * </p>
      *
      * @return a new handler
-     * @throws UnsatisfiedResolutionException
-     * @throws AmbiguousResolutionException
+     * @throws UnsatisfiedResolutionException if there is no bean with given type and qualifiers
+     * @throws AmbiguousResolutionException if there is more than one bean with given type and qualifiers
      */
     Handler<T> getHandler();
 
@@ -125,7 +125,7 @@ public interface WeldInstance<T> extends Instance<T> {
      * @param <X> the required type
      * @param subtype    a {@link java.lang.reflect.Type} representing the required type
      * @param qualifiers the additional required qualifiers
-     * @return the child <tt>Instance</tt>
+     * @return the child {@code Instance}
      * @throws IllegalArgumentException if passed two instances of the same non repeating qualifier type, or an instance of an
      *                                  annotation that is not a qualifier type
      * @throws IllegalStateException    if the container is already shutdown
@@ -140,7 +140,7 @@ public interface WeldInstance<T> extends Instance<T> {
      * </p>
      *
      * @author Martin Kouba
-     * @param <T>
+     * @param <T> the required bean type
      */
     interface Handler<T> extends AutoCloseable {
 
