@@ -210,4 +210,17 @@
         <url>scm:git:git@github.com:weld/api.git</url>
         <tag>HEAD</tag>
     </scm>
+
+    <!-- Needed to download org.apache.maven.plugins:maven-compiler-plugin:jar:3.8.0-jboss-2 -->
+    <pluginRepositories>
+        <pluginRepository>
+            <id>jboss-public-repository-group</id>
+            <name>JBoss Public Repository Group</name>
+            <url>https://repository.jboss.org/nexus/content/groups/public</url>
+            <layout>default</layout>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </pluginRepository>
+    </pluginRepositories>
 </project>
