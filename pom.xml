@@ -194,7 +194,7 @@
             <dependency>
                 <groupId>org.testng</groupId>
                 <artifactId>testng</artifactId>
-                <version>5.10</version>
+                <version>5.11</version>
                 <classifier>jdk15</classifier>
             </dependency>
         </dependencies>
