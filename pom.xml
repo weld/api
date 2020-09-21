@@ -106,7 +106,7 @@
         <ejb.api.version>4.0.0-RC2</ejb.api.version>
         <jaxrs.api.version>3.0.0-M1</jaxrs.api.version>
         <jpa.api.version>3.0.0-RC2</jpa.api.version>
-        <jta.api.version>2.0.0-RC2</jta.api.version>
+        <jta.api.version>2.0.0-RC3</jta.api.version>
         <interceptor.api.version>2.0.0-RC2</interceptor.api.version>
         <servlet.api.version>5.0.0-M2</servlet.api.version>
         <validation.api.version>3.0.0-M1</validation.api.version>
