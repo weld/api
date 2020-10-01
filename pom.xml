@@ -108,7 +108,7 @@
         <jpa.api.version>3.0.0-RC2</jpa.api.version>
         <jta.api.version>2.0.0-RC2</jta.api.version>
         <interceptor.api.version>2.0.0-RC2</interceptor.api.version>
-        <servlet.api.version>5.0.0-M2</servlet.api.version>
+        <servlet.api.version>5.0.0</servlet.api.version>
         <validation.api.version>3.0.0-M1</validation.api.version>
         <jboss.spec.annotation.version>2.0.1.Final</jboss.spec.annotation.version>
         <jboss.spec.servlet.version>2.0.0.Final</jboss.spec.servlet.version>
