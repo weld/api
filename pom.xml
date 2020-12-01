@@ -103,7 +103,7 @@
         <atinject.api.version>1.0.3</atinject.api.version>
         <cdi.api.version>2.0.2</cdi.api.version>
         <ejb.api.version>2.0.0.Final</ejb.api.version>
-        <jpa.api.version>2.2.3</jpa.api.version>
+        <jpa.api.version>3.0.0</jpa.api.version>
         <validation.api.version>2.0.2</validation.api.version>
         <jboss.spec.annotation.version>2.0.1.Final</jboss.spec.annotation.version>
         <jboss.spec.servlet.version>2.0.0.Final</jboss.spec.servlet.version>
