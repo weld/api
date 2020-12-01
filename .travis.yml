@@ -1,6 +1,0 @@
-language: java
-jdk:
-  - openjdk8
-  - openjdk11
-script: "mvn test -B"
-sudo: false
