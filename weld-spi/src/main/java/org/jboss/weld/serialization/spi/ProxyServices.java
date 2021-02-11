@@ -30,14 +30,15 @@ import java.security.ProtectionDomain;
  * serialization and deserialization of these classes across container instances.
  * </p>
  * <p>
- * Required in all environments since proxies are always in use. A default implementation will be used if none are provided by
- * the container which will use the information directly from the type of proxy.
+ * Required in all environments since proxies are always in use. If no such service is provided by integrator, a default
+ * implementation will be used which will use the information extracted directly from the type of proxy.
  * </p>
  * <p>
  * {@link ProxyServices} is a per-deployment service.
  * </p>
  *
  * @author David Allen
+ * @author Matej Novotny
  */
 public interface ProxyServices extends Service {
     /**
@@ -135,6 +136,9 @@ public interface ProxyServices extends Service {
     }
 
     /**
+     * This method is now deprecated and Weld assumes that all implementations support class defining. Otherwise,
+     * an exception will be thrown.
+     *
      * Works as a differentiator between the old (deprecated) approach of asking for {@link ClassLoader} and the new
      * one where Weld delegates class loading and creation to the integrator. If this method returns true, then Weld
      * will route all proxy lookup and definition to newly added method. Should it return false, Weld will only
@@ -142,6 +146,7 @@ public interface ProxyServices extends Service {
      *
      * @return true if this implementation implements {@code defineClass()} and {@code loadClass()} methods, false otherwise.
      */
+    @Deprecated
     default boolean supportsClassDefining() {
         return false;
     }
