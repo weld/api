@@ -2,7 +2,7 @@
    <parent>
       <artifactId>weld-api-parent</artifactId>
       <groupId>org.jboss.weld</groupId>
-      <version>3.1.SP4</version>
+      <version>3.1-SNAPSHOT</version>
       <relativePath>../pom.xml</relativePath>
    </parent>
    <modelVersion>4.0.0</modelVersion>
