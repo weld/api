@@ -72,7 +72,8 @@
                   <artifactId>maven-gpg-plugin</artifactId>
                   <version>${gpg.plugin.version}</version>
                   <configuration>
-                     <passphrase>${gpg.passphrase}</passphrase>
+                     <!-- Without interactive=true, there is no prompt for pwd when running on gpg plugin 3.0.1 -->
+                     <interactive>true</interactive>
                      <useAgent>${gpg.useAgent}</useAgent>
                   </configuration>
                   <executions>
