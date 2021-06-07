@@ -11,6 +11,12 @@ updates:
   schedule:
     interval: monthly
   open-pull-requests-limit: 10
+  target-branch: "4.0"
+- package-ecosystem: maven
+  directory: "/"
+  schedule:
+    interval: monthly
+  open-pull-requests-limit: 10
   target-branch: "3.1"
   ignore:
   - dependency-name: jakarta.enterprise:jakarta.enterprise.cdi-api
