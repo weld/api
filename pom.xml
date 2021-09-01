@@ -107,7 +107,7 @@
         <validation.api.version>2.0.2</validation.api.version>
         <jboss.spec.annotation.version>2.0.1.Final</jboss.spec.annotation.version>
         <jboss.spec.servlet.version>2.0.0.Final</jboss.spec.servlet.version>
-        <jboss.spec.jaxrs.version>2.0.1.Final</jboss.spec.jaxrs.version>
+        <jboss.spec.jaxrs.version>2.0.2.Final</jboss.spec.jaxrs.version>
         <jta.api.version>2.0.0.Final</jta.api.version>
         <interceptor.api.version>2.0.0.Final</interceptor.api.version>
     </properties>
