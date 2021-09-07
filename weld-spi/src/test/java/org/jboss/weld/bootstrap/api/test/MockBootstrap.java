@@ -29,6 +29,7 @@ import org.jboss.weld.bootstrap.api.Environment;
 import org.jboss.weld.bootstrap.api.Service;
 import org.jboss.weld.bootstrap.api.ServiceRegistry;
 import org.jboss.weld.bootstrap.spi.BeanDeploymentArchive;
+import org.jboss.weld.bootstrap.spi.BeanDiscoveryMode;
 import org.jboss.weld.bootstrap.spi.BeansXml;
 import org.jboss.weld.bootstrap.spi.Deployment;
 import org.jboss.weld.bootstrap.spi.Metadata;
@@ -96,6 +97,21 @@ public class MockBootstrap implements Bootstrap
 
    public BeansXml parse(Iterable<URL> urls, boolean removeDuplicates)
    {
+      return EMPTY_BEANS_XML;
+   }
+
+   @Override
+   public BeansXml parse(URL url, BeanDiscoveryMode emptyBeansXmlDiscoveryMode) {
+      return EMPTY_BEANS_XML;
+   }
+
+   @Override
+   public BeansXml parse(Iterable<URL> urls, BeanDiscoveryMode emptyBeansXmlDiscoveryMode) {
+      return EMPTY_BEANS_XML;
+   }
+
+   @Override
+   public BeansXml parse(Iterable<URL> urls, boolean removeDuplicates, BeanDiscoveryMode emptyBeansXmlDiscoveryMode) {
       return EMPTY_BEANS_XML;
    }
 

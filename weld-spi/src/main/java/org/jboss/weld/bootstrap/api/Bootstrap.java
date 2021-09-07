@@ -25,6 +25,7 @@ import jakarta.enterprise.inject.spi.BeforeShutdown;
 import jakarta.enterprise.inject.spi.Extension;
 
 import org.jboss.weld.bootstrap.spi.BeanDeploymentArchive;
+import org.jboss.weld.bootstrap.spi.BeanDiscoveryMode;
 import org.jboss.weld.bootstrap.spi.BeansXml;
 import org.jboss.weld.bootstrap.spi.Deployment;
 import org.jboss.weld.bootstrap.spi.Metadata;
@@ -166,6 +167,43 @@ public interface Bootstrap {
      * @throws IllegalArgumentException if the URL cannot be opened
      */
     BeansXml parse(Iterable<URL> urls, boolean removeDuplicates);
+
+    /**
+     * Parse the specified URL as a beans.xml file with a parameter allowing to specify what bean discovery mode
+     * should be used when beans.xml is an empty file.
+     *
+     * @param url the url to parse
+     * @param emptyBeansXmlDiscoveryMode Discovery mode to be used when beans.xml is an empty file
+     * @return the BeansXml data structure which represents the URL
+     * @throws IllegalArgumentException if the URL cannot be opened
+     *
+     */
+    BeansXml parse(URL url, BeanDiscoveryMode emptyBeansXmlDiscoveryMode);
+
+    /**
+     * Parse the specified URLs as a series of beans.xml file and merge the result.
+     * {@code BeanDiscoveryMode} specifies what discovery mode should be used when beans.xml is an empty file.
+     *
+     * Duplicate entries are not removed.
+     *
+     * @param urls the urls to parse
+     * @param emptyBeansXmlDiscoveryMode Discovery mode to be used when beans.xml is an empty file
+     * @return the BeansXml data structure which represents the URL
+     * @throws IllegalArgumentException if the URL cannot be opened
+     */
+    BeansXml parse(Iterable<URL> urls, BeanDiscoveryMode emptyBeansXmlDiscoveryMode);
+
+    /**
+     * Parse the specified URLs as a series of beans.xml file and merge the result.
+     * {@code BeanDiscoveryMode} specifies what discovery mode should be used when beans.xml is an empty file.
+     *
+     * @param urls the urls to parse
+     * @param removeDuplicates whether duplicate entries (alternatives, interceptors, etc) are removed
+     * @param emptyBeansXmlDiscoveryMode Discovery mode to be used when beans.xml is an empty file
+     * @return the BeansXml data structure which represents the URL
+     * @throws IllegalArgumentException if the URL cannot be opened
+     */
+    BeansXml parse(Iterable<URL> urls, boolean removeDuplicates, BeanDiscoveryMode emptyBeansXmlDiscoveryMode);
 
     /**
      * Load CDI extensions using the provided ClassLoader
