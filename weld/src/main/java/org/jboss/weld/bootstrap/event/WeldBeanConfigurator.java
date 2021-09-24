@@ -134,7 +134,7 @@ public interface WeldBeanConfigurator<T> extends BeanConfigurator<T> {
 
     /**
      * NOTE: Since CDI 4.0, this is now part of standard API!
-     * <p/>
+     * <p>
      * Allows to set a priority to an alternative bean hence selecting it globally.
      * Has the same effect as putting {@link Priority} annotation on an actual bean class
      * or implementing {@link Prioritized} interface with custom bean classes.
