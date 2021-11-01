@@ -100,7 +100,7 @@
         <!-- Might be used to override the version declared in weld-parent -->
         <!-- build.config.version>10-SNAPSHOT</build.config.version -->
 
-        <atinject.api.version>1.0.3</atinject.api.version>
+        <atinject.api.version>1.0.5</atinject.api.version>
         <cdi.api.version>2.0.2</cdi.api.version>
         <ejb.api.version>2.0.0.Final</ejb.api.version>
         <jpa.api.version>2.2.3</jpa.api.version>
