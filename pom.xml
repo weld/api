@@ -102,7 +102,7 @@
 
         <annotation.api.version>2.0.0</annotation.api.version>
         <atinject.api.version>2.0.1</atinject.api.version>
-        <cdi.api.version>4.0.0.Beta1</cdi.api.version>
+        <cdi.api.version>4.0.0.Beta2</cdi.api.version>
         <ejb.api.version>4.0.0</ejb.api.version>
         <jaxrs.api.version>3.0.0</jaxrs.api.version>
         <jpa.api.version>3.0.0</jpa.api.version>
