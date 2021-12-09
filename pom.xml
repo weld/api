@@ -7,7 +7,7 @@
     <parent>
         <groupId>org.jboss.weld</groupId>
         <artifactId>weld-parent</artifactId>
-        <version>45</version>
+        <version>46</version>
     </parent>
 
     <prerequisites>
@@ -94,8 +94,8 @@
     </developers>
 
     <properties>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
         <javadoc.doclint>-Xdoclint</javadoc.doclint>
         <!-- Might be used to override the version declared in weld-parent -->
         <!-- build.config.version>10-SNAPSHOT</build.config.version -->
