@@ -41,38 +41,6 @@ import java.security.ProtectionDomain;
  * @author Matej Novotny
  */
 public interface ProxyServices extends Service {
-    /**
-     * @deprecated {@code defineClass()} methods should be used instead.
-     *
-     * Returns the class loader that will load the proxy class which extends or implements the given type. This class loader may
-     * simply be the same class loader used for the type, or it may be another class loader designed to hold proxies while still
-     * providing access to the given type and any of its ancestors and used types.
-     *
-     * @param proxiedBeanType the base type (class or interface) being proxied
-     * @return the class loader to use for the proxy class
-     */
-    @Deprecated
-    ClassLoader getClassLoader(Class<?> proxiedBeanType);
-
-    /**
-     * @deprecated {@code loadClass(Class<?>, String)} should be used instead.
-     *
-     * <p>
-     * Loads classes or interfaces extended/implemented by a bean or in particular a proxy class for a bean. This includes
-     * application types of the bean as well as Weld types used for proxy classes. Thus the class loader(s) used here must be
-     * able to resolve both application classes and Weld implementation classes.
-     * </p>
-     * <p>
-     * This method is only called during deserialization of a proxy object. It does not necessarily need to use the same class
-     * loader that the proxy class itself exists in since {@link #getClassLoader(Class)} will still be used to get the correct
-     * class loader for the bean type.
-     * </p>
-     *
-     * @param className the class name
-     * @return the corresponding Class object
-     */
-    @Deprecated
-    Class<?> loadBeanClass(String className);
 
     /**
      * Given a base type (class or interface), define a proxy class for this type.
@@ -133,22 +101,6 @@ public interface ProxyServices extends Service {
      */
     default Class<?> loadClass​(Class<?> originalClass, String classBinaryName) throws ClassNotFoundException {
         throw new UnsupportedOperationException("ProxyServices#loadClass(Class<?>, String) is not implemented!");
-    }
-
-    /**
-     * This method is now deprecated and Weld assumes that all implementations support class defining. Otherwise,
-     * an exception will be thrown.
-     *
-     * Works as a differentiator between the old (deprecated) approach of asking for {@link ClassLoader} and the new
-     * one where Weld delegates class loading and creation to the integrator. If this method returns true, then Weld
-     * will route all proxy lookup and definition to newly added method. Should it return false, Weld will only
-     * use the old {@code ClassLoader} approach.
-     *
-     * @return true if this implementation implements {@code defineClass()} and {@code loadClass()} methods, false otherwise.
-     */
-    @Deprecated
-    default boolean supportsClassDefining() {
-        return false;
     }
 
 }
