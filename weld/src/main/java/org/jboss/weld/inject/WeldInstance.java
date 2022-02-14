@@ -58,11 +58,14 @@ import jakarta.enterprise.util.TypeLiteral;
  *
  * @author Martin Kouba
  * @see <a href="https://issues.jboss.org/browse/WELD-2204">WELD-2204</a>
- * @param <T>
+ * @param <T> the required bean type
  */
 public interface WeldInstance<T> extends Instance<T> {
 
     /**
+     * This method is deprecated as a similar functioning method exists in CDI 4.0 and newer.
+     * Users should instead use {@link Instance#getHandle()}.
+     *
      * Obtains an initialized contextual reference handler for the bean that has the required type and required qualifiers and is eligible for injection.
      *
      * <p>
@@ -70,12 +73,16 @@ public interface WeldInstance<T> extends Instance<T> {
      * </p>
      *
      * @return a new handler
-     * @throws UnsatisfiedResolutionException
-     * @throws AmbiguousResolutionException
+     * @throws UnsatisfiedResolutionException if there is no bean with given type and qualifiers
+     * @throws AmbiguousResolutionException if there is more than one bean given type and qualifiers
      */
+    @Deprecated
     Handler<T> getHandler();
 
     /**
+     * This method is deprecated as a similar functioning method exists in CDI 4.0 and newer.
+     * Users should instead use {@link Instance#handles()}.
+     *
      * Allows to iterate over contextual reference handlers for all the beans that have the required type and required qualifiers and are eligible
      * for injection.
      *
@@ -85,17 +92,24 @@ public interface WeldInstance<T> extends Instance<T> {
      *
      * @return a new iterable
      */
+    @Deprecated
     Iterable<Handler<T>> handlers();
 
     /**
+     * This method is deprecated as a similar functioning method exists in CDI 4.0 and newer.
+     * Users should instead use {@link Instance#handlesStream()}.
      *
      * @return a new stream of contextual reference handlers
      */
-    default Stream<Handler<T>> handlersStream() {
+    @Deprecated
+    default Stream<? extends Handler<T>> handlersStream() {
         return StreamSupport.stream(handlers().spliterator(), false);
     }
 
     /**
+     * This method is deprecated in favor of {@link WeldInstance#getHandlePriorityComparator()} which operates on
+     * a non-deprecated {@link Instance.Handle} interface.
+     *
      * The returned comparator sorts handlers by priority in descending order.
      * <ul>
      * <li>A class-based bean whose annotated type has {@code jakarta.annotation.Priority} has the priority of value {@code jakarta.annotation.Priority#value()}</li>
@@ -105,7 +119,20 @@ public interface WeldInstance<T> extends Instance<T> {
      *
      * @return a comparator instance
      */
+    @Deprecated
     Comparator<Handler<?>> getPriorityComparator();
+
+    /**
+     * The returned comparator sorts handles by priority in descending order.
+     * <ul>
+     * <li>A class-based bean whose annotated type has {@code jakarta.annotation.Priority} has the priority of value {@code jakarta.annotation.Priority#value()}</li>
+     * <li>A custom bean which implements {@link Prioritized} has the priority of value {@link Prioritized#getPriority()}</li>
+     * <li>Any other bean has the priority of value 0</li>
+     * </ul>
+     *
+     * @return a comparator instance
+     */
+    Comparator<Handle<?>> getHandlePriorityComparator();
 
     @Override
     WeldInstance<T> select(Annotation... qualifiers);
@@ -125,7 +152,7 @@ public interface WeldInstance<T> extends Instance<T> {
      * @param <X> the required type
      * @param subtype    a {@link java.lang.reflect.Type} representing the required type
      * @param qualifiers the additional required qualifiers
-     * @return the child <tt>Instance</tt>
+     * @return the child {@code Instance}
      * @throws IllegalArgumentException if passed two instances of the same non repeating qualifier type, or an instance of an
      *                                  annotation that is not a qualifier type
      * @throws IllegalStateException    if the container is already shutdown
@@ -134,15 +161,20 @@ public interface WeldInstance<T> extends Instance<T> {
     <X> WeldInstance<X> select(Type subtype, Annotation... qualifiers);
 
     /**
+     * This interface is deprecated.
+     * CDI 4.0 introduced {@link Instance.Handle} interface that offers the same functionality and can be used in place
+     * of Weld specific {@link WeldInstance.Handler}.
+     *
      * This interface represents a contextual reference handler.
      * <p>
      * Allows to inspect the metadata of the relevant bean and also to destroy the underlying contextual instance.
      * </p>
      *
      * @author Martin Kouba
-     * @param <T>
+     * @param <T> the required bean type
      */
-    interface Handler<T> extends AutoCloseable {
+    @Deprecated
+    interface Handler<T> extends Handle<T> {
 
         /**
          * The contextual reference is obtained lazily, i.e. when first needed.
@@ -157,7 +189,7 @@ public interface WeldInstance<T> extends Instance<T> {
          *
          * @return the bean metadata
          */
-        Bean<?> getBean();
+        Bean<T> getBean();
 
         /**
          * Destroy the contextual instance.
