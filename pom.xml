@@ -102,7 +102,7 @@
 
         <annotation.api.version>2.1.0-B1</annotation.api.version>
         <atinject.api.version>2.0.1</atinject.api.version>
-        <cdi.api.version>4.0.0-RC2</cdi.api.version>
+        <cdi.api.version>4.0.0</cdi.api.version>
         <ejb.api.version>4.0.0</ejb.api.version>
         <jaxrs.api.version>3.0.0</jaxrs.api.version>
         <jpa.api.version>3.1.0-RC2</jpa.api.version>
@@ -223,4 +223,31 @@
             </releases>
         </pluginRepository>
     </pluginRepositories>
+
+    <profiles>
+        <!-- A profile that allows to consume staged but unreleased Jakarta artifacts -->
+        <profile>
+            <id>staging</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <sonatypeOssDistMgmtNexusUrl>https://jakarta.oss.sonatype.org/</sonatypeOssDistMgmtNexusUrl>
+                <sonatypeOssDistMgmtStagingUrl>${sonatypeOssDistMgmtNexusUrl}content/repositories/staging/</sonatypeOssDistMgmtStagingUrl>
+            </properties>
+            <repositories>
+                <repository>
+                    <id>sonatype-nexus-staging</id>
+                    <name>Sonatype Nexus Staging</name>
+                    <url>${sonatypeOssDistMgmtStagingUrl}</url>
+                    <releases>
+                        <enabled>true</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                </repository>
+            </repositories>
+        </profile>
+    </profiles>
 </project>
