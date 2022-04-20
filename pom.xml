@@ -26,7 +26,7 @@
     <url>http://weld.cdi-spec.org</url>
 
     <description>
-        APIs for Weld, the reference implementation of Contexts and Dependency Injection for Java EE
+        APIs for Weld, the compatible implementation for Jakarta Contexts and Dependency Injection
     </description>
 
     <ciManagement>
@@ -102,7 +102,7 @@
 
         <annotation.api.version>2.1.0</annotation.api.version>
         <atinject.api.version>2.0.1</atinject.api.version>
-        <cdi.api.version>4.0.0-RC5</cdi.api.version>
+        <cdi.api.version>4.0.0</cdi.api.version>
         <ejb.api.version>4.0.0</ejb.api.version>
         <jaxrs.api.version>3.1.0</jaxrs.api.version>
         <jpa.api.version>3.1.0</jpa.api.version>
@@ -110,9 +110,6 @@
         <interceptor.api.version>2.1.0</interceptor.api.version>
         <servlet.api.version>5.0.0</servlet.api.version>
         <validation.api.version>3.0.1</validation.api.version>
-        <jboss.spec.annotation.version>2.0.1.Final</jboss.spec.annotation.version>
-        <jboss.spec.servlet.version>2.0.0.Final</jboss.spec.servlet.version>
-        <jboss.spec.jaxrs.version>2.0.1.Final</jboss.spec.jaxrs.version>
     </properties>
 
     <dependencyManagement>
@@ -197,8 +194,7 @@
             <dependency>
                 <groupId>org.testng</groupId>
                 <artifactId>testng</artifactId>
-                <version>5.11</version>
-                <classifier>jdk15</classifier>
+                <version>7.4.0</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
