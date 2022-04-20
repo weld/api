@@ -105,7 +105,7 @@
         <cdi.api.version>4.0.0-RC5</cdi.api.version>
         <ejb.api.version>4.0.0</ejb.api.version>
         <jaxrs.api.version>3.0.0</jaxrs.api.version>
-        <jpa.api.version>3.1.0-RC2</jpa.api.version>
+        <jpa.api.version>3.1.0</jpa.api.version>
         <jta.api.version>2.0.1</jta.api.version>
         <interceptor.api.version>2.1.0-RC3</interceptor.api.version>
         <servlet.api.version>5.0.0</servlet.api.version>
