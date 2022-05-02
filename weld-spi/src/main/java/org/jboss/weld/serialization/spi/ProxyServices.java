@@ -61,8 +61,8 @@ public interface ProxyServices extends Service {
      *
      * @throws ClassFormatError If the data did not contain a valid class
      */
-    default Class<?> defineClass​(Class<?> originalClass, String className, byte[] classBytes, int off, int len) throws ClassFormatError {
-        return defineClass​(originalClass, className, classBytes, off, len, null);
+    default Class<?> defineClass(Class<?> originalClass, String className, byte[] classBytes, int off, int len) throws ClassFormatError {
+        return defineClass(originalClass, className, classBytes, off, len, null);
     }
 
     /**
@@ -86,7 +86,7 @@ public interface ProxyServices extends Service {
      * @return The {@code Class} object created from the data
      * @throws ClassFormatError If the data did not contain a valid class
      */
-    default Class<?> defineClass​(Class<?> originalClass, String className, byte[] classBytes, int off, int len, ProtectionDomain protectionDomain) throws ClassFormatError {
+    default Class<?> defineClass(Class<?> originalClass, String className, byte[] classBytes, int off, int len, ProtectionDomain protectionDomain) throws ClassFormatError {
         throw new UnsupportedOperationException("ProxyServices#defineClass(Class<?>, String, byte[], int, int, ProtectionDomain) is not implemented!");
     }
 
@@ -99,7 +99,7 @@ public interface ProxyServices extends Service {
      * @return The {@code Class} object for given binary name of the class
      * @throws ClassNotFoundException If the class was not found
      */
-    default Class<?> loadClass​(Class<?> originalClass, String classBinaryName) throws ClassNotFoundException {
+    default Class<?> loadClass(Class<?> originalClass, String classBinaryName) throws ClassNotFoundException {
         throw new UnsupportedOperationException("ProxyServices#loadClass(Class<?>, String) is not implemented!");
     }
 
