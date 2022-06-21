@@ -2,7 +2,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>weld-api-parent</artifactId>
     <packaging>pom</packaging>
-    <version>5.0-SNAPSHOT</version>
+    <version>5.0.SP1</version>
 
     <parent>
         <groupId>org.jboss.weld</groupId>
@@ -204,7 +204,7 @@
         <connection>scm:git:git@github.com:weld/api.git</connection>
         <developerConnection>scm:git:git@github.com:weld/api.git</developerConnection>
         <url>scm:git:git@github.com:weld/api.git</url>
-        <tag>HEAD</tag>
+        <tag>5.0.SP1</tag>
     </scm>
 
     <!-- Needed to download org.apache.maven.plugins:maven-compiler-plugin:jar:3.8.0-jboss-2 -->
