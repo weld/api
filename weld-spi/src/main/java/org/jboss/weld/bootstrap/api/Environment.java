@@ -45,4 +45,28 @@ public interface Environment {
         return true;
     }
 
+    /**
+     * Since CDI 4.0, there is a requirement to fire {@link jakarta.enterprise.event.Startup} event when the container
+     * is ready to accept requests and {@link jakarta.enterprise.event.Shutdown} before container shutdown.
+     *
+     * <p>
+     * By default, Weld fires these events close to {@code @Initialized(ApplicationScoped.class)}.
+     * However, integrators may choose to fire it at later point if they, for instance, need to make sure other
+     * related technologies or libraries also bootstrap successfully.
+     * </p>
+     *
+     * <p>
+     * Overriding this method and returning {@code false} means that Weld will not attempt to fire these events and
+     * this responsibility then lies with the integrator.
+     * </p>
+     *
+     * @see jakarta.enterprise.event.Startup
+     * @see jakarta.enterprise.event.Shutdown
+     *
+     * @return true by default
+     */
+    default boolean automaticallyHandleStartupShutdownEvents() {
+        return true;
+    }
+
 }
