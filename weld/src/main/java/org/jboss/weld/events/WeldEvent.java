@@ -38,7 +38,7 @@ public interface WeldEvent<T> extends Event<T> {
      * @param <X>        the required type
      * @param type       a {@link java.lang.reflect.Type} representing the required type
      * @param qualifiers the additional required qualifiers
-     * @return the child <tt>Event</tt>
+     * @return the child {@code Event}
      * @throws IllegalArgumentException if passed two instances of the same non repeating qualifier type, or an instance of an
      *                                  annotation that is not a qualifier type
      * @throws IllegalStateException    if invoked on {@code Event<T>} where T is of any other type than

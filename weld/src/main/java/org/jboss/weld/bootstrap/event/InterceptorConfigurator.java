@@ -35,15 +35,15 @@ import jakarta.interceptor.InvocationContext;
 public interface InterceptorConfigurator {
 
     /**
-     * @param interceptionType
-     * @param interceptorFunction
+     * @param interceptionType specifies an interception type, e.g. around invoke, post construct, ...
+     * @param interceptorFunction a function holding the interception logic
      * @return self
      */
     InterceptorConfigurator intercept(InterceptionType interceptionType, Function<InvocationContext, Object> interceptorFunction);
 
     /**
-     * @param interceptionType
-     * @param interceptorFunction
+     * @param interceptionType specifies an interception type, e.g. around invoke, post construct, ...
+     * @param interceptorFunction a function holding the interception logic
      * @return self
      */
     InterceptorConfigurator interceptWithMetadata(InterceptionType interceptionType, BiFunction<InvocationContext, Bean<?>, Object> interceptorFunction);
@@ -51,7 +51,7 @@ public interface InterceptorConfigurator {
     /**
      * Adds interceptor binding annotation.
      *
-     * @param binding
+     * @param binding interceptor binding to add
      * @return self
      */
     InterceptorConfigurator addBinding(Annotation binding);
@@ -59,7 +59,7 @@ public interface InterceptorConfigurator {
     /**
      * Adds interceptor binding annotations.
      *
-     * @param bindings
+     * @param bindings interceptor bindings to add
      * @return self
      */
     InterceptorConfigurator addBindings(Annotation... bindings);
@@ -67,7 +67,7 @@ public interface InterceptorConfigurator {
     /**
      * Adds set of interceptor binding annotations.
      *
-     * @param bindings
+     * @param bindings interceptor bindings to add
      * @return self
      */
     InterceptorConfigurator addBindings(Set<Annotation> bindings);
