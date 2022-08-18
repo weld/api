@@ -83,6 +83,11 @@ public abstract class AbstractResourceServices implements Service, ResourceInjec
 
     protected String getResourceName(InjectionPoint injectionPoint) {
         Resource resource = getResourceAnnotation(injectionPoint);
+
+        String lookup = resource.lookup();
+        if (!lookup.equals("")) {
+            return lookup;
+        }
         String mappedName = resource.mappedName();
         if (!mappedName.equals("")) {
             return mappedName;
