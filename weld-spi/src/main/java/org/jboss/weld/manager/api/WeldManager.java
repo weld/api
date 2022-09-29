@@ -229,4 +229,16 @@ public interface WeldManager extends BeanManager, Serializable {
             .map(t -> (WeldAlterableContext) t)
             .collect(Collectors.toSet());
     }
+
+    /**
+     * Obtains all {@linkplain Context context objects}, active and inactive, for the given
+     * {@linkplain jakarta.enterprise.context scope}.
+     * <p>
+     * This feature is planned to be added into specification as part of
+     * <a href="https://github.com/jakartaee/cdi/issues/628">this issue</a>.
+     *
+     * @param scopeType the {@linkplain jakarta.enterprise.context scope}; must not be {@code null}
+     * @return immutable collection of {@linkplain Context context objects}; never {@code null}, but may be empty
+     */
+    Collection<Context> getContexts(Class<? extends Annotation> scopeType);
 }
