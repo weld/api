@@ -107,7 +107,7 @@
         <jaxrs.api.version>3.1.0</jaxrs.api.version>
         <jpa.api.version>3.1.0</jpa.api.version>
         <jta.api.version>2.0.1</jta.api.version>
-        <interceptor.api.version>2.1.0</interceptor.api.version>
+        <interceptor.api.version>2.2.0-RC1</interceptor.api.version>
         <servlet.api.version>6.0.0</servlet.api.version>
         <validation.api.version>3.0.2</validation.api.version>
     </properties>
