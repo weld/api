@@ -19,7 +19,6 @@ package org.jboss.weld.interceptor;
 import java.lang.annotation.Annotation;
 import java.util.Set;
 
-import jakarta.interceptor.Interceptors;
 import jakarta.interceptor.InvocationContext;
 
 /**
@@ -35,25 +34,14 @@ public interface WeldInvocationContext extends InvocationContext {
      */
     String INTERCEPTOR_BINDINGS_KEY = "org.jboss.weld.interceptor.bindings";
 
-    /**
-     * Return the set of interceptor bindings for a lifecycle callback, business method, timeout method, or constructor.
-     *
-     * <p>
-     * The returned set may be empty if only interceptors using the {@link Interceptors} annotation are associated.
-     * </p>
-     *
-     * @return a set of interceptor bindings
-     */
+
+    @Override
     Set<Annotation> getInterceptorBindings();
 
     /**
-     * Return the set of interceptor bindings with the specified annotation type.
-     *
-     * @param <T> subclass of {@link Annotation}
-     * @param annotationType type of annotation
-     * @return a set of interceptor bindings with the specified annotation type
-     * @see #getInterceptorBindings()
+     * @deprecated use {@link #getInterceptorBindings(Class)}
      */
+    @Deprecated
     <T extends Annotation> Set<T> getInterceptorBindingsByType(Class<T> annotationType);
 
 }
