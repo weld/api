@@ -33,11 +33,15 @@ public interface WeldInjectionTargetFactory<T> extends InjectionTargetFactory<T>
     WeldInjectionTarget<T> createInjectionTarget(Bean<T> bean);
 
     /**
-     * Creates a {@link WeldInjectionTarget} implementation that does not support construction/destruction of instances but provides field/setter injection
-     * capabilities. Such implementation is often handy for integration with other frameworks in situations when an existing Java object needs to be injected.
+     * Creates a {@link WeldInjectionTarget} implementation that does not support construction/destruction of instances but
+     * provides field/setter injection
+     * capabilities. Such implementation is often handy for integration with other frameworks in situations when an existing
+     * Java object needs to be injected.
      *
-     * {@link InjectionTarget#produce(jakarta.enterprise.context.spi.CreationalContext)} and {@link InjectionTarget#dispose(Object)} methods should not be called on
-     * the returned instance. The {@link InjectionTarget#produce(jakarta.enterprise.context.spi.CreationalContext)} method of the returned injection target
+     * {@link InjectionTarget#produce(jakarta.enterprise.context.spi.CreationalContext)} and
+     * {@link InjectionTarget#dispose(Object)} methods should not be called on
+     * the returned instance. The {@link InjectionTarget#produce(jakarta.enterprise.context.spi.CreationalContext)} method of
+     * the returned injection target
      * throws {@link CreationException} if called.
      *
      * @return the injection target
@@ -46,7 +50,8 @@ public interface WeldInjectionTargetFactory<T> extends InjectionTargetFactory<T>
 
     /**
      * Create a new injection target for an interceptor bound using {@link Interceptors} or a deployment descriptor. Unlike
-     * {@link #createInjectionTarget(jakarta.enterprise.inject.spi.Bean)}, the resulting InjectionTarget does not support interception as it is itself an
+     * {@link #createInjectionTarget(jakarta.enterprise.inject.spi.Bean)}, the resulting InjectionTarget does not support
+     * interception as it is itself an
      * interceptor.
      *
      * @return the injection target

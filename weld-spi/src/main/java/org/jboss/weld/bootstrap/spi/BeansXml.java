@@ -43,7 +43,7 @@ public interface BeansXml {
             return null;
         }
 
-        public boolean isTrimmed(){
+        public boolean isTrimmed() {
             return false;
         }
     };
@@ -67,7 +67,8 @@ public interface BeansXml {
      * Note that since CDI 4.0, this method returns {@link BeanDiscoveryMode#ANNOTATED} if the file does not declare
      * discovery mode attribute.
      *
-     * @return The value of the <code>bean-discovery-mode</code> attribute or {@link BeanDiscoveryMode#ANNOTATED} if the file does not
+     * @return The value of the <code>bean-discovery-mode</code> attribute or {@link BeanDiscoveryMode#ANNOTATED} if the file
+     *         does not
      *         contain the <code>bean-discovery-mode</code> attribute.
      */
     BeanDiscoveryMode getBeanDiscoveryMode();

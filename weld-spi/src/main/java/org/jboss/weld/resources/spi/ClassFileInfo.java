@@ -20,7 +20,8 @@ import java.lang.annotation.Annotation;
 import java.lang.annotation.Inherited;
 
 /**
- * Represents metadata of a Java class. Weld uses this metadata to decide whether the class should be processed by Weld or not without loading the class.
+ * Represents metadata of a Java class. Weld uses this metadata to decide whether the class should be processed by Weld or not
+ * without loading the class.
  *
  * @author Jozef Hartinger
  *
@@ -50,20 +51,27 @@ public interface ClassFileInfo {
     boolean isAnnotationDeclared(Class<? extends Annotation> annotationType);
 
     /**
-     * Indicates whether this class contains an annotation of the specified annotation type. A class is said to contain the annotation if any of these applies:
+     * Indicates whether this class contains an annotation of the specified annotation type. A class is said to contain the
+     * annotation if any of these applies:
      *
      * <ul>
      * <li>The annotation or an annotation annotated with the annotation is present on the class</li>
-     * <li>The annotation or an annotation annotated with the annotation, which is annotated with {@link Inherited}, is present on a direct or indirect
+     * <li>The annotation or an annotation annotated with the annotation, which is annotated with {@link Inherited}, is present
+     * on a direct or indirect
      * superclass of the given class</li>
-     * <li>The annotation or an annotation annotated with the annotation is present on a field or method declared by the given class or any direct or indirect
+     * <li>The annotation or an annotation annotated with the annotation is present on a field or method declared by the given
+     * class or any direct or indirect
      * superclass of the given class</li>
-     * <li>The annotation or an annotation annotated with the annotation is present on a parameter of a method declared by the given class or any direct or
+     * <li>The annotation or an annotation annotated with the annotation is present on a parameter of a method declared by the
+     * given class or any direct or
      * indirect superclass of the given class</li>
-     * <li>The annotation or an annotation annotated with the annotation is present on a default method or a parameter of a default method declared by an interface directly or
+     * <li>The annotation or an annotation annotated with the annotation is present on a default method or a parameter of a
+     * default method declared by an interface directly or
      * indirectly implemented by the given class</li>
-     * <li>The annotation or an annotation annotated with the annotation is present on a constructor declared by the given class</li>
-     * <li>The annotation or an annotation annotated with the annotation is present on a parameter of a constructor declared by the given class</li>
+     * <li>The annotation or an annotation annotated with the annotation is present on a constructor declared by the given
+     * class</li>
+     * <li>The annotation or an annotation annotated with the annotation is present on a parameter of a constructor declared by
+     * the given class</li>
      * </ul>
      *
      * @param annotationType the specified annotation type
@@ -72,7 +80,8 @@ public interface ClassFileInfo {
     boolean containsAnnotation(Class<? extends Annotation> annotationType);
 
     /**
-     * Returns the class access and property modifiers, as defined in http://docs.oracle.com/javase/specs/jvms/se7/html/jvms-4.html#jvms-4.1-200-E.1
+     * Returns the class access and property modifiers, as defined in
+     * http://docs.oracle.com/javase/specs/jvms/se7/html/jvms-4.html#jvms-4.1-200-E.1
      *
      * @return class access and property modifiers
      */
@@ -81,7 +90,8 @@ public interface ClassFileInfo {
     /**
      * Indicates whether this class has a CDI constructor.
      *
-     * @return true if this class has a constructor annotated with {@link jakarta.inject.Inject} or a no-arg constructor, false otherwise
+     * @return true if this class has a constructor annotated with {@link jakarta.inject.Inject} or a no-arg constructor, false
+     *         otherwise
      */
     boolean hasCdiConstructor();
 
@@ -104,7 +114,8 @@ public interface ClassFileInfo {
     /**
      * Indicates whether this class is vetoed from CDI processing.
      *
-     * @return true if the {@link jakarta.enterprise.inject.Vetoed} annotation is present on this class or the class's package, false otherwise
+     * @return true if the {@link jakarta.enterprise.inject.Vetoed} annotation is present on this class or the class's package,
+     *         false otherwise
      */
     boolean isVetoed();
 

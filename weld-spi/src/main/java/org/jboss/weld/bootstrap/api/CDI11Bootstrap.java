@@ -58,8 +58,10 @@ public interface CDI11Bootstrap extends Bootstrap {
      *
      * <p>
      * The container fires the {@link BeforeBeanDiscovery} event which allows extensions to register scopes and stereotypes.
-     * The container combines the registered scopes and stereotypes with scopes associated with the built-in contexts and built-in
-     * stereotypes and makes the resulting set available through {@link TypeDiscoveryConfiguration#getKnownBeanDefiningAnnotations()}
+     * The container combines the registered scopes and stereotypes with scopes associated with the built-in contexts and
+     * built-in
+     * stereotypes and makes the resulting set available through
+     * {@link TypeDiscoveryConfiguration#getKnownBeanDefiningAnnotations()}
      * </p>
      *
      * <p>
@@ -83,10 +85,13 @@ public interface CDI11Bootstrap extends Bootstrap {
      *
      * <ul>
      * <li>The set of annotations returned from {@link TypeDiscoveryConfiguration#getKnownBeanDefiningAnnotations()}</li>
-     * <li>Every Java annotation discovered by the integrator that is annotated with {@link NormalScope} or {@link Stereotype}</li>
+     * <li>Every Java annotation discovered by the integrator that is annotated with {@link NormalScope} or
+     * {@link Stereotype}</li>
      * </ul>
      *
-     * <p>The resulting set is referred to as <em>bean defining annotations</em> hereafter.</p>
+     * <p>
+     * The resulting set is referred to as <em>bean defining annotations</em> hereafter.
+     * </p>
      *
      * <p>
      * Next, the integrator processes available archives according to these rules. The rules are exclusive.
@@ -137,7 +142,8 @@ public interface CDI11Bootstrap extends Bootstrap {
      *
      * <p>
      * For each explicit bean archive the integrator creates an instance of {@link BeanDeploymentArchive} representing this
-     * archive. The {@link BeanDeploymentArchive#getBeanClasses()} or {@link BeanDeploymentArchive#getLoadedBeanClasses()} method returns a collection of all types present within the
+     * archive. The {@link BeanDeploymentArchive#getBeanClasses()} or {@link BeanDeploymentArchive#getLoadedBeanClasses()}
+     * method returns a collection of all types present within the
      * archive. Filtering rules defined in {@link BeansXml#getScanning()} are not required to be applied by the integrator and
      * are applied later on by Weld. The {@link BeanDeploymentArchive#getEjbs()} method returns a collection of EJB descriptors
      * for EJBs present in the archive.
@@ -145,7 +151,8 @@ public interface CDI11Bootstrap extends Bootstrap {
      *
      * <p>
      * For each implicit bean archive the integrator creates an instance of {@link BeanDeploymentArchive} representing this
-     * archive. The {@link BeanDeploymentArchive#getBeanClasses()} or {@link BeanDeploymentArchive#getLoadedBeanClasses()} method of the bean archive returns all the types found in the
+     * archive. The {@link BeanDeploymentArchive#getBeanClasses()} or {@link BeanDeploymentArchive#getLoadedBeanClasses()}
+     * method of the bean archive returns all the types found in the
      * archive which are annotated with a bean defining annotations or are Session bean definitions. Filtering rules (
      * {@link BeansXml#getScanning()}) are not required to be applied by the integrator. The
      * {@link BeanDeploymentArchive#getEjbs()} method returns a collection of EJB descriptors for Session beans present in the
@@ -176,7 +183,8 @@ public interface CDI11Bootstrap extends Bootstrap {
      *
      * <p>
      * In addition to {@link Bootstrap#startContainer(Environment, Deployment)}, this method allows an identifier (contextId) to
-     * be assigned to the container. This identifier will be used to identify this application when invoking {@link Singleton} methods.
+     * be assigned to the container. This identifier will be used to identify this application when invoking {@link Singleton}
+     * methods.
      *
      * @param contextId the identifier of this application container instance
      * @param environment the environment in use, by default {@link Environments#EE}

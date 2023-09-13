@@ -13,7 +13,8 @@ import jakarta.enterprise.context.spi.AlterableContext;
  * </p>
  *
  * <pre>
- * &#064; Inject DependentContext dependentContext;
+ * &#064;Inject
+ * DependentContext dependentContext;
  * </pre>
  *
  * @author Pete Muir

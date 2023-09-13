@@ -21,8 +21,10 @@ import java.util.Map;
 import org.jboss.weld.bootstrap.api.Service;
 
 /**
- * An integrator may provide a map of configuration properties. This map is considered the source with the lowest priority (i.e. it may be overriden by other
- * sources such as system properties). The supported keys are declared in the documentation. Entries with unsupported keys are ignored. Invalid property value
+ * An integrator may provide a map of configuration properties. This map is considered the source with the lowest priority (i.e.
+ * it may be overriden by other
+ * sources such as system properties). The supported keys are declared in the documentation. Entries with unsupported keys are
+ * ignored. Invalid property value
  * is a deployment problem - initialization will be aborted by the container.
  *
  * @see <a href="https://issues.jboss.org/browse/WELD-1791">WELD-1791</a>

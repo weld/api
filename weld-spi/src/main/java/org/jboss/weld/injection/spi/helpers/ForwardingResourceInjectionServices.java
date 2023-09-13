@@ -18,8 +18,8 @@ package org.jboss.weld.injection.spi.helpers;
 
 import jakarta.enterprise.inject.spi.InjectionPoint;
 
-import org.jboss.weld.injection.spi.ResourceReferenceFactory;
 import org.jboss.weld.injection.spi.ResourceInjectionServices;
+import org.jboss.weld.injection.spi.ResourceReferenceFactory;
 
 public abstract class ForwardingResourceInjectionServices implements ResourceInjectionServices {
 

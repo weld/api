@@ -19,7 +19,8 @@ package org.jboss.weld.events;
 import jakarta.enterprise.event.NotificationOptions;
 
 /**
- * The {@link jakarta.enterprise.event.Event#fireAsync(Object, NotificationOptions)} method allows to configure the notification of asynchronous observer methods.
+ * The {@link jakarta.enterprise.event.Event#fireAsync(Object, NotificationOptions)} method allows to configure the notification
+ * of asynchronous observer methods.
  * <p>
  * Weld defines the following non-portable options:
  * <ul>
@@ -43,8 +44,10 @@ public interface WeldNotificationOptions extends NotificationOptions {
     /**
      * Makes it possible to specify a timeout (in milliseconds) after which the returned completion stage must be completed.
      * <p>
-     * If the time expires the stage is completed exceptionally with a {@link java.util.concurrent.CompletionException} holding the
-     * {@link java.util.concurrent.TimeoutException} as its cause. The expiration does not abort the notification of the observers.
+     * If the time expires the stage is completed exceptionally with a {@link java.util.concurrent.CompletionException} holding
+     * the
+     * {@link java.util.concurrent.TimeoutException} as its cause. The expiration does not abort the notification of the
+     * observers.
      * </p>
      */
     String TIMEOUT = "weld.async.notification.timeout";
@@ -77,7 +80,8 @@ public interface WeldNotificationOptions extends NotificationOptions {
          */
         SERIAL,
         /**
-         * Async observers are notified in parallel assuming that the {@link java.util.concurrent.Executor} used supports parallel execution.
+         * Async observers are notified in parallel assuming that the {@link java.util.concurrent.Executor} used supports
+         * parallel execution.
          */
         PARALLEL,;
 

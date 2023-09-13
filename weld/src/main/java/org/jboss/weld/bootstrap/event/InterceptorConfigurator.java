@@ -39,14 +39,16 @@ public interface InterceptorConfigurator {
      * @param interceptorFunction a function holding the interception logic
      * @return self
      */
-    InterceptorConfigurator intercept(InterceptionType interceptionType, Function<InvocationContext, Object> interceptorFunction);
+    InterceptorConfigurator intercept(InterceptionType interceptionType,
+            Function<InvocationContext, Object> interceptorFunction);
 
     /**
      * @param interceptionType specifies an interception type, e.g. around invoke, post construct, ...
      * @param interceptorFunction a function holding the interception logic
      * @return self
      */
-    InterceptorConfigurator interceptWithMetadata(InterceptionType interceptionType, BiFunction<InvocationContext, Bean<?>, Object> interceptorFunction);
+    InterceptorConfigurator interceptWithMetadata(InterceptionType interceptionType,
+            BiFunction<InvocationContext, Bean<?>, Object> interceptorFunction);
 
     /**
      * Adds interceptor binding annotation.

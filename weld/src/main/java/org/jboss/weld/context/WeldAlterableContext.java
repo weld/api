@@ -34,13 +34,15 @@ import org.jboss.weld.context.api.ContextualInstance;
 public interface WeldAlterableContext extends AlterableContext {
 
     /**
-     * Retrieves set of {@link ContextualInstance} within the context. This entails all instances that were created up to this point - Weld creates
+     * Retrieves set of {@link ContextualInstance} within the context. This entails all instances that were created up to this
+     * point - Weld creates
      * them lazily so unless some beans were already used, they have not been stored.
      *
      * @return Set of all {@link ContextualInstance} existing in this context
      */
     default Collection<ContextualInstance<?>> getAllContextualInstances() {
-        throw new UnsupportedOperationException("getAllContextualInstances() is not implemented for context " + this.getClass());
+        throw new UnsupportedOperationException(
+                "getAllContextualInstances() is not implemented for context " + this.getClass());
     }
 
     /**

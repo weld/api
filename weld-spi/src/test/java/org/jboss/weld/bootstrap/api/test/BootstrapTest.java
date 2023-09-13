@@ -31,168 +31,156 @@ import org.jboss.weld.security.spi.SecurityServices;
 import org.jboss.weld.transaction.spi.TransactionServices;
 import org.testng.annotations.Test;
 
-public class BootstrapTest
-{
+public class BootstrapTest {
 
-  /*
-   * EjbServices is a required bean deployment archive service in this environment.
-   * For backwards compatibility with older integrators that register EjbServices
-   * as a deployment service, this check is suppressed.
-   *
-   * @see WELD-1685
-   */
-   @Test(expectedExceptions = IllegalStateException.class, enabled = false)
-   public void testMissingEjbServices()
-   {
-      Bootstrap bootstrap = new MockBootstrap();
-      ServiceRegistry deploymentServices = new SimpleServiceRegistry();
-      ServiceRegistry bdaServices = new SimpleServiceRegistry();
-      deploymentServices.add(TransactionServices.class, new MockTransactionServices());
-      deploymentServices.add(SecurityServices.class, new MockSecurityServices());
+    /*
+     * EjbServices is a required bean deployment archive service in this environment.
+     * For backwards compatibility with older integrators that register EjbServices
+     * as a deployment service, this check is suppressed.
+     *
+     * @see WELD-1685
+     */
+    @Test(expectedExceptions = IllegalStateException.class, enabled = false)
+    public void testMissingEjbServices() {
+        Bootstrap bootstrap = new MockBootstrap();
+        ServiceRegistry deploymentServices = new SimpleServiceRegistry();
+        ServiceRegistry bdaServices = new SimpleServiceRegistry();
+        deploymentServices.add(TransactionServices.class, new MockTransactionServices());
+        deploymentServices.add(SecurityServices.class, new MockSecurityServices());
 
-      bdaServices.add(JpaInjectionServices.class, new MockJpaServices());
-      bdaServices.add(ResourceInjectionServices.class, new MockResourceServices());
-      bdaServices.add(EjbInjectionServices.class, new MockEjbInjectionServices());
-      bdaServices.add(ResourceLoader.class, new MockResourceLoader());
+        bdaServices.add(JpaInjectionServices.class, new MockJpaServices());
+        bdaServices.add(ResourceInjectionServices.class, new MockResourceServices());
+        bdaServices.add(EjbInjectionServices.class, new MockEjbInjectionServices());
+        bdaServices.add(ResourceLoader.class, new MockResourceLoader());
 
-      Deployment deployment = new MockDeployment(deploymentServices, new MockBeanDeploymentArchive(bdaServices));
-      bootstrap.startContainer(Environments.EE_INJECT, deployment);
-   }
+        Deployment deployment = new MockDeployment(deploymentServices, new MockBeanDeploymentArchive(bdaServices));
+        bootstrap.startContainer(Environments.EE_INJECT, deployment);
+    }
 
-   @Test(expectedExceptions = IllegalStateException.class)
-   public void testMissingEjbInjectionServices()
-   {
-      Bootstrap bootstrap = new MockBootstrap();
-      ServiceRegistry deploymentServices = new SimpleServiceRegistry();
-      ServiceRegistry bdaServices = new SimpleServiceRegistry();
-      deploymentServices.add(TransactionServices.class, new MockTransactionServices());
-      deploymentServices.add(SecurityServices.class, new MockSecurityServices());
+    @Test(expectedExceptions = IllegalStateException.class)
+    public void testMissingEjbInjectionServices() {
+        Bootstrap bootstrap = new MockBootstrap();
+        ServiceRegistry deploymentServices = new SimpleServiceRegistry();
+        ServiceRegistry bdaServices = new SimpleServiceRegistry();
+        deploymentServices.add(TransactionServices.class, new MockTransactionServices());
+        deploymentServices.add(SecurityServices.class, new MockSecurityServices());
 
-      bdaServices.add(JpaInjectionServices.class, new MockJpaServices());
-      bdaServices.add(ResourceInjectionServices.class, new MockResourceServices());
-      bdaServices.add(ResourceLoader.class, new MockResourceLoader());
+        bdaServices.add(JpaInjectionServices.class, new MockJpaServices());
+        bdaServices.add(ResourceInjectionServices.class, new MockResourceServices());
+        bdaServices.add(ResourceLoader.class, new MockResourceLoader());
 
-      Deployment deployment = new MockDeployment(deploymentServices, new MockBeanDeploymentArchive(bdaServices));
-      bootstrap.startContainer(Environments.EE_INJECT, deployment);
-   }
+        Deployment deployment = new MockDeployment(deploymentServices, new MockBeanDeploymentArchive(bdaServices));
+        bootstrap.startContainer(Environments.EE_INJECT, deployment);
+    }
 
-   @Test(expectedExceptions = IllegalStateException.class)
-   public void testMissingJpaServices()
-   {
-      Bootstrap bootstrap = new MockBootstrap();
-      ServiceRegistry deploymentServices = new SimpleServiceRegistry();
-      deploymentServices.add(TransactionServices.class, new MockTransactionServices());
-      deploymentServices.add(SecurityServices.class, new MockSecurityServices());
-      deploymentServices.add(EjbServices.class, new MockEjbServices());
+    @Test(expectedExceptions = IllegalStateException.class)
+    public void testMissingJpaServices() {
+        Bootstrap bootstrap = new MockBootstrap();
+        ServiceRegistry deploymentServices = new SimpleServiceRegistry();
+        deploymentServices.add(TransactionServices.class, new MockTransactionServices());
+        deploymentServices.add(SecurityServices.class, new MockSecurityServices());
+        deploymentServices.add(EjbServices.class, new MockEjbServices());
 
-      ServiceRegistry bdaServices = new SimpleServiceRegistry();
+        ServiceRegistry bdaServices = new SimpleServiceRegistry();
 
-      bdaServices.add(EjbInjectionServices.class, new MockEjbInjectionServices());
-      bdaServices.add(ResourceInjectionServices.class, new MockResourceServices());
-      bdaServices.add(EjbInjectionServices.class, new MockEjbInjectionServices());
-      bdaServices.add(ResourceLoader.class, new MockResourceLoader());
+        bdaServices.add(EjbInjectionServices.class, new MockEjbInjectionServices());
+        bdaServices.add(ResourceInjectionServices.class, new MockResourceServices());
+        bdaServices.add(EjbInjectionServices.class, new MockEjbInjectionServices());
+        bdaServices.add(ResourceLoader.class, new MockResourceLoader());
 
-      Deployment deployment = new MockDeployment(deploymentServices, new MockBeanDeploymentArchive(bdaServices));
-      bootstrap.startContainer(Environments.EE_INJECT, deployment);
-   }
+        Deployment deployment = new MockDeployment(deploymentServices, new MockBeanDeploymentArchive(bdaServices));
+        bootstrap.startContainer(Environments.EE_INJECT, deployment);
+    }
 
-   @Test(expectedExceptions = IllegalStateException.class)
-   public void testMissingSecurityServices()
-   {
-      Bootstrap bootstrap = new MockBootstrap();
-      ServiceRegistry deploymentServices = new SimpleServiceRegistry();
-      deploymentServices.add(TransactionServices.class, new MockTransactionServices());
-      deploymentServices.add(EjbServices.class, new MockEjbServices());
+    @Test(expectedExceptions = IllegalStateException.class)
+    public void testMissingSecurityServices() {
+        Bootstrap bootstrap = new MockBootstrap();
+        ServiceRegistry deploymentServices = new SimpleServiceRegistry();
+        deploymentServices.add(TransactionServices.class, new MockTransactionServices());
+        deploymentServices.add(EjbServices.class, new MockEjbServices());
 
-      ServiceRegistry bdaServices = new SimpleServiceRegistry();
+        ServiceRegistry bdaServices = new SimpleServiceRegistry();
 
-      bdaServices.add(JpaInjectionServices.class, new MockJpaServices());
-      bdaServices.add(ResourceInjectionServices.class, new MockResourceServices());
-      bdaServices.add(EjbInjectionServices.class, new MockEjbInjectionServices());
-      bdaServices.add(ResourceLoader.class, new MockResourceLoader());
+        bdaServices.add(JpaInjectionServices.class, new MockJpaServices());
+        bdaServices.add(ResourceInjectionServices.class, new MockResourceServices());
+        bdaServices.add(EjbInjectionServices.class, new MockEjbInjectionServices());
+        bdaServices.add(ResourceLoader.class, new MockResourceLoader());
 
-      Deployment deployment = new MockDeployment(deploymentServices, new MockBeanDeploymentArchive(bdaServices));
-      bootstrap.startContainer(Environments.EE_INJECT, deployment);
-   }
+        Deployment deployment = new MockDeployment(deploymentServices, new MockBeanDeploymentArchive(bdaServices));
+        bootstrap.startContainer(Environments.EE_INJECT, deployment);
+    }
 
-   @Test
-   public void testEEEnv()
-   {
-      Bootstrap bootstrap = new MockBootstrap();
-      ServiceRegistry deploymentServices = new SimpleServiceRegistry();
-      deploymentServices.add(TransactionServices.class, new MockTransactionServices());
-      deploymentServices.add(SecurityServices.class, new MockSecurityServices());
-      deploymentServices.add(EjbServices.class, new MockEjbServices());
+    @Test
+    public void testEEEnv() {
+        Bootstrap bootstrap = new MockBootstrap();
+        ServiceRegistry deploymentServices = new SimpleServiceRegistry();
+        deploymentServices.add(TransactionServices.class, new MockTransactionServices());
+        deploymentServices.add(SecurityServices.class, new MockSecurityServices());
+        deploymentServices.add(EjbServices.class, new MockEjbServices());
 
+        ServiceRegistry bdaServices = new SimpleServiceRegistry();
+        bdaServices.add(EjbInjectionServices.class, new MockEjbInjectionServices());
+        bdaServices.add(JpaInjectionServices.class, new MockJpaServices());
+        bdaServices.add(ResourceInjectionServices.class, new MockResourceServices());
+        bdaServices.add(ResourceLoader.class, new MockResourceLoader());
 
-      ServiceRegistry bdaServices = new SimpleServiceRegistry();
-      bdaServices.add(EjbInjectionServices.class, new MockEjbInjectionServices());
-      bdaServices.add(JpaInjectionServices.class, new MockJpaServices());
-      bdaServices.add(ResourceInjectionServices.class, new MockResourceServices());
-      bdaServices.add(ResourceLoader.class, new MockResourceLoader());
+        Deployment deployment = new MockDeployment(deploymentServices, new MockBeanDeploymentArchive(bdaServices));
+        bootstrap.startContainer(Environments.EE_INJECT, deployment);
+    }
 
-      Deployment deployment = new MockDeployment(deploymentServices, new MockBeanDeploymentArchive(bdaServices));
-      bootstrap.startContainer(Environments.EE_INJECT, deployment);
-   }
+    @Test(expectedExceptions = IllegalStateException.class)
+    public void testMissingTxServices() {
+        Bootstrap bootstrap = new MockBootstrap();
+        ServiceRegistry deploymentServices = new SimpleServiceRegistry();
+        deploymentServices.add(SecurityServices.class, new MockSecurityServices());
+        deploymentServices.add(EjbServices.class, new MockEjbServices());
 
-   @Test(expectedExceptions = IllegalStateException.class)
-   public void testMissingTxServices()
-   {
-      Bootstrap bootstrap = new MockBootstrap();
-      ServiceRegistry deploymentServices = new SimpleServiceRegistry();
-      deploymentServices.add(SecurityServices.class, new MockSecurityServices());
-      deploymentServices.add(EjbServices.class, new MockEjbServices());
+        ServiceRegistry bdaServices = new SimpleServiceRegistry();
+        bdaServices.add(EjbInjectionServices.class, new MockEjbInjectionServices());
+        bdaServices.add(JpaInjectionServices.class, new MockJpaServices());
+        bdaServices.add(ResourceInjectionServices.class, new MockResourceServices());
+        bdaServices.add(ResourceLoader.class, new MockResourceLoader());
 
-      ServiceRegistry bdaServices = new SimpleServiceRegistry();
-      bdaServices.add(EjbInjectionServices.class, new MockEjbInjectionServices());
-      bdaServices.add(JpaInjectionServices.class, new MockJpaServices());
-      bdaServices.add(ResourceInjectionServices.class, new MockResourceServices());
-      bdaServices.add(ResourceLoader.class, new MockResourceLoader());
+        Deployment deployment = new MockDeployment(deploymentServices, new MockBeanDeploymentArchive(bdaServices));
+        bootstrap.startContainer(Environments.EE_INJECT, deployment);
+    }
 
-      Deployment deployment = new MockDeployment(deploymentServices, new MockBeanDeploymentArchive(bdaServices));
-      bootstrap.startContainer(Environments.EE_INJECT, deployment);
-   }
+    @Test(expectedExceptions = IllegalStateException.class)
+    public void testMissingResourceServices() {
+        Bootstrap bootstrap = new MockBootstrap();
+        ServiceRegistry deploymentServices = new SimpleServiceRegistry();
+        deploymentServices.add(TransactionServices.class, new MockTransactionServices());
+        deploymentServices.add(SecurityServices.class, new MockSecurityServices());
+        deploymentServices.add(EjbServices.class, new MockEjbServices());
 
-   @Test(expectedExceptions = IllegalStateException.class)
-   public void testMissingResourceServices()
-   {
-      Bootstrap bootstrap = new MockBootstrap();
-      ServiceRegistry deploymentServices = new SimpleServiceRegistry();
-      deploymentServices.add(TransactionServices.class, new MockTransactionServices());
-      deploymentServices.add(SecurityServices.class, new MockSecurityServices());
-      deploymentServices.add(EjbServices.class, new MockEjbServices());
+        ServiceRegistry bdaServices = new SimpleServiceRegistry();
+        bdaServices.add(EjbInjectionServices.class, new MockEjbInjectionServices());
+        bdaServices.add(JpaInjectionServices.class, new MockJpaServices());
+        bdaServices.add(ResourceLoader.class, new MockResourceLoader());
 
-      ServiceRegistry bdaServices = new SimpleServiceRegistry();
-      bdaServices.add(EjbInjectionServices.class, new MockEjbInjectionServices());
-      bdaServices.add(JpaInjectionServices.class, new MockJpaServices());
-      bdaServices.add(ResourceLoader.class, new MockResourceLoader());
+        Deployment deployment = new MockDeployment(deploymentServices, new MockBeanDeploymentArchive(bdaServices));
+        bootstrap.startContainer(Environments.EE_INJECT, deployment);
+    }
 
-      Deployment deployment = new MockDeployment(deploymentServices, new MockBeanDeploymentArchive(bdaServices));
-      bootstrap.startContainer(Environments.EE_INJECT, deployment);
-   }
+    @Test
+    public void testSEEnv() {
+        Bootstrap bootstrap = new MockBootstrap();
+        ServiceRegistry deploymentServices = new SimpleServiceRegistry();
 
-   @Test
-   public void testSEEnv()
-   {
-      Bootstrap bootstrap = new MockBootstrap();
-      ServiceRegistry deploymentServices = new SimpleServiceRegistry();
+        ServiceRegistry bdaServices = new SimpleServiceRegistry();
+        bdaServices.add(ResourceLoader.class, new MockResourceLoader());
+        Deployment deployment = new MockDeployment(deploymentServices, new MockBeanDeploymentArchive(bdaServices));
+        bootstrap.startContainer(Environments.SE, deployment);
+    }
 
-      ServiceRegistry bdaServices = new SimpleServiceRegistry();
-      bdaServices.add(ResourceLoader.class, new MockResourceLoader());
-      Deployment deployment = new MockDeployment(deploymentServices, new MockBeanDeploymentArchive(bdaServices));
-      bootstrap.startContainer(Environments.SE, deployment);
-   }
-
-   @Test
-      public void testServletEnv()
-      {
-         Bootstrap bootstrap = new MockBootstrap();
-         ServiceRegistry deploymentServices = new SimpleServiceRegistry();
-         ServiceRegistry bdaServices = new SimpleServiceRegistry();
-         bdaServices.add(ResourceLoader.class, new MockResourceLoader());
-         Deployment deployment = new MockDeployment(deploymentServices, new MockBeanDeploymentArchive(bdaServices));
-         bootstrap.startContainer(Environments.SERVLET, deployment);
-      }
-
+    @Test
+    public void testServletEnv() {
+        Bootstrap bootstrap = new MockBootstrap();
+        ServiceRegistry deploymentServices = new SimpleServiceRegistry();
+        ServiceRegistry bdaServices = new SimpleServiceRegistry();
+        bdaServices.add(ResourceLoader.class, new MockResourceLoader());
+        Deployment deployment = new MockDeployment(deploymentServices, new MockBeanDeploymentArchive(bdaServices));
+        bootstrap.startContainer(Environments.SERVLET, deployment);
+    }
 
 }

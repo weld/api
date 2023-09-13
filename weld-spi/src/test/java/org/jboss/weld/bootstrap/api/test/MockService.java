@@ -22,11 +22,9 @@ import org.jboss.weld.bootstrap.api.Service;
  * @author pmuir
  *
  */
-public abstract class MockService implements Service
-{
+public abstract class MockService implements Service {
 
-   public void cleanup()
-   {
-   }
+    public void cleanup() {
+    }
 
 }

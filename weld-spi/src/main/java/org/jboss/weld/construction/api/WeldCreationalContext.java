@@ -21,7 +21,8 @@ import jakarta.interceptor.AroundConstruct;
 import jakarta.interceptor.Interceptors;
 
 /**
- * Extended version of {@link CreationalContext} which gives the integrator additional control over the process of constructing an instance.
+ * Extended version of {@link CreationalContext} which gives the integrator additional control over the process of constructing
+ * an instance.
  *
  * @author Jozef Hartinger
  *
@@ -29,9 +30,12 @@ import jakarta.interceptor.Interceptors;
 public interface WeldCreationalContext<T> extends CreationalContext<T> {
 
     /**
-     * By default Weld takes care of {@link AroundConstruct} interceptors of a component instance which are bound to the component using interceptor bindings or
-     * the {@link Interceptors} annotation. This may not be desired should an integrator want to manage these interceptors themselves. In that case this switch
-     * may be used to suppress Weld management of {@link AroundConstruct} interceptors. In that case an integrator is responsible for performing
+     * By default Weld takes care of {@link AroundConstruct} interceptors of a component instance which are bound to the
+     * component using interceptor bindings or
+     * the {@link Interceptors} annotation. This may not be desired should an integrator want to manage these interceptors
+     * themselves. In that case this switch
+     * may be used to suppress Weld management of {@link AroundConstruct} interceptors. In that case an integrator is
+     * responsible for performing
      * {@link AroundConstruct} interception.
      *
      * @see #registerAroundConstructCallback(AroundConstructCallback)
@@ -50,8 +54,10 @@ public interface WeldCreationalContext<T> extends CreationalContext<T> {
     boolean isConstructorInterceptionSuppressed();
 
     /**
-     * Register a callback which is notified of component construction. This callback allows an integrator to perform additional tasks (e.g. invoking
-     * interceptors bound using the deployment descriptor) around constructor invocation. {@link AroundConstructCallback}s are invoked in the order in which
+     * Register a callback which is notified of component construction. This callback allows an integrator to perform additional
+     * tasks (e.g. invoking
+     * interceptors bound using the deployment descriptor) around constructor invocation. {@link AroundConstructCallback}s are
+     * invoked in the order in which
      * they were registered.
      *
      * @param callback the callback

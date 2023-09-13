@@ -17,9 +17,9 @@
 
 package org.jboss.weld.serialization.spi;
 
-import org.jboss.weld.bootstrap.api.Service;
-
 import java.security.ProtectionDomain;
+
+import org.jboss.weld.bootstrap.api.Service;
 
 /**
  * <p>
@@ -61,7 +61,8 @@ public interface ProxyServices extends Service {
      *
      * @throws ClassFormatError If the data did not contain a valid class
      */
-    default Class<?> defineClass(Class<?> originalClass, String className, byte[] classBytes, int off, int len) throws ClassFormatError {
+    default Class<?> defineClass(Class<?> originalClass, String className, byte[] classBytes, int off, int len)
+            throws ClassFormatError {
         return defineClass(originalClass, className, classBytes, off, len, null);
     }
 
@@ -77,24 +78,26 @@ public interface ProxyServices extends Service {
      * Returns the created class object or throws an exception if there data are not valid or if there is any other
      * problem registering the class with the {@code ClassLoader}.
      *
-     * @param originalClass    The base type (class or interface) being proxied
-     * @param className        The binary name of the class
-     * @param classBytes       The bytes that make up the class data
-     * @param off              The start offset in classBytes of the class data
-     * @param len              The length of the class data
+     * @param originalClass The base type (class or interface) being proxied
+     * @param className The binary name of the class
+     * @param classBytes The bytes that make up the class data
+     * @param off The start offset in classBytes of the class data
+     * @param len The length of the class data
      * @param protectionDomain The ProtectionDomain of the class or null
      * @return The {@code Class} object created from the data
      * @throws ClassFormatError If the data did not contain a valid class
      */
-    default Class<?> defineClass(Class<?> originalClass, String className, byte[] classBytes, int off, int len, ProtectionDomain protectionDomain) throws ClassFormatError {
-        throw new UnsupportedOperationException("ProxyServices#defineClass(Class<?>, String, byte[], int, int, ProtectionDomain) is not implemented!");
+    default Class<?> defineClass(Class<?> originalClass, String className, byte[] classBytes, int off, int len,
+            ProtectionDomain protectionDomain) throws ClassFormatError {
+        throw new UnsupportedOperationException(
+                "ProxyServices#defineClass(Class<?>, String, byte[], int, int, ProtectionDomain) is not implemented!");
     }
 
     /**
      * Given a base type (class or interface), attempts to load a proxy of that class.
      * Integrators should use the base type to determine proper {@code ClassLoader} instance to query.
      *
-     * @param originalClass   The base type (class or interface) whose proxy we try to load
+     * @param originalClass The base type (class or interface) whose proxy we try to load
      * @param classBinaryName The binary name of the class
      * @return The {@code Class} object for given binary name of the class
      * @throws ClassNotFoundException If the class was not found

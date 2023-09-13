@@ -9,7 +9,7 @@
  * You may obtain a copy of the License at
  * http://www.apache.org/licenses/LICENSE-2.0
  * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,  
+ * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
@@ -35,90 +35,75 @@ import org.jboss.weld.bootstrap.spi.Deployment;
 import org.jboss.weld.bootstrap.spi.Metadata;
 import org.jboss.weld.manager.api.WeldManager;
 
-public class MockBootstrap implements Bootstrap
-{
-   
-   public WeldManager getManager(BeanDeploymentArchive beanDeploymentArchive)
-   {
-      return null;
-   }
-   
-   public void shutdown()
-   {
-   }
+public class MockBootstrap implements Bootstrap {
 
-   public Bootstrap deployBeans()
-   {
-      return this;
-   }
+    public WeldManager getManager(BeanDeploymentArchive beanDeploymentArchive) {
+        return null;
+    }
 
-   public Bootstrap endInitialization()
-   {
-      return this;
-   }
+    public void shutdown() {
+    }
 
-   public Bootstrap startInitialization()
-   {
-      return this;
-   }
+    public Bootstrap deployBeans() {
+        return this;
+    }
 
-   public Bootstrap validateBeans()
-   {
-      return this;
-   }
-   
-   protected static void verifyServices(ServiceRegistry services, Set<Class<? extends Service>> requiredServices) 
-   {
-      for (Class<? extends Service> serviceType : requiredServices)
-      {
-         if (!services.contains(serviceType))
-         {
-            throw new IllegalStateException("Required service " + serviceType.getName() + " has not been specified");
-         }
-      }
-   }
+    public Bootstrap endInitialization() {
+        return this;
+    }
 
-   public Bootstrap startContainer(Environment environment, Deployment deployment)
-   {
-      verifyServices(deployment.getServices(), environment.getRequiredDeploymentServices());
-      verifyServices(deployment.getBeanDeploymentArchives().iterator().next().getServices(), environment.getRequiredBeanDeploymentArchiveServices());
-      return this;
-   }
+    public Bootstrap startInitialization() {
+        return this;
+    }
 
-   public BeansXml parse(URL url)
-   {
-      return EMPTY_BEANS_XML;
-   }
+    public Bootstrap validateBeans() {
+        return this;
+    }
 
-   public BeansXml parse(Iterable<URL> urls)
-   {
-      return parse(urls, false);
-   }
+    protected static void verifyServices(ServiceRegistry services, Set<Class<? extends Service>> requiredServices) {
+        for (Class<? extends Service> serviceType : requiredServices) {
+            if (!services.contains(serviceType)) {
+                throw new IllegalStateException("Required service " + serviceType.getName() + " has not been specified");
+            }
+        }
+    }
 
-   public BeansXml parse(Iterable<URL> urls, boolean removeDuplicates)
-   {
-      return EMPTY_BEANS_XML;
-   }
+    public Bootstrap startContainer(Environment environment, Deployment deployment) {
+        verifyServices(deployment.getServices(), environment.getRequiredDeploymentServices());
+        verifyServices(deployment.getBeanDeploymentArchives().iterator().next().getServices(),
+                environment.getRequiredBeanDeploymentArchiveServices());
+        return this;
+    }
 
-   @Override
-   public BeansXml parse(URL url, BeanDiscoveryMode emptyBeansXmlDiscoveryMode) {
-      return EMPTY_BEANS_XML;
-   }
+    public BeansXml parse(URL url) {
+        return EMPTY_BEANS_XML;
+    }
 
-   @Override
-   public BeansXml parse(Iterable<URL> urls, BeanDiscoveryMode emptyBeansXmlDiscoveryMode) {
-      return EMPTY_BEANS_XML;
-   }
+    public BeansXml parse(Iterable<URL> urls) {
+        return parse(urls, false);
+    }
 
-   @Override
-   public BeansXml parse(Iterable<URL> urls, boolean removeDuplicates, BeanDiscoveryMode emptyBeansXmlDiscoveryMode) {
-      return EMPTY_BEANS_XML;
-   }
+    public BeansXml parse(Iterable<URL> urls, boolean removeDuplicates) {
+        return EMPTY_BEANS_XML;
+    }
 
-   public Iterable<Metadata<Extension>> loadExtensions(ClassLoader classLoader)
-   {
-      return emptyList();
-   }
+    @Override
+    public BeansXml parse(URL url, BeanDiscoveryMode emptyBeansXmlDiscoveryMode) {
+        return EMPTY_BEANS_XML;
+    }
 
-   
+    @Override
+    public BeansXml parse(Iterable<URL> urls, BeanDiscoveryMode emptyBeansXmlDiscoveryMode) {
+        return EMPTY_BEANS_XML;
+    }
+
+    @Override
+    public BeansXml parse(Iterable<URL> urls, boolean removeDuplicates, BeanDiscoveryMode emptyBeansXmlDiscoveryMode) {
+        return EMPTY_BEANS_XML;
+    }
+
+    public Iterable<Metadata<Extension>> loadExtensions(ClassLoader classLoader) {
+        return emptyList();
+    }
+
 }

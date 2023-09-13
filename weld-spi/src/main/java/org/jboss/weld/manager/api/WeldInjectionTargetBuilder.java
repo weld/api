@@ -23,10 +23,10 @@ import jakarta.enterprise.inject.spi.Bean;
  * <p>
  * By default, the returned {@link WeldInjectionTargetBuilder} instance will support:
  * <ul>
- *    <li>resource injection (e.g. &#064;Resource, &#064;EJB)</li>
- *    <li>decorators, as long as bean is set</li>
- *    <li>lifecycle and around-invoke interceptors</li>
- *    <li>target class lifecycle interceptor callbacks</li>
+ * <li>resource injection (e.g. &#064;Resource, &#064;EJB)</li>
+ * <li>decorators, as long as bean is set</li>
+ * <li>lifecycle and around-invoke interceptors</li>
+ * <li>target class lifecycle interceptor callbacks</li>
  * </ul>
  *
  * Each of these capabilities may be disabled by calling a corresponding set*Enabled(false) method.
@@ -36,37 +36,47 @@ import jakarta.enterprise.inject.spi.Bean;
 public interface WeldInjectionTargetBuilder<T> {
 
     /**
-     * Enables/disables resource injection in the resulting {@link WeldInjectionTargetBuilder}. By default, this feature is enabled.
+     * Enables/disables resource injection in the resulting {@link WeldInjectionTargetBuilder}. By default, this feature is
+     * enabled.
+     *
      * @param value enables/disables resource injection
      * @return the builder
      */
     WeldInjectionTargetBuilder<T> setResourceInjectionEnabled(boolean value);
 
     /**
-     * Enables/disables target class lifecycle callback in the resulting {@link WeldInjectionTargetBuilder}. By default, this feature is enabled.
+     * Enables/disables target class lifecycle callback in the resulting {@link WeldInjectionTargetBuilder}. By default, this
+     * feature is enabled.
+     *
      * @param value enables/disables target class lifecycle callback
      * @return the builder
      */
     WeldInjectionTargetBuilder<T> setTargetClassLifecycleCallbacksEnabled(boolean value);
 
     /**
-     * Enables/disables interception support in the resulting {@link WeldInjectionTargetBuilder}. By default, this feature is enabled.
+     * Enables/disables interception support in the resulting {@link WeldInjectionTargetBuilder}. By default, this feature is
+     * enabled.
+     *
      * @param value enables/disables interception support
      * @return the builder
      */
     WeldInjectionTargetBuilder<T> setInterceptionEnabled(boolean value);
 
     /**
-     * Enables/disables decoration support in the resulting {@link WeldInjectionTargetBuilder}. By default, this feature is enabled as long
+     * Enables/disables decoration support in the resulting {@link WeldInjectionTargetBuilder}. By default, this feature is
+     * enabled as long
      * as the bean is set.
+     *
      * @param value enables/disables decoration support
      * @return the builder
      */
     WeldInjectionTargetBuilder<T> setDecorationEnabled(boolean value);
 
     /**
-     * Sets the bean that the resulting {@link WeldInjectionTarget} corresponds to. This is an optional attribute of a {@link WeldInjectionTarget} and it
+     * Sets the bean that the resulting {@link WeldInjectionTarget} corresponds to. This is an optional attribute of a
+     * {@link WeldInjectionTarget} and it
      * is ok to leave this unset for any non-contextual component.
+     *
      * @param bean the specified bean
      * @return the builder
      */
@@ -74,6 +84,7 @@ public interface WeldInjectionTargetBuilder<T> {
 
     /**
      * Returns a newly-created {@code WeldInjectionTarget} based on the contents of this builder.
+     *
      * @return newly-created {@code WeldInjectionTarget}
      */
     WeldInjectionTarget<T> build();

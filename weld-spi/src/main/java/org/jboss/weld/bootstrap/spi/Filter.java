@@ -17,18 +17,21 @@ public interface Filter {
 
     /**
      * The name attribute
+     *
      * @return the name attribute
      */
     String getName();
 
     /**
      * Nested &lt;if-system-property&gt; elements
+     *
      * @return nested &lt;if-system-property&gt; elements
      */
     Collection<Metadata<SystemPropertyActivation>> getSystemPropertyActivations();
 
     /**
      * Nested &lt;if-class-available&gt; elements
+     *
      * @return nested &lt;if-class-available&gt; elements
      */
     Collection<Metadata<ClassAvailableActivation>> getClassAvailableActivations();

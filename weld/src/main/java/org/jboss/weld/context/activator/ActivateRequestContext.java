@@ -32,7 +32,8 @@ import jakarta.interceptor.InterceptorBinding;
  * <p>
  * If the request context is already active then the associated interceptor does nothing.
  * <p>
- * The interceptor is registered with a priority of {@link jakarta.interceptor.Interceptor.Priority#PLATFORM_BEFORE} + 100. The same value is used for
+ * The interceptor is registered with a priority of {@link jakarta.interceptor.Interceptor.Priority#PLATFORM_BEFORE} + 100. The
+ * same value is used for
  * {@link jakarta.enterprise.context.control.ActivateRequestContext}.
  *
  * @author Tomas Remes

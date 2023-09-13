@@ -16,8 +16,8 @@
  */
 package org.jboss.weld.bootstrap.api.test;
 
-import org.jboss.weld.injection.spi.ResourceReferenceFactory;
 import org.jboss.weld.injection.spi.ResourceReference;
+import org.jboss.weld.injection.spi.ResourceReferenceFactory;
 
 public class MockResourceFactory<T> implements ResourceReferenceFactory<T> {
 

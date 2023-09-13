@@ -121,7 +121,8 @@ public interface WeldManager extends BeanManager, Serializable {
 
     /**
      * @see <a href="https://issues.jboss.org/browse/CDI-671">CDI-671</a>
-     * @return a new {@link Instance} with required type {@link Object} and no required qualifiers ({@link jakarta.enterprise.inject.Default} is added automatically during resolution if
+     * @return a new {@link Instance} with required type {@link Object} and no required qualifiers
+     *         ({@link jakarta.enterprise.inject.Default} is added automatically during resolution if
      *         no qualifiers are selected)
      */
     Instance<Object> instance();
@@ -135,7 +136,9 @@ public interface WeldManager extends BeanManager, Serializable {
     Bean<?> getPassivationCapableBean(BeanIdentifier identifier);
 
     /**
-     * Returns a new instance of {@link WeldInjectionTargetBuilder} which can be used to create a new {@link WeldInjectionTarget} for the specified type.
+     * Returns a new instance of {@link WeldInjectionTargetBuilder} which can be used to create a new
+     * {@link WeldInjectionTarget} for the specified type.
+     *
      * @param <T> the type
      * @param type the specified type
      * @return a new {@link WeldInjectionTargetBuilder} instance for the specified type
@@ -151,12 +154,15 @@ public interface WeldManager extends BeanManager, Serializable {
     /**
      * Obtain an {@link AnnotatedType} that may be used to read the annotations of the given class or interface.
      * <p>
-     * Allows multiple annotated types, based on the same underlying type, to be created. {@link AnnotatedType}s discovered by the container use the fully
+     * Allows multiple annotated types, based on the same underlying type, to be created. {@link AnnotatedType}s discovered by
+     * the container use the fully
      * qualified class name to identify the type.
      * <p>
-     * This method must only be used when creating non-contextual instances, such as Java EE components. It's not designed to work with contextual instances.
+     * This method must only be used when creating non-contextual instances, such as Java EE components. It's not designed to
+     * work with contextual instances.
      * <p>
-     * If called after the container bootstrap finished, the client code is required to explicitly call {@link #disposeAnnotatedType(Class, String)}
+     * If called after the container bootstrap finished, the client code is required to explicitly call
+     * {@link #disposeAnnotatedType(Class, String)}
      * as soon as the specified type should be garbage-collected (to avoid memory leaks).
      *
      * @param type underlying class for the {@code AnnotatedType}
@@ -169,7 +175,8 @@ public interface WeldManager extends BeanManager, Serializable {
     /**
      * Dispose the {@link AnnotatedType} created for the identified type.
      * <p>
-     * This method should be explicitly called for each result of {@link #createAnnotatedType(Class, String)} created after the container bootstrap finished.
+     * This method should be explicitly called for each result of {@link #createAnnotatedType(Class, String)} created after the
+     * container bootstrap finished.
      * <p>
      * It's not necessary to call this method unless the identified type should be a subject of garbage collection.
      *
@@ -190,7 +197,8 @@ public interface WeldManager extends BeanManager, Serializable {
     boolean isContextActive(Class<? extends Annotation> scopeType);
 
     /**
-     * Returns an unmodifiable collection of all registered scopes, both built-in and custom. You can then use {@code BeanManager#getContext()}
+     * Returns an unmodifiable collection of all registered scopes, both built-in and custom. You can then use
+     * {@code BeanManager#getContext()}
      * to retrieve the {@link Context}.
      * The method returns scopes regardless of whether their respective contexts are active or otherwise.
      *
@@ -207,9 +215,9 @@ public interface WeldManager extends BeanManager, Serializable {
      */
     default Collection<Context> getActiveContexts() {
         return getScopes().stream()
-            .filter(this::isContextActive)
-            .map(this::getContext)
-            .collect(Collectors.toSet());
+                .filter(this::isContextActive)
+                .map(this::getContext)
+                .collect(Collectors.toSet());
     }
 
     /**
@@ -217,17 +225,18 @@ public interface WeldManager extends BeanManager, Serializable {
      * This is just a convenient method.
      *
      * Note that for each scope, there might be more than one {@link Context}, but there can be at most one active at a time.
-     * This method can therefore return an incomplete view of all active contexts as not every context implements {@link WeldAlterableContext}.
+     * This method can therefore return an incomplete view of all active contexts as not every context implements
+     * {@link WeldAlterableContext}.
      *
      * @return Collection of all active contexts implementing {@link WeldAlterableContext}
      */
     default Collection<WeldAlterableContext> getActiveWeldAlterableContexts() {
         return getScopes().stream()
-            .filter(this::isContextActive)
-            .map(this::getContext)
-            .filter(t -> t instanceof WeldAlterableContext)
-            .map(t -> (WeldAlterableContext) t)
-            .collect(Collectors.toSet());
+                .filter(this::isContextActive)
+                .map(this::getContext)
+                .filter(t -> t instanceof WeldAlterableContext)
+                .map(t -> (WeldAlterableContext) t)
+                .collect(Collectors.toSet());
     }
 
     /**

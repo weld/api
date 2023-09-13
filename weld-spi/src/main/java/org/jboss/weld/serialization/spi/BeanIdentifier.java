@@ -25,8 +25,10 @@ public interface BeanIdentifier extends Serializable {
     String BEAN_ID_SEPARATOR = "%";
 
     /**
-     * String representation of this identifier. This is required as some parts of the CDI API use String identifiers, for example
-     * {@link PassivationCapable#getId()}. Unlike {@link Object#toString()}, this method returns a non-verbose canonical string identifier.
+     * String representation of this identifier. This is required as some parts of the CDI API use String identifiers, for
+     * example
+     * {@link PassivationCapable#getId()}. Unlike {@link Object#toString()}, this method returns a non-verbose canonical string
+     * identifier.
      *
      * @return string representation of this identifier
      */

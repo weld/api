@@ -17,8 +17,9 @@
 
 package org.jboss.weld.serialization.spi.helpers;
 
-import jakarta.enterprise.context.spi.Contextual;
 import java.io.Serializable;
+
+import jakarta.enterprise.context.spi.Contextual;
 
 /**
  * A serializable version of contextual that knows how to restore the original bean if necessary.

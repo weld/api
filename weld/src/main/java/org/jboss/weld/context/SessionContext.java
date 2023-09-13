@@ -19,7 +19,9 @@ import org.jboss.weld.context.http.HttpSessionContext;
  * </p>
  *
  * <pre>
- * &#064; Inject &#064; Http SessionContext sessionContext;
+ * &#064;Inject
+ * &#064;Http
+ * SessionContext sessionContext;
  * </pre>
  *
  * <p>
@@ -27,7 +29,9 @@ import org.jboss.weld.context.http.HttpSessionContext;
  * </p>
  *
  * <pre>
- * &#064; Inject &#064; Bound SessionContext sessionContext;
+ * &#064;Inject
+ * &#064;Bound
+ * SessionContext sessionContext;
  * </pre>
  *
  * @author Pete Muir

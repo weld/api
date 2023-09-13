@@ -16,11 +16,12 @@
  */
 package org.jboss.weld.serialization.spi.helpers;
 
-import org.jboss.weld.context.api.ContextualInstance;
+import java.io.Serializable;
 
 import jakarta.enterprise.context.spi.Contextual;
 import jakarta.enterprise.context.spi.CreationalContext;
-import java.io.Serializable;
+
+import org.jboss.weld.context.api.ContextualInstance;
 
 /**
  * A Serializable wrapper for a {@link ContextualInstance}

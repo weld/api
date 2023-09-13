@@ -14,7 +14,8 @@ import jakarta.enterprise.context.spi.AlterableContext;
  * </p>
  *
  * <pre>
- * &#064; Inject ApplicationContext applicationContext;
+ * &#064;Inject
+ * ApplicationContext applicationContext;
  * </pre>
  *
  * @author Pete Muir

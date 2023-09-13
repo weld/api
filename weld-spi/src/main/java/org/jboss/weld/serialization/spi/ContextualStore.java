@@ -85,5 +85,6 @@ public interface ContextualStore extends Service {
      * @param creationalContext the creational context of the instance
      * @return the serializable contextual instance
      */
-    <C extends Contextual<I>, I> SerializableContextualInstance<C, I> getSerializableContextualInstance(Contextual<I> contextual, I instance, CreationalContext<I> creationalContext);
+    <C extends Contextual<I>, I> SerializableContextualInstance<C, I> getSerializableContextualInstance(
+            Contextual<I> contextual, I instance, CreationalContext<I> creationalContext);
 }

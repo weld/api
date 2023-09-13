@@ -29,7 +29,8 @@ import org.jboss.weld.bootstrap.api.Service;
  * </p>
  *
  * <p>
- * An integrator should either implement {@link #getSecurityContext()} or {@link #getSecurityContextAssociator()}. By default, the
+ * An integrator should either implement {@link #getSecurityContext()} or {@link #getSecurityContextAssociator()}. By default,
+ * the
  * {@link #getSecurityContextAssociator()} method delegates to {@link #getSecurityContext()}. The container always calls the
  * {@link #getSecurityContextAssociator()} method.
  * </p>
@@ -48,7 +49,8 @@ public interface SecurityServices extends Service {
     Principal getPrincipal();
 
     /**
-     * Obtain the security context associated with the current thread. This method is used by Weld to propagate the security context of the current thread to
+     * Obtain the security context associated with the current thread. This method is used by Weld to propagate the security
+     * context of the current thread to
      * different threads.
      *
      * <p>
@@ -63,7 +65,8 @@ public interface SecurityServices extends Service {
     }
 
     /**
-     * Obtain the security context associated with the current thread and associate this context when an action is performed. This method is used by Weld to propagate the security context of the current thread to
+     * Obtain the security context associated with the current thread and associate this context when an action is performed.
+     * This method is used by Weld to propagate the security context of the current thread to
      * different threads.
      *
      * <p>
