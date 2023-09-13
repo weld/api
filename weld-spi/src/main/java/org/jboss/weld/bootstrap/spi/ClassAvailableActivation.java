@@ -14,6 +14,7 @@ public interface ClassAvailableActivation {
 
     /**
      * The name attribute
+     *
      * @return the name attribute
      */
     String getClassName();

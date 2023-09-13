@@ -37,7 +37,8 @@ public interface Environment {
     Set<Class<? extends Service>> getRequiredBeanDeploymentArchiveServices();
 
     /**
-     * Environment aware of EE modules. In such environment each bean archive which belongs to a module should register {@link EEModuleDescriptor}
+     * Environment aware of EE modules. In such environment each bean archive which belongs to a module should register
+     * {@link EEModuleDescriptor}
      *
      * @return true by default
      */

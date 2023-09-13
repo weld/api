@@ -47,7 +47,8 @@ public interface ServiceRegistry extends Iterable<Service> {
      * @param <S> the service type to add
      * @param type the service type to add
      * @param service the service implementation
-     * @return null if no service implementation was previously associated with the given service. Otherwise, the previous service implementation is returned.
+     * @return null if no service implementation was previously associated with the given service. Otherwise, the previous
+     *         service implementation is returned.
      */
     <S extends Service> S addIfAbsent(Class<S> type, S service);
 

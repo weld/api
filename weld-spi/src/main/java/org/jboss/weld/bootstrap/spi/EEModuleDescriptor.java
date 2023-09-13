@@ -20,8 +20,10 @@ import org.jboss.weld.bootstrap.api.Service;
 import org.jboss.weld.bootstrap.spi.helpers.EEModuleDescriptorImpl;
 
 /**
- * In Java EE environment, each {@link BeanDeploymentArchive} should provide a description of the Java EE module it belongs to (WAR, RAR, etc.). This applies to
- * physical bean archives deployed within the given module and also to logical bean archives that belong to the module. Bean archives that are not part of a
+ * In Java EE environment, each {@link BeanDeploymentArchive} should provide a description of the Java EE module it belongs to
+ * (WAR, RAR, etc.). This applies to
+ * physical bean archives deployed within the given module and also to logical bean archives that belong to the module. Bean
+ * archives that are not part of a
  * Java EE module (e.g. built-in server libraries) are not required to have a {@link EEModuleDescriptor} service registered.
  *
  * <p>
@@ -29,8 +31,10 @@ import org.jboss.weld.bootstrap.spi.helpers.EEModuleDescriptorImpl;
  * </p>
  *
  * <p>
- * It is recommended to share an immutable {@link EEModuleDescriptor} instance for all bean deployment archives of the same Java EE module. However, each bean
- * deployment archive may register its own {@link EEModuleDescriptor} instance. In this case, all descriptors representing a given EE module must use the same
+ * It is recommended to share an immutable {@link EEModuleDescriptor} instance for all bean deployment archives of the same Java
+ * EE module. However, each bean
+ * deployment archive may register its own {@link EEModuleDescriptor} instance. In this case, all descriptors representing a
+ * given EE module must use the same
  * id and type.
  * </p>
  *
@@ -47,7 +51,11 @@ public interface EEModuleDescriptor extends Service {
      *
      */
     public enum ModuleType {
-        EAR, WEB, EJB_JAR, APPLICATION_CLIENT, CONNECTOR
+        EAR,
+        WEB,
+        EJB_JAR,
+        APPLICATION_CLIENT,
+        CONNECTOR
     }
 
     /**

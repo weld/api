@@ -36,7 +36,8 @@ public interface InterceptorBindings {
      * This includes class and method-bound interceptors.The purpose of this method is to indicate what interceptors does the
      * container need to interact with, for a given EJB.
      *
-     * Note: in the case of an EJB, the expectation is that the interpretation of {link @jakarta.interceptor.Interceptors} is left
+     * Note: in the case of an EJB, the expectation is that the interpretation of {link @jakarta.interceptor.Interceptors} is
+     * left
      * to the container, and the interceptors provided by the binding are complementary
      *
      * @return all interceptors that are bound to an EJB object through the {@link InterceptorBinding} mechanism and are enabled
@@ -53,7 +54,7 @@ public interface InterceptorBindings {
      * @param method - the method that is to be intercepted
      * @return - an immutable list of interceptors applicable to the method (empty if no such interceptors exist)
      * @throws IllegalArgumentException if interceptionType is not {@link InterceptionType#AROUND_INVOKE} or
-     *        {@link InterceptionType#AROUND_TIMEOUT}
+     *         {@link InterceptionType#AROUND_TIMEOUT}
      */
     List<Interceptor<?>> getMethodInterceptors(InterceptionType interceptionType, Method method);
 
@@ -66,7 +67,7 @@ public interface InterceptorBindings {
      * @param interceptionType - the interception type (lifecycle)
      * @return - an immutable list of interceptors applicable to the method (empty if no such interceptors exist)
      * @throws IllegalArgumentException if interceptionType not {@link InterceptionType#AROUND_INVOKE} or
-     *        {@link InterceptionType#AROUND_TIMEOUT}
+     *         {@link InterceptionType#AROUND_TIMEOUT}
      */
     List<Interceptor<?>> getLifecycleInterceptors(InterceptionType interceptionType);
 

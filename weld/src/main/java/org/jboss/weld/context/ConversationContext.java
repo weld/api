@@ -22,7 +22,9 @@ import org.jboss.weld.context.http.HttpConversationContext;
  * </p>
  *
  * <pre>
- * &#064; Inject &#064; Http ConversationContext conversationContext;
+ * &#064;Inject
+ * &#064;Http
+ * ConversationContext conversationContext;
  * </pre>
  *
  * <p>
@@ -30,7 +32,9 @@ import org.jboss.weld.context.http.HttpConversationContext;
  * </p>
  *
  * <pre>
- * &#064; Inject &#064; Bound ConversationContext conversationContext;
+ * &#064;Inject
+ * &#064;Bound
+ * ConversationContext conversationContext;
  * </pre>
  *
  * @author Pete Muir

@@ -41,12 +41,15 @@ public interface HttpConversationContext extends BoundContext<HttpServletRequest
 
     /**
      * <p>
-     * Activate the conversation context lazily - neither determine the conversation id, nor initialize the context. The context is only initialized when a
-     * conversation-scoped bean is accessed for the first time. The callback, if specified, is executed during initialization of a transient conversation. The
+     * Activate the conversation context lazily - neither determine the conversation id, nor initialize the context. The context
+     * is only initialized when a
+     * conversation-scoped bean is accessed for the first time. The callback, if specified, is executed during initialization of
+     * a transient conversation. The
      * implementation must throw a {@link RuntimeException} if the lazy initialization is not supported.
      * </p>
      *
-     * @param transientConversationInitializationCallback the callback which is invoked during initialization of a transient conversation
+     * @param transientConversationInitializationCallback the callback which is invoked during initialization of a transient
+     *        conversation
      */
     default void activateLazily(Consumer<HttpServletRequest> transientConversationInitializationCallback) {
         throw new UnsupportedOperationException();

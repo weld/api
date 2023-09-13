@@ -30,7 +30,8 @@ import java.util.Map;
 public interface ConstructionHandle<T> {
 
     /**
-     * Proceed to the next {@link AroundConstructCallback}. If there is no next callback, the component is constructed and the component instance is returned
+     * Proceed to the next {@link AroundConstructCallback}. If there is no next callback, the component is constructed and the
+     * component instance is returned
      * from the method.
      *
      * @param parameters the parameters to be passed to the component constructor

@@ -52,7 +52,8 @@ import org.jboss.weld.ejb.spi.EjbDescriptor;
  *
  * <p>
  * The BeanDeploymentArchive tree represents the "logical structure" of the deployment; Given two archives A and B, which have a
- * transitive closure of accessible archives A' and B', it allowable for the the archives A &amp; B to be represented as a single
+ * transitive closure of accessible archives A' and B', it allowable for the the archives A &amp; B to be represented as a
+ * single
  * BeanDeploymentArchive, assuming that A' and B' are bi-directionally accessible.
  * </p>
  *

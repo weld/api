@@ -61,7 +61,8 @@ public interface BeanDeploymentArchive {
      * </p>
      *
      * <p>
-     * For an implicit bean archive this method returns all the types found in the archive which are annotated with a bean defining annotation or are Session
+     * For an implicit bean archive this method returns all the types found in the archive which are annotated with a bean
+     * defining annotation or are Session
      * bean definitions.
      * </p>
      *
@@ -72,7 +73,8 @@ public interface BeanDeploymentArchive {
     /**
      * Get all pre-loaded classes for the bean deployment archive.
      *
-     * Weld checks if there is an overlap of FQCNs between the classes returned from this method and class names returned from {@link #getBeanClasses()}.
+     * Weld checks if there is an overlap of FQCNs between the classes returned from this method and class names returned from
+     * {@link #getBeanClasses()}.
      * If two names overlap the class object returned from this method is used.
      *
      * @return the classes, empty if no pre-loaded classes are available
@@ -83,8 +85,10 @@ public interface BeanDeploymentArchive {
     }
 
     /**
-     * If possible, return all the classes found in the archive. For explicit bean archive the result of this method should be the same as for
-     * {@link #getBeanClasses()}. For implicit bean archive this method should also return types which are neither annotated with bean defining annotations nor
+     * If possible, return all the classes found in the archive. For explicit bean archive the result of this method should be
+     * the same as for
+     * {@link #getBeanClasses()}. For implicit bean archive this method should also return types which are neither annotated
+     * with bean defining annotations nor
      * are Session bean definitions.
      *
      * @return all classes found in the bean deployment archive, empty if no classes are present

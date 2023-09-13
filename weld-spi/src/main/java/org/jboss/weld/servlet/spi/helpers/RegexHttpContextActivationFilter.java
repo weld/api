@@ -7,7 +7,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import org.jboss.weld.servlet.spi.HttpContextActivationFilter;
 
 /**
- * A helper implementation of {@link HttpContextActivationFilter} that accepts every request that matches a predefined regular expression.
+ * A helper implementation of {@link HttpContextActivationFilter} that accepts every request that matches a predefined regular
+ * expression.
  *
  * @author Jozef Hartinger
  *

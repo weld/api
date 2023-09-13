@@ -43,7 +43,7 @@ public interface JpaInjectionServices extends Service {
      * @param injectionPoint the injection point metadata
      * @return factory for obtaining {@link EntityManager} instances
      * @throws IllegalArgumentException if the injection point is not annotated with {@link PersistenceContext},
-     * if the injection point is a method that doesn't follow JavaBean conventions or if the injection
+     *         if the injection point is a method that doesn't follow JavaBean conventions or if the injection
      * @throws IllegalStateException if no suitable persistence units can be resolved
      */
     ResourceReferenceFactory<EntityManager> registerPersistenceContextInjectionPoint(InjectionPoint injectionPoint);
@@ -56,7 +56,7 @@ public interface JpaInjectionServices extends Service {
      * @param injectionPoint the injection point metadata
      * @return factory for obtaining {@link EntityManagerFactory} instances
      * @throws IllegalArgumentException if the injection point is not annotated with {@link PersistenceUnit}, or,
-     * if the injection point is a method that doesn't follow JavaBean conventions
+     *         if the injection point is a method that doesn't follow JavaBean conventions
      * @throws IllegalStateException if no suitable persistence units can be resolved
      */
     ResourceReferenceFactory<EntityManagerFactory> registerPersistenceUnitInjectionPoint(InjectionPoint injectionPoint);

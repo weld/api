@@ -34,8 +34,10 @@ import jakarta.enterprise.util.TypeLiteral;
  * Represents an enhanced version of {@link Instance}.
  *
  * <p>
- * In the following example we filter out beans which are not {@link Dependent} then sort the beans by priority and use the handler whose bean has the highest
- * priority (according to {@link #getPriorityComparator()}) to obtain the hello string. Note that contextual references for beans with lower priority are not
+ * In the following example we filter out beans which are not {@link Dependent} then sort the beans by priority and use the
+ * handler whose bean has the highest
+ * priority (according to {@link #getPriorityComparator()}) to obtain the hello string. Note that contextual references for
+ * beans with lower priority are not
  * created at all.
  * </p>
  *
@@ -66,7 +68,8 @@ public interface WeldInstance<T> extends Instance<T> {
      * This method is deprecated as a similar functioning method exists in CDI 4.0 and newer.
      * Users should instead use {@link Instance#getHandle()}.
      *
-     * Obtains an initialized contextual reference handler for the bean that has the required type and required qualifiers and is eligible for injection.
+     * Obtains an initialized contextual reference handler for the bean that has the required type and required qualifiers and
+     * is eligible for injection.
      *
      * <p>
      * The contextual reference is obtained lazily, i.e. when first needed.
@@ -83,11 +86,13 @@ public interface WeldInstance<T> extends Instance<T> {
      * This method is deprecated as a similar functioning method exists in CDI 4.0 and newer.
      * Users should instead use {@link Instance#handles()}.
      *
-     * Allows to iterate over contextual reference handlers for all the beans that have the required type and required qualifiers and are eligible
+     * Allows to iterate over contextual reference handlers for all the beans that have the required type and required
+     * qualifiers and are eligible
      * for injection.
      *
      * <p>
-     * Note that the returned {@link Iterable} is stateless and so each {@link Iterable#iterator()} produces a new set of handlers.
+     * Note that the returned {@link Iterable} is stateless and so each {@link Iterable#iterator()} produces a new set of
+     * handlers.
      * </p>
      *
      * @return a new iterable
@@ -112,7 +117,8 @@ public interface WeldInstance<T> extends Instance<T> {
      *
      * The returned comparator sorts handlers by priority in descending order.
      * <ul>
-     * <li>A class-based bean whose annotated type has {@code jakarta.annotation.Priority} has the priority of value {@code jakarta.annotation.Priority#value()}</li>
+     * <li>A class-based bean whose annotated type has {@code jakarta.annotation.Priority} has the priority of value
+     * {@code jakarta.annotation.Priority#value()}</li>
      * <li>A custom bean which implements {@link Prioritized} has the priority of value {@link Prioritized#getPriority()}</li>
      * <li>Any other bean has the priority of value 0</li>
      * </ul>
@@ -125,7 +131,8 @@ public interface WeldInstance<T> extends Instance<T> {
     /**
      * The returned comparator sorts handles by priority in descending order.
      * <ul>
-     * <li>A class-based bean whose annotated type has {@code jakarta.annotation.Priority} has the priority of value {@code jakarta.annotation.Priority#value()}</li>
+     * <li>A class-based bean whose annotated type has {@code jakarta.annotation.Priority} has the priority of value
+     * {@code jakarta.annotation.Priority#value()}</li>
      * <li>A custom bean which implements {@link Prioritized} has the priority of value {@link Prioritized#getPriority()}</li>
      * <li>Any other bean has the priority of value 0</li>
      * </ul>
@@ -143,20 +150,21 @@ public interface WeldInstance<T> extends Instance<T> {
     @Override
     <U extends T> WeldInstance<U> select(TypeLiteral<U> subtype, Annotation... qualifiers);
 
-     /**
+    /**
      * <p>
      * Obtains a child {@code Instance} for the given required type and additional required qualifiers.
      * Must be invoked on {@code Instance<T>} where T is {@link java.lang.Object}.
      * </p>
      *
      * @param <X> the required type
-     * @param subtype    a {@link java.lang.reflect.Type} representing the required type
+     * @param subtype a {@link java.lang.reflect.Type} representing the required type
      * @param qualifiers the additional required qualifiers
      * @return the child {@code Instance}
      * @throws IllegalArgumentException if passed two instances of the same non repeating qualifier type, or an instance of an
-     *                                  annotation that is not a qualifier type
-     * @throws IllegalStateException    if the container is already shutdown
-     * @throws IllegalStateException    if invoked on {@code Instance<T>} where T is of any other type than {@link java.lang.Object}
+     *         annotation that is not a qualifier type
+     * @throws IllegalStateException if the container is already shutdown
+     * @throws IllegalStateException if invoked on {@code Instance<T>} where T is of any other type than
+     *         {@link java.lang.Object}
      */
     <X> WeldInstance<X> select(Type subtype, Annotation... qualifiers);
 

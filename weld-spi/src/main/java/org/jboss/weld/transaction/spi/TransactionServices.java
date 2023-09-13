@@ -51,7 +51,8 @@ public interface TransactionServices extends Service {
      *
      * @see jakarta.transaction.Synchronization
      * @param synchronizedObserver the synchronization
-     * @throws RuntimeException if a problem occurs during registration, the {@link RuntimeException#getCause()} should return the original exception so that
+     * @throws RuntimeException if a problem occurs during registration, the {@link RuntimeException#getCause()} should return
+     *         the original exception so that
      *         Weld could easily distinguish possible registration problems
      */
     void registerSynchronization(Synchronization synchronizedObserver);

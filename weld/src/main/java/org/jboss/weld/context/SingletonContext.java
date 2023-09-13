@@ -15,7 +15,8 @@ import jakarta.inject.Singleton;
  * </p>
  *
  * <pre>
- * &#064; Inject SingletonContext singletonContext;
+ * &#064;Inject
+ * SingletonContext singletonContext;
  * </pre>
  *
  * @author Pete Muir
