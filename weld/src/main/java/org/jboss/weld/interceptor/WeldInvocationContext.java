@@ -30,13 +30,12 @@ import jakarta.interceptor.InvocationContext;
 public interface WeldInvocationContext extends InvocationContext {
 
     /**
+     * Deprecated, users are encouraged to use {@link InvocationContext#getInterceptorBindings()} instead.
+     * <p/>
      * A key value under which we store interceptor bindings in {@link InvocationContext}
      */
+    @Deprecated
     String INTERCEPTOR_BINDINGS_KEY = "org.jboss.weld.interceptor.bindings";
-
-
-    @Override
-    Set<Annotation> getInterceptorBindings();
 
     /**
      * @deprecated use {@link #getInterceptorBindings(Class)}
