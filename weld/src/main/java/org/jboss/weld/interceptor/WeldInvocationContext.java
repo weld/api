@@ -31,7 +31,7 @@ public interface WeldInvocationContext extends InvocationContext {
 
     /**
      * Deprecated, users are encouraged to use {@link InvocationContext#getInterceptorBindings()} instead.
-     * <p/>
+     * <p>
      * A key value under which we store interceptor bindings in {@link InvocationContext}
      */
     @Deprecated
