@@ -189,6 +189,12 @@
                     </exclusion>
                 </exclusions>
             </dependency>
+            
+            <dependency>
+                <groupId>jakarta.enterprise</groupId>
+                <artifactId>jakarta.enterprise.cdi-el-api</artifactId>
+                <version>${cdi.api.version}</version>
+            </dependency>
 
             <!-- Configure non-API dependencies (e.g. testing)-->
             <dependency>
