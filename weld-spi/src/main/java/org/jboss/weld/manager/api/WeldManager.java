@@ -29,6 +29,7 @@ import jakarta.enterprise.inject.spi.AnnotatedType;
 import jakarta.enterprise.inject.spi.Bean;
 import jakarta.enterprise.inject.spi.BeanManager;
 import jakarta.enterprise.inject.spi.InjectionTarget;
+import jakarta.enterprise.inject.spi.el.ELAwareBeanManager;
 
 import org.jboss.weld.bootstrap.api.ServiceRegistry;
 import org.jboss.weld.construction.api.WeldCreationalContext;
@@ -41,7 +42,7 @@ import org.jboss.weld.serialization.spi.BeanIdentifier;
  *
  * @author Pete Muir
  */
-public interface WeldManager extends BeanManager, Serializable {
+public interface WeldManager extends BeanManager, ELAwareBeanManager, Serializable {
 
     /**
      * The injection target for the given EJB, or null if Weld was not given this descriptor in the deployment.
