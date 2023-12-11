@@ -179,6 +179,8 @@
                 <artifactId>jakarta.enterprise.cdi-api</artifactId>
                 <version>${cdi.api.version}</version>
                 <exclusions>
+                    <!-- The CDI cre artifact still declares dep on EL API for deprecated BM methods -->
+                    <!-- Can be removed once we remove deprecated methods (likely in CDI 5) -->
                     <exclusion>
                         <groupId>jakarta.el</groupId>
                         <artifactId>jakarta.el-api</artifactId>
@@ -194,6 +196,12 @@
                 <groupId>jakarta.enterprise</groupId>
                 <artifactId>jakarta.enterprise.cdi-el-api</artifactId>
                 <version>${cdi.api.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>jakarta.el</groupId>
+                        <artifactId>jakarta.el-api</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
 
             <!-- Configure non-API dependencies (e.g. testing)-->
