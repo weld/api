@@ -7,11 +7,11 @@
     <parent>
         <groupId>org.jboss.weld</groupId>
         <artifactId>weld-parent</artifactId>
-        <version>47</version>
+        <version>49</version>
     </parent>
 
     <prerequisites>
-        <maven>3.0</maven>
+        <maven>3.8</maven>
     </prerequisites>
 
     <name>Weld APIs Parent</name>
@@ -102,7 +102,7 @@
 
         <annotation.api.version>2.1.1</annotation.api.version>
         <atinject.api.version>2.0.1</atinject.api.version>
-        <cdi.api.version>4.1.0-M1</cdi.api.version>
+        <cdi.api.version>4.1.0.Beta1</cdi.api.version>
         <ejb.api.version>4.0.1</ejb.api.version>
         <jaxrs.api.version>3.1.0</jaxrs.api.version>
         <jpa.api.version>3.1.0</jpa.api.version>
@@ -220,17 +220,4 @@
         <url>scm:git:git@github.com:weld/api.git</url>
         <tag>HEAD</tag>
     </scm>
-
-    <!-- Needed to download org.apache.maven.plugins:maven-compiler-plugin:jar:3.8.0-jboss-2 -->
-    <pluginRepositories>
-        <pluginRepository>
-            <id>jboss-public-repository-group</id>
-            <name>JBoss Public Repository Group</name>
-            <url>https://repository.jboss.org/nexus/content/groups/public</url>
-            <layout>default</layout>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-        </pluginRepository>
-    </pluginRepositories>
 </project>
