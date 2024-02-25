@@ -27,7 +27,7 @@ import org.jboss.weld.ejb.spi.EjbDescriptor;
 /**
  * Represents a deployment of a CDI application.
  *
- * <h3>Background</h3>
+ * <h2>Background</h2>
  *
  * <p>
  * Java EE defines a series of accessibility rules for classloading, which CDI extends to cover bean resolution. For example a
@@ -40,7 +40,7 @@ import org.jboss.weld.ejb.spi.EjbDescriptor;
  * Specification</a>.
  * </p>
  *
- * <h3>Deployment structure representation</h3>
+ * <h2>Deployment structure representation</h2>
  *
  * <p>
  * Weld will request the bean archive deployment structure during the bean discovery initialization step. After this step, CDI
@@ -73,7 +73,7 @@ import org.jboss.weld.ejb.spi.EjbDescriptor;
  * found on the classpath.
  * </p>
  *
- * <h3>A Java EE example</h3>
+ * <h2>A Java EE example</h2>
  *
  * <p>
  * Given an ejb-module A (not as part of an ear), an ear B (containing an ejb-jar C which uses the standard mechanism to
