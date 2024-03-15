@@ -275,7 +275,9 @@ public interface WeldInvokerBuilder<T> extends InvokerBuilder<T> {
     /**
      * Registers a transformer for the instance on which the invoker will be called.
      * <p>
-     * Transformer method needs to be a static method of an accessible class.
+     * Transformers may be {@code static}, in which case they must be declared directly
+     * on the given class, or they may be instance methods, in which case they may be declared
+     * on the given class or inherited from any of its supertypes.
      *
      * @param clazz Class which declares the transformer method
      * @param methodName transformer method name represented as a String
@@ -286,7 +288,9 @@ public interface WeldInvokerBuilder<T> extends InvokerBuilder<T> {
     /**
      * Registers a transformer for a single argument of the target method.
      * <p>
-     * Transformer method needs to be a static method of an accessible class.
+     * Transformers may be {@code static}, in which case they must be declared directly
+     * on the given class, or they may be instance methods, in which case they may be declared
+     * on the given class or inherited from any of its supertypes.
      *
      * @param position position of an argument in the invoker's target method that should be transformed
      * @param clazz Class which declares the transformer method
@@ -298,7 +302,9 @@ public interface WeldInvokerBuilder<T> extends InvokerBuilder<T> {
     /**
      * Registers a transformer for return value of the target method.
      * <p>
-     * Transformer method needs to be a static method of an accessible class.
+     * Transformers may be {@code static}, in which case they must be declared directly
+     * on the given class, or they may be instance methods, in which case they may be declared
+     * on the given class or inherited from any of its supertypes.
      *
      * @param clazz Class which declares the transformer method
      * @param methodName transformer method name represented as a String
@@ -309,7 +315,9 @@ public interface WeldInvokerBuilder<T> extends InvokerBuilder<T> {
     /**
      * Registers an exception transformer for a possible exception thrown by the target method.
      * <p>
-     * Transformer method needs to be a static method of an accessible class.
+     * Transformers may be {@code static}, in which case they must be declared directly
+     * on the given class, or they may be instance methods, in which case they may be declared
+     * on the given class or inherited from any of its supertypes.
      *
      * @param clazz Class which declares the transformer method
      * @param methodName transformer method name represented as a String
@@ -320,7 +328,7 @@ public interface WeldInvokerBuilder<T> extends InvokerBuilder<T> {
     /**
      * Registers an invocation wrapper for given invoker.
      * <p>
-     * Transformer method needs to be a static method of an accessible class.
+     * Wrappers must be {@code static} and must be declared directly on the given class.
      *
      * @param clazz Class which declares the transformer method
      * @param methodName transformer method name represented as a String
