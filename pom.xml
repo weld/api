@@ -10,10 +10,6 @@
         <version>49</version>
     </parent>
 
-    <prerequisites>
-        <maven>3.8</maven>
-    </prerequisites>
-
     <name>Weld APIs Parent</name>
 
     <modules>
