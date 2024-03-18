@@ -33,8 +33,16 @@ public class SimpleResourceReference<T> implements ResourceReference<T>, Seriali
 
     private static final long serialVersionUID = -4908795910866810739L;
 
+    /**
+     * Resource reference
+     */
     private final T instance;
 
+    /**
+     * Construct an instance from provided instance
+     *
+     * @param instance resource reference
+     */
     public SimpleResourceReference(T instance) {
         this.instance = instance;
     }

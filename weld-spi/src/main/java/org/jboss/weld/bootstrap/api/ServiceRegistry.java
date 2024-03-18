@@ -59,6 +59,11 @@ public interface ServiceRegistry extends Iterable<Service> {
      */
     void addAll(Collection<Entry<Class<? extends Service>, Service>> services);
 
+    /**
+     * Returns a set of all service entries
+     *
+     * @return all service entries as a set
+     */
     Set<Entry<Class<? extends Service>, Service>> entrySet();
 
     /**

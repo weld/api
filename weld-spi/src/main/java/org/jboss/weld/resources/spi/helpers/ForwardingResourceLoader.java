@@ -31,6 +31,11 @@ import org.jboss.weld.resources.spi.ResourceLoader;
  */
 public abstract class ForwardingResourceLoader implements ResourceLoader {
 
+    /**
+     * Returns the delegate
+     *
+     * @return delegate
+     */
     protected abstract ResourceLoader delegate();
 
     public Class<?> classForName(String name) {

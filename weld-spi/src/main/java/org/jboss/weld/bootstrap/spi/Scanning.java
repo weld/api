@@ -16,6 +16,9 @@ import java.util.Collection;
  */
 public interface Scanning {
 
+    /**
+     * A {@link Scanning} instance with no include or exclude filters
+     */
     Scanning EMPTY_SCANNING = new Scanning() {
 
         public Collection<Metadata<Filter>> getIncludes() {

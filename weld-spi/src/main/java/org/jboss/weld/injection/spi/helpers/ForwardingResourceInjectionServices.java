@@ -21,8 +21,20 @@ import jakarta.enterprise.inject.spi.InjectionPoint;
 import org.jboss.weld.injection.spi.ResourceInjectionServices;
 import org.jboss.weld.injection.spi.ResourceReferenceFactory;
 
+/**
+ * An implementation of {@link ResourceInjectionServices} which forwards all its method calls to another
+ * {@link ResourceInjectionServices}
+ * Subclasses should override one or more methods to modify the behavior of the backing {@link ResourceInjectionServices} as
+ * desired per the <a href="http://en.wikipedia.org/wiki/Decorator_pattern">decorator pattern</a>.
+ *
+ */
 public abstract class ForwardingResourceInjectionServices implements ResourceInjectionServices {
 
+    /**
+     * Returns the delegate
+     *
+     * @return delegate
+     */
     protected abstract ResourceInjectionServices delegate();
 
     public ResourceReferenceFactory<Object> registerResourceInjectionPoint(InjectionPoint injectionPoint) {

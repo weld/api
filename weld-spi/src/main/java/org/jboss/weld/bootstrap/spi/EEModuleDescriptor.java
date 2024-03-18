@@ -21,10 +21,10 @@ import org.jboss.weld.bootstrap.spi.helpers.EEModuleDescriptorImpl;
 
 /**
  * In Java EE environment, each {@link BeanDeploymentArchive} should provide a description of the Java EE module it belongs to
- * (WAR, RAR, etc.). This applies to
- * physical bean archives deployed within the given module and also to logical bean archives that belong to the module. Bean
- * archives that are not part of a
- * Java EE module (e.g. built-in server libraries) are not required to have a {@link EEModuleDescriptor} service registered.
+ * (WAR, RAR, etc.). This applies to physical bean archives deployed within the given module and also to logical bean archives
+ * that belong to the module.
+ * Bean archives that are not part of a Java EE module (e.g. built-in server libraries) are not required to have a
+ * {@link EEModuleDescriptor} service registered.
  *
  * <p>
  * {@link EEModuleDescriptor} is a per-BDA service.
@@ -32,10 +32,9 @@ import org.jboss.weld.bootstrap.spi.helpers.EEModuleDescriptorImpl;
  *
  * <p>
  * It is recommended to share an immutable {@link EEModuleDescriptor} instance for all bean deployment archives of the same Java
- * EE module. However, each bean
- * deployment archive may register its own {@link EEModuleDescriptor} instance. In this case, all descriptors representing a
- * given EE module must use the same
- * id and type.
+ * EE module.
+ * However, each bean deployment archive may register its own {@link EEModuleDescriptor} instance. In this case, all descriptors
+ * representing a given EE module must use the same id and type.
  * </p>
  *
  * @author Jozef Hartinger
@@ -51,10 +50,25 @@ public interface EEModuleDescriptor extends Service {
      *
      */
     public enum ModuleType {
+        /**
+         * Enterprise archive libraries (ear/lib)
+         */
         EAR,
+        /**
+         * Web modules (wars)
+         */
         WEB,
+        /**
+         * EJB archive
+         */
         EJB_JAR,
+        /**
+         * Application client modules
+         */
         APPLICATION_CLIENT,
+        /**
+         * Connector modules (rar)
+         */
         CONNECTOR
     }
 

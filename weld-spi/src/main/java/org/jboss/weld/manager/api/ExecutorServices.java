@@ -38,6 +38,12 @@ import org.jboss.weld.bootstrap.api.Service;
  */
 public interface ExecutorServices extends Service {
 
+    /**
+     * Returns an {@link ExecutorService} which is used by Weld during bean deployment, validation and, during runtime, for
+     * asynchronous CDI event notifications
+     *
+     * @return an executor service
+     */
     ExecutorService getTaskExecutor();
 
     /**

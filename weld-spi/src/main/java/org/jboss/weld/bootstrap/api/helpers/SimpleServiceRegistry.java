@@ -39,6 +39,9 @@ public class SimpleServiceRegistry implements ServiceRegistry {
 
     private final Map<Class<? extends Service>, Service> services;
 
+    /**
+     * Initialize a new instance of {@link SimpleServiceRegistry}
+     */
     public SimpleServiceRegistry() {
         this.services = new HashMap<Class<? extends Service>, Service>();
     }
@@ -58,6 +61,11 @@ public class SimpleServiceRegistry implements ServiceRegistry {
         return services.entrySet();
     }
 
+    /**
+     * Returns a map containing all registered services
+     *
+     * @return map with all services
+     */
     protected Map<Class<? extends Service>, Service> get() {
         return services;
     }

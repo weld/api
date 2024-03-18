@@ -26,5 +26,10 @@ package org.jboss.weld.injection.spi;
  */
 public interface ResourceReferenceFactory<T> {
 
+    /**
+     * Creates a resource reference for resource {@code T}
+     *
+     * @return resource reference instance
+     */
     ResourceReference<T> createResource();
 }

@@ -6,8 +6,14 @@ import static org.jboss.weld.bootstrap.spi.Scanning.EMPTY_SCANNING;
 import java.net.URL;
 import java.util.List;
 
+/**
+ * Representation of parsed {@code beans.xml} file.
+ */
 public interface BeansXml {
 
+    /**
+     * Empty {@code beans.xml}
+     */
     BeansXml EMPTY_BEANS_XML = new BeansXml() {
 
         public List<Metadata<String>> getEnabledInterceptors() {
@@ -48,12 +54,32 @@ public interface BeansXml {
         }
     };
 
+    /**
+     * Returns list of enabled alternative stereotypes
+     *
+     * @return {@link List} of enabled alternatives stereotypes; can be empty but never {@code null}
+     */
     List<Metadata<String>> getEnabledAlternativeStereotypes();
 
+    /**
+     * Returns list of enabled alternative classes
+     *
+     * @return {@link List} of enabled alternative classes; can be empty but never {@code null}
+     */
     List<Metadata<String>> getEnabledAlternativeClasses();
 
+    /**
+     * Returns list of enabled decorators
+     *
+     * @return {@link List} of enabled decorators; can be empty but never {@code null}
+     */
     List<Metadata<String>> getEnabledDecorators();
 
+    /**
+     * Returns list of enabled interceptors
+     *
+     * @return {@link List} of enabled interceptors; can be empty but never {@code null}
+     */
     List<Metadata<String>> getEnabledInterceptors();
 
     /**
@@ -61,6 +87,13 @@ public interface BeansXml {
      */
     Scanning getScanning();
 
+    /**
+     * Returns the {@link URL} of this {@code beans.xml}.
+     * Can be {@code null} in certain including but not limited to {@link #EMPTY_BEANS_XML} and synthetic bean archives in Weld
+     * SE
+     *
+     * @return {@link URL} of this {@code beans.xml}, or {@code null}
+     */
     URL getUrl();
 
     /**

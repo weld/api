@@ -25,8 +25,19 @@ import java.util.Set;
 import org.jboss.weld.bootstrap.api.Service;
 import org.jboss.weld.bootstrap.api.ServiceRegistry;
 
+/**
+ * An implementation of {@link ServiceRegistry} which forwards all its method calls to another {@link ServiceRegistry}
+ * Subclasses should override one or more methods to modify the behavior of the backing {@link ServiceRegistry} as
+ * desired per the <a href="http://en.wikipedia.org/wiki/Decorator_pattern">decorator pattern</a>.
+ *
+ */
 public abstract class ForwardingServiceRegistry implements ServiceRegistry {
 
+    /**
+     * Returns the delegate
+     *
+     * @return delegate
+     */
     protected abstract ServiceRegistry delegate();
 
     public <S extends Service> void add(Class<S> type, S service) {

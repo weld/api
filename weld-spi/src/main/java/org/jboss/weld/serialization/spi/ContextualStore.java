@@ -50,9 +50,18 @@ public interface ContextualStore extends Service {
      * @param id An identifier for the contextual
      * @return the contextual
      */
-
     <C extends Contextual<I>, I> C getContextual(String id);
 
+    /**
+     * Given a particular bean identifier, return the correct contextual.
+     * For contextuals which aren't passivation capable, the contextual can't be found in another container, and null will be
+     * returned.
+     *
+     * @param <C> the contextual
+     * @param <I> the type of the contextual
+     * @param identifier An identifier for the contextual
+     * @return the contextual
+     */
     <C extends Contextual<I>, I> C getContextual(BeanIdentifier identifier);
 
     /**

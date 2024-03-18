@@ -22,8 +22,19 @@ import jakarta.servlet.http.HttpSessionEvent;
 
 import org.jboss.weld.servlet.api.ServletListener;
 
+/**
+ * An implementation of {@link ServletListener} which forwards all its method calls to another {@link ServletListener}
+ * Subclasses should override one or more methods to modify the behavior of the backing {@link ServletListener} as
+ * desired per the <a href="http://en.wikipedia.org/wiki/Decorator_pattern">decorator pattern</a>.
+ *
+ */
 public abstract class ForwardingServletListener implements ServletListener {
 
+    /**
+     * Returns the delegate
+     *
+     * @return delegate
+     */
     protected abstract ServletListener delegate();
 
     public void contextDestroyed(ServletContextEvent sce) {

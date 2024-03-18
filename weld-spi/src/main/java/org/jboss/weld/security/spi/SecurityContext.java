@@ -24,6 +24,9 @@ package org.jboss.weld.security.spi;
  */
 public interface SecurityContext extends AutoCloseable {
 
+    /**
+     * A trivial implementation where all operations are no-op
+     */
     SecurityContext NOOP_SECURITY_CONTEXT = new SecurityContext() {
         @Override
         public void dissociate() {

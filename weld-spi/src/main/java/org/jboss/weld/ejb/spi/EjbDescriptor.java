@@ -105,7 +105,6 @@ public interface EjbDescriptor<T> {
      * {@link Stateful} annotation is set to <em>false</em> or the <code>passivation-capable</code> element of the session
      * deployment descriptor element is set to <em>false</em></li>
      * </ul>
-     * <p>
      *
      * @return true if the EJB is passivation capable
      */

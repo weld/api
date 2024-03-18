@@ -32,11 +32,23 @@ public final class ExternalConfigurationBuilder {
 
     private final Map<String, Object> builder = new HashMap<String, Object>();
 
+    /**
+     * Add a key-value pair
+     *
+     * @param key configuration key as String
+     * @param value configuration value as an object
+     * @return self
+     */
     public ExternalConfigurationBuilder add(String key, Object value) {
         builder.put(key, value);
         return this;
     }
 
+    /**
+     * Builds an immutable {@link ExternalConfiguration} object
+     *
+     * @return immutable {@link ExternalConfiguration} object
+     */
     public ExternalConfiguration build() {
         return new ExternalConfigurationImpl(Collections.unmodifiableMap(builder));
     }

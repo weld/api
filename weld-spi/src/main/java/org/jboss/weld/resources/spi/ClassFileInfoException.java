@@ -26,14 +26,30 @@ public class ClassFileInfoException extends RuntimeException {
 
     private static final long serialVersionUID = 930782465793465696L;
 
+    /**
+     * Initializes {@link ClassFileInfoException} with both, exception message and throwable cause
+     *
+     * @param message exception message
+     * @param cause throwable cause
+     */
     public ClassFileInfoException(String message, Throwable cause) {
         super(message, cause);
     }
 
+    /**
+     * Initializes {@link ClassFileInfoException} with exception message
+     *
+     * @param message exception message
+     */
     public ClassFileInfoException(String message) {
         super(message);
     }
 
+    /**
+     * Initializes {@link ClassFileInfoException} with throwable cause
+     *
+     * @param cause throwable cause
+     */
     public ClassFileInfoException(Throwable cause) {
         super(cause);
     }

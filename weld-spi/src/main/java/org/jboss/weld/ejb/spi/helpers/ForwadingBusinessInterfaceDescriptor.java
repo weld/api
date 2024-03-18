@@ -29,6 +29,11 @@ import org.jboss.weld.ejb.spi.BusinessInterfaceDescriptor;
  */
 public abstract class ForwadingBusinessInterfaceDescriptor<T> implements BusinessInterfaceDescriptor<T> {
 
+    /**
+     * Returns the delegate
+     *
+     * @return delegate
+     */
     protected abstract BusinessInterfaceDescriptor<T> delegate();
 
     public Class<T> getInterface() {

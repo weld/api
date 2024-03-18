@@ -34,6 +34,11 @@ public interface Environment {
      */
     Set<Class<? extends Service>> getRequiredDeploymentServices();
 
+    /**
+     * The bean deployment archive scoped services required for this environment
+     *
+     * @return the services to require
+     */
     Set<Class<? extends Service>> getRequiredBeanDeploymentArchiveServices();
 
     /**

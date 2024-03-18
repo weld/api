@@ -19,6 +19,11 @@ public interface ClassAvailableActivation {
      */
     String getClassName();
 
+    /**
+     * Returns true if the filter is inverted (via {@code !}), false otherwise
+     *
+     * @return true if inverted, false otherwise
+     */
     boolean isInverted();
 
 }

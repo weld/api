@@ -17,10 +17,20 @@ public class RegexHttpContextActivationFilter implements HttpContextActivationFi
 
     private final Pattern pattern;
 
+    /**
+     * Constructs an instance using provided {@link Pattern}
+     *
+     * @param pattern regex pattern
+     */
     public RegexHttpContextActivationFilter(Pattern pattern) {
         this.pattern = pattern;
     }
 
+    /**
+     * Constructs an instance using provided String
+     *
+     * @param regex string representation which will be compiled to {@link Pattern}
+     */
     public RegexHttpContextActivationFilter(String regex) {
         this.pattern = Pattern.compile(regex);
     }

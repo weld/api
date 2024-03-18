@@ -18,6 +18,9 @@ package org.jboss.weld.bootstrap.api.helpers;
 
 import org.jboss.weld.bootstrap.api.BootstrapService;
 
+/**
+ * Defines {@link #cleanup()} implementation as a simple delegation to {@link #cleanupAfterBoot()}
+ */
 public abstract class AbstractBootstrapService implements BootstrapService {
 
     @Override

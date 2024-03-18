@@ -24,12 +24,23 @@ package org.jboss.weld.servlet.api;
  */
 public interface InitParameters {
 
+    /**
+     * Enable/disable ignoring HttpServletListeners notifications for forwarded requests.
+     */
     String CONTEXT_IGNORE_FORWARD = "org.jboss.weld.context.ignore.forward";
+    /**
+     * Enable/disable ignoring HttpServletListeners notifications for include requests (inner requests).
+     */
     String CONTEXT_IGNORE_INCLUDE = "org.jboss.weld.context.ignore.include";
+    /**
+     * A string representation of regex used in {@link org.jboss.weld.servlet.spi.helpers.RegexHttpContextActivationFilter}.
+     * Allows to define a pattern for HTTP requests where Weld should skip CDI req. context manipulation.
+     *
+     */
     String CONTEXT_MAPPING = "org.jboss.weld.context.mapping";
 
     /**
-     * Enable / disable lazy initialization of the conversation context.
+     * Enable/disable lazy initialization of the conversation context.
      */
     String CONVERSATION_CONTEXT_LAZY_PARAM = "org.jboss.weld.context.conversation.lazy";
 }

@@ -28,5 +28,10 @@ import jakarta.enterprise.inject.spi.InjectionTarget;
  */
 public interface WeldInjectionTarget<T> extends InjectionTarget<T> {
 
+    /**
+     * Returns the {@link AnnotatedType} for this injection target
+     *
+     * @return annotated type for this injection target
+     */
     AnnotatedType<T> getAnnotatedType();
 }

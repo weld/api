@@ -34,7 +34,9 @@ import org.jboss.weld.bootstrap.api.Service;
  *
  */
 public interface ResourceLoader extends Service {
-    // Name of the resource loader
+    /**
+     * Name of the resource loader
+     */
     String PROPERTY_NAME = ResourceLoader.class.getName();
 
     /**
