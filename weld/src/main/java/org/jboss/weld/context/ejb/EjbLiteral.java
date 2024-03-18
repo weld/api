@@ -23,9 +23,11 @@ import jakarta.enterprise.util.AnnotationLiteral;
  *
  * @author Pete Muir
  */
-@SuppressWarnings("all")
 public class EjbLiteral extends AnnotationLiteral<Ejb> implements Ejb {
 
+    /**
+     * An instance of {@link Ejb} annotation literal
+     */
     public static final Ejb INSTANCE = new EjbLiteral();
 
     private EjbLiteral() {

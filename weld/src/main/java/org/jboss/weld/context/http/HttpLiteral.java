@@ -23,9 +23,11 @@ import jakarta.enterprise.util.AnnotationLiteral;
  *
  * @author Pete Muir
  */
-@SuppressWarnings("all")
 public class HttpLiteral extends AnnotationLiteral<Http> implements Http {
 
+    /**
+     * An instance of {@link Http} annotation literal
+     */
     public static final Http INSTANCE = new HttpLiteral();
 
     private HttpLiteral() {

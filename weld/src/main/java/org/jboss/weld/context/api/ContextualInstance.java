@@ -23,13 +23,28 @@ import jakarta.enterprise.context.spi.CreationalContext;
  * Represents a contextual instance of a given type. This is an abstraction on top of the actual bean instance stored in each
  * context. It glues together the actual instance with its {@link CreationalContext} and {@link Contextual}
  *
- * @author <a href="mailto:manovotn@redhat.com">Matej Novotny</a>
+ * @author Matej Novotny
  */
 public interface ContextualInstance<T> {
 
+    /**
+     * Returns the actual bean instance
+     *
+     * @return bean instance
+     */
     T getInstance();
 
+    /**
+     * Returns the {@link CreationalContext} for this contextual instance
+     *
+     * @return creational context
+     */
     CreationalContext<T> getCreationalContext();
 
+    /**
+     * Returns the {@link Contextual} for this contextual instance
+     *
+     * @return contextual object
+     */
     Contextual<T> getContextual();
 }

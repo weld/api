@@ -20,9 +20,9 @@ import jakarta.enterprise.inject.spi.Bean;
 
 /**
  * An extension to {@link WeldConstruct} interface which denotes a client proxy object. All Weld client proxies implement this
- * interface hence allowing access to underlying {@link Bean} metadata and contextual instance.
+ * interface hence allowing access to the underlying bean {@link Metadata}.
  *
- * @author <a href="mailto:manovotn@redhat.com">Matej Novotny</a>
+ * @author Matej Novotny
  */
 public interface WeldClientProxy extends WeldConstruct {
 
@@ -33,6 +33,9 @@ public interface WeldClientProxy extends WeldConstruct {
      */
     Metadata getMetadata();
 
+    /**
+     * An abstraction allowing access to {@link Bean} metadata as well as the contextual instance
+     */
     public interface Metadata {
 
         /**

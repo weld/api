@@ -45,8 +45,14 @@ import jakarta.interceptor.InterceptorBinding;
 @Target({ METHOD, TYPE })
 public @interface ActivateRequestContext {
 
-    public static class Literal extends AnnotationLiteral<ActivateRequestContext> implements ActivateRequestContext {
+    /**
+     * Annotation literal for {@link ActivateRequestContext}
+     */
+    class Literal extends AnnotationLiteral<ActivateRequestContext> implements ActivateRequestContext {
 
+        /**
+         * An instance of {@link ActivateRequestContext} annotation literal
+         */
         public static final Literal INSTANCE = new Literal();
 
         private static final long serialVersionUID = 1L;
