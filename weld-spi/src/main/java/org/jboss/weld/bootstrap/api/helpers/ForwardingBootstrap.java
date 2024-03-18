@@ -30,6 +30,11 @@ import org.jboss.weld.manager.api.WeldManager;
  */
 public abstract class ForwardingBootstrap implements Bootstrap {
 
+    /**
+     * Returns the delegate
+     *
+     * @return delegate
+     */
     protected abstract Bootstrap delegate();
 
     public WeldManager getManager(BeanDeploymentArchive beanDeploymentArchive) {

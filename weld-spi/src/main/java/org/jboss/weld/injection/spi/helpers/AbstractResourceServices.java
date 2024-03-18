@@ -33,9 +33,19 @@ import org.jboss.weld.injection.spi.ResourceInjectionServices;
 import org.jboss.weld.injection.spi.ResourceReference;
 import org.jboss.weld.injection.spi.ResourceReferenceFactory;
 
+/**
+ * Abstract subclass for {@link ResourceInjectionServices} defining several common capabilities.
+ */
 public abstract class AbstractResourceServices implements Service, ResourceInjectionServices {
     private static final String RESOURCE_LOOKUP_PREFIX = "java:comp/env";
 
+    /**
+     * Verifies that provided {@link InjectionPoint} has {@link Resource} annotation on it, extracts resource name from it and
+     * then invokes {@link Context#lookup(String)}.
+     *
+     * @param injectionPoint injection points to inspect
+     * @return resource
+     */
     public Object resolveResource(InjectionPoint injectionPoint) {
         if (getResourceAnnotation(injectionPoint) == null) {
             throw new IllegalArgumentException("No @Resource annotation found on injection point " + injectionPoint);
@@ -54,6 +64,13 @@ public abstract class AbstractResourceServices implements Service, ResourceInjec
         }
     }
 
+    /**
+     * Uses provided parameters to look up the resource via {@link Context#lookup(String)}
+     *
+     * @param jndiName jndi name of the resource, may be {@code null}
+     * @param mappedName mappedName of the resource, may be {@code null}
+     * @return looked up resource
+     */
     public Object resolveResource(String jndiName, String mappedName) {
         String name = getResourceName(jndiName, mappedName);
         try {
@@ -67,6 +84,16 @@ public abstract class AbstractResourceServices implements Service, ResourceInjec
         throw new RuntimeException("Error looking up " + name + " in JNDI", e);
     }
 
+    /**
+     * Returns a {@code String} representation of the resource name from provided parameters.
+     * {@code mappedName} takes precedence over {@code jndiName} unless it is {@code null}.
+     *
+     * Throws {@link IllegalArgumentException} if both parameters are {@code null}.
+     *
+     * @param jndiName jndiName or null
+     * @param mappedName mappedName or null
+     * @return {@code String} representation of the resource name
+     */
     protected String getResourceName(String jndiName, String mappedName) {
         if (mappedName != null) {
             return mappedName;
@@ -77,8 +104,19 @@ public abstract class AbstractResourceServices implements Service, ResourceInjec
         }
     }
 
+    /**
+     * Returns the {@link Context} instance.
+     *
+     * @return {@link Context} instance
+     */
     protected abstract Context getContext();
 
+    /**
+     * Retrieves the {@link Resource} annotation from provided {@link InjectionPoint} and extracts resource name from it.
+     *
+     * @param injectionPoint injection point to inspect
+     * @return {@code String} representation of resource name
+     */
     protected String getResourceName(InjectionPoint injectionPoint) {
         Resource resource = getResourceAnnotation(injectionPoint);
 
@@ -110,6 +148,13 @@ public abstract class AbstractResourceServices implements Service, ResourceInjec
         return RESOURCE_LOOKUP_PREFIX + "/" + className + "/" + propertyName;
     }
 
+    /**
+     * Returns property name as a {@code String} extracted from given method by looking at its name and stripping its prefix.
+     * May return {@code null} if the method name does not start with set/get/is prefix.
+     *
+     * @param method method to parse property name from
+     * @return property name or null if the name cannot be parsed
+     */
     public static String getPropertyName(Method method) {
         String methodName = method.getName();
 
@@ -152,6 +197,12 @@ public abstract class AbstractResourceServices implements Service, ResourceInjec
         };
     }
 
+    /**
+     * Parses the {@link Resource} annotation from given {@link InjectionPoint}.
+     *
+     * @param injectionPoint Injection point to parse the annotation from
+     * @return Instance of {@link Resource} annotation if present, null otherwise
+     */
     protected Resource getResourceAnnotation(InjectionPoint injectionPoint) {
         Annotated annotated = injectionPoint.getAnnotated();
         if (annotated instanceof AnnotatedParameter<?>) {

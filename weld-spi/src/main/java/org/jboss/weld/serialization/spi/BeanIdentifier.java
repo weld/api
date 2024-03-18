@@ -20,8 +20,15 @@ import java.io.Serializable;
 
 import jakarta.enterprise.inject.spi.PassivationCapable;
 
+/**
+ * Represents a bean identifier - implementations may differ for producers, class based and so on.
+ * However, they all support {@link #asString()} to converts these identifiers into {@code String}
+ */
 public interface BeanIdentifier extends Serializable {
 
+    /**
+     * Predefined bean ID separator symbol
+     */
     String BEAN_ID_SEPARATOR = "%";
 
     /**

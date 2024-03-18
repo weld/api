@@ -20,6 +20,10 @@ import jakarta.servlet.ServletContextListener;
 import jakarta.servlet.ServletRequestListener;
 import jakarta.servlet.http.HttpSessionListener;
 
+/**
+ * Combines access to {@link ServletContextListener}, {@link ServletRequestListener} and {@link HttpSessionListener} into a
+ * single interface.
+ */
 public interface ServletListener extends ServletContextListener, ServletRequestListener, HttpSessionListener {
 
 }

@@ -32,6 +32,11 @@ import org.jboss.weld.ejb.spi.EjbDescriptor;
  */
 public abstract class ForwardingEjbDescriptor<T> implements EjbDescriptor<T> {
 
+    /**
+     * Returns the delegate
+     *
+     * @return delegate
+     */
     protected abstract EjbDescriptor<T> delegate();
 
     @Override

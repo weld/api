@@ -31,6 +31,11 @@ import org.jboss.weld.ejb.spi.InterceptorBindings;
  */
 public abstract class ForwardingEjbServices implements EjbServices {
 
+    /**
+     * Returns the delegate
+     *
+     * @return delegate
+     */
     public abstract EjbServices delegate();
 
     public SessionObjectReference resolveEjb(EjbDescriptor<?> ejbDescriptor) {

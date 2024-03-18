@@ -40,6 +40,11 @@ public abstract class SingletonProvider {
 
     private static final String DEFAULT_SCOPE_FACTORY = RegistrySingletonProvider.class.getName();
 
+    /**
+     * Returns a singleton instance of this class.
+     *
+     * @return {@link SingletonProvider} instance
+     */
     public static SingletonProvider instance() {
         if (INSTANCE == null) {
             synchronized (SingletonProvider.class) {
@@ -51,6 +56,10 @@ public abstract class SingletonProvider {
         return INSTANCE;
     }
 
+    /**
+     * Protected constructor.
+     * {@link SingletonProvider#instance()} should be used to obtain an instance of this class.
+     */
     protected SingletonProvider() {
     }
 
@@ -90,6 +99,9 @@ public abstract class SingletonProvider {
         }
     }
 
+    /**
+     * Sets the reference to the singleton instance of this class back to {@code null}.
+     */
     public static void reset() {
         INSTANCE = null;
     }

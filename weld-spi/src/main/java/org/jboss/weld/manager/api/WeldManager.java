@@ -25,10 +25,12 @@ import java.util.stream.Collectors;
 import jakarta.enterprise.context.spi.Context;
 import jakarta.enterprise.context.spi.Contextual;
 import jakarta.enterprise.inject.Instance;
+import jakarta.enterprise.inject.spi.AfterBeanDiscovery;
 import jakarta.enterprise.inject.spi.AnnotatedType;
 import jakarta.enterprise.inject.spi.Bean;
 import jakarta.enterprise.inject.spi.BeanManager;
 import jakarta.enterprise.inject.spi.InjectionTarget;
+import jakarta.enterprise.inject.spi.PassivationCapable;
 import jakarta.enterprise.inject.spi.el.ELAwareBeanManager;
 
 import org.jboss.weld.bootstrap.api.ServiceRegistry;
@@ -134,6 +136,18 @@ public interface WeldManager extends BeanManager, ELAwareBeanManager, Serializab
     @Override
     <T> WeldCreationalContext<T> createCreationalContext(Contextual<T> contextual);
 
+    /**
+     * Returns the {@link PassivationCapable} bean with the given identifier.
+     *
+     * Note that when called during invocation of an {@link AfterBeanDiscovery} event observer,
+     * this method will only return beans discovered by the container before the {@link AfterBeanDiscovery} event is fired.
+     *
+     * @param identifier the identifier
+     * @return a {@link Bean} that implements {@link PassivationCapable} and has the given
+     *         identifier, or a null value if there is no such bean
+     * @throws IllegalStateException if called during application initialization, before the {@link AfterBeanDiscovery}
+     *         event is fired.
+     */
     Bean<?> getPassivationCapableBean(BeanIdentifier identifier);
 
     /**

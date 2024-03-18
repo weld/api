@@ -28,5 +28,9 @@ import jakarta.enterprise.context.spi.Contextual;
  * @author Marius Bogoevici
  */
 public interface SerializableContextual<C extends Contextual<I>, I> extends Serializable, Contextual<I> {
+    /**
+     *
+     * @return original bean
+     */
     C get();
 }

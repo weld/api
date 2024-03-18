@@ -131,10 +131,25 @@ public interface ClassFileInfo {
      * Helper enum which lists all possible nesting types of a class.
      */
     public enum NestingType {
+        /**
+         * Top level class
+         */
         TOP_LEVEL,
+        /**
+         * Nested inner class
+         */
         NESTED_INNER,
+        /**
+         * Nested local class
+         */
         NESTED_LOCAL,
+        /**
+         * Nested anonymous class
+         */
         NESTED_ANONYMOUS,
+        /**
+         * Nested static class
+         */
         NESTED_STATIC
     }
 }

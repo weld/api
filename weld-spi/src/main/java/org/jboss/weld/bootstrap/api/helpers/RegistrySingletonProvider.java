@@ -11,6 +11,9 @@ import org.jboss.weld.bootstrap.api.SingletonProvider;
  * @author mathieuancelin
  */
 public class RegistrySingletonProvider extends SingletonProvider {
+    /**
+     * Static instance constant
+     */
     public static final String STATIC_INSTANCE = "STATIC_INSTANCE";
 
     @Override

@@ -16,6 +16,11 @@
  */
 package org.jboss.weld.bootstrap.spi;
 
+/**
+ * Represents CDI 1.1 and newer deployment.
+ *
+ * @see Deployment javadoc
+ */
 public interface CDI11Deployment extends Deployment {
 
     /**

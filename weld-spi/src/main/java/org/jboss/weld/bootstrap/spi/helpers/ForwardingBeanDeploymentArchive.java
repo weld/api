@@ -29,6 +29,11 @@ import org.jboss.weld.ejb.spi.EjbDescriptor;
  */
 public abstract class ForwardingBeanDeploymentArchive implements BeanDeploymentArchive {
 
+    /**
+     * Returns the delegate
+     *
+     * @return delegate
+     */
     protected abstract BeanDeploymentArchive delegate();
 
     public Collection<String> getBeanClasses() {

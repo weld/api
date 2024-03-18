@@ -18,14 +18,30 @@ package org.jboss.weld.bootstrap.spi.helpers;
 
 import org.jboss.weld.bootstrap.spi.Metadata;
 
+/**
+ * Basic implementation of {@link Metadata}
+ *
+ * @param <T> the type of metadata
+ */
 public class MetadataImpl<T> implements Metadata<T> {
 
+    /**
+     * Constant used to declare that the metadata location is not available
+     */
     public static final String LOCATION_NOT_AVAILABLE = "n/a";
 
     private final String location;
 
     private final T value;
 
+    /**
+     * Constructs {@link Metadata} from given value.
+     * Metadata location is set to {@link #LOCATION_NOT_AVAILABLE}
+     *
+     * @param value metadata value
+     * @return instance of metadata
+     * @param <T> metadata type
+     */
     public static <T> MetadataImpl<T> from(T value) {
         return new MetadataImpl<T>(value);
     }

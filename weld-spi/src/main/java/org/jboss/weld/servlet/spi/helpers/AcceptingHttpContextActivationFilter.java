@@ -12,6 +12,9 @@ import org.jboss.weld.servlet.spi.HttpContextActivationFilter;
  */
 public class AcceptingHttpContextActivationFilter implements HttpContextActivationFilter {
 
+    /**
+     * Instance of {@link AcceptingHttpContextActivationFilter}
+     */
     public static final AcceptingHttpContextActivationFilter INSTANCE = new AcceptingHttpContextActivationFilter();
 
     private AcceptingHttpContextActivationFilter() {

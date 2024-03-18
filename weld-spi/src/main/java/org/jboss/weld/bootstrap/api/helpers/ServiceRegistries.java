@@ -19,11 +19,21 @@ package org.jboss.weld.bootstrap.api.helpers;
 import org.jboss.weld.bootstrap.api.Service;
 import org.jboss.weld.bootstrap.api.ServiceRegistry;
 
+/**
+ * Utility class for {@link ServiceRegistry}
+ */
 public class ServiceRegistries {
 
     private ServiceRegistries() {
     }
 
+    /**
+     * Returns an unmodifiable version of provided {@link ServiceRegistry} where any attempt to add a service results in an
+     * exception
+     *
+     * @param serviceRegistry service registry to process
+     * @return unmodifiable variant
+     */
     public static ServiceRegistry unmodifiableServiceRegistry(final ServiceRegistry serviceRegistry) {
         return new ForwardingServiceRegistry() {
 

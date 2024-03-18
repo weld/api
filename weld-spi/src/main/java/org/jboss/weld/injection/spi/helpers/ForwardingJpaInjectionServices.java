@@ -33,6 +33,11 @@ import org.jboss.weld.injection.spi.ResourceReferenceFactory;
  */
 public abstract class ForwardingJpaInjectionServices implements JpaInjectionServices {
 
+    /**
+     * Returns the delegate
+     *
+     * @return delegate
+     */
     protected abstract JpaInjectionServices delegate();
 
     public ResourceReferenceFactory<EntityManager> registerPersistenceContextInjectionPoint(InjectionPoint injectionPoint) {
