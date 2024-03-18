@@ -23,9 +23,11 @@ import jakarta.enterprise.util.AnnotationLiteral;
  *
  * @author Pete Muir
  */
-@SuppressWarnings("all")
 public class BoundLiteral extends AnnotationLiteral<Bound> implements Bound {
 
+    /**
+     * An instance of {@link Bound} annotation literal
+     */
     public static final Bound INSTANCE = new BoundLiteral();
 
     private BoundLiteral() {

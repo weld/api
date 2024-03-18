@@ -39,6 +39,10 @@ public interface WeldInvocationContext extends InvocationContext {
 
     /**
      * @deprecated use {@link #getInterceptorBindings(Class)}
+     *
+     * @param annotationType type of the interceptor binding annotations
+     * @return immutable set of interceptor binding annotations of given type, never null
+     * @param <T> annotation type
      */
     @Deprecated
     <T extends Annotation> Set<T> getInterceptorBindingsByType(Class<T> annotationType);

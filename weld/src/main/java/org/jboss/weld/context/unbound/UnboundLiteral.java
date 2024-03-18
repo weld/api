@@ -25,9 +25,11 @@ import org.jboss.weld.context.bound.Bound;
  *
  * @author Pete Muir
  */
-@SuppressWarnings("all")
 public class UnboundLiteral extends AnnotationLiteral<Unbound> implements Unbound {
 
+    /**
+     * An instance of {@link Unbound} annotation literal
+     */
     public static final Unbound INSTANCE = new UnboundLiteral();
 
     private UnboundLiteral() {

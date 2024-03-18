@@ -85,10 +85,25 @@ public interface WeldNotificationOptions extends NotificationOptions {
          */
         PARALLEL,;
 
+        /**
+         * Determines if this {@link NotificationMode} enum is equal to the provided parameter.
+         *
+         * @param value object to compare to {@code this}
+         * @return true if there is equality, false otherwise
+         */
         public boolean isEqual(Object value) {
             return equals(of(value));
         }
 
+        /**
+         * Attempts to convert provided parameter into {@link NotificationMode}.
+         * May return {@code null} if the provided parameter is {@code null} or if there was an exception.
+         * If the provided parameter is an instance of {@link NotificationMode} a type cast is executed; otherwise
+         * {@link Enum#valueOf(Class, String)} is used for conversion.
+         *
+         * @param value object for conversion to {@link NotificationMode}
+         * @return instance of {@link NotificationMode} or null
+         */
         public static NotificationMode of(Object value) {
             if (value != null) {
                 if (value instanceof NotificationMode) {
