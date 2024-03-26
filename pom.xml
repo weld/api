@@ -7,7 +7,7 @@
     <parent>
         <groupId>org.jboss.weld</groupId>
         <artifactId>weld-parent</artifactId>
-        <version>49</version>
+        <version>50</version>
     </parent>
 
     <name>Weld APIs Parent</name>
@@ -24,11 +24,6 @@
     <description>
         APIs for Weld, the compatible implementation for Jakarta Contexts and Dependency Injection
     </description>
-
-    <ciManagement>
-        <system>Hudson</system>
-        <url>http://hudson.jboss.org</url>
-    </ciManagement>
 
     <issueManagement>
         <system>JIRA</system>
