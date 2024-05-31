@@ -17,8 +17,6 @@
 
 package org.jboss.weld.bootstrap.api.helpers;
 
-import java.security.AccessController;
-import java.security.PrivilegedAction;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -63,16 +61,7 @@ public class TCCLSingletonProvider extends SingletonProvider {
         }
 
         private ClassLoader getClassLoader() {
-            SecurityManager sm = System.getSecurityManager();
-            if (sm != null) {
-                return AccessController.doPrivileged(new PrivilegedAction<ClassLoader>() {
-                    public ClassLoader run() {
-                        return Thread.currentThread().getContextClassLoader();
-                    }
-                });
-            } else {
-                return Thread.currentThread().getContextClassLoader();
-            }
+            return Thread.currentThread().getContextClassLoader();
         }
     }
 }
