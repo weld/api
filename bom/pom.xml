@@ -29,7 +29,7 @@
     </developers>
 
     <properties>
-        <gpg.plugin.version>3.2.4</gpg.plugin.version>
+        <gpg.plugin.version>3.2.7</gpg.plugin.version>
         <nexus.staging.plugin.version>1.7.0</nexus.staging.plugin.version>
         <jboss.releases.repo.url>https://repository.jboss.org/nexus/service/local/staging/deploy/maven2/
         </jboss.releases.repo.url>
