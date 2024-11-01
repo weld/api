@@ -92,7 +92,7 @@
         <!-- build.config.version>10-SNAPSHOT</build.config.version -->
 
         <annotation.api.version>3.0.0</annotation.api.version>
-        <atinject.api.version>2.0.1</atinject.api.version>
+        <atinject.api.version>2.0.1.MR</atinject.api.version>
         <cdi.api.version>4.1.0</cdi.api.version>
         <ejb.api.version>4.0.1</ejb.api.version>
         <jaxrs.api.version>4.0.0</jaxrs.api.version>
