@@ -1,4 +1,4 @@
 name: Weld API
 release:
-  current-version: 6.0.Final
-  next-version: 6.0-SNAPSHOT
+  current-version: 7.0.Alpha1
+  next-version: 7.0-SNAPSHOT
