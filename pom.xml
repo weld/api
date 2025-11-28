@@ -85,15 +85,19 @@
     </developers>
 
     <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
+        <!-- Maven Compiler plugin configuration defined in Weld Parent -->
+        <maven.compiler.argument.source>17</maven.compiler.argument.source>
+        <maven.compiler.argument.target>17</maven.compiler.argument.target>
+        <maven.compiler.argument.testSource>17</maven.compiler.argument.testSource>
+        <maven.compiler.argument.testTarget>17</maven.compiler.argument.testTarget>
+
         <javadoc.doclint>-Xdoclint</javadoc.doclint>
         <!-- Might be used to override the version declared in weld-parent -->
         <!-- build.config.version>10-SNAPSHOT</build.config.version -->
 
         <annotation.api.version>3.0.0</annotation.api.version>
         <atinject.api.version>2.0.1</atinject.api.version>
-        <cdi.api.version>5.0.0-M1</cdi.api.version>
+        <cdi.api.version>5.0.0.Alpha3</cdi.api.version>
         <ejb.api.version>4.0.1</ejb.api.version>
         <jaxrs.api.version>4.0.0</jaxrs.api.version>
         <jpa.api.version>3.2.0</jpa.api.version>
@@ -166,8 +170,8 @@
             </dependency>
 
             <dependency>
-                <groupId>jakarta.enterprise</groupId>
-                <artifactId>jakarta.enterprise.cdi-api</artifactId>
+                <groupId>jakarta.cdi</groupId>
+                <artifactId>jakarta.cdi-api</artifactId>
                 <version>${cdi.api.version}</version>
                 <exclusions>
                     <exclusion>
@@ -178,8 +182,8 @@
             </dependency>
             
             <dependency>
-                <groupId>jakarta.enterprise</groupId>
-                <artifactId>jakarta.enterprise.cdi-el-api</artifactId>
+                <groupId>jakarta.cdi</groupId>
+                <artifactId>jakarta.cdi-el-api</artifactId>
                 <version>${cdi.api.version}</version>
                 <exclusions>
                     <exclusion>
