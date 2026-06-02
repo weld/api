@@ -17,6 +17,7 @@
 package org.jboss.weld.injection.spi.helpers;
 
 import jakarta.enterprise.inject.spi.InjectionPoint;
+import jakarta.persistence.EntityAgent;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 
@@ -46,6 +47,10 @@ public abstract class ForwardingJpaInjectionServices implements JpaInjectionServ
 
     public ResourceReferenceFactory<EntityManagerFactory> registerPersistenceUnitInjectionPoint(InjectionPoint injectionPoint) {
         return delegate().registerPersistenceUnitInjectionPoint(injectionPoint);
+    }
+
+    public ResourceReferenceFactory<EntityAgent> registerPersistenceAgentInjectionPoint(InjectionPoint injectionPoint) {
+        return delegate().registerPersistenceAgentInjectionPoint(injectionPoint);
     }
 
     @Override

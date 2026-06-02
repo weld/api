@@ -17,6 +17,7 @@
 package org.jboss.weld.bootstrap.api.test;
 
 import jakarta.enterprise.inject.spi.InjectionPoint;
+import jakarta.persistence.EntityAgent;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 
@@ -33,5 +34,10 @@ public class MockJpaServices extends MockService implements JpaInjectionServices
     @Override
     public ResourceReferenceFactory<EntityManagerFactory> registerPersistenceUnitInjectionPoint(InjectionPoint injectionPoint) {
         return new MockResourceFactory<EntityManagerFactory>();
+    }
+
+    @Override
+    public ResourceReferenceFactory<EntityAgent> registerPersistenceAgentInjectionPoint(InjectionPoint injectionPoint) {
+        return new MockResourceFactory<EntityAgent>();
     }
 }
