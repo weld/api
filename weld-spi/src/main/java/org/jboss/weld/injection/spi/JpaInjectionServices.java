@@ -17,8 +17,10 @@
 package org.jboss.weld.injection.spi;
 
 import jakarta.enterprise.inject.spi.InjectionPoint;
+import jakarta.persistence.EntityAgent;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.PersistenceAgent;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.PersistenceUnit;
 
@@ -60,5 +62,21 @@ public interface JpaInjectionServices extends Service {
      * @throws IllegalStateException if no suitable persistence units can be resolved
      */
     ResourceReferenceFactory<EntityManagerFactory> registerPersistenceUnitInjectionPoint(InjectionPoint injectionPoint);
+
+    /**
+     * Register a persistence agent injection point. The implementation validates the injection point. If the validation passes,
+     * an instance of {@link ResourceReferenceFactory} is returned which may be used at runtime for creating instances of the
+     * resource.
+     *
+     * @param injectionPoint the injection point metadata
+     * @return factory for obtaining {@link EntityAgent} instances
+     * @throws IllegalArgumentException if the injection point is not annotated with {@link PersistenceAgent},
+     *         if the injection point is a method that doesn't follow JavaBean conventions
+     * @throws IllegalStateException if no suitable persistence units can be resolved
+     * @since 7.0
+     */
+    default ResourceReferenceFactory<EntityAgent> registerPersistenceAgentInjectionPoint(InjectionPoint injectionPoint) {
+        throw new UnsupportedOperationException("EntityAgent injection is not supported");
+    }
 
 }
