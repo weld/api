@@ -26,8 +26,8 @@
     </description>
 
     <issueManagement>
-        <system>JIRA</system>
-        <url>http://jira.jboss.org/browse/WELD</url>
+        <system>GitHub Issues</system>
+        <url>https://github.com/weld/api/issues</url>
     </issueManagement>
 
     <inceptionYear>2008</inceptionYear>
