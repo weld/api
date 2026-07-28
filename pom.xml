@@ -105,6 +105,7 @@
         <interceptor.api.version>2.2.0</interceptor.api.version>
         <servlet.api.version>6.1.0</servlet.api.version>
         <validation.api.version>3.1.1</validation.api.version>
+        <el.api.version>6.0.1</el.api.version>
     </properties>
 
     <dependencyManagement>
@@ -191,6 +192,12 @@
                         <artifactId>jakarta.el-api</artifactId>
                     </exclusion>
                 </exclusions>
+            </dependency>
+
+            <dependency>
+                <groupId>jakarta.el</groupId>
+                <artifactId>jakarta.el-api</artifactId>
+                <version>${el.api.version}</version>
             </dependency>
 
             <!-- Configure non-API dependencies (e.g. testing)-->
