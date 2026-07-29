@@ -1,3 +1,7 @@
+/*
+ * Copyright The Weld Authors
+ * SPDX-License-Identifier: Apache-2.0
+ */
 module org.jboss.weld.api {
     requires transitive jakarta.cdi;
     requires static jakarta.servlet;

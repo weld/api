@@ -1,3 +1,7 @@
+/*
+ * Copyright The Weld Authors
+ * SPDX-License-Identifier: Apache-2.0
+ */
 module org.jboss.weld.spi {
     requires transitive org.jboss.weld.api;
     requires static java.naming;
