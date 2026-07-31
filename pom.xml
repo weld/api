@@ -7,7 +7,7 @@
     <parent>
         <groupId>org.jboss.weld</groupId>
         <artifactId>weld-parent</artifactId>
-        <version>57</version>
+        <version>58</version>
     </parent>
 
     <name>Weld APIs Parent</name>
@@ -97,7 +97,7 @@
 
         <annotation.api.version>3.0.0</annotation.api.version>
         <atinject.api.version>2.0.1</atinject.api.version>
-        <cdi.api.version>5.0.0.Beta1</cdi.api.version>
+        <cdi.api.version>5.0.0.CR1</cdi.api.version>
         <ejb.api.version>4.0.1</ejb.api.version>
         <jaxrs.api.version>4.0.0</jaxrs.api.version>
         <jpa.api.version>4.0.0-M6</jpa.api.version>
