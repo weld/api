@@ -194,4 +194,27 @@ public interface CDI11Bootstrap extends Bootstrap {
      *
      */
     Bootstrap startContainer(String contextId, Environment environment, Deployment deployment);
+
+    /**
+     * Sets a callback for JPMS module access forwarding. When Weld runs on
+     * the module path, the entry-point module (SE or Servlet) provides a
+     * forwarder that relays {@code Module.addOpens()} calls so that the
+     * core module can access user bean packages.
+     *
+     * <p>
+     * The forwarder must be a lambda defined in the entry-point module
+     * (not the core module) so that the JVM sees the correct caller for
+     * the {@code addOpens} permission check.
+     * </p>
+     *
+     * <p>
+     * When running on the classpath (unnamed module), calling this
+     * method is unnecessary — the forwarder is never invoked.
+     * </p>
+     *
+     * @param forwarder the forwarding callback
+     */
+    default void setModuleAccessForwarder(ModuleAccessForwarder forwarder) {
+        // no-op by default — overridden in WeldBootstrap
+    }
 }
