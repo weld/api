@@ -19,7 +19,7 @@ package org.jboss.weld.bootstrap.spi;
 /**
  * Represents the value of the <code>bean-discovery-mode</code> attribute within <code>beans.xml</code>. If a
  * <code>beans.xml</code> file does not contain the <code>bean-discovery-mode</code> attribute, the value defaults to
- * {@link BeanDiscoveryMode#ALL}.
+ * {@link BeanDiscoveryMode#ANNOTATED}.
  *
  * @author Jozef Hartinger
  *
