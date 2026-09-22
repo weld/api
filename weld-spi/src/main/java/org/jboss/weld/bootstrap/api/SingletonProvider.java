@@ -38,8 +38,6 @@ public abstract class SingletonProvider {
      */
     private static volatile SingletonProvider INSTANCE;
 
-    private static final String DEFAULT_SCOPE_FACTORY = RegistrySingletonProvider.class.getName();
-
     /**
      * Returns a singleton instance of this class.
      *
@@ -76,12 +74,7 @@ public abstract class SingletonProvider {
      * Initialize with the default instance
      */
     private static void initializeWithDefaultScope() {
-        try {
-            Class<?> aClass = Class.forName(DEFAULT_SCOPE_FACTORY);
-            INSTANCE = (SingletonProvider) aClass.newInstance();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+        INSTANCE = new RegistrySingletonProvider();
     }
 
     /**
