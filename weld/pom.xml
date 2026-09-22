@@ -26,11 +26,6 @@
       </dependency>
 
       <dependency>
-          <groupId>jakarta.cdi</groupId>
-          <artifactId>jakarta.cdi-el-api</artifactId>
-      </dependency>
-
-      <dependency>
          <groupId>jakarta.servlet</groupId>
          <artifactId>jakarta.servlet-api</artifactId>
          <optional>true</optional>
