@@ -226,13 +226,15 @@ public interface WeldManager extends BeanManager, ELAwareBeanManager, Serializab
      *
      * Note that for each scope, there might be more than one {@link Context}, but there can be at most one active at a time.
      *
+     * The default implementation returns a snapshot of the active contexts.
+     *
      * @return Collection of all currently active {@link Context}s
      */
     default Collection<Context> getActiveContexts() {
         return getScopes().stream()
                 .filter(this::isContextActive)
                 .map(this::getContext)
-                .collect(Collectors.toSet());
+                .collect(Collectors.toUnmodifiableSet());
     }
 
     /**
@@ -243,6 +245,8 @@ public interface WeldManager extends BeanManager, ELAwareBeanManager, Serializab
      * This method can therefore return an incomplete view of all active contexts as not every context implements
      * {@link WeldAlterableContext}.
      *
+     * The default implementation returns a snapshot of the active contexts implementing {@link WeldAlterableContext}.
+     *
      * @return Collection of all active contexts implementing {@link WeldAlterableContext}
      */
     default Collection<WeldAlterableContext> getActiveWeldAlterableContexts() {
@@ -251,7 +255,7 @@ public interface WeldManager extends BeanManager, ELAwareBeanManager, Serializab
                 .map(this::getContext)
                 .filter(t -> t instanceof WeldAlterableContext)
                 .map(t -> (WeldAlterableContext) t)
-                .collect(Collectors.toSet());
+                .collect(Collectors.toUnmodifiableSet());
     }
 
 }
