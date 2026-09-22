@@ -113,11 +113,8 @@ public class SimpleServiceRegistry implements ServiceRegistry {
 
     @Override
     public boolean equals(Object obj) {
-        if (obj instanceof Map<?, ?>) {
-            return services.equals(obj);
-        } else {
-            return false;
-        }
+        return this == obj || obj instanceof SimpleServiceRegistry
+                && services.equals(((SimpleServiceRegistry) obj).services);
     }
 
     public Iterator<Service> iterator() {

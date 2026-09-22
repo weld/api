@@ -50,4 +50,29 @@ public class SimpleServiceRegistryTest {
         assertFalse(iterator.hasNext());
         expectThrows(IllegalStateException.class, iterator::remove);
     }
+
+    @Test
+    public void equalityComparesRegistriesAndPreservesTheObjectContract() {
+        SimpleServiceRegistry first = new SimpleServiceRegistry();
+        SimpleServiceRegistry second = new SimpleServiceRegistry();
+        SimpleServiceRegistry third = new SimpleServiceRegistry();
+        Service service = () -> {
+        };
+        first.add(Service.class, service);
+        second.add(Service.class, service);
+        third.add(Service.class, service);
+
+        assertTrue(first.equals(first));
+        assertTrue(first.equals(second));
+        assertTrue(second.equals(first));
+        assertTrue(second.equals(third));
+        assertTrue(first.equals(third));
+        assertEquals(first.hashCode(), second.hashCode());
+        assertFalse(first.equals(null));
+        assertFalse(first.equals(java.util.Map.of(Service.class, service)));
+        second.add(MockService.class, new MockService() {
+        });
+        assertFalse(first.equals(second));
+        assertFalse(second.equals(first));
+    }
 }
