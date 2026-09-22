@@ -39,7 +39,9 @@ import jakarta.interceptor.InterceptorBinding;
  * @author Tomas Remes
  * @author Martin Kouba
  * @see RequestScoped
+ * @deprecated use {@link jakarta.enterprise.context.control.ActivateRequestContext}.
  */
+@Deprecated(since = "7.0", forRemoval = true)
 @InterceptorBinding
 @Retention(RUNTIME)
 @Target({ METHOD, TYPE })
@@ -47,7 +49,10 @@ public @interface ActivateRequestContext {
 
     /**
      * Annotation literal for {@link ActivateRequestContext}
+     *
+     * @deprecated use {@link AnnotationLiteral} with {@link jakarta.enterprise.context.control.ActivateRequestContext}.
      */
+    @Deprecated(since = "7.0", forRemoval = true)
     class Literal extends AnnotationLiteral<ActivateRequestContext> implements ActivateRequestContext {
 
         /**
