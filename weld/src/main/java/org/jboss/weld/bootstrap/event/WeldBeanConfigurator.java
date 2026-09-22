@@ -27,16 +27,18 @@ import jakarta.enterprise.inject.Instance;
 import jakarta.enterprise.inject.spi.AnnotatedType;
 import jakarta.enterprise.inject.spi.BeanAttributes;
 import jakarta.enterprise.inject.spi.InjectionPoint;
-import jakarta.enterprise.inject.spi.Prioritized;
 import jakarta.enterprise.inject.spi.configurator.BeanConfigurator;
 import jakarta.enterprise.util.TypeLiteral;
-import jakarta.interceptor.Interceptor.Priority;
 
 /**
- * Represents an enhanced version of {@link BeanConfigurator}
+ * A compatibility interface providing covariant return types for {@link BeanConfigurator}.
  *
  * @author <a href="mailto:manovotn@redhat.com">Matej Novotny</a>
+ * @param <T> the bean type
+ * @deprecated use {@link BeanConfigurator}, which provides all of this interface's functionality.
+ *             New configurator methods are inherited with the standard return type.
  */
+@Deprecated(since = "7.0", forRemoval = true)
 public interface WeldBeanConfigurator<T> extends BeanConfigurator<T> {
 
     @Override
@@ -132,17 +134,6 @@ public interface WeldBeanConfigurator<T> extends BeanConfigurator<T> {
     @Override
     WeldBeanConfigurator<T> beanClass(Class<?> beanClass);
 
-    /**
-     * NOTE: Since CDI 4.0, this is now part of standard API!
-     * <p>
-     * Allows to set a priority to an alternative bean hence selecting it globally.
-     * Has the same effect as putting {@link Priority} annotation on an actual bean class
-     * or implementing {@link Prioritized} interface with custom bean classes.
-     * This method has no effect on custom beans which are not alternatives.
-     *
-     * @param priority the priority of this bean
-     * @return self
-     */
     @Override
     WeldBeanConfigurator<T> priority(int priority);
 }
