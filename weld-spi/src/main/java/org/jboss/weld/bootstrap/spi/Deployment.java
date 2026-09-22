@@ -140,14 +140,9 @@ public interface Deployment {
     /**
      * Specifies the extensions this deployment should call observer methods on.
      *
-     * JSR-299 specifies that extensions should be loaded using <a
-     * href="http://download.oracle.com/javase/1.5.0/docs/guide/jar/jar.html#Service%20Provider" >Service Providers from the JAR
-     * File specification</a>
-     *
-     * Weld delegates this task to the container, allowing the container to programatically alter the extensions registered. To
-     * load extensions, the container could use the {@link ServiceLoader} available in the JDK (since Java 6). In pre Java 6
-     * environments, the container must provide the ServiceLoader itself. We provide an example Service Loader <a
-     * href="http://gist.github.com/540594">here</a>.
+     * CDI extensions are registered as service providers for {@link Extension}.
+     * Weld delegates loading to the container, allowing it to programmatically alter the registered extensions.
+     * The container can use {@link ServiceLoader} to discover extension providers.
      *
      * @return the extensions to call observer methods on, or an empty list if there are no observers
      */
