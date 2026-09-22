@@ -42,7 +42,7 @@ public interface WeldAfterBeanDiscovery extends AfterBeanDiscovery {
     InterceptorConfigurator addInterceptor();
 
     /**
-     * Obtain a {@link WeldBeanConfigurator}, an extended version of {@link BeanConfigurator}.
+     * Obtain a {@link WeldBeanConfigurator}, a compatibility interface for {@link BeanConfigurator}.
      * <p>
      * The configurator behaves in the same manner as {@link BeanConfigurator}.
      * Configured bean is added automatically at the end of the observer invocation.
@@ -52,7 +52,11 @@ public interface WeldAfterBeanDiscovery extends AfterBeanDiscovery {
      * </p>
      *
      * @return a configurator to configure custom new bean
+     * @deprecated use {@link AfterBeanDiscovery#addBean()} through the standard {@link AfterBeanDiscovery} interface
+     *             and use {@link BeanConfigurator} as the configurator type. This override only narrows the return type
+     *             and provides no additional functionality.
      */
+    @Deprecated(since = "7.0", forRemoval = true)
     @Override
     public <T> WeldBeanConfigurator<T> addBean();
 
