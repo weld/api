@@ -121,32 +121,7 @@ public class SimpleServiceRegistry implements ServiceRegistry {
     }
 
     public Iterator<Service> iterator() {
-        return new ValueIterator<Class<? extends Service>, Service>() {
-
-            @Override
-            protected Iterator<Entry<Class<? extends Service>, Service>> delegate() {
-                return services.entrySet().iterator();
-            }
-
-        };
-    }
-
-    private abstract static class ValueIterator<K, V> implements Iterator<V> {
-
-        protected abstract Iterator<Entry<K, V>> delegate();
-
-        public boolean hasNext() {
-            return delegate().hasNext();
-        }
-
-        public V next() {
-            return delegate().next().getValue();
-        }
-
-        public void remove() {
-            delegate().remove();
-        }
-
+        return services.values().iterator();
     }
 
     @Override
