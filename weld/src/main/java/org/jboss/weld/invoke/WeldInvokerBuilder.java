@@ -52,9 +52,9 @@ import jakarta.enterprise.invoke.InvokerBuilder;
  * we can set up the lookup and transformations and build an invoker like so:
  *
  * <pre>
- * builder.setInstanceLookup()
- *         .setArgumentTransformer(0, String.class, "toUpperCase")
- *         .setReturnValueTransformer(Transformations.class, "repeatTwice")
+ * builder.withInstanceLookup()
+ *         .withArgumentTransformer(0, String.class, "toUpperCase")
+ *         .withReturnValueTransformer(Transformations.class, "repeatTwice")
  *         .build();
  * </pre>
  *
@@ -263,7 +263,7 @@ import jakarta.enterprise.invoke.InvokerBuilder;
  * deployment, as described in previous sections. Other types are checked during invocation,
  * at the very least due to the type checks performed implicitly by the JVM. The lookups,
  * transformers and the wrapper must arrange the inputs and outputs so that when the method
- * is eventually invoked, the rules described in
+ * is eventually invoked, the rules described in {@link Invoker#invoke(Object, Object[]) Invoker.invoke()} are satisfied.
  */
 public interface WeldInvokerBuilder<T> extends InvokerBuilder<T> {
     @Override
