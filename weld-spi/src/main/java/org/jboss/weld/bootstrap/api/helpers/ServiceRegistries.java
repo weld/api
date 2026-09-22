@@ -16,6 +16,14 @@
  */
 package org.jboss.weld.bootstrap.api.helpers;
 
+import java.util.AbstractMap;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
 import org.jboss.weld.bootstrap.api.Service;
 import org.jboss.weld.bootstrap.api.ServiceRegistry;
 
@@ -28,17 +36,44 @@ public class ServiceRegistries {
     }
 
     /**
-     * Returns an unmodifiable version of provided {@link ServiceRegistry} where any attempt to add a service results in an
-     * exception
+     * Returns a view of the provided {@link ServiceRegistry} that prevents adding, removing or replacing registrations.
+     * Changes made through the original registry remain visible. Service cleanup operations are still delegated.
      *
      * @param serviceRegistry service registry to process
      * @return unmodifiable variant
      */
     public static ServiceRegistry unmodifiableServiceRegistry(final ServiceRegistry serviceRegistry) {
+        Map<Class<? extends Service>, Service> services = Collections.unmodifiableMap(new AbstractMap<>() {
+            @Override
+            public Set<Entry<Class<? extends Service>, Service>> entrySet() {
+                return serviceRegistry.entrySet();
+            }
+        });
         return new ForwardingServiceRegistry() {
 
-            public <S extends Service> void add(java.lang.Class<S> type, S service) {
+            @Override
+            public <S extends Service> void add(Class<S> type, S service) {
                 throw new UnsupportedOperationException("This service registry is unmodifiable");
+            }
+
+            @Override
+            public <S extends Service> S addIfAbsent(Class<S> type, S service) {
+                throw new UnsupportedOperationException("This service registry is unmodifiable");
+            }
+
+            @Override
+            public void addAll(Collection<Entry<Class<? extends Service>, Service>> services) {
+                throw new UnsupportedOperationException("This service registry is unmodifiable");
+            }
+
+            @Override
+            public Set<Entry<Class<? extends Service>, Service>> entrySet() {
+                return services.entrySet();
+            }
+
+            @Override
+            public Iterator<Service> iterator() {
+                return services.values().iterator();
             }
 
             @Override
