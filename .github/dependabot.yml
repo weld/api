@@ -25,7 +25,10 @@ updates:
   open-pull-requests-limit: 15
   target-branch: "6.0"
   ignore:
+    # Block CDI 5 and newer for Weld 6.0; both APIs share cdi.api.version.
     - dependency-name: "jakarta.enterprise:jakarta.enterprise.cdi-api"
+      versions: ["[5.0,)"]
+    - dependency-name: "jakarta.enterprise:jakarta.enterprise.cdi-el-api"
       versions: ["[5.0,)"]
     - dependency-name: "jakarta.interceptor:jakarta.interceptor-api"
       versions: ["[2.3,)"]
